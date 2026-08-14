@@ -6,24 +6,85 @@
 </head>
 <body>
   <div class="header">
-    <h1>🎨 DSH Skin</h1>
+    <div class="header-left">
+      <span class="logo">✦</span>
+      <h1>DSH Skin</h1>
+    </div>
     <span class="status" id="status">Checking…</span>
   </div>
 
-  <div class="section">
-    <h2>Themes</h2>
-    <div id="theme-list" class="theme-list">
-      <p class="loading">Loading themes…</p>
+  <!-- Tab bar -->
+  <div class="tabs">
+    <button class="tab active" data-tab="themes">Themes</button>
+    <button class="tab" data-tab="import">Import</button>
+  </div>
+
+  <!-- Themes tab -->
+  <div class="tab-content" id="tab-themes">
+    <div class="section">
+      <div id="theme-list" class="theme-list">
+        <p class="loading">Loading themes…</p>
+      </div>
+    </div>
+    <div class="section actions">
+      <button id="restore-btn" class="btn btn-secondary">↩ Restore Default</button>
     </div>
   </div>
 
-  <div class="section">
-    <button id="restore-btn" class="btn btn-secondary">↩ Restore Default</button>
+  <!-- Import tab -->
+  <div class="tab-content hidden" id="tab-import">
+    <div class="section">
+      <p class="import-desc">
+        Import a <strong>.zip</strong> theme package — from
+        <a href="https://dreamskin.cc/gallery" target="_blank" class="link-ext">DreamSkin.cc ↗</a>
+        or created with the online Studio.
+      </p>
+
+      <label class="file-drop" id="file-drop">
+        <input type="file" id="zip-input" accept=".zip" hidden />
+        <div class="drop-icon">📦</div>
+        <div class="drop-label">Drop .zip here or <span class="link">browse</span></div>
+        <div class="drop-hint">Max 32 MiB · ZIP root must contain theme.json</div>
+      </label>
+
+      <div id="import-preview" class="import-preview hidden">
+        <div class="preview-row">
+          <span class="preview-label">Name</span>
+          <span class="preview-value" id="preview-name">—</span>
+        </div>
+        <div class="preview-row">
+          <span class="preview-label">ID</span>
+          <span class="preview-value" id="preview-id">—</span>
+        </div>
+        <div class="preview-row">
+          <span class="preview-label">Version</span>
+          <span class="preview-value" id="preview-version">—</span>
+        </div>
+        <div class="preview-row">
+          <span class="preview-label">Background</span>
+          <span class="preview-value" id="preview-bg">—</span>
+        </div>
+        <div class="preview-row">
+          <span class="preview-label">Format</span>
+          <span class="preview-value" id="preview-format">—</span>
+        </div>
+      </div>
+
+      <div id="import-error" class="import-error hidden"></div>
+    </div>
+
+    <div class="section actions">
+      <label class="checkbox-row" id="force-row">
+        <input type="checkbox" id="force-overwrite" />
+        <span>Overwrite if already installed</span>
+      </label>
+      <button id="import-btn" class="btn btn-primary" disabled>Import Theme</button>
+    </div>
   </div>
 
   <div class="footer">
-    <span>DSH Skin v0.1.0</span>
-    <span class="link" id="open-themes">📂 Theme Folder</span>
+    <span>DSH Skin v0.2.0</span>
+    <span class="link" id="open-themes">📂 Themes Folder</span>
   </div>
 
   <script src="popup.js"></script>

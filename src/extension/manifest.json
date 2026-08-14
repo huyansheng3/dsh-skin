@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "DSH Skin",
-  "version": "0.1.0",
-  "description": "Skin / theming tool for DeepSeek Harness web client. Override colors, add backgrounds, switch themes.",
+  "version": "0.2.0",
+  "description": "Skin / theming tool for DeepSeek Harness web client. Override colors, add backgrounds, switch themes. Supports DreamSkin .zip import.",
   "permissions": ["storage", "activeTab", "scripting"],
   "host_permissions": ["http://127.0.0.1:3080/*", "http://localhost:3080/*"],
   "action": {

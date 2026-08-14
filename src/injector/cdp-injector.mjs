@@ -16,9 +16,8 @@
  */
 
 import { parseArgs } from "node:util";
-import { createConnection } from "node:net";
-import { fileToDataUrl, findTheme, loadState, saveState, listThemes } from "../lib/theme-manager.mjs";
-import { buildInjectionCss, validateSafeCss } from "../lib/safe-css.mjs";
+import { fileToDataUrl, findTheme, loadState, saveState, listThemes, getThemesDir } from "../lib/theme-manager.mjs";
+import { buildInjectionCss, buildDreamSkinCss, validateSafeCss } from "../lib/safe-css.mjs";
 
 const INJECTOR_VERSION = "0.1.0";
 const INJECT_STYLE_ID = "dsh-skin-injected";
@@ -233,15 +232,20 @@ try {
     }
   }
 
-  // Build the injection CSS
+  // Build the injection CSS (format-aware)
   let backgroundDataUrl = null;
   if (theme.hasBackground) {
     backgroundDataUrl = fileToDataUrl(theme.backgroundPath);
   }
 
-  let cssText = buildInjectionCss(theme.themeJson, backgroundDataUrl);
-  if (theme.customCss) {
-    cssText += "\n/* === Custom theme.css === */\n" + theme.customCss;
+  let cssText;
+  if (theme.format === "dreamskin") {
+    cssText = buildDreamSkinCss(theme.themeJson, backgroundDataUrl, theme.customCss);
+  } else {
+    cssText = buildInjectionCss(theme.themeJson, backgroundDataUrl);
+    if (theme.customCss) {
+      cssText += "\n/* === Custom theme.css === */\n" + theme.customCss;
+    }
   }
 
   const count = await injectViaCDP(cssText, "apply");
