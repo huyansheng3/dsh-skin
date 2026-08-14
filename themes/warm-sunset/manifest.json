@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "id": "warm-sunset",
+  "name": "Warm Sunset",
+  "author": "dsh-skin",
+  "version": "1.0.0",
+  "platform": "any",
+  "capabilities": {
+    "css-variables": true,
+    "background-image": true,
+    "safe-css": true
+  }
+}

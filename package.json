@@ -1,0 +1,32 @@
+{
+  "name": "better-harness-skin",
+  "version": "0.1.0",
+  "description": "Skin / theming tool for DeepSeek Harness (DSH) web client. Override CSS variables, add background images, and switch themes — without modifying the official package.",
+  "license": "MIT",
+  "author": {
+    "name": "huyansheng"
+  },
+  "type": "module",
+  "bin": {
+    "dsh-skin": "src/cli/dsh-skin.mjs"
+  },
+  "scripts": {
+    "build:extension": "node scripts/build-extension.mjs",
+    "build:injector": "node scripts/build-injector.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "ws": "^8.16.0"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "skin",
+    "theme",
+    "cdp",
+    "chrome-extension"
+  ]
+}

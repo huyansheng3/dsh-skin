@@ -1,0 +1,7 @@
+/* Gothic Void — additional subtle glow effects */
+body {
+  --dsw-alias-state-business-primary: rgb(180, 130, 255);
+  --dsw-alias-state-business-tertiary: rgb(60, 40, 80);
+  --dsw-alias-button-info-fill: rgb(180, 130, 255);
+  --dsw-alias-button-info-hover: rgb(200, 150, 255);
+}

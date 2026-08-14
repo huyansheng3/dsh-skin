@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Theme backgrounds (large binaries, use git-lfs or separate storage)
+themes/*/background.jpg
+themes/*/background.png
+themes/*/background.webp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log

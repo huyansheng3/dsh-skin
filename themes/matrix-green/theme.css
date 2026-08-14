@@ -1,0 +1,4 @@
+/* Matrix Green — terminal-style green accents */
+body {
+  --ds-font-family-code: 'SF Mono', 'JetBrains Mono', 'Fira Code', Consolas, 'Courier New', monospace;
+}

@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "colors": {
+    "light": {
+      "--dsw-alias-bg-base": "rgb(255, 241, 245)",
+      "--dsw-alias-bg-layer-1": "rgb(255, 228, 236)",
+      "--dsw-alias-bg-layer-2": "rgb(252, 218, 228)",
+      "--dsw-alias-bg-layer-3": "rgb(249, 208, 220)",
+      "--dsw-specific-sidebar-fill": "rgb(255, 234, 240)",
+      "--dsw-alias-label-primary": "rgb(120, 20, 60)",
+      "--dsw-alias-label-secondary": "rgb(160, 50, 90)",
+      "--dsw-alias-label-tertiary": "rgb(190, 80, 120)",
+      "--dsw-alias-brand-primary": "rgb(236, 72, 153)",
+      "--dsw-alias-border-l1": "rgba(236, 72, 153, 0.08)",
+      "--dsw-alias-border-l2": "rgba(236, 72, 153, 0.12)",
+      "--dsw-specific-bubble": "rgb(255, 228, 236)",
+      "--dsw-specific-bubble-highlight": "rgb(251, 207, 219)",
+      "--dsw-specific-input-major": "rgb(255, 255, 255)",
+      "--dsw-alias-state-business-primary": "rgb(236, 72, 153)",
+      "--dsw-alias-button-info-fill": "rgb(236, 72, 153)",
+      "--dsw-alias-button-info-hover": "rgb(220, 50, 130)"
+    },
+    "dark": {
+      "--dsw-alias-bg-base": "rgb(25, 12, 18)",
+      "--dsw-alias-bg-layer-1": "rgb(35, 16, 24)",
+      "--dsw-alias-bg-layer-2": "rgb(45, 20, 30)",
+      "--dsw-alias-bg-layer-3": "rgb(55, 24, 36)",
+      "--dsw-specific-sidebar-fill": "rgb(18, 8, 14)",
+      "--dsw-alias-label-primary": "rgb(255, 210, 225)",
+      "--dsw-alias-label-secondary": "rgb(220, 170, 195)",
+      "--dsw-alias-label-tertiary": "rgb(190, 140, 170)",
+      "--dsw-alias-brand-primary": "rgb(244, 114, 182)",
+      "--dsw-alias-border-l1": "rgba(244, 114, 182, 0.06)",
+      "--dsw-alias-border-l2": "rgba(244, 114, 182, 0.10)",
+      "--dsw-specific-bubble": "rgb(45, 20, 30)",
+      "--dsw-specific-bubble-highlight": "rgb(65, 30, 44)",
+      "--dsw-specific-input-major": "rgb(35, 16, 24)",
+      "--dsw-alias-state-business-primary": "rgb(244, 114, 182)",
+      "--dsw-alias-button-info-fill": "rgb(244, 114, 182)",
+      "--dsw-alias-button-info-hover": "rgb(236, 80, 160)"
+    }
+  },
+  "background": {
+    "file": "background.jpg",
+    "size": "cover",
+    "position": "center",
+    "opacity": 0.25,
+    "blur": 0
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "colors": {
+    "light": {
+      "--dsw-alias-bg-base": "rgb(255, 247, 237)",
+      "--dsw-alias-bg-layer-1": "rgb(255, 237, 224)",
+      "--dsw-alias-bg-layer-2": "rgb(254, 225, 205)",
+      "--dsw-alias-bg-layer-3": "rgb(253, 213, 186)",
+      "--dsw-specific-sidebar-fill": "rgb(255, 242, 230)",
+      "--dsw-alias-label-primary": "rgb(120, 53, 15)",
+      "--dsw-alias-label-secondary": "rgb(154, 82, 30)",
+      "--dsw-alias-label-tertiary": "rgb(180, 110, 50)",
+      "--dsw-alias-brand-primary": "rgb(234, 88, 12)",
+      "--dsw-alias-border-l1": "rgba(234, 88, 12, 0.08)",
+      "--dsw-alias-border-l2": "rgba(234, 88, 12, 0.12)",
+      "--dsw-specific-bubble": "rgb(255, 237, 224)",
+      "--dsw-specific-bubble-highlight": "rgb(254, 215, 170)",
+      "--dsw-specific-input-major": "rgb(255, 255, 255)",
+      "--dsw-alias-state-business-primary": "rgb(234, 88, 12)",
+      "--dsw-alias-button-info-fill": "rgb(234, 88, 12)",
+      "--dsw-alias-button-info-hover": "rgb(220, 70, 0)"
+    },
+    "dark": {
+      "--dsw-alias-bg-base": "rgb(25, 15, 10)",
+      "--dsw-alias-bg-layer-1": "rgb(35, 20, 12)",
+      "--dsw-alias-bg-layer-2": "rgb(45, 26, 16)",
+      "--dsw-alias-bg-layer-3": "rgb(55, 32, 20)",
+      "--dsw-specific-sidebar-fill": "rgb(18, 10, 6)",
+      "--dsw-alias-label-primary": "rgb(255, 220, 180)",
+      "--dsw-alias-label-secondary": "rgb(210, 170, 130)",
+      "--dsw-alias-label-tertiary": "rgb(180, 145, 110)",
+      "--dsw-alias-brand-primary": "rgb(251, 146, 60)",
+      "--dsw-alias-border-l1": "rgba(251, 146, 60, 0.06)",
+      "--dsw-alias-border-l2": "rgba(251, 146, 60, 0.10)",
+      "--dsw-specific-bubble": "rgb(45, 26, 16)",
+      "--dsw-specific-bubble-highlight": "rgb(65, 40, 24)",
+      "--dsw-specific-input-major": "rgb(35, 20, 12)",
+      "--dsw-alias-state-business-primary": "rgb(251, 146, 60)",
+      "--dsw-alias-button-info-fill": "rgb(251, 146, 60)",
+      "--dsw-alias-button-info-hover": "rgb(234, 120, 40)"
+    }
+  },
+  "background": {
+    "file": "background.jpg",
+    "size": "cover",
+    "position": "center",
+    "opacity": 0.3,
+    "blur": 0
+  }
+}

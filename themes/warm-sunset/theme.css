@@ -1,0 +1,6 @@
+/* Warm Sunset — warm amber glow */
+body {
+  --dsw-alias-state-warn-primary: rgb(251, 191, 36);
+  --dsw-alias-state-warn-secondary: rgb(245, 158, 11);
+  --dsw-alias-state-warn-tertiary: rgb(254, 243, 199);
+}

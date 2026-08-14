@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "id": "matrix-green",
+  "name": "Matrix Green",
+  "author": "dsh-skin",
+  "version": "1.0.0",
+  "platform": "any",
+  "capabilities": {
+    "css-variables": true,
+    "background-image": false,
+    "safe-css": true
+  }
+}
