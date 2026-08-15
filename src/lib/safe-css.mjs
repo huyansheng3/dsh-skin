@@ -5,8 +5,9 @@
  * runtime variables without color correction. Illustrated themes keep the
  * author background token while the DSH canvas becomes transparent beneath the
  * original glass surfaces. Opaque native reading/control surfaces use the
- * author's solid panel colors so dark skins cannot inherit DSH's light fills;
- * author CSS is appended last.
+ * author's solid panel colors so dark skins cannot inherit DSH's light fills,
+ * and the compact sidebar toggle uses the author's primary text token so its
+ * thin icon remains recognizable. Author CSS is appended last.
  *
  * Main callers are theme-manager during import and the Host stylesheet route.
  * This file does not discover themes, read assets, mutate the DOM, or own ZIP
@@ -425,6 +426,16 @@ export function buildDreamSkinCss(themeJson, bgDataUrl = null, customCss = null)
     }
   }
   lines.push("}");
+
+  // Keep this localization-independent and limited to the logo-row toggle.
+  // CSS-module hashes may change, but the semantic class suffixes are stable in
+  // the supported DSH Web client and avoid recoloring other secondary labels.
+  lines.push(`
+/* === DSH Skin — Native navigation affordance === */
+[class*="_logoRow"] > button[class*="_iconButton"][class*="_toggle"] {
+  color: var(--dsw-alias-label-primary) !important;
+}
+`);
 
   // ── 2. Background layer ────────────────────────────────────────────────────
   if (bgDataUrl) {

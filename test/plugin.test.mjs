@@ -95,7 +95,7 @@ test("injects only the active stylesheet and exposes no standalone settings entr
 
   const html = taps[0]("<html><head></head><body></body></html>");
   assert.match(html, /<link[^>]+data-dsh-skin="1"[^>]+\/_skin\/active\.css/);
-  assert.match(html, /%3Ar3/, "CSS renderer changes must invalidate immutable browser caches");
+  assert.match(html, /%3Ar4/, "CSS renderer changes must invalidate immutable browser caches");
   assert.doesNotMatch(html, /__dsh_skin_btn|__dsh_skin_panel|\/_skin\/settings/);
 });
 

@@ -46,6 +46,11 @@
     const two = luminance(second);
     return (Math.max(one, two) + 0.05) / (Math.min(one, two) + 0.05);
   };
+  const sameColor = (first, second) => first && second
+    && Math.abs(first.r - second.r) < 1
+    && Math.abs(first.g - second.g) < 1
+    && Math.abs(first.b - second.b) < 1
+    && Math.abs(first.a - second.a) < 0.01;
   const backdropContrast = (text, surface, base) => {
     const black = { r: 0, g: 0, b: 0, a: 1 };
     const white = { r: 255, g: 255, b: 255, a: 1 };
@@ -178,6 +183,13 @@
           return rect.width > 0 && rect.height > 0 && style.display !== "none" && style.visibility !== "hidden";
         }).length;
         if (visibleButtons < 8) issues.push(`visible-buttons:${visibleButtons}`);
+        const sidebarToggle = document.querySelector(
+          '[class*="_logoRow"] > button[class*="_iconButton"][class*="_toggle"]',
+        );
+        if (sidebarToggle && primary) {
+          const toggleColor = parseColor(getComputedStyle(sidebarToggle).color);
+          if (!sameColor(toggleColor, primary)) issues.push("sidebar-toggle-not-primary");
+        }
         const opaqueSurfaceFailures = [...document.querySelectorAll(
           'code, pre, button, input, textarea, select, [role="tab"], [role="treeitem"]',
         )].map(opaqueTextSurfaceFailure).filter(Boolean);

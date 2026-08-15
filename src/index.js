@@ -41,7 +41,7 @@ const CORE_BUILTIN_DIR = join(PACKAGE_ROOT, "themes");
 const DEFAULT_GALLERY_BUILTIN_DIR = join(PACKAGE_ROOT, "gallery", "themes");
 const MAX_UPLOAD_BYTES = 32 * 1024 * 1024;
 // Bump when CSS generation semantics change; responses are cached as immutable.
-const CSS_RENDERER_VERSION = 3;
+const CSS_RENDERER_VERSION = 4;
 
 class HttpError extends Error {
   constructor(status, message) {

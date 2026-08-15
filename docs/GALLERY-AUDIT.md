@@ -19,7 +19,9 @@ interactive background layers, horizontal overflow, missing theme tokens, and
 missing native controls as failures. It also fails visible text-bearing code,
 button, input, select, tab, and tree-item surfaces below 3:1 when their own
 background alpha is at least 0.85. Ordinary wallpaper/body contrast remains a
-warning and is deliberately not used to rewrite author colors.
+warning and is deliberately not used to rewrite author colors. The audit also
+requires the compact sidebar expand/collapse control to inherit the author's
+primary text token instead of the lower-emphasis secondary label token.
 
 After removing the 24 source-quality failures, all 76 retained Gallery themes
 were rerun on three existing conversations through this structural browser

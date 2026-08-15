@@ -182,6 +182,16 @@ test("buildDreamSkinCss maps opaque native reading surfaces without recoloring t
   assert.ok(css.includes("--dsw-alias-bg-layer-1: rgba(28, 30, 29, 0.72) !important"));
   assert.ok(css.includes("--dsw-alias-bg-layer-2: rgba(40, 44, 41, 0.65) !important"));
   assert.ok(css.includes("--dsw-alias-label-primary: #eff0ef !important"));
+  assert.match(
+    css,
+    /\[class\*="_logoRow"\] > button\[class\*="_iconButton"\]\[class\*="_toggle"\]\s*\{\s*color: var\(--dsw-alias-label-primary\) !important;/,
+    "The sidebar toggle should use the author's primary text token",
+  );
+  assert.doesNotMatch(
+    css,
+    /--dsw-alias-label-secondary:\s*#eff0ef/,
+    "Other secondary labels should retain their author-provided hierarchy",
+  );
 });
 
 test("buildDreamSkinCss injects background layer with glass panels when image is provided", () => {

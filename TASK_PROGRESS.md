@@ -32,6 +32,8 @@
   作者 CSS 后追加全局可读性覆盖。
 - 原生代码、标签、菜单和不透明控件使用作者提供的实色 `panel`/`panelAlt` token，
   避免深色主题继承 Harness 浅色填充；正文、强调色和主玻璃表面保持作者效果。
+- 侧栏 logo 行的展开/收起按钮单独使用作者主文字 token，避免细线图标继承低识别度的
+  次要文字色；其他次要标签不被提亮。
 
 ## Plugin Design
 
@@ -75,7 +77,7 @@
   主题。
 - 原生设置 E2E：81 个选项（官方外观 + 80 个当前可用主题），24 个排除 ID 和 5 个
   纯色 ID 均不可见；设置 dialog 宽 800px 且完整落在视口内。
-- CSS cache key 增加 renderer `r3`，插件升级后不会继续命中旧的 immutable 主题 CSS。
+- CSS cache key 增加 renderer `r4`，插件升级后不会继续命中旧的 immutable 主题 CSS。
 - Host route smoke: 仅注册 `/_skin/active.css`、`/_skin/bg/*`、`/_skin/api/*`；
   index 中只注入 stylesheet link。
 - Client artifact smoke: rc.6 ModuleLoader 成功加载 `/plugins/dsh-skin/client.js`，
@@ -100,6 +102,8 @@
 - 发布白名单浏览器复验：20/20 无背景安全、token、原生控件或横向溢出结构失败；
   不透明文字表面对比度全部通过，普通壁纸区域仅保留作者效果告警，审计结束后恢复
   检查前主题。
+- `stellar-watcher` 真实浏览器复验：侧栏展开/收起按钮从次要色 `#A8B1C6` 提升到
+  作者主文字色 `#F5F0E8`；更新后的浏览器审计继续为保留 Gallery 76/76 通过。
 - GitHub 首次交付包 57.3 MB 在低速 codeload 链路触发 pnpm 超时；20 张背景已在不
   裁切、不调色的前提下高质量转为 WebP，npm dry-run 降至约 6.46 MB。优化后视觉总览
   无明显失真，浏览器逐主题结构审计仍为 20/20 通过。
