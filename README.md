@@ -10,6 +10,16 @@
 
 已在 `@deepseek-ai/dsh@0.1.0-rc.6` 的 Web profile 中验证。
 
+## 效果预览
+
+以下截图来自真实的 DSH Web 会话，皮肤选择与 ZIP 导入均集成在原生通用设置中。
+
+| 原生皮肤设置 | 金陵晴川 |
+| --- | --- |
+| ![通用设置中的皮肤选择和 ZIP 导入](./docs/images/dsh-skin-settings.webp) | ![金陵晴川明亮主题](./docs/images/dsh-skin-jinling.webp) |
+| 安静氛围森林 | Gothic Void Crusade |
+| ![安静氛围森林主题](./docs/images/dsh-skin-forest.webp) | ![Gothic Void Crusade 暗色主题](./docs/images/dsh-skin-gothic.webp) |
+
 ## 快速安装
 
 前置条件：已安装 DeepSeek Harness，终端中可以运行 `dsh`，Node.js 版本不低于 18。
