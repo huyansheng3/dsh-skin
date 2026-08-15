@@ -135,9 +135,53 @@ test("buildDreamSkinCss maps flat colors to CSS variables", () => {
   assert.ok(css.includes("--dsw-alias-bg-base"),        "Should map dsw alias");
   assert.ok(css.includes("--ds-theme-color-accent"),    "Should map accent");
   assert.ok(!css.includes("--dsw-specific-sidebar-nav-item-active"), "Should not flatten selected navigation styling");
-  assert.ok(!css.includes("--dsw-alias-bg-module-platform"), "Should leave native selector styling to the theme");
+  assert.ok(css.includes("--dsw-alias-bg-module-platform: #e5f2ff !important"), "Opaque native surfaces should follow the theme palette");
   assert.ok(!css.includes("body::before"),               "No bg layer without image");
   assert.ok(!css.includes("settings dialog width"),      "Should leave host dialog geometry to DSH");
+});
+
+test("buildDreamSkinCss maps opaque native reading surfaces without recoloring text", () => {
+  const css = buildDreamSkinCss({
+    appearance: "dark",
+    colors: {
+      background: "#121412",
+      panel: "#1c1e1d",
+      panelAlt: "#282c29",
+      text: "#eff0ef",
+    },
+  }, "data:image/jpeg;base64,X", null);
+
+  for (const token of [
+    "--dsw-alias-markdown-inline-code",
+    "--dsw-alias-markdown-citation",
+    "--dsw-alias-markdown-code-block-banner",
+    "--dsw-alias-markdown-code-segment-selected",
+    "--dsw-alias-markdown-placeholder",
+    "--dsw-alias-markdown-tag",
+    "--dsw-alias-button-elevated-fill",
+    "--dsw-alias-button-floating-hover",
+    "--dsw-alias-button-ghost-active-fill",
+    "--dsw-alias-button-ghost-active-hover",
+    "--dsw-alias-button-primary-dimmed",
+    "--dsw-alias-interactive-bg-hover-solid",
+    "--dsw-alias-bg-module-platform",
+    "--dsw-alias-bg-multi-select",
+    "--dsw-specific-selector",
+    "--dsw-specific-tip",
+  ]) {
+    assert.ok(css.includes(`${token}: #282c29 !important`), token);
+  }
+  for (const token of [
+    "--dsw-alias-markdown-code-block",
+    "--dsw-alias-markdown-code-segment-unselected",
+    "--dsw-alias-button-floating-fill",
+    "--dsw-alias-bg-overlay",
+  ]) {
+    assert.ok(css.includes(`${token}: #1c1e1d !important`), token);
+  }
+  assert.ok(css.includes("--dsw-alias-bg-layer-1: rgba(28, 30, 29, 0.72) !important"));
+  assert.ok(css.includes("--dsw-alias-bg-layer-2: rgba(40, 44, 41, 0.65) !important"));
+  assert.ok(css.includes("--dsw-alias-label-primary: #eff0ef !important"));
 });
 
 test("buildDreamSkinCss injects background layer with glass panels when image is provided", () => {

@@ -2,8 +2,9 @@
  * Browser-context audit payload for an isolated DSH instance populated by the
  * Gallery package audit. It activates every requested or non-builtin theme, waits for the
  * Host stylesheet revision, and checks rendered DSH tokens, background safety,
- * overflow, and visible controls. Contrast is reported as a source-quality
- * warning because the runtime preserves author colors.
+ * overflow, and visible controls. Ordinary wallpaper contrast remains a
+ * source-quality warning because the runtime preserves author colors, while
+ * opaque native code/control surfaces below 3:1 are structural failures.
  *
  * Run through a browser automation evaluator after opening DSH. The payload
  * returns only a summary, restores the previous active theme, and does
@@ -53,13 +54,53 @@
       return contrast(text, composite(surface, basePixel));
     }));
   };
-  const renderedBackground = (element) => {
+  const renderedBackground = (element, backdrop) => {
     const ancestors = [];
     for (let current = element; current; current = current.parentElement) ancestors.unshift(current);
     return ancestors.reduce((background, current) => {
       const parsed = parseColor(getComputedStyle(current).backgroundColor);
       return parsed ? composite(parsed, background) : background;
-    }, { r: 255, g: 255, b: 255, a: 1 });
+    }, backdrop);
+  };
+  const renderedOpacity = (element) => {
+    let opacity = 1;
+    for (let current = element; current; current = current.parentElement) {
+      const value = Number(getComputedStyle(current).opacity);
+      if (Number.isFinite(value)) opacity *= value;
+    }
+    return opacity;
+  };
+  const controlLabel = (element) => {
+    if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) {
+      return element.value || element.placeholder || element.getAttribute("aria-label") || "";
+    }
+    return element.innerText || element.textContent || element.getAttribute("aria-label") || "";
+  };
+  const opaqueTextSurfaceFailure = (element) => {
+    const rect = element.getBoundingClientRect();
+    const style = getComputedStyle(element);
+    const label = controlLabel(element).trim().replace(/\s+/g, " ");
+    if (!label || rect.width <= 0 || rect.height <= 0
+      || style.display === "none" || style.visibility === "hidden"
+      || renderedOpacity(element) < 0.1) return null;
+
+    const foreground = parseColor(style.color);
+    const ownBackground = parseColor(style.backgroundColor);
+    if (!foreground || !ownBackground || ownBackground.a < 0.85) return null;
+
+    const black = { r: 0, g: 0, b: 0, a: 1 };
+    const white = { r: 255, g: 255, b: 255, a: 1 };
+    const ratios = [black, white].map(backdrop => {
+      const background = renderedBackground(element, backdrop);
+      return contrast(composite(foreground, background), background);
+    });
+    const ratio = Math.min(...ratios);
+    if (ratio >= 3) return null;
+    return {
+      tag: element.tagName.toLowerCase(),
+      label: label.slice(0, 32),
+      ratio,
+    };
   };
   const delay = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
   const readJson = async (url, options) => {
@@ -137,24 +178,19 @@
           return rect.width > 0 && rect.height > 0 && style.display !== "none" && style.visibility !== "hidden";
         }).length;
         if (visibleButtons < 8) issues.push(`visible-buttons:${visibleButtons}`);
-        const textControls = [...document.querySelectorAll("button, select")].filter(control => {
-          const rect = control.getBoundingClientRect();
-          const style = getComputedStyle(control);
-          return !control.disabled && rect.width > 0 && rect.height > 0
-            && style.display !== "none" && style.visibility !== "hidden"
-            && (control.tagName === "SELECT" || control.textContent.trim());
-        });
-        for (const control of textControls) {
-          const foreground = parseColor(getComputedStyle(control).color);
-          const background = renderedBackground(control);
-          if (!foreground) continue;
-          const ratio = contrast(foreground, background);
-          minimumObservedContrast = Math.min(minimumObservedContrast, ratio);
-          if (ratio < 4.5) {
-            const label = control.getAttribute("aria-label") || control.textContent.trim().slice(0, 24) || control.tagName;
-            themeWarnings.push(`control-contrast:${label}:${ratio.toFixed(2)}`);
-            break;
-          }
+        const opaqueSurfaceFailures = [...document.querySelectorAll(
+          'code, pre, button, input, textarea, select, [role="tab"], [role="treeitem"]',
+        )].map(opaqueTextSurfaceFailure).filter(Boolean);
+        for (const failure of opaqueSurfaceFailures) {
+          minimumObservedContrast = Math.min(minimumObservedContrast, failure.ratio);
+        }
+        if (opaqueSurfaceFailures.length > 0) {
+          const worst = opaqueSurfaceFailures.reduce((current, failure) => (
+            failure.ratio < current.ratio ? failure : current
+          ));
+          issues.push(
+            `opaque-surface-contrast:${opaqueSurfaceFailures.length}:${worst.tag}:${worst.label}:${worst.ratio.toFixed(2)}`,
+          );
         }
       } catch (error) {
         issues.push(error instanceof Error ? error.message : String(error));
@@ -165,7 +201,7 @@
   } finally {
     await activate(inventory.activeThemeId);
   }
-  return {
+  const result = {
     total: themes.length,
     passed: themes.length - failures.length,
     failed: failures.length,
@@ -173,6 +209,9 @@
       ? Number(minimumObservedContrast.toFixed(2))
       : null,
     failures,
+    warningThemeCount: warnings.length,
     warnings,
   };
+  if (window.__DSH_SKIN_AUDIT_INCLUDE_WARNINGS === false) result.warnings = [];
+  return result;
 })()

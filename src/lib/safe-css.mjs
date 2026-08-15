@@ -4,7 +4,9 @@
  * Raw theme tokens pass through Safe CSS validation and are mapped onto DSH's
  * runtime variables without color correction. Illustrated themes keep the
  * author background token while the DSH canvas becomes transparent beneath the
- * original glass surfaces; author CSS is appended last.
+ * original glass surfaces. Opaque native reading/control surfaces use the
+ * author's solid panel colors so dark skins cannot inherit DSH's light fills;
+ * author CSS is appended last.
  *
  * Main callers are theme-manager during import and the Host stylesheet route.
  * This file does not discover themes, read assets, mutate the DOM, or own ZIP
@@ -234,6 +236,37 @@ const DREAMSKIN_COLOR_MAP = {
   ],
 };
 
+// These DSH aliases are opaque chips, code surfaces, menus, or standalone
+// controls. They must use solid author colors even when the main panels become
+// glass, otherwise a dark DreamSkin inherits DSH's light-mode fills and renders
+// the author text color as white-on-white.
+const DREAMSKIN_OPAQUE_SURFACE_MAP = {
+  panel: [
+    "--dsw-alias-markdown-code-block",
+    "--dsw-alias-markdown-code-segment-unselected",
+    "--dsw-alias-button-floating-fill",
+    "--dsw-alias-bg-overlay",
+  ],
+  panelAlt: [
+    "--dsw-alias-markdown-citation",
+    "--dsw-alias-markdown-code-block-banner",
+    "--dsw-alias-markdown-code-segment-selected",
+    "--dsw-alias-markdown-inline-code",
+    "--dsw-alias-markdown-placeholder",
+    "--dsw-alias-markdown-tag",
+    "--dsw-alias-button-elevated-fill",
+    "--dsw-alias-button-floating-hover",
+    "--dsw-alias-button-ghost-active-fill",
+    "--dsw-alias-button-ghost-active-hover",
+    "--dsw-alias-button-primary-dimmed",
+    "--dsw-alias-interactive-bg-hover-solid",
+    "--dsw-alias-bg-module-platform",
+    "--dsw-alias-bg-multi-select",
+    "--dsw-specific-selector",
+    "--dsw-specific-tip",
+  ],
+};
+
 /**
  * Convert a hex/rgb color to rgba with given alpha.
  * Accepts: "#rrggbb", "rgb(r,g,b)", "rgba(r,g,b,a)"
@@ -382,6 +415,13 @@ export function buildDreamSkinCss(themeJson, bgDataUrl = null, customCss = null)
         ? toRgba(value, 0)
         : value;
       lines.push(`  ${v}: ${tokenValue} !important;`);
+    }
+  }
+
+  for (const [colorKey, vars] of Object.entries(DREAMSKIN_OPAQUE_SURFACE_MAP)) {
+    if (!colors[colorKey]) continue;
+    for (const variable of vars) {
+      lines.push(`  ${variable}: ${colors[colorKey]} !important;`);
     }
   }
   lines.push("}");
