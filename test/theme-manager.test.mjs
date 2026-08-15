@@ -13,9 +13,11 @@ import {
 import { execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 import { importThemeZip, loadTheme, listThemes, getThemesDir } from "../src/lib/theme-manager.mjs";
 
-const FIXTURE_THEME_DIR = join(import.meta.dirname, "fixtures", "test-theme");
+const TEST_DIR = dirname(fileURLToPath(import.meta.url));
+const FIXTURE_THEME_DIR = join(TEST_DIR, "fixtures", "test-theme");
 const TEST_DATA_DIR = mkdtempSync(join(tmpdir(), "dsh-skin-theme-manager-test-"));
 
 before(() => {
@@ -73,7 +75,7 @@ test("loadTheme reads and validates a theme directory", () => {
 });
 
 test("loadTheme throws on missing manifest", () => {
-  const emptyDir = join(import.meta.dirname, "fixtures", "empty");
+  const emptyDir = join(TEST_DIR, "fixtures", "empty");
   if (existsSync(emptyDir)) rmSync(emptyDir, { recursive: true, force: true });
   mkdirSync(emptyDir, { recursive: true });
 
@@ -96,7 +98,7 @@ test("listThemes returns an array", () => {
 });
 
 test("bundled illustrated DreamSkin themes load with background assets", () => {
-  const repoRoot = dirname(import.meta.dirname);
+  const repoRoot = dirname(TEST_DIR);
   for (const id of ["cyndi-sugarhigh-2.0", "gothic-void-crusade"]) {
     const theme = loadTheme(join(repoRoot, "themes", id));
     assert.equal(theme.format, "dreamskin");
@@ -107,7 +109,7 @@ test("bundled illustrated DreamSkin themes load with background assets", () => {
 });
 
 test("duplicate ZIP import cleans its extracted temporary directory", async () => {
-  const repoRoot = dirname(import.meta.dirname);
+  const repoRoot = dirname(TEST_DIR);
   const sourceDir = join(TEST_DATA_DIR, "zip-source");
   const zipPath = join(TEST_DATA_DIR, "zip-cleanup-test.zip");
   cpSync(join(repoRoot, "themes", "gothic-void-crusade"), sourceDir, { recursive: true });
@@ -130,7 +132,7 @@ test("duplicate ZIP import cleans its extracted temporary directory", async () =
 });
 
 test("vendoring may synthesize bounded CSS without weakening normal ZIP imports", async () => {
-  const repoRoot = dirname(import.meta.dirname);
+  const repoRoot = dirname(TEST_DIR);
   const sourceDir = join(TEST_DATA_DIR, "missing-css-source");
   const zipPath = join(TEST_DATA_DIR, "missing-css.zip");
   cpSync(join(repoRoot, "themes", "gothic-void-crusade"), sourceDir, { recursive: true });
@@ -161,7 +163,7 @@ test("cleanup fixture", () => {
   if (existsSync(FIXTURE_THEME_DIR)) {
     rmSync(FIXTURE_THEME_DIR, { recursive: true, force: true });
   }
-  const emptyDir = join(import.meta.dirname, "fixtures", "empty");
+  const emptyDir = join(TEST_DIR, "fixtures", "empty");
   if (existsSync(emptyDir)) {
     rmSync(emptyDir, { recursive: true, force: true });
   }

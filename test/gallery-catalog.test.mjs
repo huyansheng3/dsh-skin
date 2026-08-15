@@ -2,8 +2,10 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const repoRoot = dirname(import.meta.dirname);
+const testDir = dirname(fileURLToPath(import.meta.url));
+const repoRoot = dirname(testDir);
 const catalogPath = join(repoRoot, "gallery", "catalog.json");
 
 test("frozen Gallery catalog contains exactly 100 verified official packages", () => {
