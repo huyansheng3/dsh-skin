@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "cyndi-sugarhigh-2.0",
+  "name": "Cyndi SugarHigh 2.0 主题海报",
+  "image": "background.jpg",
+  "appearance": "light",
+  "art": {
+    "focusX": 0.31,
+    "focusY": 0.42,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#f6f6f7",
+    "panel": "#ebf2ff",
+    "panelAlt": "#e5f2ff",
+    "accent": "#418dbb",
+    "accentAlt": "#3879a1",
+    "secondary": "#be7989",
+    "highlight": "#316a8c",
+    "text": "#1b1c1d",
+    "muted": "#68696a",
+    "line": "#d3d3d4"
+  }
+}

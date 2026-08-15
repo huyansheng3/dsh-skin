@@ -1,0 +1,42 @@
+{
+  "packageVersion": 1,
+  "themeId": "cyndi-sugarhigh-2.0",
+  "version": "0.1.0",
+  "name": "Cyndi SugarHigh 2.0",
+  "skinApiVersion": 1,
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "Jonas-Leong",
+    "displayName": "Jonas Leong"
+  },
+  "license": "MIT",
+  "provenance": {
+    "aiGenerated": false,
+    "summary": "Cyndi SugarHigh 2.0 主题海报"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 539,
+      "sha256": "de65e445b3bf3175dbd6eafb4db418591079b8dd81c3bb6ada3522954be91191"
+    },
+    {
+      "path": "background.jpg",
+      "mediaType": "image/jpeg",
+      "bytes": 231586,
+      "sha256": "ba1d2166952c7ea8d02214390391c09c12600a8da942429da72831111d5f459a"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 2141,
+      "sha256": "a8a842a4e0957e090b7b356cd75b8a2f4f51f2ddb49ef9e767be5abc75d5f75a"
+    }
+  ],
+  "createdAt": "2026-08-14T10:48:57.900Z"
+}

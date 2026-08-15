@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "gothic-void-crusade",
+  "name": "Gothic Void Crusade",
+  "image": "background.jpg",
+  "appearance": "dark",
+  "art": { "focusX": 0.76, "focusY": 0.45, "safeArea": "left", "taskMode": "ambient" },
+  "colors": {
+    "background": "#0d0d0e",
+    "panel": "#171513",
+    "panelAlt": "#211d18",
+    "accent": "#c8a55a",
+    "accentAlt": "#e3c27a",
+    "secondary": "#74352e",
+    "highlight": "#8a2f27",
+    "text": "#f3ead7",
+    "muted": "#b5a386",
+    "line": "rgba(200, 165, 90, .28)"
+  },
+  "backgroundOpacity": 0.88,
+  "backgroundBlur": 0
+}

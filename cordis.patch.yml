@@ -1,0 +1,7 @@
+# dsh-skin patch for DeepSeek Harness Web.
+# Run from an installed package or this repository so `dsh-skin` resolves as
+# a package root; rc.6 then discovers both the Host export and `./client`.
+
+- insert:
+    - id: dsh-skin
+      name: dsh-skin

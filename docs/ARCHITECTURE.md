@@ -1,123 +1,110 @@
 # Architecture
 
-## Overview
+## Purpose
 
-Better Harness Skin (DSH Skin) is a theming tool for the DeepSeek Harness (DSH) web client. It overrides the `--dsw-*` CSS custom property system and optionally injects a background image layer, all at runtime — without modifying the official DSH installation.
+`dsh-skin` is a native Cordis plugin for the DeepSeek Harness Web client. It
+adds a runtime theme layer without changing the Harness installation. The
+current architecture is Web-server integration only; the former Chrome
+extension and CDP injector are intentionally removed.
 
-## Design Principles
+## Plugin Design
 
-1. **No binary modification** — All changes are runtime CSS injection, never patching `.app` or `app.asar`.
-2. **CSS variable layer** — DSH's entire theme is driven by `--dsw-*` CSS custom properties; overriding these re-themes the whole UI atomically.
-3. **Safe CSS** — Injected CSS is validated against an allowlist of variable prefixes and presentation properties before delivery.
-4. **Dual injection paths** — Chrome extension for browser usage, CDP injector for desktop wrapper mode.
-5. **Local-first** — Themes live in a local library directory; no network calls during theme application (except Chrome extension's bundled resource access).
+- Plugin type: dual-face Cordis plugin (Host function plugin + Web client function plugin)
+- Owning package: `dsh-skin`
+- Extension point: Host `webServer.register()` / `webServer.tapIndex()` and Client `settings.general.item`
+- Required services: Host `webServer`; Client `slots` and `locale`
+- Optional services: none
+- Model-visible behavior: none
+- Durable behavior: selected theme and imported theme library are stored under the local DSH Skin data directory
+- Lifecycle owner: the Host and Client Loader fibers own every route, index tap, locale dictionary, and slot contribution through Cordis effects
+- Test entry path: Node unit/route tests, built-client module smoke test, then `dsh web --patch` browser composition
+- Distribution form: npm package with `.` Host export, `./client` browser bundle, CLI bin, and an example patch
+
+## Runtime Flow
+
+```text
+DeepSeek Harness webServer
+        |
+        | ctx.inject(["webServer"])
+        v
+  dsh-skin.apply()
+        |
+        +--> tapIndex(): add the always-present /_skin/active.css link
+        +--> register(): serve CSS and /_skin/bg.<ext>
+        +--> register(): expose same-origin /_skin/api/*
+        |
+        +--> dsh.client bundle: contribute one row to settings.general.item
+        v
+  browser loads native Harness UI + theme layer + native settings row
+```
+
+The plugin is deliberately lazy: if `webServer` is unavailable, its callback
+never runs and the plugin has no effect in headless, ACP, or Electron modes.
 
 ## Components
 
-### 1. Theme Package (`themes/`)
+### `src/index.js`
 
-Each theme is a self-contained directory:
+The runtime coordinator. It resolves the active theme, builds CSS, registers
+HTTP routes and injects the stylesheet link. It does not render a settings page
+or own theme persistence/CSS policy; those belong to the Client contribution
+and library modules respectively.
 
-```
-theme-id/
-├── manifest.json   — identity, version, capability flags
-├── theme.json       — color variable overrides (light + dark)
-├── theme.css        — optional Safe CSS (additional overrides)
-├── background.jpg   — optional background image
-└── LICENSE.txt      — optional license
-```
+### `src/client/index.js`
 
-The `theme.json` `colors.light` map overrides `body` variables; `colors.dark` overrides `body[data-ds-dark-theme]` variables. This mirrors DSH's own light/dark token sheets.
+The browser-side Client plugin contributes the theme selector and ZIP import
+control to DSH's existing General settings section. It talks only to the
+same-origin Host API and refreshes the owned stylesheet link after a committed
+selection. It does not add navigation, a route, a floating launcher, or replace
+native settings chrome.
 
-### 2. Theme Manager (`src/lib/theme-manager.mjs`)
+### `src/lib/theme-manager.mjs`
 
-Manages the local theme library:
-- **Library path**: `~/Library/Application Support/DSHSkin/themes/` (macOS)
-- Operations: list, find, install, remove, load state, save state
-- Validates manifest schema and required fields on load
+The local theme library boundary. It loads and normalizes legacy DSH and
+DreamSkin packages, persists active-theme state, installs/removes themes, and
+imports bounded ZIP files. It does not serve HTTP or generate CSS.
 
-### 3. Safe CSS Validator (`src/lib/safe-css.mjs`)
+### `src/lib/safe-css.mjs`
 
-Validates CSS before injection:
-- **Allowed**: `--dsw-static-*`, `--dsw-alias-*`, `--dsw-specific-*`, `--dsw-font-*`, `--ds-*` custom properties
-- **Allowed standard properties**: background, opacity, filter, transition, color, font-family, border-radius
-- **Blocked**: `javascript:`, `expression()`, `data:` URLs, `@import`, `<script>`, inline `position: fixed`
-- `buildInjectionCss()` generates the final CSS text from theme.json colors + optional background
+The CSS policy and renderer boundary. It validates custom CSS and converts
+theme JSON into CSS. It does not read arbitrary files, manage state, or make
+network requests.
 
-### 4. CDP Injector (`src/injector/cdp-injector.mjs`)
+### `src/cli/dsh-skin.mjs`
 
-Connects to Chromium DevTools Protocol on `127.0.0.1`:
-1. Fetches page targets from `http://127.0.0.1:<port>/json`
-2. Filters for DSH pages (URL contains `:3080` or title contains "DeepSeek"/"Harness")
-3. Opens WebSocket to the target's `webSocketDebuggerUrl`
-4. Evaluates JS that creates/updates a `<style>` element with the injected CSS
-5. If the CSS references `#dsh-skin-bg-layer`, also creates the background div element
+The local command-line adapter for library operations. It does not inject via
+CDP and does not directly control a browser process.
 
-### 5. Chrome Extension (`src/extension/`)
+## Theme Resolution
 
-Manifest V3 extension:
-- **Content script** matches `http://127.0.0.1:3080/*` and `http://localhost:3080/*`
-- On page load, reads `chrome.storage.local.activeTheme` and auto-applies
-- Popup UI lists bundled themes, sends apply/restore messages to content script
-- Themes are loaded from `web_accessible_resources`
+For a request, `src/index.js` resolves in this order:
 
-### 6. CLI (`src/cli/dsh-skin.mjs`)
+1. `config.activeTheme` when configured in `cordis.patch.yml`.
+2. Persisted `state.json` written by the CLI or HTTP API, including an explicit
+   `null` selection for the official appearance.
+3. `config.defaultTheme` only when no selection has ever been persisted.
+4. No theme, which returns an empty stylesheet and preserves the official
+   appearance.
 
-Wraps all operations:
-- `list`, `apply`, `restore` — theme management via CDP
-- `install`, `remove`, `info` — local library management
-- `pack` — zip a theme directory for distribution
+User-installed themes take precedence over bundled themes with the same ID.
+The shipped bundle does not configure a default theme.
 
-## Injection Flow
+## Boundaries
 
-```
-┌──────────────┐         ┌──────────────┐
-│  Theme Dir    │         │  CLI / Popup  │
-│ (manifest+    │────────▶│  (user action)│
-│  theme.json)  │         └──────┬───────┘
-└──────────────┘                │
-                                ▼
-                    ┌───────────────────────┐
-                    │  Theme Manager         │
-                    │  (load + validate)      │
-                    └───────────┬───────────┘
-                                │
-                    ┌───────────▼───────────┐
-                    │  Safe CSS Validator    │
-                    │  (allowlist check)     │
-                    └───────────┬───────────┘
-                                │
-                    ┌───────────▼───────────┐
-                    │  buildInjectionCss()   │
-                    │  (colors + bg → CSS)   │
-                    └───────────┬───────────┘
-                                │
-                 ┌──────────────┴──────────────┐
-                 ▼                             ▼
-        ┌──────────────┐              ┌──────────────┐
-        │  CDP Injector │              │  Content.js   │
-        │  (WebSocket)   │              │  (extension)  │
-        └──────┬───────┘              └──────┬───────┘
-               │                             │
-               ▼                             ▼
-        ┌──────────────────────────────────────────┐
-        │  DSH Web Client (localhost:3080)         │
-        │  <style id="dsh-skin-injected"> ...     │
-        │  <div id="dsh-skin-bg-layer"> ...       │
-        └──────────────────────────────────────────┘
-```
+- Runtime changes are CSS and non-interactive background resources only.
+- The generated background lives below normal body content without assigning a
+  stacking context to `#root`; DSH keeps ownership of modal/portal layering.
+- Native Harness DOM and controls remain the source of interaction.
+- Custom CSS is validated before import and must stay inside the Safe CSS
+  allowlist.
+- Theme import is local-first and does not download assets.
+- Theme management appears only inside DSH's existing settings surface; the
+  Client contribution calls the same API and persistence path as the CLI.
+- There is no `/_skin/settings` page and no plugin-owned settings launcher.
 
-## DSH CSS Variable System
+## Verification Strategy
 
-DSH's theme is entirely CSS-variable-driven (see `packages/client/ui-theme/src/styles/design-platform.css`):
-
-- **Static colors** (`--dsw-static-*`): Raw RGB values (blue, neutral, deepseek, green, red, amber palettes)
-- **Alias tokens** (`--dsw-alias-*`): Semantic mappings (bg, border, label, brand, button, state, scrollbar, interactive)
-- **Specific tokens** (`--dsw-specific-*`): Component-specific (sidebar, bubble, input, menu, selector)
-- **Font tokens** (`--dsw-font-*`, `--ds-font-*`): Font families
-- **Motion tokens** (`--ds-*`): Easing and duration
-
-Light mode: variables defined on `body`
-Dark mode: same variables redefined on `body[data-ds-dark-theme]`
-
-By overriding these variables, the entire UI recolors instantly — no DOM structural changes needed.
+Run `npm test` after changes. Tests should cover the changed boundary: CSS
+policy/rendering, theme format/import, or plugin route behavior. A real
+DeepSeek Harness smoke test is required before claiming runtime compatibility,
+because the Cordis `webServer` contract is version-dependent.

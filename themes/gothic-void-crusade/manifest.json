@@ -1,0 +1,13 @@
+{
+  "packageVersion": 1,
+  "themeId": "gothic-void-crusade",
+  "version": "1.0.0",
+  "name": "Gothic Void Crusade",
+  "publisher": { "id": "codex-dream-skin", "displayName": "Codex Dream Skin" },
+  "license": "MIT",
+  "files": [
+    { "path": "theme.json", "mediaType": "application/json" },
+    { "path": "theme.css", "mediaType": "text/css" },
+    { "path": "background.jpg", "mediaType": "image/jpeg" }
+  ]
+}

@@ -1,186 +1,217 @@
-# Better Harness Skin
+# dsh-skin
 
-🎨 **给 DeepSeek Harness 桌面端 / Web 端换一张会呼吸的脸。**
+[![CI](https://github.com/huyansheng3/dsh-skin/actions/workflows/ci.yml/badge.svg)](https://github.com/huyansheng3/dsh-skin/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
+[![Node.js >= 18](https://img.shields.io/badge/node-%3E%3D18-339933.svg)](https://nodejs.org/)
 
-外部主题 / 换肤工具 · CSS 变量覆盖 · 背景图层注入 · 不改官方安装包
+`dsh-skin` 是 DeepSeek Harness Web 的原生 Cordis 皮肤插件。主题选择和 ZIP
+导入直接集成在 Harness 自带的“设置 > 通用设置”中，不修改 DSH 安装包，也不需要
+浏览器扩展或 CDP 注入器。
 
-参考 [Codex Dream Skin](https://github.com/Fei-Away/Codex-Dream-Skin) 的设计理念，为 DeepSeek Harness (DSH) Web 客户端提供换肤能力。
+已在 `@deepseek-ai/dsh@0.1.0-rc.6` 的 Web profile 中验证。
 
-## 它能做什么
+## 快速安装
 
-- **CSS 变量覆盖**：通过覆盖 `--dsw-*` CSS 自定义属性，改变整个 UI 配色
-- **背景图层**：在 UI 下方注入固定背景图，铺满整窗，不遮挡交互控件
-- **双模式注入**：
-  - **Chrome 扩展**：匹配 `localhost:3080`，打开 DSH Web 时自动注入
-  - **CDP 注入器**：通过 Chrome DevTools Protocol 注入，适用于桌面壳模式
-- **主题管理**：CLI 工具管理本地主题库（安装、列表、应用、恢复、打包）
-- **安全 CSS**：所有注入的 CSS 通过 Safe CSS 校验，只允许覆盖注册的 CSS 变量
-- **预设主题**：内置 5 套主题（Gothic Void、Ocean Breeze、Warm Sunset、Matrix Green、Sakura Pink）
-
-## 快速开始
-
-### 方式一：Chrome 扩展（推荐，浏览器中使用）
+前置条件：已安装 DeepSeek Harness，终端中可以运行 `dsh`，Node.js 版本不低于 18。
 
 ```bash
-# 1. 构建扩展
-node scripts/build-extension.mjs
-
-# 2. 加载到 Chrome
-# chrome://extensions → 开启开发者模式 → 加载已解压的扩展程序
-# 选择 dist/extension/ 目录
-
-# 3. 打开 DSH Web (http://127.0.0.1:3080)
-# 4. 点击工具栏的 DSH Skin 图标，选择主题
+dsh plugin --profile web add github:huyansheng3/dsh-skin#v0.2.0
+dsh web
 ```
 
-### 方式二：CDP 注入器（桌面壳模式）
+打开 DSH Web 页面后，进入 **设置 > 通用设置 > 皮肤**：
+
+1. 在下拉框中选择内置主题；
+2. 或点击“导入 ZIP”安装自己的 DreamSkin 主题；
+3. 选择“官方外观”即可停用皮肤。
+
+导入主题不会自动激活。若 `dsh web` 已经在运行，安装或升级插件后请重启服务。
+
+### 升级与卸载
+
+升级到当前 `main` 分支：
 
 ```bash
-# 1. 以调试端口启动 DSH Web
-dsh --profile web --remote-debugging-port=9222
-
-# 2. 安装主题
-node src/cli/dsh-skin.mjs install themes/gothic-void
-
-# 3. 应用主题
-node src/cli/dsh-skin.mjs apply gothic-void --port 9222
-
-# 4. 恢复官方外观
-node src/cli/dsh-skin.mjs restore --port 9222
+dsh plugin --profile web add github:huyansheng3/dsh-skin
 ```
 
-### CLI 命令一览
+卸载：
 
 ```bash
-dsh-skin list                   # 列出已安装主题
-dsh-skin apply <id>              # 通过 CDP 应用主题
-dsh-skin restore                 # 恢复官方外观
-dsh-skin install <dir>           # 从目录安装主题
-dsh-skin remove <id>             # 移除已安装主题
-dsh-skin info <id>               # 查看主题详情
-dsh-skin pack <dir>              # 将主题目录打包为 .zip
+dsh plugin --profile web remove dsh-skin
 ```
 
-## 主题包格式
+### 从本地源码安装
 
-每个主题是一个目录，包含以下文件：
+适合开发或离线环境：
 
+```bash
+git clone https://github.com/huyansheng3/dsh-skin.git
+cd dsh-skin
+npm run build
+dsh plugin --profile web add "$PWD"
+dsh web
 ```
-my-theme/
-├── manifest.json     # 主题元数据（必需）
-├── theme.json        # 颜色变量覆盖（必需）
-├── theme.css         # 自定义 Safe CSS（可选）
-├── background.jpg    # 背景图片（可选）
-└── LICENSE.txt       # 许可证（可选）
+
+## 功能
+
+- 原生设置集成：不创建额外路由、浮动按钮或 iframe；
+- 即时切换：设置成功后刷新主题 stylesheet，不替换 Harness DOM；
+- 内置主题：5 套纯色主题和 2 套带背景图主题；
+- ZIP 导入：兼容 DreamSkin 与 legacy DSH 主题格式；
+- Safe CSS：拒绝脚本、`@import`、危险 URL 和未经授权的布局覆盖；
+- 可读性保护：带图主题会校正内容表面与文字对比度；
+- Headless 安全：没有 `webServer` 时插件保持 no-op。
+
+## 常见问题
+
+### 设置中没有“皮肤”选项
+
+确认插件安装在 `web` profile，而不是默认或其他 profile：
+
+```bash
+dsh plugin --profile web list --depth 0
 ```
 
-### manifest.json
+列表中应包含 `dsh-skin`。随后停止并重新运行 `dsh web`。
+
+### 页面仍显示旧主题
+
+先刷新浏览器。仍未更新时，重启 `dsh web`；插件会用
+`theme@version:revision` 缓存键刷新样式资源。
+
+### ZIP 导入失败
+
+DreamSkin ZIP 必须包含 `manifest.json`、`theme.json`、非空 `theme.css` 和清单中
+声明的一张背景图。插件还会检查文件哈希、路径穿越、条目数量、压缩大小和解压大小。
+完整格式见 [主题规范](./docs/THEME-SPEC.md)。
+
+### 固定主题后不能在页面切换
+
+部署配置中的 `activeTheme` 会锁定页面选择器。删除该配置，或改用
+`defaultTheme` 只设置首次默认主题。
+
+## 工作方式
+
+```text
+DSH Web Loader
+  +-- dsh-skin Host
+  |   +-- tapIndex() 注入 /_skin/active.css
+  |   +-- /_skin/bg/* 提供当前背景图
+  |   +-- /_skin/api/* 提供主题查询、切换和 ZIP 导入
+  +-- dsh-skin Client
+      +-- settings.general.item 提供原生设置行
+```
+
+Host 始终注入一个带缓存版本的 stylesheet link。带图主题由 `body::before` 绘制
+`pointer-events: none` 的背景层，原生 UI、弹窗和 portal 仍由 DSH 管理。插件不会
+修改 API Key、Base URL 或官方安装包，也不会下载网络资源或启动外部常驻进程。
+
+架构和生命周期详见 [架构说明](./docs/ARCHITECTURE.md)。
+
+## 配置
+
+仓库自带的 [cordis.patch.yml](./cordis.patch.yml) 只注册插件，不默认激活主题。
+部署方需要固定主题时，可以在额外 patch 中配置：
+
+```yaml
+- id: dsh-skin
+  name: dsh-skin
+  config:
+    activeTheme: gothic-void-crusade
+```
+
+DSH 的 id-targeted patch 会替换整行而不是深合并，因此覆盖时要同时保留
+`name: dsh-skin`。
+
+| 字段 | 行为 |
+| --- | --- |
+| `enabled: false` | 禁用主题 CSS 和页面修改能力 |
+| `activeTheme` | 固定主题并锁定页面选择 |
+| `defaultTheme` | 仅在从未保存过选择时使用；显式“官方外观”优先 |
+
+## CLI
+
+CLI 与 Web 设置读取同一个本地主题库：
+
+```bash
+dsh-skin install ./my-theme
+dsh-skin import ./my-theme.zip
+dsh-skin list
+dsh-skin activate my-theme
+dsh-skin deactivate
+dsh-skin info my-theme
+dsh-skin remove my-theme
+dsh-skin pack ./my-theme
+```
+
+CLI 修改选择后需要刷新页面；页面设置内的切换会立即刷新 stylesheet。内置主题不
+复制到用户主题库，因此 CLI 的 `list`、`info` 和 `activate` 只管理已安装主题。
+
+## 主题格式
+
+推荐使用 DreamSkin 格式：
 
 ```json
 {
-  "schema": 1,
-  "id": "my-theme",
+  "packageVersion": 1,
+  "themeId": "my-theme",
   "name": "My Theme",
   "version": "1.0.0",
-  "platform": "any",
-  "capabilities": {
-    "css-variables": true,
-    "background-image": false,
-    "safe-css": false
-  }
+  "files": [
+    { "path": "theme.json", "mediaType": "application/json" },
+    { "path": "theme.css", "mediaType": "text/css" },
+    { "path": "background.jpg", "mediaType": "image/jpeg" }
+  ]
 }
 ```
-
-### theme.json
 
 ```json
 {
-  "schema": 1,
+  "appearance": "dark",
   "colors": {
-    "light": {
-      "--dsw-alias-bg-base": "rgb(240, 249, 255)",
-      "--dsw-alias-brand-primary": "rgb(14, 165, 233)"
-    },
-    "dark": {
-      "--dsw-alias-bg-base": "rgb(8, 20, 35)",
-      "--dsw-alias-brand-primary": "rgb(56, 189, 248)"
-    }
+    "background": "#1e1e2e",
+    "panel": "#313244",
+    "panelAlt": "#45475a",
+    "accent": "#cba6f7",
+    "accentAlt": "#b4befe",
+    "text": "#cdd6f4",
+    "muted": "#a6adc8",
+    "line": "#45475a",
+    "highlight": "#585b70"
   },
-  "background": {
-    "file": "background.jpg",
-    "size": "cover",
-    "opacity": 0.3,
-    "blur": 0
-  }
+  "art": { "focusX": 0.5, "focusY": 0.4, "taskMode": "fill" },
+  "backgroundOpacity": 1,
+  "backgroundBlur": 0
 }
 ```
 
-`colors.light` 中的变量覆盖 `body` 的值，`colors.dark` 中的变量覆盖 `body[data-ds-dark-theme]` 的值。
+目录安装允许不带背景图或自定义 CSS。从 ZIP 导入 DreamSkin 时，必须同时包含清单
+声明的背景图和非空 `theme.css`。Legacy DSH `schema: 1` 格式继续用于已有本地主题。
+完整字段与安全约束见 [主题规范](./docs/THEME-SPEC.md)。
 
-## 可用 CSS 变量
+## 主题库位置
 
-DSH Web 客户端使用 `--dsw-*` CSS 变量系统，主要分组：
+| 平台 | 路径 |
+| --- | --- |
+| macOS | `~/Library/Application Support/DSHSkin/themes/` |
+| Linux | `~/.local/share/dsh-skin/themes/` |
+| Windows | `%LOCALAPPDATA%\\DSHSkin\\themes\\` |
 
-| 前缀 | 说明 | 示例 |
-|------|------|------|
-| `--dsw-static-*` | 静态色板 | `--dsw-static-blue-500` |
-| `--dsw-alias-bg-*` | 背景色别名 | `--dsw-alias-bg-base` |
-| `--dsw-alias-border-*` | 边框色别名 | `--dsw-alias-border-l1` |
-| `--dsw-alias-label-*` | 文字色别名 | `--dsw-alias-label-primary` |
-| `--dsw-alias-brand-*` | 品牌色别名 | `--dsw-alias-brand-primary` |
-| `--dsw-alias-button-*` | 按钮色别名 | `--dsw-alias-button-info-fill` |
-| `--dsw-alias-state-*` | 状态色别名 | `--dsw-alias-state-error-primary` |
-| `--dsw-specific-*` | 组件特定色 | `--dsw-specific-sidebar-fill` |
+测试可设置 `DSH_SKIN_DATA_DIR` 使用隔离的数据目录。
 
-完整变量列表见 [DSH ui-theme/design-platform.css](../deepseek-harness/packages/client/ui-theme/src/styles/design-platform.css)。
+## 开发
 
-## 安全边界
-
-- **CDP 只连接 `127.0.0.1`**，不连接远程地址
-- **Safe CSS 校验**：只允许覆盖 `--dsw-*` 和 `--ds-*` CSS 变量，以及少量展示性属性
-- **不修改官方安装包**：所有注入都是运行时 CSS 注入
-- **不自动改写 API Key / Base URL**
-
-## 预设主题
-
-| 主题 | 风格 | 背景图 | 描述 |
-|------|------|--------|------|
-| Gothic Void | 暗色 · 紫调 | ✅ | 哥特虚空风格，紫色辉光 |
-| Ocean Breeze | 蓝调 · 清新 | ❌ | 海洋微风，蓝色系 |
-| Warm Sunset | 暖色 · 落日 | ✅ | 温暖落日，橙色系 |
-| Matrix Green | 绿调 · 终端 | ❌ | 矩阵风格，绿色系 |
-| Sakura Pink | 粉调 · 樱花 | ✅ | 樱花粉色，柔和系 |
-
-## 项目结构
-
-```
-better-harness-skin/
-├── src/
-│   ├── cli/dsh-skin.mjs         # CLI 管理工具
-│   ├── injector/cdp-injector.mjs # CDP 注入器
-│   ├── extension/                # Chrome 扩展
-│   │   ├── manifest.json
-│   │   ├── content.js            # 内容脚本
-│   │   ├── popup.html/css/js     # 弹窗 UI
-│   │   └── themes/               # 内置主题
-│   └── lib/
-│       ├── theme-manager.mjs     # 主题管理
-│       ├── safe-css.mjs          # CSS 校验
-│       └── theme-types.d.ts      # 类型定义
-├── themes/                        # 主题包源码
-│   ├── gothic-void/
-│   ├── ocean-breeze/
-│   ├── warm-sunset/
-│   ├── matrix-green/
-│   └── sakura-pink/
-├── scripts/
-│   ├── build-extension.mjs
-│   └── build-injector.mjs
-└── docs/
-    ├── ARCHITECTURE.md
-    └── THEME-SPEC.md
+```bash
+npm test
+node --check src/index.js src/client/index.js src/lib/theme-manager.mjs
+npm pack --dry-run
 ```
 
-## 许可证
+Gallery 兼容性结果见 [审计报告](./docs/GALLERY-AUDIT.md)。当前热门前 100 个主题中，
+93 个通过严格 ZIP 导入、Safe CSS 和真实页面检查；其余 7 个是 Gallery 已标记不兼容
+的缺件包。
 
-MIT
+## License
+
+[MIT](./LICENSE)。内置第三方主题的作者与许可证记录在各主题的 `manifest.json` 中。

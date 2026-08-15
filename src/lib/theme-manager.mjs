@@ -12,6 +12,8 @@
  *
  * ZIP import accepts both the full Studio format and simplified local ZIPs,
  * mirroring the DreamSkin client behaviour described in their README.
+ * `DSH_SKIN_DATA_DIR` may override the platform data root for isolated hosts
+ * and tests; it contains `themes/` and `state.json`.
  */
 
 import {
@@ -22,11 +24,13 @@ import { join, resolve, basename, dirname, extname } from "node:path";
 import { homedir } from "node:os";
 import { createHash } from "node:crypto";
 import { tmpdir } from "node:os";
-import { execSync } from "node:child_process";
+import { execFileSync } from "node:child_process";
 
 // ── Path helpers ──────────────────────────────────────────────────────────────
 
 export function getThemesDir() {
+  const override = process.env.DSH_SKIN_DATA_DIR?.trim();
+  if (override) return join(resolve(override), "themes");
   const home = homedir();
   if (process.platform === "darwin") {
     return join(home, "Library", "Application Support", "DSHSkin", "themes");
@@ -38,6 +42,8 @@ export function getThemesDir() {
 }
 
 export function getStatePath() {
+  const override = process.env.DSH_SKIN_DATA_DIR?.trim();
+  if (override) return join(resolve(override), "state.json");
   return join(getThemesDir(), "..", "state.json");
 }
 
@@ -56,6 +62,17 @@ function detectFormat(manifest, themeJson) {
   if ("packageVersion" in manifest) return "dreamskin";
   if (themeJson.colors && !themeJson.colors.light && !themeJson.colors.dark) return "dreamskin";
   return "legacy";
+}
+
+function assertSafeRelativePath(filePath, label = "path") {
+  if (typeof filePath !== "string" || !filePath || filePath.includes("\\")) {
+    throw new Error(`Invalid ${label}: ${filePath}`);
+  }
+  const normalized = filePath.replace(/^\.\//, "");
+  if (!normalized || normalized.startsWith("/") || normalized.split("/").includes("..")) {
+    throw new Error(`Unsafe ${label}: ${filePath}`);
+  }
+  return normalized;
 }
 
 /**
@@ -81,11 +98,17 @@ export function loadTheme(themeDir) {
     }
   } else {
     // DreamSkin format
+    if (manifest.packageVersion !== 1) {
+      throw new Error(`Unsupported DreamSkin package version: ${manifest.packageVersion}`);
+    }
     if (!manifest.themeId) throw new Error("manifest.json missing themeId (DreamSkin format)");
     // Normalise so the rest of the code can use manifest.id / manifest.name / manifest.version
     manifest.id = manifest.themeId;
-    manifest.name = themeJson.name || manifest.themeId;
+    manifest.name = manifest.name || themeJson.name || manifest.themeId;
     manifest.version = manifest.version || themeJson.version || "0.0.1";
+    if (!/^[a-z0-9][a-z0-9._-]{2,62}$/i.test(manifest.id)) {
+      throw new Error(`Invalid theme ID: ${manifest.id}`);
+    }
   }
 
   // Background image
@@ -97,13 +120,13 @@ export function loadTheme(themeDir) {
     const imgFile = (manifest.files || []).find(f => f.mediaType?.startsWith("image/"));
     const imgName = imgFile?.path || themeJson.image;
     if (imgName) {
-      const p = join(themeDir, imgName);
+      const p = join(themeDir, assertSafeRelativePath(imgName, "background path"));
       if (existsSync(p)) { hasBackground = true; backgroundPath = p; }
     }
   } else {
     // Legacy: background.file in theme.json
     if (themeJson.background?.file) {
-      const p = join(themeDir, themeJson.background.file);
+      const p = join(themeDir, assertSafeRelativePath(themeJson.background.file, "background path"));
       if (existsSync(p)) { hasBackground = true; backgroundPath = p; }
     }
   }
@@ -191,11 +214,15 @@ export function installTheme(srcDir, overwrite = false) {
  *   • Simplified local ZIP: theme.json + theme.css + background.*
  *
  * @param {string} zipPath  Absolute path to the .zip file
- * @param {{ overwrite?: boolean, skipSafeCheck?: boolean }} opts
+ * `compatibilityCss` is a build-time escape hatch for known Gallery packages
+ * that omit theme.css. It never changes the default user-import contract and
+ * the generated CSS still passes the same Safe CSS validation.
+ *
+ * @param {{ overwrite?: boolean, skipSafeCheck?: boolean, compatibilityCss?: string }} opts
  * @returns {object} Installed theme object
  */
 export async function importThemeZip(zipPath, opts = {}) {
-  const { overwrite = false, skipSafeCheck = false } = opts;
+  const { overwrite = false, skipSafeCheck = false, compatibilityCss = null } = opts;
 
   // Size check
   const stat = statSync(zipPath);
@@ -203,13 +230,25 @@ export async function importThemeZip(zipPath, opts = {}) {
     throw new Error(`ZIP too large: ${stat.size} bytes (max ${ZIP_MAX_COMPRESSED_BYTES})`);
   }
 
+  // Inspect archive names before extraction so unzip cannot write outside tmpDir.
+  let entries;
+  try {
+    entries = execFileSync("unzip", ["-Z1", zipPath], { encoding: "utf-8" })
+      .split(/\r?\n/).filter(Boolean);
+    const normalized = entries.map(entry => assertSafeRelativePath(entry, "ZIP entry"));
+    if (new Set(normalized).size !== normalized.length) throw new Error("ZIP contains duplicate paths");
+  } catch (e) {
+    throw new Error(`Invalid ZIP entries: ${e.message}`);
+  }
+
   // Extract to temp directory
   const tmpDir = join(tmpdir(), `dsh-skin-import-${Date.now()}`);
   mkdirSync(tmpDir, { recursive: true });
 
   try {
-    execSync(`unzip -o -d "${tmpDir}" "${zipPath}"`, { stdio: "pipe" });
+    execFileSync("unzip", ["-o", "-q", "-d", tmpDir, zipPath], { stdio: "pipe" });
   } catch (e) {
+    rmSync(tmpDir, { recursive: true, force: true });
     throw new Error(`Failed to extract ZIP: ${e.message}`);
   }
 
@@ -218,6 +257,14 @@ export async function importThemeZip(zipPath, opts = {}) {
   if (!themeRoot) {
     rmSync(tmpDir, { recursive: true, force: true });
     throw new Error("ZIP does not contain a valid theme (missing theme.json)");
+  }
+
+  if (compatibilityCss !== null && !existsSync(join(themeRoot, "theme.css"))) {
+    if (typeof compatibilityCss !== "string" || !compatibilityCss.trim()) {
+      rmSync(tmpDir, { recursive: true, force: true });
+      throw new Error("compatibilityCss must be a non-empty CSS string");
+    }
+    writeFileSync(join(themeRoot, "theme.css"), compatibilityCss, "utf-8");
   }
 
   // Count entries / uncompressed size check
@@ -236,6 +283,9 @@ export async function importThemeZip(zipPath, opts = {}) {
   let theme;
   try {
     theme = loadTheme(themeRoot);
+    if (theme.format === "dreamskin" && (!theme.hasBackground || !theme.hasCustomCss)) {
+      throw new Error("DreamSkin ZIP must include a background image and non-empty theme.css");
+    }
   } catch (e) {
     rmSync(tmpDir, { recursive: true, force: true });
     throw new Error(`Invalid theme in ZIP: ${e.message}`);
@@ -244,11 +294,19 @@ export async function importThemeZip(zipPath, opts = {}) {
   // If full manifest, verify SHA-256 of declared files
   if (theme.format === "dreamskin" && theme.manifest.files?.length) {
     for (const fileEntry of theme.manifest.files) {
-      const filePath = join(themeRoot, fileEntry.path);
-      if (!existsSync(filePath)) continue;
+      const safePath = assertSafeRelativePath(fileEntry.path, "manifest file path");
+      const checkedPath = join(themeRoot, safePath);
+      if (!existsSync(checkedPath)) {
+        rmSync(tmpDir, { recursive: true, force: true });
+        throw new Error(`Manifest file is missing: ${fileEntry.path}`);
+      }
+      if (fileEntry.bytes != null && statSync(checkedPath).size !== fileEntry.bytes) {
+        rmSync(tmpDir, { recursive: true, force: true });
+        throw new Error(`Byte count mismatch for ${basename(checkedPath)}`);
+      }
       if (fileEntry.sha256) {
         try {
-          verifySha256(filePath, fileEntry.sha256);
+          verifySha256(checkedPath, fileEntry.sha256);
         } catch (e) {
           rmSync(tmpDir, { recursive: true, force: true });
           throw e;
@@ -268,9 +326,13 @@ export async function importThemeZip(zipPath, opts = {}) {
   }
 
   // Install into themes library
-  const installed = installTheme(themeRoot, overwrite);
-  rmSync(tmpDir, { recursive: true, force: true });
-  return installed;
+  try {
+    return installTheme(themeRoot, overwrite);
+  } finally {
+    // Duplicate IDs and filesystem failures are still failed imports; never
+    // retain their extracted payload in the shared temporary directory.
+    rmSync(tmpDir, { recursive: true, force: true });
+  }
 }
 
 /** Recursively list all files under a directory */
@@ -307,7 +369,9 @@ export function removeTheme(themeId) {
 
 export function loadState() {
   const p = getStatePath();
-  if (!existsSync(p)) return { activeThemeId: null, autoApply: false, lastApplied: null };
+  // Missing means first run (defaultTheme may apply); null is an explicit
+  // request to restore the official appearance.
+  if (!existsSync(p)) return { autoApply: false, lastApplied: null, revision: 0 };
   return JSON.parse(readFileSync(p, "utf-8"));
 }
 

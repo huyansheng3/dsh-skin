@@ -28,13 +28,13 @@ export interface ThemeManifest {
   /** Semantic version of this theme release. */
   version: string;
 
-  /** Minimum DSH Skin injector version required. */
+  /** Legacy compatibility field; the Cordis Host currently does not enforce it. */
   minInjectorVersion?: string;
 
-  /** Target platform — "any" covers both web-CDP and extension. */
+  /** Legacy target platform metadata; the current runtime supports DSH Web. */
   platform: "any" | "macos" | "windows" | "linux";
 
-  /** Capability flags — the injector checks these before applying. */
+  /** Legacy capability declarations retained for schema-1 themes. */
   capabilities: {
     /** Theme overrides CSS variables. */
     "css-variables": boolean;
@@ -97,13 +97,15 @@ export interface InstalledTheme {
 }
 
 /**
- * The active skin state persisted by the injector / extension.
+ * The active skin state persisted by the theme manager and Cordis Host API.
  */
 export interface SkinState {
-  /** Currently active theme id, or null for official default. */
-  activeThemeId: string | null;
-  /** Whether the injector should auto-apply on DSH start. */
+  /** Missing on first run; null explicitly selects the official appearance. */
+  activeThemeId?: string | null;
+  /** Legacy state field retained for compatibility. */
   autoApply: boolean;
   /** Last applied timestamp (ISO 8601). */
   lastApplied: string | null;
+  /** Monotonic stylesheet cache revision. */
+  revision?: number;
 }

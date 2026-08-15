@@ -1,0 +1,22 @@
+{
+  "name": "Nord Dark",
+  "version": "1.0.0",
+  "appearance": "dark",
+  "colors": {
+    "background": "#2E3440",
+    "panel":      "#3B4252",
+    "panelAlt":   "#434C5E",
+    "accent":     "#88C0D0",
+    "accentAlt":  "#81A1C1",
+    "secondary":  "#5E81AC",
+    "highlight":  "#4C566A",
+    "text":       "#ECEFF4",
+    "muted":      "#D8DEE9",
+    "line":       "#4C566A"
+  },
+  "art": {
+    "focusX": 0.5,
+    "focusY": 0.4,
+    "taskMode": "fill"
+  }
+}

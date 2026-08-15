@@ -9,6 +9,18 @@ build/
 themes/*/background.jpg
 themes/*/background.png
 themes/*/background.webp
+!themes/cyndi-sugarhigh-2.0/background.jpg
+!themes/gothic-void-crusade/background.jpg
+
+# Source-only upstream reference. Its portrait asset is not cleared for public
+# redistribution; keep the local checkout available without publishing it.
+/Codex-Dream-Skin/
+/themes/arina-hashimoto/
+
+# Gallery artwork is materialized locally from the pinned, licensed catalog.
+gallery/themes/
+gallery/.gallery-vendor-*/
+.cache/dreamskin-gallery/
 
 # OS files
 .DS_Store

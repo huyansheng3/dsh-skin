@@ -1,0 +1,87 @@
+[data-ds-part="root"] {
+  color: var(--ds-theme-color-text);
+}
+
+[data-ds-part="sidebar"] {
+  background-color: var(--ds-theme-color-panel);
+  border-color: var(--ds-theme-color-line);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--ds-theme-surface-radius);
+  backdrop-filter: blur(var(--ds-theme-surface-blur));
+}
+
+[data-ds-part="header"] {
+  background-color: var(--ds-theme-color-panel);
+  border-color: var(--ds-theme-color-line);
+  border-width: 1px;
+  border-style: solid;
+}
+
+[data-ds-part="home"] {
+  color: var(--ds-theme-color-text);
+}
+
+[data-ds-part="main"] {
+  color: var(--ds-theme-color-text);
+}
+
+[data-ds-part="thread"] {
+  color: var(--ds-theme-color-text);
+}
+
+[data-ds-part="home-hero"] {
+  color: var(--ds-theme-color-text);
+}
+
+[data-ds-part="project-list"] {
+  color: var(--ds-theme-color-text);
+}
+
+[data-ds-part="message"] {
+  background-color: var(--ds-theme-color-panel-alt);
+  color: var(--ds-theme-color-text);
+  border-color: var(--ds-theme-color-line);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--ds-theme-surface-radius);
+}
+
+[data-ds-part="composer"] {
+  background-color: var(--ds-theme-color-panel-alt);
+  color: var(--ds-theme-color-text);
+  border-color: var(--ds-theme-color-line);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--ds-theme-surface-radius);
+}
+
+[data-ds-part="composer-toolbar"] {
+  background-color: var(--ds-theme-color-panel);
+  border-color: var(--ds-theme-color-line);
+  border-width: 1px;
+  border-style: solid;
+}
+
+[data-ds-part="dialog"] {
+  background-color: var(--ds-theme-color-panel-alt);
+  color: var(--ds-theme-color-text);
+  border-color: var(--ds-theme-color-line);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--ds-theme-surface-radius);
+}
+
+[data-ds-part="message"]:hover {
+  background-color: var(--ds-theme-color-highlight);
+  color: var(--ds-theme-color-background);
+}
+
+[data-ds-part="project-list"]:hover {
+  background-color: var(--ds-theme-color-highlight);
+  color: var(--ds-theme-color-background);
+}
+
+[data-ds-part="composer"]:focus-visible {
+  border-color: var(--ds-theme-color-accent);
+}

@@ -1,6 +1,11 @@
 import { test } from "node:test";
 import assert from "node:assert";
-import { validateSafeCss, buildInjectionCss, buildDreamSkinCss } from "../src/lib/safe-css.mjs";
+import {
+  auditDreamSkinReadability,
+  buildDreamSkinCss,
+  buildInjectionCss,
+  validateSafeCss,
+} from "../src/lib/safe-css.mjs";
 
 test("validateSafeCss accepts --dsw-* variable overrides", () => {
   const css = `
@@ -78,6 +83,7 @@ test("buildInjectionCss generates light mode overrides", () => {
   const css = buildInjectionCss(themeJson, null);
   assert.ok(css.includes("body {"));
   assert.ok(css.includes("--dsw-alias-bg-base: rgb(255, 0, 0)"));
+  assert.ok(css.includes("--dsw-alias-bg-base: rgb(255, 0, 0) !important"));
   assert.ok(css.includes("body[data-ds-dark-theme]"));
   assert.ok(css.includes("--dsw-alias-bg-base: rgb(0, 0, 255)"));
 });
@@ -92,9 +98,13 @@ test("buildInjectionCss includes background layer when image is provided", () =>
     },
   };
   const css = buildInjectionCss(themeJson, "data:image/jpeg;base64,abc123");
-  assert.ok(css.includes("#dsh-skin-bg-layer"));
+  assert.ok(css.includes("body::before"));
+  assert.ok(css.includes('content: ""'));
+  assert.ok(css.includes("z-index: -1"));
+  assert.doesNotMatch(css, /#root\s*\{[^}]*z-index/, "Root must not trap DSH portals below application panels");
   assert.ok(css.includes("url(\"data:image/jpeg;base64,abc123\")"));
   assert.ok(css.includes("opacity: 0.3"));
+  assert.ok(css.includes("pointer-events: none"));
 });
 
 test("buildInjectionCss omits background layer when no image", () => {
@@ -103,7 +113,7 @@ test("buildInjectionCss omits background layer when no image", () => {
     colors: { light: {}, dark: {} },
   };
   const css = buildInjectionCss(themeJson, null);
-  assert.ok(!css.includes("#dsh-skin-bg-layer"));
+  assert.ok(!css.includes("body::before"));
 });
 
 // ── DreamSkin format tests ────────────────────────────────────────────────────
@@ -120,11 +130,12 @@ test("buildDreamSkinCss maps flat colors to CSS variables", () => {
     },
   };
   const css = buildDreamSkinCss(themeJson, null, null);
-  assert.ok(css.includes(":root {"), "Should have :root block");
+  assert.ok(css.includes(":root,\nbody {"), "Should override both the document and DSH's body-scoped theme");
   assert.ok(css.includes("--ds-theme-color-background"), "Should map background");
   assert.ok(css.includes("--dsw-alias-bg-base"),        "Should map dsw alias");
   assert.ok(css.includes("--ds-theme-color-accent"),    "Should map accent");
-  assert.ok(!css.includes("#dsh-skin-bg-layer"),        "No bg layer without image");
+  assert.ok(!css.includes("body::before"),               "No bg layer without image");
+  assert.ok(!css.includes("settings dialog width"),      "Should leave host dialog geometry to DSH");
 });
 
 test("buildDreamSkinCss injects background layer with glass panels when image is provided", () => {
@@ -133,9 +144,14 @@ test("buildDreamSkinCss injects background layer with glass panels when image is
     art: { focusX: 0.31, focusY: 0.42 },
   };
   const css = buildDreamSkinCss(themeJson, "data:image/jpeg;base64,TEST", null);
-  assert.ok(css.includes("#dsh-skin-bg-layer"),            "Should have bg layer");
+  assert.ok(css.includes("body::before"),                   "Should have a real pseudo-element bg layer");
+  assert.ok(css.includes("z-index: -1"),                    "Background should stay inside the isolated body stack");
+  assert.doesNotMatch(css, /#root\s*\{[^}]*z-index/,        "Native portal stacking must remain owned by DSH");
   assert.ok(css.includes("backdrop-filter"),               "Should have glass panels");
   assert.ok(css.includes("background: transparent"),       "Should make root transparent");
+  assert.match(css, /--dsw-alias-bg-base: rgba\([^;]+\) !important/, "DSH base surface should reveal the background");
+  assert.match(css, /--ds-theme-color-background: #f6f6f7 !important/, "Semantic fallback color should remain solid");
+  assert.doesNotMatch(css, /nav\[class\], aside\[class\]\s*\{[^}]*backdrop-filter/, "Navigation ancestors must not become fixed containing blocks");
   // focus point translated to %
   assert.ok(css.includes("31.0%"),                         "focusX → 31.0%");
   assert.ok(css.includes("42.0%"),                         "focusY → 42.0%");
@@ -144,7 +160,103 @@ test("buildDreamSkinCss injects background layer with glass panels when image is
 test("buildDreamSkinCss makes panel semi-transparent when background is present", () => {
   const themeJson = { colors: { panel: "#ebf2ff", panelAlt: "#e5f2ff" } };
   const css = buildDreamSkinCss(themeJson, "data:image/jpeg;base64,X", null);
-  assert.ok(css.includes("rgba("), "Panel colors should become rgba");
+  assert.ok(css.includes("rgba(235, 242, 255, 0.92)"), "Primary panels should remain readable over artwork");
+  assert.ok(css.includes("rgba(229, 242, 255, 0.88)"), "Secondary panels should remain readable over artwork");
+});
+
+test("buildDreamSkinCss keeps the application base readable over background artwork", () => {
+  const themeJson = {
+    appearance: "light",
+    colors: {
+      background: "#f6f1e7",
+      panel: "#fbf8f1",
+      panelAlt: "#e8eff4",
+      text: "#2e3b46",
+      muted: "#69757e",
+    },
+  };
+  const css = buildDreamSkinCss(themeJson, "data:image/jpeg;base64,X", null);
+  assert.ok(css.includes("--dsw-alias-bg-base: rgba(246, 241, 231, 0.86) !important"));
+  assert.ok(css.includes("color-scheme: light"));
+});
+
+test("buildDreamSkinCss repairs low-contrast primary and muted text", () => {
+  const themeJson = {
+    colors: {
+      background: "#ffffff",
+      panel: "#ffffff",
+      panelAlt: "#f8f8f8",
+      text: "#eeeeee",
+      muted: "#eeeeee",
+    },
+  };
+  const css = buildDreamSkinCss(themeJson, null, null);
+  assert.doesNotMatch(css, /--dsw-alias-label-primary: #eeeeee/);
+  assert.doesNotMatch(css, /--dsw-alias-label-secondary: #eeeeee/);
+
+  const audit = auditDreamSkinReadability(themeJson);
+  assert.equal(audit.source.primary.pass, false);
+  assert.equal(audit.normalized.primary.pass, true);
+  assert.equal(audit.normalized.muted.pass, true);
+});
+
+test("readability normalization covers base and both panels over arbitrary artwork", () => {
+  const themeJson = {
+    image: "background.jpg",
+    colors: {
+      background: "#6AB8F0",
+      panel: "#DDF3FF",
+      panelAlt: "#CBEAFF",
+      text: "#19334D",
+      muted: "#66829A",
+      accent: "#2388F2",
+    },
+  };
+  const audit = auditDreamSkinReadability(themeJson);
+  assert.equal(audit.normalized.primary.pass, true);
+  assert.equal(audit.normalized.muted.pass, true);
+  assert.ok(audit.normalized.primary.ratios.base >= 4.5);
+  assert.ok(audit.normalized.primary.ratios.panel >= 4.5);
+  assert.ok(audit.normalized.primary.ratios.panelAlt >= 4.5);
+  assert.ok(audit.normalized.muted.ratios.base >= 4.5);
+  assert.ok(audit.normalized.muted.ratios.panel >= 4.5);
+  assert.ok(audit.normalized.muted.ratios.panelAlt >= 4.5);
+});
+
+test("readability normalization moves inaccessible midtone surfaces only when needed", () => {
+  const themeJson = {
+    image: "background.png",
+    appearance: "dark",
+    colors: {
+      background: "#616BBB",
+      panel: "#756892",
+      panelAlt: "#6F6BA5",
+      text: "#F8F6FF",
+      muted: "#F0389A",
+      accent: "#36F11E",
+    },
+  };
+  const audit = auditDreamSkinReadability(themeJson);
+  assert.equal(audit.normalized.primary.pass, true);
+  assert.equal(audit.normalized.muted.pass, true);
+  assert.notEqual(audit.normalizedColors.panel, themeJson.colors.panel);
+});
+
+test("readability guardrails are emitted after custom CSS", () => {
+  const themeJson = {
+    colors: {
+      background: "#fff",
+      panel: "#fff",
+      panelAlt: "#f8f8f8",
+      text: "#111",
+      muted: "#555",
+    },
+  };
+  const customCss = ":root { --dsw-alias-bg-base: rgba(255, 255, 255, 0.05); }";
+  const css = buildDreamSkinCss(themeJson, "data:image/jpeg;base64,X", customCss);
+  assert.ok(css.indexOf("Custom theme.css") < css.lastIndexOf("Readability guardrails"));
+  assert.ok(css.lastIndexOf("--dsw-alias-bg-base: rgba(255, 255, 255, 0.86) !important")
+    > css.indexOf("Custom theme.css"));
 });
 
 test("buildDreamSkinCss appends custom CSS", () => {
@@ -165,4 +277,57 @@ test("validateSafeCss accepts border properties", () => {
   const css = `border-radius: 8px; border-color: rgba(0,0,0,0.1); box-shadow: 0 2px 8px rgba(0,0,0,0.2);`;
   const { valid, errors } = validateSafeCss(css);
   assert.ok(valid, `Expected valid, got: ${errors.join(", ")}`);
+});
+
+test("validateSafeCss accepts DreamSkin border and transition longhands", () => {
+  const css = `[data-ds-part="sidebar"] {
+    border-top-color: var(--ds-theme-color-line);
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-right-color: transparent;
+    border-right-width: 0;
+    border-right-style: solid;
+    border-bottom-color: var(--ds-theme-color-line);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-left-color: transparent;
+    border-left-width: 0;
+    border-left-style: solid;
+    transition-property: background-color, border-color, box-shadow;
+    transition-duration: 180ms;
+  }`;
+  const { valid, errors } = validateSafeCss(css);
+  assert.ok(valid, `Expected DreamSkin longhands to be valid, got: ${errors.join(", ")}`);
+});
+
+test("validateSafeCss accepts bounded official DreamSkin typography and spacing", () => {
+  const css = `[data-ds-part="message"] {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    gap: 12px;
+    row-gap: 8px;
+    column-gap: 16px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 18px;
+    border-bottom-left-radius: 18px;
+  }`;
+  const { valid, errors } = validateSafeCss(css);
+  assert.ok(valid, `Expected official bounded properties to be valid, got: ${errors.join(", ")}`);
+});
+
+test("validateSafeCss rejects out-of-contract typography and spacing values", () => {
+  const css = `[data-ds-part="message"] {
+    font-size: 100px;
+    font-weight: 900;
+    line-height: 0.5;
+    letter-spacing: -2px;
+    gap: 80px;
+    border-top-left-radius: 100px;
+  }`;
+  const { valid, errors } = validateSafeCss(css);
+  assert.equal(valid, false);
+  assert.equal(errors.filter(error => error.includes("Out-of-range CSS value")).length, 6);
 });

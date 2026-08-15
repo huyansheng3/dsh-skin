@@ -1,0 +1,8 @@
+{
+  "themeId": "nord-dark",
+  "name": "Nord Dark",
+  "version": "1.0.0",
+  "description": "Arctic, north-bluish color palette.",
+  "author": { "id": "example", "displayName": "Example" },
+  "packageVersion": 1
+}

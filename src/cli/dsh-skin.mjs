@@ -1,20 +1,23 @@
 #!/usr/bin/env node
 /**
- * DSH Skin CLI — manage themes, inject via CDP, and build/import theme packages.
+ * dsh-skin CLI — manage themes in the local DSH Skin library.
+ *
+ * This tool manages the theme library that the `dsh-skin` Cordis plugin reads.
+ * To apply a theme, use `dsh-skin activate <theme-id>` — the plugin will then
+ * inject the CSS the next time the DSH Web UI page is loaded.
  *
  * Usage:
  *   dsh-skin list                     List installed themes
- *   dsh-skin apply <theme-id>          Apply a theme via CDP
- *   dsh-skin restore                   Restore official appearance
- *   dsh-skin install <dir>              Install a theme from a directory
- *   dsh-skin import <file.zip>          Import a .zip theme package
- *   dsh-skin remove <theme-id>         Remove an installed theme
- *   dsh-skin info <theme-id>           Show theme details
- *   dsh-skin pack <dir>                Pack a theme directory into a .zip
+ *   dsh-skin activate <theme-id>      Set active theme (writes state.json)
+ *   dsh-skin deactivate               Clear active theme
+ *   dsh-skin install <dir>            Install a theme from a directory
+ *   dsh-skin import <file.zip>        Import a .zip theme package
+ *   dsh-skin remove <theme-id>        Remove an installed theme
+ *   dsh-skin info <theme-id>          Show theme details
+ *   dsh-skin pack <dir>               Pack a theme directory into a .zip
  */
 
-import { parseArgs } from "node:util";
-import { existsSync, readFileSync, readdirSync, mkdirSync, copyFileSync, statSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join, basename, resolve, extname } from "node:path";
 import {
   listThemes,
@@ -34,12 +37,12 @@ const command = positional[0];
 const rest = positional.slice(1);
 
 const HELP = `
-DSH Skin CLI — theming tool for DeepSeek Harness web client
+dsh-skin CLI — theme library manager for the dsh-skin Cordis plugin
 
 Commands:
   list                    List all installed themes
-  apply <theme-id>        Apply a theme via CDP injection
-  restore                 Restore official DSH appearance
+  activate <theme-id>     Set the active theme (writes state.json)
+  deactivate              Clear the active theme
   install <dir>           Install a theme from a directory
   import <file.zip>       Import a .zip theme package (DreamSkin or local format)
   remove <theme-id>       Remove an installed theme
@@ -47,18 +50,14 @@ Commands:
   pack <dir>              Pack a theme directory into a .zip file
   help                    Show this help message
 
-Options for apply:
-  --port <port>     CDP debugging port (default: 9222)
-  --auto-apply      Re-apply the last active theme
-
 Options for install / import:
-  --force           Overwrite an existing theme with the same id
+  --force                 Overwrite an existing theme with the same id
 
-Environment:
-  DSH Skin targets the DSH web client running on http://127.0.0.1:3080
-  For CDP injection, start DSH with --remote-debugging-port=9222
+Note:
+  Theme changes take effect the next time the DSH Web UI page is loaded
+  (or refreshed). No CDP port or --remote-debugging-port needed.
 
-Theme directory: ${getThemesDir()}
+Theme library: ${getThemesDir()}
 `;
 
 async function main() {
@@ -69,7 +68,7 @@ async function main() {
       const state = loadState();
       if (themes.length === 0) {
         console.log("No themes installed.");
-        console.log(`\nTheme directory: ${getThemesDir()}`);
+        console.log(`\nTheme library: ${getThemesDir()}`);
         console.log("Use 'dsh-skin install <dir>' or 'dsh-skin import <file.zip>' to add themes.");
       } else {
         console.log(`\nInstalled themes (${themes.length}):\n`);
@@ -78,46 +77,57 @@ async function main() {
           const bg  = t.hasBackground ? " 🖼" : "";
           const css = t.hasCustomCss  ? " 🎨" : "";
           const fmt = t.format === "dreamskin" ? " [DreamSkin]" : "";
-          const author = t.manifest.author ? ` by ${typeof t.manifest.author === "object" ? t.manifest.author.displayName || t.manifest.author.id : t.manifest.author}` : "";
+          const author = t.manifest.author
+            ? ` by ${typeof t.manifest.author === "object"
+                ? t.manifest.author.displayName || t.manifest.author.id
+                : t.manifest.author}`
+            : "";
           console.log(`  ${t.manifest.id.padEnd(28)} ${t.manifest.name} v${t.manifest.version}${author}${fmt}${bg}${css}${active}`);
+        }
+        console.log("");
+        if (state.activeThemeId) {
+          console.log(`Active: ${state.activeThemeId}`);
+          console.log("CSS is served at /_skin/active.css by the dsh-skin plugin.");
+        } else {
+          console.log("No active theme. Use 'dsh-skin activate <theme-id>' to set one.");
         }
         console.log("");
       }
       break;
     }
 
-    // ── apply ─────────────────────────────────────────────────────────────────
-    case "apply": {
+    // ── activate ──────────────────────────────────────────────────────────────
+    case "activate": {
       const themeId = rest[0];
       if (!themeId) {
-        console.error("Usage: dsh-skin apply <theme-id> [--port <port>]");
+        console.error("Usage: dsh-skin activate <theme-id>");
         process.exit(1);
       }
-      const portIdx = rest.indexOf("--port");
-      const port = portIdx !== -1 && rest[portIdx + 1] ? rest[portIdx + 1] : "9222";
-
-      const { execFileSync } = await import("node:child_process");
-      try {
-        execFileSync(process.argv[0], [
-          join(import.meta.dirname, "..", "injector", "cdp-injector.mjs"),
-          "--port", port, "--theme", themeId,
-        ], { stdio: "inherit" });
-      } catch { process.exit(1); }
+      const theme = findTheme(themeId);
+      if (!theme) {
+        console.error(`Theme "${themeId}" not found. Run 'dsh-skin list' to see available themes.`);
+        process.exit(1);
+      }
+      const state = loadState();
+      state.activeThemeId = themeId;
+      saveState(state);
+      console.log(`✓ Activated theme "${theme.manifest.name}" (${themeId})`);
+      console.log("  Reload the DSH Web UI to see the change.");
       break;
     }
 
-    // ── restore ───────────────────────────────────────────────────────────────
-    case "restore": {
-      const portIdx = rest.indexOf("--port");
-      const port = portIdx !== -1 && rest[portIdx + 1] ? rest[portIdx + 1] : "9222";
-
-      const { execFileSync } = await import("node:child_process");
-      try {
-        execFileSync(process.argv[0], [
-          join(import.meta.dirname, "..", "injector", "cdp-injector.mjs"),
-          "--port", port, "--restore",
-        ], { stdio: "inherit" });
-      } catch { process.exit(1); }
+    // ── deactivate ────────────────────────────────────────────────────────────
+    case "deactivate": {
+      const state = loadState();
+      const was = state.activeThemeId;
+      state.activeThemeId = null;
+      saveState(state);
+      if (was) {
+        console.log(`✓ Deactivated theme "${was}"`);
+        console.log("  Reload the DSH Web UI to restore the default appearance.");
+      } else {
+        console.log("No active theme was set.");
+      }
       break;
     }
 
@@ -144,6 +154,7 @@ async function main() {
       try {
         const theme = installTheme(srcDir, rest.includes("--force"));
         console.log(`✓ Installed theme "${theme.manifest.name}" (${theme.manifest.id})`);
+        console.log(`  Run 'dsh-skin activate ${theme.manifest.id}' to use it.`);
       } catch (err) {
         console.error(`✗ ${err.message}`); process.exit(1);
       }
@@ -173,6 +184,7 @@ async function main() {
         const css = theme.hasCustomCss  ? " + custom CSS" : "";
         console.log(`✓ Imported theme "${theme.manifest.name}"${fmt}${bg}${css}`);
         console.log(`  ID: ${theme.manifest.id}  •  stored in: ${theme.dir}`);
+        console.log(`  Run 'dsh-skin activate ${theme.manifest.id}' to use it.`);
       } catch (err) {
         console.error(`✗ Import failed: ${err.message}`); process.exit(1);
       }
@@ -183,9 +195,17 @@ async function main() {
     case "remove": {
       const themeId = rest[0];
       if (!themeId) { console.error("Usage: dsh-skin remove <theme-id>"); process.exit(1); }
+      const state = loadState();
       try {
         removeTheme(themeId);
-        console.log(`✓ Removed theme "${themeId}"`);
+        if (state.activeThemeId === themeId) {
+          state.activeThemeId = null;
+          saveState(state);
+          console.log(`✓ Removed active theme "${themeId}" — active theme cleared.`);
+          console.log("  Reload the DSH Web UI to restore the default appearance.");
+        } else {
+          console.log(`✓ Removed theme "${themeId}"`);
+        }
       } catch (err) {
         console.error(`✗ ${err.message}`); process.exit(1);
       }
@@ -205,6 +225,7 @@ async function main() {
             : theme.manifest.author)
         : "(none)";
 
+      const state = loadState();
       console.log("\n=== Theme Info ===");
       console.log(`ID:         ${theme.manifest.id}`);
       console.log(`Name:       ${theme.manifest.name}`);
@@ -214,6 +235,7 @@ async function main() {
       console.log(`Directory:  ${theme.dir}`);
       console.log(`Background: ${theme.hasBackground ? `Yes (${basename(theme.backgroundPath || "")})` : "No"}`);
       console.log(`Custom CSS: ${theme.hasCustomCss ? "Yes" : "No"}`);
+      console.log(`Active:     ${state.activeThemeId === theme.manifest.id ? "Yes" : "No"}`);
 
       if (theme.format === "dreamskin") {
         const colors = theme.themeJson.colors || {};

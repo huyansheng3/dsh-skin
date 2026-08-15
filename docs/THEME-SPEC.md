@@ -1,125 +1,133 @@
 # Theme Package Specification
 
-## Version: Schema 1
+This repository accepts two formats. DreamSkin is the authoring and import
+format for new themes. Legacy DSH is retained for existing local themes and is
+not the format to extend for new features.
 
-A DSH Skin theme package is a directory (or `.zip` archive) containing the following files:
+## DreamSkin Format (Primary)
 
-### Required Files
+Required files:
 
-| File | Required | Description |
-|------|----------|-------------|
-| `manifest.json` | ✅ | Theme identity, version, capability flags |
-| `theme.json` | ✅ | Color variable overrides for light/dark modes |
+- `manifest.json` with `packageVersion: 1` and `themeId`
+- `theme.json` with a flat `colors` object
 
-### Optional Files
+Optional for a directory installed with the CLI:
 
-| File | Required | Description |
-|------|----------|-------------|
-| `theme.css` | ❌ | Additional Safe CSS overrides (validated on install/apply) |
-| `background.{webp,jpg,png}` | ❌ | Background image (exactly one, 16:9 recommended) |
-| `LICENSE.txt` | ❌ | License for theme assets |
+- one declared image in `manifest.files[]`
+- `theme.css`, validated by the Safe CSS policy
+- `LICENSE.txt`
 
-## manifest.json
+A DreamSkin ZIP is a distribution artifact and must contain both one declared
+background image and a non-empty `theme.css`. This stricter import boundary
+prevents incomplete authoring directories from being accepted as releases.
+
+Example:
 
 ```json
+// manifest.json
 {
-  "schema": 1,
-  "id": "my-theme",
-  "name": "My Theme",
-  "author": "Author Name",
+  "themeId": "nord-dark",
+  "name": "Nord Dark",
   "version": "1.0.0",
-  "minInjectorVersion": "0.1.0",
-  "platform": "any",
-  "capabilities": {
-    "css-variables": true,
-    "background-image": false,
-    "safe-css": true
-  },
-  "integrity": {
-    "theme.json": "sha256-hex...",
-    "theme.css": "sha256-hex...",
-    "background.jpg": "sha256-hex..."
-  }
+  "packageVersion": 1,
+  "files": [
+    { "path": "background.jpg", "mediaType": "image/jpeg" }
+  ]
 }
 ```
 
-### Field Reference
+```json
+// theme.json
+{
+  "appearance": "dark",
+  "colors": {
+    "background": "#1e1e2e",
+    "panel": "#313244",
+    "panelAlt": "#45475a",
+    "accent": "#cba6f7",
+    "accentAlt": "#b4befe",
+    "text": "#cdd6f4",
+    "muted": "#a6adc8",
+    "line": "#45475a",
+    "highlight": "#585b70"
+  },
+  "art": { "focusX": 0.5, "focusY": 0.4, "taskMode": "fill" },
+  "backgroundOpacity": 1,
+  "backgroundBlur": 0
+}
+```
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `schema` | `1` | ✅ | Manifest schema version |
-| `id` | string (kebab-case, 3-63 chars) | ✅ | Unique theme identifier |
-| `name` | string | ✅ | Human-readable display name |
-| `author` | string | ❌ | Author credit |
-| `version` | semver string | ✅ | Theme version |
-| `minInjectorVersion` | semver string | ❌ | Minimum DSH Skin injector version |
-| `platform` | `"any"` \| `"macos"` \| `"windows"` \| `"linux"` | ✅ | Target platform |
-| `capabilities.css-variables` | boolean | ✅ | Theme overrides CSS variables |
-| `capabilities.background-image` | boolean | ✅ | Theme includes a background image |
-| `capabilities.safe-css` | boolean | ✅ | Theme includes custom Safe CSS |
-| `integrity` | Record<filename, sha256-hex> | ❌ | SHA-256 hashes for payload files |
+`src/lib/theme-manager.mjs` normalizes `manifest.themeId` to
+`manifest.id`. `src/lib/safe-css.mjs` maps the flat colors to DSH-compatible
+tokens and renders the optional background layer. Generated backgrounds use a
+non-interactive `body::before` layer inside an isolated body stacking context;
+the renderer must not assign a z-index to `#root`, because that would break
+Harness-owned modal portals.
 
-## theme.json
+## Legacy DSH Format (Compatibility)
+
+Required files:
+
+- `manifest.json` with `schema: 1`, `id`, `name`, and `version`
+- `theme.json` with `colors.light` and/or `colors.dark`
+
+Legacy colors are CSS custom properties, for example:
 
 ```json
 {
-  "schema": 1,
   "colors": {
-    "light": {
-      "--dsw-alias-bg-base": "rgb(240, 249, 255)",
-      "--dsw-alias-brand-primary": "rgb(14, 165, 233)"
-    },
     "dark": {
-      "--dsw-alias-bg-base": "rgb(8, 20, 35)",
-      "--dsw-alias-brand-primary": "rgb(56, 189, 248)"
+      "--dsw-alias-bg-base": "#1e1e2e",
+      "--dsw-alias-brand-primary": "#cba6f7"
     }
-  },
-  "background": {
-    "file": "background.jpg",
-    "size": "cover",
-    "position": "center",
-    "opacity": 0.3,
-    "blur": 0
   }
 }
 ```
 
-### colors
+Do not add new DreamSkin fields to the legacy schema. Add new authoring
+capabilities to DreamSkin and keep normalization in the theme manager.
 
-- `light`: Variable overrides applied to `body` (light mode). Keys are CSS custom property names (`--dsw-*`).
-- `dark`: Variable overrides applied to `body[data-ds-dark-theme]` (dark mode).
+## Safe CSS Contract
 
-### background
+Custom `theme.css` is rejected unless it uses approved custom-property
+prefixes or approved presentation properties. DreamSkin presentation
+longhands are supported for each border side (`color`, `width`, `style`) plus
+`transition-property` and `transition-duration`. The official bounded
+typography and spacing subset is also supported: `font-size` 12–20px,
+`font-weight` 400–700, `line-height` 1.1–1.8, `letter-spacing` 0–2px,
+`gap`/`row-gap`/`column-gap` 0–24px, and directional radii 0–28px. Other layout
+and animation properties remain outside the contract.
 
-- `file`: Background image filename inside the theme package.
-- `size`: CSS `background-size` value (default: `"cover"`).
-- `position`: CSS `background-position` value (default: `"center"`).
-- `opacity`: Opacity multiplier 0-1 (default: `1`).
-- `blur`: Blur in px applied to the background (default: `0`).
+For illustrated themes, runtime normalization protects Harness surfaces after
+custom CSS: base, primary panel, and secondary panel use bounded translucency;
+primary and muted text must reach 4.5:1 against every surface over worst-case
+black and white artwork pixels. Midtone surfaces are shifted only when neither
+black nor white foreground can satisfy that floor.
 
-## theme.css (Safe CSS)
+It must not contain:
 
-Custom CSS that passes the Safe CSS validator:
+- `javascript:`, `expression()`, `data:` or `file:` URLs
+- `@import`, `<script>`, or executable CSS
+- arbitrary layout, DOM, network, or fixed-overlay behavior
 
-### Allowed
+The background layer is generated by the renderer and must remain
+non-interactive. Theme CSS must not replace native Harness controls or paint a
+screenshot over the application.
 
-- CSS custom properties with `--dsw-static-*`, `--dsw-alias-*`, `--dsw-specific-*`, `--dsw-font-*`, `--ds-*` prefixes
-- Standard properties: `background`, `background-color`, `opacity`, `filter`, `transition`, `color`, `font-family`, `border-radius`, `backdrop-filter`
+## ZIP Import Contract
 
-### Blocked
+- Accept ordinary `.zip` only; do not infer support for `.dreamskin` by file
+  extension.
+- Allow a root theme or exactly one theme directory level.
+- Enforce the compressed size, entry count, and uncompressed size limits in
+  `src/lib/theme-manager.mjs`.
+- Verify declared DreamSkin SHA-256 values when present.
+- Require a declared background image and non-empty `theme.css` for DreamSkin
+  ZIP imports; directory installs may omit either.
+- Import into the saved theme library without activating it automatically.
+- On failure, remove temporary extraction data and leave the active theme and
+  last-known-good installation unchanged.
 
-- `javascript:` URLs
-- `expression()` calls
-- `data:` or `file:` URLs
-- `@import` rules
-- `<script>` tags
-- Inline `position: fixed` (the background layer is managed by the injector)
-
-## ZIP Package
-
-For distribution, a theme can be packed as a `.zip`:
-
-- All files must be at the root of the ZIP or in a single top-level directory
-- Maximum 32 MiB compressed, 64 MiB decompressed
-- Maximum 32 entries
-- Only `.zip` format is accepted (no `.dshskin` or custom extensions)
+When changing this contract, add tests for valid packages, missing files,
+malformed metadata, path traversal, limits, hash failures, duplicate IDs, and
+Safe CSS attacks.
