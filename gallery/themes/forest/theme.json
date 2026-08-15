@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "forest",
   "name": "安静氛围 森林",
-  "image": "background.jpg",
+  "image": "background.webp",
   "appearance": "dark",
   "art": {
     "focusX": 0.5,

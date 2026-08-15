@@ -16,17 +16,18 @@ Packages were downloaded from the official API, SHA-256 verified, imported throu
 
 The browser audit activates themes one by one and treats missing backgrounds,
 interactive background layers, horizontal overflow, missing theme tokens, and
-missing native controls as failures. Rendered text/control contrast is retained
-in the result as a warning. It is deliberately not used to rewrite author colors
-or fail an otherwise structurally sound theme.
+missing native controls as failures. It also fails visible text-bearing code,
+button, input, select, tab, and tree-item surfaces below 3:1 when their own
+background alpha is at least 0.85. Ordinary wallpaper/body contrast remains a
+warning and is deliberately not used to rewrite author colors.
 
 After removing the 24 source-quality failures, all 76 retained Gallery themes
-were rerun on a real long conversation through this structural browser audit:
-76/76 passed with no background-safety, overflow, token, or control failures.
-Three separate existing conversations, including a view with about 10,000 body
-text characters and 115 visible buttons, also retained a usable composer,
-non-interactive background, and native controls. Contrast warnings remain
-expected and are not counted as structural failures.
+were rerun on three existing conversations through this structural browser
+audit. Every conversation passed 76/76 with no background-safety, overflow,
+token, opaque-surface contrast, or control failures. The set included a view
+with about 10,000 body text characters and more than 100 rendered controls.
+Wallpaper contrast warnings remain expected and are not counted as structural
+failures.
 
 ## Local Built-in Integration
 

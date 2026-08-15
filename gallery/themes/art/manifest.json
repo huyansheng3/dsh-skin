@@ -25,14 +25,14 @@
     {
       "path": "theme.json",
       "mediaType": "application/json",
-      "bytes": 490,
-      "sha256": "c674575c7daf1a1957588a9e63349aab053a44528ed585f269214dad58a0605b"
+      "bytes": 491,
+      "sha256": "79795ef5738f8b83b547b93187d614121dac123caca47668ca5211c7197aaa82"
     },
     {
-      "path": "background.jpg",
-      "mediaType": "image/jpeg",
-      "bytes": 3489093,
-      "sha256": "0ca447a7be47951338b5cf85bd6b7a0b7adf0fbd2e2564e3afd945e5f4d963ab"
+      "path": "background.webp",
+      "mediaType": "image/webp",
+      "bytes": 94784,
+      "sha256": "1b980896d899913ab21dc50b0b71a084303a55a9287d7fc2846853ad51cb4801"
     },
     {
       "path": "theme.css",

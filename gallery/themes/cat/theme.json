@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "cat",
   "name": "cat",
-  "image": "background.jpg",
+  "image": "background.webp",
   "appearance": "dark",
   "art": {
     "focusX": 0.6,

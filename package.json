@@ -31,6 +31,7 @@
     "build:client": "node scripts/build-client.mjs",
     "audit:gallery": "node scripts/audit-gallery-themes.mjs",
     "catalog:gallery": "node scripts/build-gallery-catalog.mjs",
+    "optimize:gallery": "node scripts/optimize-bundled-gallery-images.mjs",
     "vendor:gallery": "node scripts/vendor-gallery-themes.mjs",
     "pretest": "npm run build:client",
     "test": "node --test test/*.test.mjs"

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "green-meadow",
   "name": "Green Meadow",
-  "image": "background.png",
+  "image": "background.webp",
   "appearance": "dark",
   "art": {
     "focusX": 0.5,

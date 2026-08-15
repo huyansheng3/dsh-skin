@@ -30,6 +30,8 @@
 - 带图主题保留作者原始颜色和自定义 CSS，使用 `panel=0.72`、`panelAlt=0.65` 的原始
   玻璃适配；不再自动修正文字/强调色、移动表面亮度、推断 `appearance:auto` 或在
   作者 CSS 后追加全局可读性覆盖。
+- 原生代码、标签、菜单和不透明控件使用作者提供的实色 `panel`/`panelAlt` token，
+  避免深色主题继承 Harness 浅色填充；正文、强调色和主玻璃表面保持作者效果。
 
 ## Plugin Design
 
@@ -46,8 +48,8 @@
 
 ## Verification
 
-- `npm test`: 通过，45/45。
-- Node.js 18.20.8：45/45 通过；测试路径解析不依赖 Node 20 的
+- `npm test`: 通过，46/46。
+- Node.js 18.20.8：46/46 通过；测试路径解析不依赖 Node 20 的
   `import.meta.dirname`。
 - GitHub 主分支已发布到 `huyansheng3/dsh-skin`；使用
   `pnpm add github:huyansheng3/dsh-skin` 的隔离安装通过，Host 导出、Client bundle、
@@ -64,14 +66,16 @@
 - 5 个纯色 legacy 主题 `gothic-void`、`matrix-green`、`ocean-breeze`、`sakura-pink`、
   `warm-sunset` 已从源码、npm 发布清单和测试数据目录移除。
 - Gallery 浏览器审计继续要求背景资源、不可交互背景层、无横向溢出和原生控件可见；
-  渲染对比度改为报告告警，不再作为主题适配失败条件。
-- 有会话 E2E：在 `@deepseek-ai/dsh@0.1.0-rc.6` 的 3 个真实会话间切换，短会话与约
-  10k 字长会话均保持输入框、背景层和原生控件可用，无横向溢出。
-- 长会话逐主题复验：保留 Gallery 76/76 无背景安全、token、控件或溢出结构失败；
-  背景层始终 `pointer-events:none`，结束后恢复原 `deepseek` 主题。
+  普通壁纸正文对比度只报告告警，但可见、有文字且背景透明度至少 0.85 的原生代码与
+  控件表面低于 3:1 时直接判定结构失败。
+- 有会话 E2E：在 `@deepseek-ai/dsh@0.1.0-rc.6` 的 3 个真实会话间切换，每条会话都
+  逐个激活保留 Gallery 76 套主题；短会话与约 10k 字长会话均为 76/76 结构通过。
+- 长会话逐主题复验：保留 Gallery 76/76 无背景安全、token、不透明表面对比度、控件
+  或溢出结构失败；背景层始终 `pointer-events:none`，结束后恢复原 `the-legend-of-hei`
+  主题。
 - 原生设置 E2E：81 个选项（官方外观 + 80 个当前可用主题），24 个排除 ID 和 5 个
   纯色 ID 均不可见；设置 dialog 宽 800px 且完整落在视口内。
-- CSS cache key 增加 renderer `r2`，插件升级后不会继续命中旧的 immutable 归一化 CSS。
+- CSS cache key 增加 renderer `r3`，插件升级后不会继续命中旧的 immutable 主题 CSS。
 - Host route smoke: 仅注册 `/_skin/active.css`、`/_skin/bg/*`、`/_skin/api/*`；
   index 中只注入 stylesheet link。
 - Client artifact smoke: rc.6 ModuleLoader 成功加载 `/plugins/dsh-skin/client.js`，
@@ -94,7 +98,10 @@
 - `0.3.0` tarball 干净安装：安装目录恰好包含白名单 20 个 Gallery 主题，公开加载器
   20/20 可读；无环境变量的 Host 库存为 22 个内置主题，首次状态仍为官方外观。
 - 发布白名单浏览器复验：20/20 无背景安全、token、原生控件或横向溢出结构失败；
-  对比度仅保留为作者源效果告警，审计结束后恢复原 `deepseek` 主题。
+  对比度仅保留为作者源效果告警，审计结束后恢复检查前主题。
+- GitHub 首次交付包 57.3 MB 在低速 codeload 链路触发 pnpm 超时；20 张背景已在不
+  裁切、不调色的前提下高质量转为 WebP，npm dry-run 降至约 6.46 MB。优化后视觉总览
+  无明显失真，浏览器逐主题结构审计仍为 20/20 通过。
 - CodeGraph 未初始化；按仓库指令未擅自初始化。
 
 ## Remaining Risks

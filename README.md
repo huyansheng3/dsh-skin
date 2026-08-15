@@ -75,7 +75,8 @@ npm run vendor:gallery -- --cache-dir /path/to/cache --offline
 
 Gallery 包由社区作者发布，并不统一使用 MIT 许可。发布包只收录其中 20 个经审计、
 许可允许再分发的主题，其余主题只在本地物化。目录记录每个版本的作者、原始许可、
-体积和 SHA-256；随包主题的归属与许可见 [第三方声明](./THIRD_PARTY_NOTICES.md)。
+体积和 SHA-256；随包背景以不裁切、不调色的高质量 WebP 分发，将 GitHub 安装包控制
+在约 6.5 MB。主题归属、许可和重编码说明见 [第三方声明](./THIRD_PARTY_NOTICES.md)。
 
 ## 功能
 
@@ -85,6 +86,8 @@ Gallery 包由社区作者发布，并不统一使用 MIT 许可。发布包只�
 - ZIP 导入：兼容 DreamSkin 与 legacy DSH 主题格式；
 - Safe CSS：拒绝脚本、`@import`、危险 URL 和未经授权的布局覆盖；
 - 作者保真：保留主题原始配色、玻璃透明度和自定义 CSS，不在运行时强制修色；
+- 定点可读性：仅让原生代码块、行内代码和不透明控件使用作者的实色面板 token，
+  不覆盖正文颜色、不加全局遮罩；
 - Headless 安全：没有 `webServer` 时插件保持 no-op。
 
 ## 常见问题
@@ -237,11 +240,15 @@ node --check src/index.js src/client/index.js src/lib/theme-manager.mjs
 npm pack --dry-run
 ```
 
+发布维护者需要重新生成随包背景时，安装 `cwebp` 后运行
+`npm run optimize:gallery`；该命令不会在用户安装插件时执行。
+
 Gallery 兼容性结果见 [审计报告](./docs/GALLERY-AUDIT.md)。热门前 100 中有 93 个原包
 通过严格 ZIP 导入，另 7 个缺少 `theme.css`，本地物化时使用有界兼容 CSS。24 个可
 导入主题因原始文字或强调色对比度不足，已由 [排除清单](./gallery/exclusions.json)
 从默认目录和本地主题库删除。剩余 76 个已在真实长会话中逐个完成背景安全、原生控件
-和溢出 E2E 检查，76/76 结构通过。
+和溢出 E2E 检查；不透明文字表面低于 `3:1` 会直接失败，普通壁纸区域仍只报告作者
+效果告警。3 条不同的现有会话均逐个复验 76 套主题，结果都是 76/76 结构通过。
 
 ## License
 

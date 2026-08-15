@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "stellar-watcher",
   "name": "星际守望者",
-  "image": "background.png",
+  "image": "background.webp",
   "appearance": "dark",
   "art": {
     "focusX": 0.78,

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "astral-tidev2",
   "name": "星潮（v2优化版）",
-  "image": "background.jpg",
+  "image": "background.webp",
   "appearance": "dark",
   "art": {
     "focusX": 0.5,

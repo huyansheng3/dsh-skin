@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "milky-way",
   "name": "银河 Milky Way",
-  "image": "background.jpg",
+  "image": "background.webp",
   "appearance": "auto",
   "art": {
     "focusX": 0.67,

@@ -10,5 +10,29 @@
     "bytes": 1805615,
     "sha256": "61e8392db4ee0b2e37059c468f422f1a0bfdf5f8882173a70b3e30adf90ccdf2"
   },
-  "compatibility": "native"
+  "compatibility": "native",
+  "distribution": {
+    "background": {
+      "source": {
+        "path": "background.png",
+        "mediaType": "image/png",
+        "bytes": 1801427,
+        "sha256": "f21ddeaf4401cbf3d086db092ec12ed5471e55e5a2d0e7d84993959ae9f0f106"
+      },
+      "output": {
+        "path": "background.webp",
+        "mediaType": "image/webp",
+        "bytes": 75306,
+        "sha256": "9637e9169b3197dbcffe6a1ee2207ba85b88dc213b57d5ce6511192cc912ee8b"
+      },
+      "transform": {
+        "format": "webp",
+        "quality": 84,
+        "maxWidth": 2560,
+        "resizeMode": "down-only",
+        "cropped": false,
+        "colorAdjusted": false
+      }
+    }
+  }
 }

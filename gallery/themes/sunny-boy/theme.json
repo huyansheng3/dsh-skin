@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "sunny-boy",
   "name": "阳光少年",
-  "image": "background.png",
+  "image": "background.webp",
   "appearance": "light",
   "art": {
     "focusX": 0.5,

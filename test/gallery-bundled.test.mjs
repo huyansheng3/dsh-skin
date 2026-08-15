@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { basename, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadTheme } from "../src/lib/theme-manager.mjs";
 
@@ -18,6 +18,7 @@ test("curated Gallery built-ins are redistributable, complete, and pinned", () =
   assert.equal(selection.schemaVersion, 1);
   assert.equal(selection.themes.length, 20);
   assert.equal(new Set(selection.themes.map(theme => theme.themeId)).size, 20);
+  let bundledBackgroundBytes = 0;
 
   for (const selected of selection.themes) {
     assert.ok(["MIT", "CC BY 4.0"].includes(selected.license), selected.themeId);
@@ -34,13 +35,25 @@ test("curated Gallery built-ins are redistributable, complete, and pinned", () =
     assert.equal(theme.manifest.version, selected.version);
     assert.equal(theme.hasBackground, true);
     assert.equal(theme.hasCustomCss, true);
+    assert.equal(basename(theme.backgroundPath), "background.webp");
+    const bundledImageEntry = theme.manifest.files.find(entry => entry.path === "background.webp");
+    assert.ok(bundledImageEntry, `${selected.themeId}: missing WebP manifest entry`);
     const provenance = readJson(join(theme.dir, "_dsh-skin.json"));
     assert.equal(provenance.versionId, selected.versionId);
     assert.equal(provenance.author, selected.author);
     assert.equal(provenance.license, selected.license);
+    assert.equal(provenance.distribution.background.output.path, "background.webp");
+    assert.equal(provenance.distribution.background.output.bytes, bundledImageEntry.bytes);
+    assert.equal(provenance.distribution.background.output.sha256, bundledImageEntry.sha256);
+    assert.ok(provenance.distribution.background.output.bytes
+      < provenance.distribution.background.source.bytes, `${selected.themeId}: image did not shrink`);
+    assert.equal(provenance.distribution.background.transform.cropped, false);
+    assert.equal(provenance.distribution.background.transform.colorAdjusted, false);
+    bundledBackgroundBytes += provenance.distribution.background.output.bytes;
     assert.ok(notices.includes(selected.versionId), `${selected.themeId}: missing notice version`);
     assert.ok(notices.includes(selected.author), `${selected.themeId}: missing notice author`);
   }
+  assert.ok(bundledBackgroundBytes < 8 * 1024 * 1024, "bundled backgrounds exceed install budget");
 });
 
 test("package manifest ships exactly the curated Gallery directories", () => {

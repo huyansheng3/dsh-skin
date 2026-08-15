@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "character-01",
   "name": "Character 01",
-  "image": "background.png",
+  "image": "background.webp",
   "appearance": "dark",
   "art": {
     "focusX": 0.5,

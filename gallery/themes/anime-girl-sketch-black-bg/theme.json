@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "anime-girl-sketch-black-bg",
   "name": "动漫少女素描",
-  "image": "background.png",
+  "image": "background.webp",
   "appearance": "dark",
   "art": {
     "focusX": 0.5,

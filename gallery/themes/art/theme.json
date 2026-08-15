@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "art",
   "name": "art",
-  "image": "background.jpg",
+  "image": "background.webp",
   "appearance": "auto",
   "art": {
     "focusX": 0,

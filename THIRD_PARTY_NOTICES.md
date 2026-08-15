@@ -5,10 +5,13 @@ licenses declared by their publishers. The selection is pinned in
 `gallery/bundled-themes.json`; original package hashes and Gallery version IDs
 are recorded in `gallery/catalog.json` and each theme's `_dsh-skin.json`.
 
-The packaging process adds `_dsh-skin.json` provenance metadata, and the plugin
-adapts theme tokens at runtime for DeepSeek Harness. The original background
-artwork is not modified. The project-level MIT license does not replace these
-theme-specific licenses.
+The packaging process adds `_dsh-skin.json` provenance metadata and re-encodes
+bundled backgrounds as high-quality WebP with a maximum width of 2560 pixels so
+GitHub installations remain practical. Images are not cropped or color-adjusted;
+the original package hash and transform details remain in each provenance file.
+The plugin also adapts theme tokens at runtime for DeepSeek Harness. These are
+modifications under the declared licenses. The project-level MIT license does
+not replace the theme-specific licenses.
 
 Gallery source: <https://dreamskin.cc/gallery>
 
