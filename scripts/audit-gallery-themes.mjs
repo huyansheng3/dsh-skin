@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
- * Audit DreamSkin Gallery packages against dsh-skin's import and readability
+ * Audit DreamSkin Gallery packages against dsh-skin's import and source-quality
  * contract. Popular metadata flows from the public API into a bounded download
  * queue, SHA-256 verification, an isolated theme library, Safe CSS validation,
- * and source/normalized contrast reports ordered by Gallery rank.
+ * and source contrast reports ordered by Gallery rank.
  *
  * Entry point: `npm run audit:gallery -- [options]`. Generated JSON and Markdown
  * are the durable outputs; an optional cache/data directory supports follow-up
@@ -137,10 +137,6 @@ function pairFailures(audit) {
     .map(([name]) => `source-${name}-contrast`);
 }
 
-function normalizedPass(audit) {
-  return Object.values(audit.normalized).every(result => result.pass);
-}
-
 async function inspectTheme(theme, download) {
   const result = {
     ...theme,
@@ -149,9 +145,7 @@ async function inspectTheme(theme, download) {
     importPass: false,
     safeCssPass: false,
     sourceReadabilityPass: false,
-    normalizedReadabilityPass: false,
     sourceReadability: null,
-    normalizedReadability: null,
     issues: download.error ? [`download: ${download.error}`] : [],
   };
   if (download.error) return result;
@@ -164,9 +158,7 @@ async function inspectTheme(theme, download) {
 
     const readability = auditDreamSkinReadability(imported.themeJson);
     result.sourceReadability = readability.source;
-    result.normalizedReadability = readability.normalized;
     result.sourceReadabilityPass = Object.values(readability.source).every(pair => pair.pass);
-    result.normalizedReadabilityPass = normalizedPass(readability);
     result.issues.push(...pairFailures(readability));
     if (theme.applyCompatible === false) result.issues.push("gallery-apply-incompatible");
   } catch (error) {
@@ -180,14 +172,14 @@ function count(results, predicate) {
 }
 
 function markdownReport(report) {
-  const unresolved = report.results.filter(item => !item.importPass || !item.safeCssPass || !item.normalizedReadabilityPass);
+  const unresolved = report.results.filter(item => !item.importPass || !item.safeCssPass);
   const sourceWarnings = report.results.filter(item => item.importPass && !item.sourceReadabilityPass);
   const upstreamIncompatible = report.results.filter(item => item.applyCompatible === false);
   const lines = [
     "# DreamSkin Gallery Top 100 Audit",
     "",
     `Audited ${report.summary.total} themes from [DreamSkin Gallery](https://dreamskin.cc/gallery) using \`sort=popular\` on ${report.auditedAt.slice(0, 10)}.`,
-    "Packages were downloaded from the official API, SHA-256 verified, imported through dsh-skin, Safe CSS checked, and contrast-tested before and after plugin normalization.",
+    "Packages were downloaded from the official API, SHA-256 verified, imported through dsh-skin, Safe CSS checked, and source contrast-tested without changing author colors.",
     "",
     "## Summary",
     "",
@@ -195,23 +187,23 @@ function markdownReport(report) {
     `- Imported successfully: ${report.summary.imported}/${report.summary.total}`,
     `- Safe CSS passed: ${report.summary.safeCssPassed}/${report.summary.total}`,
     `- Source readability passed: ${report.summary.sourceReadabilityPassed}/${report.summary.total}`,
-    `- Readability passed after plugin normalization: ${report.summary.normalizedReadabilityPassed}/${report.summary.total}`,
+    `- Source quality warnings: ${report.summary.sourceReadabilityWarnings}/${report.summary.total}`,
     `- Gallery marks as one-click apply incompatible: ${report.summary.galleryApplyIncompatible}/${report.summary.total}`,
     "",
     "## Unresolved Failures",
     "",
   ];
-  if (unresolved.length === 0) lines.push("None. All audited packages are readable after plugin normalization.");
+  if (unresolved.length === 0) lines.push("None. All audited packages passed import and Safe CSS checks.");
   else {
     lines.push("| Rank | Theme | Author | Issues |", "| ---: | --- | --- | --- |");
     for (const item of unresolved) {
       lines.push(`| ${item.rank} | ${item.name} (\`${item.themeId}\`) | ${item.authorDisplayName} | ${item.issues.join("; ")} |`);
     }
   }
-  lines.push("", "## Source Theme Quality Warnings", "");
+  lines.push("", "## Source Themes Excluded From Defaults", "");
   if (sourceWarnings.length === 0) lines.push("None.");
   else {
-    lines.push("These packages contain low or unparseable source contrast. dsh-skin corrects them at runtime.", "", "| Rank | Theme | Downloads | Source issues |", "| ---: | --- | ---: | --- |");
+    lines.push("These importable packages contain low or unparseable source contrast. `gallery/exclusions.json` removes them from the default catalog instead of rewriting author colors.", "", "| Rank | Theme | Downloads | Source issues |", "| ---: | --- | ---: | --- |");
     for (const item of sourceWarnings) {
       lines.push(`| ${item.rank} | ${item.name} (\`${item.themeId}\`) | ${item.downloadCount} | ${item.issues.filter(issue => issue.startsWith("source-")).join(", ")} |`);
     }
@@ -224,9 +216,9 @@ function markdownReport(report) {
       lines.push(`| ${item.rank} | ${item.name} (\`${item.themeId}\`) | ${item.authorDisplayName} |`);
     }
   }
-  lines.push("", "## Full Results", "", "| Rank | Theme | Downloads | Import | Source | Normalized |", "| ---: | --- | ---: | :---: | :---: | :---: |");
+  lines.push("", "## Full Results", "", "| Rank | Theme | Downloads | Import | Source |", "| ---: | --- | ---: | :---: | :---: |");
   for (const item of report.results) {
-    lines.push(`| ${item.rank} | ${item.name} (\`${item.themeId}\`) | ${item.downloadCount} | ${item.importPass ? "pass" : "fail"} | ${item.sourceReadabilityPass ? "pass" : "warn"} | ${item.normalizedReadabilityPass ? "pass" : "fail"} |`);
+    lines.push(`| ${item.rank} | ${item.name} (\`${item.themeId}\`) | ${item.downloadCount} | ${item.importPass ? "pass" : "fail"} | ${item.sourceReadabilityPass ? "pass" : "warn"} |`);
   }
   lines.push("");
   return lines.join("\n");
@@ -267,7 +259,7 @@ async function main() {
         imported: count(results, item => item.importPass),
         safeCssPassed: count(results, item => item.safeCssPass),
         sourceReadabilityPassed: count(results, item => item.sourceReadabilityPass),
-        normalizedReadabilityPassed: count(results, item => item.normalizedReadabilityPass),
+        sourceReadabilityWarnings: count(results, item => item.importPass && !item.sourceReadabilityPass),
         galleryApplyIncompatible: count(results, item => item.applyCompatible === false),
       },
       results,

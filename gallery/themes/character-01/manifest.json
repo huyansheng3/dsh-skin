@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "character-01",
+  "version": "0.1.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "1.5.11",
+  "platforms": [
+    "windows"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "www45",
+    "displayName": "www45"
+  },
+  "license": "CC BY 4.0",
+  "provenance": {
+    "aiGenerated": false,
+    "summary": "Character 01, dark blue scene"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 506,
+      "sha256": "1d05d82b8134fe2b4dd11139a62b3215f845d10a92b6d1c630118f743c5a446a"
+    },
+    {
+      "path": "background.png",
+      "mediaType": "image/png",
+      "bytes": 2003757,
+      "sha256": "4432a89e1e4895ff2bc2da36335f84b8e136d8b6102537e360fa83596f18766b"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 80,
+      "sha256": "a198e207e0a027ac574aebc01c2a38f03edd8d1673488b459abc9c5462e60623"
+    }
+  ],
+  "createdAt": "2026-08-06T04:35:18.761Z"
+}

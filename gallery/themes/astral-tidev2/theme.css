@@ -1,0 +1,114 @@
+[data-ds-part="root"] {
+  background-color: rgba(41, 73, 92, 0.00);
+}
+
+[data-ds-part="main"] {
+  background-color: rgba(41, 73, 92, 0.00);
+}
+
+[data-ds-part="sidebar"] {
+  background-color: rgba(45, 72, 88, 0.70);
+  border-color: rgba(128, 201, 232, 0.28);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(20, 40, 52, 0.16);
+  transition-property: background-color, border-color, box-shadow;
+  transition-duration: 180ms;
+}
+
+[data-ds-part="header"] {
+  background-color: rgba(58, 91, 108, 0.18);
+  border-color: rgba(245, 182, 110, 0.18);
+  border-width: 1px;
+  border-style: solid;
+}
+
+[data-ds-part="home"] {
+  background-color: rgba(41, 73, 92, 0.00);
+}
+
+[data-ds-part="home-hero"] {
+  background-color: rgba(51, 82, 99, 0.32);
+  border-color: rgba(128, 201, 232, 0.22);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(20, 40, 52, 0.09);
+}
+
+[data-ds-part="project-list"] {
+  background-color: rgba(49, 79, 96, 0.42);
+  border-color: rgba(128, 201, 232, 0.22);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 16px;
+  box-shadow: 0 5px 16px rgba(20, 40, 52, 0.10);
+  transition-property: background-color, border-color, box-shadow;
+  transition-duration: 180ms;
+}
+
+[data-ds-part="project-list"]:hover {
+  background-color: rgba(58, 92, 110, 0.50);
+  border-color: rgba(245, 182, 110, 0.38);
+  box-shadow: 0 6px 18px rgba(20, 40, 52, 0.14);
+}
+
+[data-ds-part="thread"] {
+  background-color: rgba(41, 73, 92, 0.00);
+  border-color: rgba(128, 201, 232, 0.08);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 18px;
+}
+
+[data-ds-part="message"] {
+  background-color: rgba(47, 76, 93, 0.48);
+  border-color: rgba(128, 201, 232, 0.18);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(20, 40, 52, 0.08);
+  transition-property: background-color, border-color, box-shadow;
+  transition-duration: 180ms;
+}
+
+[data-ds-part="message"]:hover {
+  background-color: rgba(57, 90, 108, 0.54);
+  border-color: rgba(245, 182, 110, 0.32);
+  box-shadow: 0 4px 12px rgba(20, 40, 52, 0.10);
+}
+
+[data-ds-part="composer"] {
+  background-color: rgba(43, 67, 81, 0.76);
+  border-color: rgba(245, 182, 110, 0.48);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 20px;
+  box-shadow: 0 8px 22px rgba(20, 40, 52, 0.20);
+  transition-property: background-color, border-color, box-shadow;
+  transition-duration: 180ms;
+}
+
+[data-ds-part="composer"]:focus-visible {
+  background-color: rgba(49, 77, 93, 0.82);
+  border-color: rgba(255, 217, 166, 0.66);
+  box-shadow: 0 8px 24px rgba(20, 40, 52, 0.24);
+}
+
+[data-ds-part="composer-toolbar"] {
+  background-color: rgba(245, 182, 110, 0.12);
+  border-color: rgba(255, 217, 166, 0.20);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 12px;
+}
+
+[data-ds-part="dialog"] {
+  background-color: rgba(47, 76, 92, 0.72);
+  border-color: rgba(128, 201, 232, 0.28);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(20, 40, 52, 0.18);
+}

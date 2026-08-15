@@ -8,8 +8,8 @@
     "imported": 93,
     "safeCssPassed": 93,
     "sourceReadabilityPassed": 69,
-    "normalizedReadabilityPassed": 93,
-    "galleryApplyIncompatible": 7
+    "galleryApplyIncompatible": 7,
+    "sourceReadabilityWarnings": 24
   },
   "results": [
     {
@@ -55,7 +55,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#272b28",
@@ -72,41 +71,6 @@
         "accent": {
           "value": "#66776f",
           "ratio": 4.5,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#272b28",
-          "ratio": 9.02,
-          "ratios": {
-            "base": 9.02,
-            "panel": 13.23,
-            "panelAlt": 10.86
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(83, 86, 81)",
-          "ratio": 4.68,
-          "ratios": {
-            "base": 4.68,
-            "panel": 6.86,
-            "panelAlt": 5.64
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(98, 115, 107)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 3.15,
-            "panel": 4.62,
-            "panelAlt": 3.8
-          },
           "minimum": 3,
           "pass": true
         }
@@ -158,7 +122,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f0f0f0",
@@ -175,41 +138,6 @@
         "accent": {
           "value": "#4b75a6",
           "ratio": 3.49,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f0f0f0",
-          "ratio": 10.92,
-          "ratios": {
-            "base": 10.92,
-            "panel": 14.34,
-            "panelAlt": 12.39
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(159, 159, 159)",
-          "ratio": 4.7,
-          "ratios": {
-            "base": 4.7,
-            "panel": 6.17,
-            "panelAlt": 5.33
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(93, 131, 175)",
-          "ratio": 3.16,
-          "ratios": {
-            "base": 3.16,
-            "panel": 4.15,
-            "panelAlt": 3.58
-          },
           "minimum": 3,
           "pass": true
         }
@@ -259,7 +187,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#efeff0",
@@ -276,41 +203,6 @@
         "accent": {
           "value": "#23eaee",
           "ratio": 11.29,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#efeff0",
-          "ratio": 10.92,
-          "ratios": {
-            "base": 10.92,
-            "panel": 14.37,
-            "panelAlt": 12.43
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(158, 158, 159)",
-          "ratio": 4.69,
-          "ratios": {
-            "base": 4.69,
-            "panel": 6.17,
-            "panelAlt": 5.33
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#23eaee",
-          "ratio": 8.41,
-          "ratios": {
-            "base": 8.41,
-            "panel": 11.06,
-            "panelAlt": 9.57
-          },
           "minimum": 3,
           "pass": true
         }
@@ -360,7 +252,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#edf1f3",
@@ -377,41 +268,6 @@
         "accent": {
           "value": "#8095a5",
           "ratio": 5.52,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#edf1f3",
-          "ratio": 11.3,
-          "ratios": {
-            "base": 11.3,
-            "panel": 14.8,
-            "panelAlt": 12.62
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#9aa5ad",
-          "ratio": 5.11,
-          "ratios": {
-            "base": 5.11,
-            "panel": 6.69,
-            "panelAlt": 5.71
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#8095a5",
-          "ratio": 4.13,
-          "ratios": {
-            "base": 4.13,
-            "panel": 5.41,
-            "panelAlt": 4.62
-          },
           "minimum": 3,
           "pass": true
         }
@@ -461,9 +317,7 @@
       "importPass": false,
       "safeCssPass": false,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": false,
       "sourceReadability": null,
-      "normalizedReadability": null,
       "issues": [
         "import: Invalid theme in ZIP: DreamSkin ZIP must include a background image and non-empty theme.css"
       ]
@@ -511,7 +365,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f0f0f0",
@@ -528,41 +381,6 @@
         "accent": {
           "value": "#f6c696",
           "ratio": 10.7,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f0f0f0",
-          "ratio": 10.92,
-          "ratios": {
-            "base": 10.92,
-            "panel": 14.38,
-            "panelAlt": 12.39
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(159, 159, 159)",
-          "ratio": 4.7,
-          "ratios": {
-            "base": 4.7,
-            "panel": 6.19,
-            "panelAlt": 5.33
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#f6c696",
-          "ratio": 7.96,
-          "ratios": {
-            "base": 7.96,
-            "panel": 10.49,
-            "panelAlt": 9.03
-          },
           "minimum": 3,
           "pass": true
         }
@@ -612,9 +430,7 @@
       "importPass": false,
       "safeCssPass": false,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": false,
       "sourceReadability": null,
-      "normalizedReadability": null,
       "issues": [
         "import: Invalid theme in ZIP: DreamSkin ZIP must include a background image and non-empty theme.css"
       ]
@@ -662,7 +478,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#352970",
@@ -679,41 +494,6 @@
         "accent": {
           "value": "#7a4e29",
           "ratio": 3.45,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "rgb(34, 27, 73)",
-          "ratio": 4.66,
-          "ratios": {
-            "base": 4.66,
-            "panel": 7.4,
-            "panelAlt": 9.24
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#030303",
-          "ratio": 6.05,
-          "ratios": {
-            "base": 6.05,
-            "panel": 9.6,
-            "panelAlt": 11.99
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(85, 55, 29)",
-          "ratio": 3.16,
-          "ratios": {
-            "base": 3.16,
-            "panel": 5.01,
-            "panelAlt": 6.26
-          },
           "minimum": 3,
           "pass": true
         }
@@ -763,7 +543,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#43382d",
@@ -782,41 +561,6 @@
           "ratio": 2.54,
           "minimum": 3,
           "pass": false
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#43382d",
-          "ratio": 6.7,
-          "ratios": {
-            "base": 6.7,
-            "panel": 8.3,
-            "panelAlt": 9.05
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(93, 76, 84)",
-          "ratio": 4.7,
-          "ratios": {
-            "base": 4.7,
-            "panel": 5.82,
-            "panelAlt": 6.34
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(139, 87, 152)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 3.15,
-            "panel": 3.91,
-            "panelAlt": 4.26
-          },
-          "minimum": 3,
-          "pass": true
         }
       },
       "issues": [
@@ -867,7 +611,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#263b42",
@@ -886,41 +629,6 @@
           "ratio": 1.3,
           "minimum": 3,
           "pass": false
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#263b42",
-          "ratio": 7.14,
-          "ratios": {
-            "base": 7.32,
-            "panel": 7.14,
-            "panelAlt": 9.49
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(65, 86, 93)",
-          "ratio": 4.7,
-          "ratios": {
-            "base": 4.82,
-            "panel": 4.7,
-            "panelAlt": 6.25
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(151, 97, 7)",
-          "ratio": 3.16,
-          "ratios": {
-            "base": 3.25,
-            "panel": 3.16,
-            "panelAlt": 4.21
-          },
-          "minimum": 3,
-          "pass": true
         }
       },
       "issues": [
@@ -971,7 +679,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f0f0f0",
@@ -988,41 +695,6 @@
         "accent": {
           "value": "#ebb273",
           "ratio": 8.95,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f0f0f0",
-          "ratio": 10.92,
-          "ratios": {
-            "base": 10.92,
-            "panel": 14.49,
-            "panelAlt": 12.39
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(159, 159, 159)",
-          "ratio": 4.7,
-          "ratios": {
-            "base": 4.7,
-            "panel": 6.24,
-            "panelAlt": 5.33
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#ebb273",
-          "ratio": 6.61,
-          "ratios": {
-            "base": 6.61,
-            "panel": 8.77,
-            "panelAlt": 7.5
-          },
           "minimum": 3,
           "pass": true
         }
@@ -1072,7 +744,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f0f0ef",
@@ -1089,41 +760,6 @@
         "accent": {
           "value": "#d8d0ca",
           "ratio": 9.93,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f0f0ef",
-          "ratio": 7.72,
-          "ratios": {
-            "base": 7.72,
-            "panel": 12.85,
-            "panelAlt": 11.95
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(189, 189, 188)",
-          "ratio": 4.68,
-          "ratios": {
-            "base": 4.68,
-            "panel": 7.79,
-            "panelAlt": 7.25
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#d8d0ca",
-          "ratio": 5.78,
-          "ratios": {
-            "base": 5.78,
-            "panel": 9.62,
-            "panelAlt": 8.95
-          },
           "minimum": 3,
           "pass": true
         }
@@ -1173,7 +809,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#201918",
@@ -1190,41 +825,6 @@
         "accent": {
           "value": "#f04a3b",
           "ratio": 3.62,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#201918",
-          "ratio": 11.57,
-          "ratios": {
-            "base": 11.57,
-            "panel": 16.66,
-            "panelAlt": 13.89
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(93, 88, 88)",
-          "ratio": 4.68,
-          "ratios": {
-            "base": 4.68,
-            "panel": 6.73,
-            "panelAlt": 5.61
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(207, 64, 51)",
-          "ratio": 3.17,
-          "ratios": {
-            "base": 3.17,
-            "panel": 4.56,
-            "panelAlt": 3.8
-          },
           "minimum": 3,
           "pass": true
         }
@@ -1274,7 +874,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#000000",
@@ -1291,41 +890,6 @@
         "accent": {
           "value": "#405377",
           "ratio": 3.53,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#000000",
-          "ratio": 8.72,
-          "ratios": {
-            "base": 15.21,
-            "panel": 9.97,
-            "panelAlt": 8.72
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(58, 59, 62)",
-          "ratio": 4.65,
-          "ratios": {
-            "base": 8.11,
-            "panel": 5.31,
-            "panelAlt": 4.65
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#405377",
-          "ratio": 3.2,
-          "ratios": {
-            "base": 5.59,
-            "panel": 3.66,
-            "panelAlt": 3.2
-          },
           "minimum": 3,
           "pass": true
         }
@@ -1377,7 +941,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#000000",
@@ -1394,41 +957,6 @@
         "accent": {
           "value": "#308cca",
           "ratio": 3.63,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#000000",
-          "ratio": 14.11,
-          "ratios": {
-            "base": 14.11,
-            "panel": 20.22,
-            "panelAlt": 16.89
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(89, 89, 89)",
-          "ratio": 4.71,
-          "ratios": {
-            "base": 4.71,
-            "panel": 6.75,
-            "panelAlt": 5.63
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(42, 121, 175)",
-          "ratio": 3.17,
-          "ratios": {
-            "base": 3.17,
-            "panel": 4.54,
-            "panelAlt": 3.79
-          },
           "minimum": 3,
           "pass": true
         }
@@ -1478,7 +1006,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f0f3ff",
@@ -1495,41 +1022,6 @@
         "accent": {
           "value": "#758df5",
           "ratio": 5.86,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f0f3ff",
-          "ratio": 12.05,
-          "ratios": {
-            "base": 12.05,
-            "panel": 15.86,
-            "panelAlt": 14.37
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#98a5c6",
-          "ratio": 5.42,
-          "ratios": {
-            "base": 5.42,
-            "panel": 7.13,
-            "panelAlt": 6.46
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#758df5",
-          "ratio": 4.37,
-          "ratios": {
-            "base": 4.37,
-            "panel": 5.76,
-            "panelAlt": 5.22
-          },
           "minimum": 3,
           "pass": true
         }
@@ -1579,7 +1071,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#173033",
@@ -1598,41 +1089,6 @@
           "ratio": 2.31,
           "minimum": 3,
           "pass": false
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#173033",
-          "ratio": 9.52,
-          "ratios": {
-            "base": 9.52,
-            "panel": 13.54,
-            "panelAlt": 11.81
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(68, 96, 94)",
-          "ratio": 4.66,
-          "ratios": {
-            "base": 4.66,
-            "panel": 6.63,
-            "panelAlt": 5.78
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(31, 130, 126)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 3.15,
-            "panel": 4.48,
-            "panelAlt": 3.91
-          },
-          "minimum": 3,
-          "pass": true
         }
       },
       "issues": [
@@ -1682,7 +1138,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#eff0ef",
@@ -1699,41 +1154,6 @@
         "accent": {
           "value": "#ca9055",
           "ratio": 6.08,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#eff0ef",
-          "ratio": 10.8,
-          "ratios": {
-            "base": 10.8,
-            "panel": 14.35,
-            "panelAlt": 12.17
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(159, 159, 158)",
-          "ratio": 4.66,
-          "ratios": {
-            "base": 4.66,
-            "panel": 6.19,
-            "panelAlt": 5.25
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#ca9055",
-          "ratio": 4.48,
-          "ratios": {
-            "base": 4.48,
-            "panel": 5.96,
-            "panelAlt": 5.05
-          },
           "minimum": 3,
           "pass": true
         }
@@ -1783,7 +1203,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#FFFFFF",
@@ -1800,41 +1219,6 @@
         "accent": {
           "value": "#FBEDF1",
           "ratio": 5.43,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#FFFFFF",
-          "ratio": 6.3,
-          "ratios": {
-            "base": 8.08,
-            "panel": 6.3,
-            "panelAlt": 6.48
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(222, 222, 222)",
-          "ratio": 4.68,
-          "ratios": {
-            "base": 6.01,
-            "panel": 4.68,
-            "panelAlt": 4.82
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#FBEDF1",
-          "ratio": 5.55,
-          "ratios": {
-            "base": 7.11,
-            "panel": 5.55,
-            "panelAlt": 5.71
-          },
           "minimum": 3,
           "pass": true
         }
@@ -1886,7 +1270,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#3D3A33",
@@ -1905,41 +1288,6 @@
           "ratio": 2.92,
           "minimum": 3,
           "pass": false
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#3D3A33",
-          "ratio": 7.31,
-          "ratios": {
-            "base": 7.31,
-            "panel": 10.31,
-            "panelAlt": 9.18
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(90, 87, 78)",
-          "ratio": 4.65,
-          "ratios": {
-            "base": 4.65,
-            "panel": 6.56,
-            "panelAlt": 5.85
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(168, 92, 68)",
-          "ratio": 3.16,
-          "ratios": {
-            "base": 3.16,
-            "panel": 4.46,
-            "panelAlt": 3.97
-          },
-          "minimum": 3,
-          "pass": true
         }
       },
       "issues": [
@@ -1990,7 +1338,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f0f0f0",
@@ -2007,41 +1354,6 @@
         "accent": {
           "value": "#a46151",
           "ratio": 3.54,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f0f0f0",
-          "ratio": 10.92,
-          "ratios": {
-            "base": 10.92,
-            "panel": 14.49,
-            "panelAlt": 12.39
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(159, 159, 159)",
-          "ratio": 4.7,
-          "ratios": {
-            "base": 4.7,
-            "panel": 6.24,
-            "panelAlt": 5.33
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(173, 113, 99)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 3.15,
-            "panel": 4.18,
-            "panelAlt": 3.58
-          },
           "minimum": 3,
           "pass": true
         }
@@ -2091,7 +1403,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#252a20",
@@ -2110,41 +1421,6 @@
           "ratio": 2.34,
           "minimum": 3,
           "pass": false
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#252a20",
-          "ratio": 9.79,
-          "ratios": {
-            "base": 9.79,
-            "panel": 12.13,
-            "panelAlt": 12.02
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(85, 91, 76)",
-          "ratio": 4.69,
-          "ratios": {
-            "base": 4.69,
-            "panel": 5.81,
-            "panelAlt": 5.76
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(108, 119, 88)",
-          "ratio": 3.17,
-          "ratios": {
-            "base": 3.17,
-            "panel": 3.93,
-            "panelAlt": 3.89
-          },
-          "minimum": 3,
-          "pass": true
         }
       },
       "issues": [
@@ -2195,7 +1471,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#24332e",
@@ -2214,41 +1489,6 @@
           "ratio": 1.96,
           "minimum": 3,
           "pass": false
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#24332e",
-          "ratio": 8.84,
-          "ratios": {
-            "base": 8.84,
-            "panel": 10.9,
-            "panelAlt": 10.81
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(77, 93, 87)",
-          "ratio": 4.65,
-          "ratios": {
-            "base": 4.65,
-            "panel": 5.73,
-            "panelAlt": 5.68
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(71, 126, 105)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 3.15,
-            "panel": 3.88,
-            "panelAlt": 3.85
-          },
-          "minimum": 3,
-          "pass": true
         }
       },
       "issues": [
@@ -2299,7 +1539,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#181818",
@@ -2316,41 +1555,6 @@
         "accent": {
           "value": "#9c8c55",
           "ratio": 3.14,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#181818",
-          "ratio": 6.48,
-          "ratios": {
-            "base": 6.48,
-            "panel": 15.67,
-            "panelAlt": 12.87
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(50, 50, 50)",
-          "ratio": 4.68,
-          "ratios": {
-            "base": 4.68,
-            "panel": 11.31,
-            "panelAlt": 9.29
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(84, 75, 46)",
-          "ratio": 3.17,
-          "ratios": {
-            "base": 3.17,
-            "panel": 7.65,
-            "panelAlt": 6.28
-          },
           "minimum": 3,
           "pass": true
         }
@@ -2400,7 +1604,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f0f0f0",
@@ -2417,41 +1620,6 @@
         "accent": {
           "value": "#996c4b",
           "ratio": 3.69,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f0f0f0",
-          "ratio": 10.92,
-          "ratios": {
-            "base": 10.92,
-            "panel": 14.49,
-            "panelAlt": 12.39
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(159, 159, 159)",
-          "ratio": 4.7,
-          "ratios": {
-            "base": 4.7,
-            "panel": 6.24,
-            "panelAlt": 5.33
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(161, 120, 89)",
-          "ratio": 3.17,
-          "ratios": {
-            "base": 3.17,
-            "panel": 4.2,
-            "panelAlt": 3.59
-          },
           "minimum": 3,
           "pass": true
         }
@@ -2501,7 +1669,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#24312d",
@@ -2518,41 +1685,6 @@
         "accent": {
           "value": "#63877e",
           "ratio": 3.78,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#24312d",
-          "ratio": 8.68,
-          "ratios": {
-            "base": 8.68,
-            "panel": 12.52,
-            "panelAlt": 10.5
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(78, 89, 85)",
-          "ratio": 4.67,
-          "ratios": {
-            "base": 4.67,
-            "panel": 6.74,
-            "panelAlt": 5.65
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(87, 119, 111)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 3.15,
-            "panel": 4.55,
-            "panelAlt": 3.81
-          },
           "minimum": 3,
           "pass": true
         }
@@ -2604,7 +1736,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f1efef",
@@ -2621,41 +1752,6 @@
         "accent": {
           "value": "#eb1241",
           "ratio": 3.78,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f1efef",
-          "ratio": 10.93,
-          "ratios": {
-            "base": 10.93,
-            "panel": 14.46,
-            "panelAlt": 12.56
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(159, 158, 158)",
-          "ratio": 4.69,
-          "ratios": {
-            "base": 4.69,
-            "panel": 6.2,
-            "panelAlt": 5.38
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(238, 52, 93)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 3.15,
-            "panel": 4.17,
-            "panelAlt": 3.62
-          },
           "minimum": 3,
           "pass": true
         }
@@ -2705,7 +1801,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#17323f",
@@ -2722,41 +1817,6 @@
         "accent": {
           "value": "#176b99",
           "ratio": 5.55,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#17323f",
-          "ratio": 7.61,
-          "ratios": {
-            "base": 7.61,
-            "panel": 12.28,
-            "panelAlt": 12.25
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgba(36, 69, 84, 0.74)",
-          "ratio": 5.79,
-          "ratios": {
-            "base": 5.79,
-            "panel": 9.36,
-            "panelAlt": 9.33
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#176b99",
-          "ratio": 3.31,
-          "ratios": {
-            "base": 3.31,
-            "panel": 5.34,
-            "panelAlt": 5.33
-          },
           "minimum": 3,
           "pass": true
         }
@@ -2806,7 +1866,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#eff0f1",
@@ -2823,41 +1882,6 @@
         "accent": {
           "value": "#1c75c3",
           "ratio": 3.52,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#eff0f1",
-          "ratio": 10.92,
-          "ratios": {
-            "base": 10.92,
-            "panel": 14.48,
-            "panelAlt": 12.41
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(158, 158, 159)",
-          "ratio": 4.66,
-          "ratios": {
-            "base": 4.66,
-            "panel": 6.17,
-            "panelAlt": 5.29
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(53, 133, 202)",
-          "ratio": 3.18,
-          "ratios": {
-            "base": 3.18,
-            "panel": 4.22,
-            "panelAlt": 3.61
-          },
           "minimum": 3,
           "pass": true
         }
@@ -2907,7 +1931,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f5efe5",
@@ -2924,41 +1947,6 @@
         "accent": {
           "value": "#e64835",
           "ratio": 4.77,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f5efe5",
-          "ratio": 12.42,
-          "ratios": {
-            "base": 12.42,
-            "panel": 16.11,
-            "panelAlt": 14.55
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#b9aea1",
-          "ratio": 6.52,
-          "ratios": {
-            "base": 6.52,
-            "panel": 8.45,
-            "panelAlt": 7.63
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#e64835",
-          "ratio": 3.61,
-          "ratios": {
-            "base": 3.61,
-            "panel": 4.69,
-            "panelAlt": 4.23
-          },
           "minimum": 3,
           "pass": true
         }
@@ -3008,7 +1996,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#1c1c1c",
@@ -3025,41 +2012,6 @@
         "accent": {
           "value": "#858585",
           "ratio": 3.66,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#1c1c1c",
-          "ratio": 11.45,
-          "ratios": {
-            "base": 11.45,
-            "panel": 16.41,
-            "panelAlt": 13.71
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(89, 89, 89)",
-          "ratio": 4.71,
-          "ratios": {
-            "base": 4.71,
-            "panel": 6.75,
-            "panelAlt": 5.63
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(115, 115, 115)",
-          "ratio": 3.19,
-          "ratios": {
-            "base": 3.19,
-            "panel": 4.57,
-            "panelAlt": 3.81
-          },
           "minimum": 3,
           "pass": true
         }
@@ -3109,7 +2061,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f1f0ee",
@@ -3126,41 +2077,6 @@
         "accent": {
           "value": "#ea8e12",
           "ratio": 6.69,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f1f0ee",
-          "ratio": 10.88,
-          "ratios": {
-            "base": 10.88,
-            "panel": 14.42,
-            "panelAlt": 12.3
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(160, 159, 157)",
-          "ratio": 4.69,
-          "ratios": {
-            "base": 4.69,
-            "panel": 6.21,
-            "panelAlt": 5.3
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#ea8e12",
-          "ratio": 4.94,
-          "ratios": {
-            "base": 4.94,
-            "panel": 6.55,
-            "panelAlt": 5.59
-          },
           "minimum": 3,
           "pass": true
         }
@@ -3210,7 +2126,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#eff0f1",
@@ -3227,41 +2142,6 @@
         "accent": {
           "value": "#D39A3D",
           "ratio": 6.66,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#eff0f1",
-          "ratio": 10.78,
-          "ratios": {
-            "base": 10.78,
-            "panel": 14.19,
-            "panelAlt": 12.29
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(159, 160, 160)",
-          "ratio": 4.69,
-          "ratios": {
-            "base": 4.69,
-            "panel": 6.18,
-            "panelAlt": 5.35
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#D39A3D",
-          "ratio": 4.95,
-          "ratios": {
-            "base": 4.95,
-            "panel": 6.52,
-            "panelAlt": 5.65
-          },
           "minimum": 3,
           "pass": true
         }
@@ -3311,7 +2191,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#F0F0EF",
@@ -3328,41 +2207,6 @@
         "accent": {
           "value": "#BE937B",
           "ratio": 3.46,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#F0F0EF",
-          "ratio": 6.61,
-          "ratios": {
-            "base": 6.61,
-            "panel": 8.18,
-            "panelAlt": 9.1
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(204, 204, 204)",
-          "ratio": 4.69,
-          "ratios": {
-            "base": 4.69,
-            "panel": 5.81,
-            "panelAlt": 6.46
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(198, 160, 138)",
-          "ratio": 3.16,
-          "ratios": {
-            "base": 3.16,
-            "panel": 3.91,
-            "panelAlt": 4.35
-          },
           "minimum": 3,
           "pass": true
         }
@@ -3414,7 +2258,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#1c1b1d",
@@ -3431,41 +2274,6 @@
         "accent": {
           "value": "#666bf9",
           "ratio": 3.44,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#1c1b1d",
-          "ratio": 9.29,
-          "ratios": {
-            "base": 9.29,
-            "panel": 13.73,
-            "panelAlt": 13.26
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#474347",
-          "ratio": 5.26,
-          "ratios": {
-            "base": 5.26,
-            "panel": 7.77,
-            "panelAlt": 7.51
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(83, 87, 204)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 3.15,
-            "panel": 4.66,
-            "panelAlt": 4.5
-          },
           "minimum": 3,
           "pass": true
         }
@@ -3515,7 +2323,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f0ece7",
@@ -3532,41 +2339,6 @@
         "accent": {
           "value": "#d54b46",
           "ratio": 4.51,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f0ece7",
-          "ratio": 12.14,
-          "ratios": {
-            "base": 12.14,
-            "panel": 16.07,
-            "panelAlt": 14.67
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#aaa5a1",
-          "ratio": 5.85,
-          "ratios": {
-            "base": 5.85,
-            "panel": 7.75,
-            "panelAlt": 7.07
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#d54b46",
-          "ratio": 3.35,
-          "ratios": {
-            "base": 3.35,
-            "panel": 4.43,
-            "panelAlt": 4.04
-          },
           "minimum": 3,
           "pass": true
         }
@@ -3616,7 +2388,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f2efeb",
@@ -3633,41 +2404,6 @@
         "accent": {
           "value": "#b9825d",
           "ratio": 5.39,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f2efeb",
-          "ratio": 10.81,
-          "ratios": {
-            "base": 10.81,
-            "panel": 15.05,
-            "panelAlt": 14.1
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#aaa29b",
-          "ratio": 4.93,
-          "ratios": {
-            "base": 4.93,
-            "panel": 6.86,
-            "panelAlt": 6.43
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#b9825d",
-          "ratio": 3.79,
-          "ratios": {
-            "base": 3.79,
-            "panel": 5.27,
-            "panelAlt": 4.94
-          },
           "minimum": 3,
           "pass": true
         }
@@ -3717,7 +2453,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#eff0ef",
@@ -3734,41 +2469,6 @@
         "accent": {
           "value": "#58ad73",
           "ratio": 6.1,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#eff0ef",
-          "ratio": 10.83,
-          "ratios": {
-            "base": 10.83,
-            "panel": 14.37,
-            "panelAlt": 12.21
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(158, 159, 158)",
-          "ratio": 4.66,
-          "ratios": {
-            "base": 4.66,
-            "panel": 6.18,
-            "panelAlt": 5.25
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#58ad73",
-          "ratio": 4.5,
-          "ratios": {
-            "base": 4.5,
-            "panel": 5.97,
-            "panelAlt": 5.07
-          },
           "minimum": 3,
           "pass": true
         }
@@ -3818,7 +2518,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#1e1e1e",
@@ -3835,41 +2534,6 @@
         "accent": {
           "value": "#9C8C55",
           "ratio": 3.14,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#1e1e1e",
-          "ratio": 6.09,
-          "ratios": {
-            "base": 6.09,
-            "panel": 14.71,
-            "panelAlt": 12.08
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(50, 50, 50)",
-          "ratio": 4.68,
-          "ratios": {
-            "base": 4.68,
-            "panel": 11.31,
-            "panelAlt": 9.29
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(84, 75, 46)",
-          "ratio": 3.17,
-          "ratios": {
-            "base": 3.17,
-            "panel": 7.65,
-            "panelAlt": 6.28
-          },
           "minimum": 3,
           "pass": true
         }
@@ -3919,7 +2583,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#F2F7FF",
@@ -3936,41 +2599,6 @@
         "accent": {
           "value": "#6EA8FF",
           "ratio": 6.68,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#F2F7FF",
-          "ratio": 11.51,
-          "ratios": {
-            "base": 11.51,
-            "panel": 14.72,
-            "panelAlt": 15.76
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#91A8C4",
-          "ratio": 5.07,
-          "ratios": {
-            "base": 5.07,
-            "panel": 6.48,
-            "panelAlt": 6.94
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#6EA8FF",
-          "ratio": 5.13,
-          "ratios": {
-            "base": 5.13,
-            "panel": 6.56,
-            "panelAlt": 7.03
-          },
           "minimum": 3,
           "pass": true
         }
@@ -4020,7 +2648,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#eef1f1",
@@ -4037,41 +2664,6 @@
         "accent": {
           "value": "#417c87",
           "ratio": 3.01,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#eef1f1",
-          "ratio": 10.86,
-          "ratios": {
-            "base": 10.86,
-            "panel": 12.37,
-            "panelAlt": 12.26
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(158, 159, 160)",
-          "ratio": 4.65,
-          "ratios": {
-            "base": 4.65,
-            "panel": 5.3,
-            "panelAlt": 5.25
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(83, 137, 146)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 3.15,
-            "panel": 3.59,
-            "panelAlt": 3.56
-          },
           "minimum": 3,
           "pass": true
         }
@@ -4121,9 +2713,7 @@
       "importPass": false,
       "safeCssPass": false,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": false,
       "sourceReadability": null,
-      "normalizedReadability": null,
       "issues": [
         "import: Invalid theme in ZIP: DreamSkin ZIP must include a background image and non-empty theme.css"
       ]
@@ -4171,7 +2761,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#1F2A33",
@@ -4190,41 +2779,6 @@
           "ratio": 2.32,
           "minimum": 3,
           "pass": false
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#1F2A33",
-          "ratio": 9.58,
-          "ratios": {
-            "base": 9.58,
-            "panel": 13.49,
-            "panelAlt": 13.73
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(80, 89, 99)",
-          "ratio": 4.67,
-          "ratios": {
-            "base": 4.67,
-            "panel": 6.57,
-            "panelAlt": 6.69
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(65, 116, 176)",
-          "ratio": 3.17,
-          "ratios": {
-            "base": 3.17,
-            "panel": 4.46,
-            "panelAlt": 4.54
-          },
-          "minimum": 3,
-          "pass": true
         }
       },
       "issues": [
@@ -4275,7 +2829,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#403653",
@@ -4294,41 +2847,6 @@
           "ratio": 2.22,
           "minimum": 3,
           "pass": false
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#403653",
-          "ratio": 7.2,
-          "ratios": {
-            "base": 7.2,
-            "panel": 10.86,
-            "panelAlt": 9.83
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(90, 83, 104)",
-          "ratio": 4.69,
-          "ratios": {
-            "base": 4.69,
-            "panel": 7.08,
-            "panelAlt": 6.4
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(126, 100, 165)",
-          "ratio": 3.17,
-          "ratios": {
-            "base": 3.17,
-            "panel": 4.78,
-            "panelAlt": 4.32
-          },
-          "minimum": 3,
-          "pass": true
         }
       },
       "issues": [
@@ -4379,7 +2897,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f7f9ff",
@@ -4396,41 +2913,6 @@
         "accent": {
           "value": "#7ccbff",
           "ratio": 8.79,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f7f9ff",
-          "ratio": 11.3,
-          "ratios": {
-            "base": 11.3,
-            "panel": 14.53,
-            "panelAlt": 12.32
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#b8c2d9",
-          "ratio": 6.66,
-          "ratios": {
-            "base": 6.66,
-            "panel": 8.56,
-            "panelAlt": 7.26
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#7ccbff",
-          "ratio": 6.71,
-          "ratios": {
-            "base": 6.71,
-            "panel": 8.63,
-            "panelAlt": 7.32
-          },
           "minimum": 3,
           "pass": true
         }
@@ -4480,7 +2962,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#efeff0",
@@ -4497,41 +2978,6 @@
         "accent": {
           "value": "#3274ba",
           "ratio": 3.48,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#efeff0",
-          "ratio": 10.85,
-          "ratios": {
-            "base": 10.85,
-            "panel": 14.36,
-            "panelAlt": 12.42
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(158, 158, 159)",
-          "ratio": 4.66,
-          "ratios": {
-            "base": 4.66,
-            "panel": 6.16,
-            "panelAlt": 5.33
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(73, 131, 194)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 3.15,
-            "panel": 4.17,
-            "panelAlt": 3.61
-          },
           "minimum": 3,
           "pass": true
         }
@@ -4581,7 +3027,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#efeff0",
@@ -4598,41 +3043,6 @@
         "accent": {
           "value": "#7a65b3",
           "ratio": 3.48,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#efeff0",
-          "ratio": 10.82,
-          "ratios": {
-            "base": 10.82,
-            "panel": 14.36,
-            "panelAlt": 12.41
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(159, 159, 159)",
-          "ratio": 4.7,
-          "ratios": {
-            "base": 4.7,
-            "panel": 6.23,
-            "panelAlt": 5.39
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(136, 118, 187)",
-          "ratio": 3.17,
-          "ratios": {
-            "base": 3.17,
-            "panel": 4.21,
-            "panelAlt": 3.64
-          },
           "minimum": 3,
           "pass": true
         }
@@ -4682,7 +3092,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#fff7e0",
@@ -4699,41 +3108,6 @@
         "accent": {
           "value": "#ffd700",
           "ratio": 12.45,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#fff7e0",
-          "ratio": 12.84,
-          "ratios": {
-            "base": 12.84,
-            "panel": 16.08,
-            "panelAlt": 14.04
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgba(255, 247, 224, .62)",
-          "ratio": 12.84,
-          "ratios": {
-            "base": 12.84,
-            "panel": 16.08,
-            "panelAlt": 14.04
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#ffd700",
-          "ratio": 9.79,
-          "ratios": {
-            "base": 9.79,
-            "panel": 12.26,
-            "panelAlt": 10.7
-          },
           "minimum": 3,
           "pass": true
         }
@@ -4783,7 +3157,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#183d3d",
@@ -4802,41 +3175,6 @@
           "ratio": 2.33,
           "minimum": 3,
           "pass": false
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#183d3d",
-          "ratio": 7.69,
-          "ratios": {
-            "base": 7.69,
-            "panel": 10.88,
-            "panelAlt": 9.81
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(88, 88, 80)",
-          "ratio": 4.66,
-          "ratios": {
-            "base": 4.66,
-            "panel": 6.59,
-            "panelAlt": 5.95
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(72, 126, 43)",
-          "ratio": 3.18,
-          "ratios": {
-            "base": 3.18,
-            "panel": 4.49,
-            "panelAlt": 4.05
-          },
-          "minimum": 3,
-          "pass": true
         }
       },
       "issues": [
@@ -4887,7 +3225,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#EDF3EF",
@@ -4904,41 +3241,6 @@
         "accent": {
           "value": "#B8D8C0",
           "ratio": 11.38,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#EDF3EF",
-          "ratio": 11.44,
-          "ratios": {
-            "base": 11.44,
-            "panel": 15.29,
-            "panelAlt": 13.83
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#A7B4AE",
-          "ratio": 6,
-          "ratios": {
-            "base": 6,
-            "panel": 8.01,
-            "panelAlt": 7.25
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#B8D8C0",
-          "ratio": 8.35,
-          "ratios": {
-            "base": 8.35,
-            "panel": 11.15,
-            "panelAlt": 10.09
-          },
           "minimum": 3,
           "pass": true
         }
@@ -4988,7 +3290,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#F2FDFF",
@@ -5005,41 +3306,6 @@
         "accent": {
           "value": "#39E5E0",
           "ratio": 9.04,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#F2FDFF",
-          "ratio": 10.97,
-          "ratios": {
-            "base": 10.97,
-            "panel": 13.41,
-            "panelAlt": 11.15
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#A9D5E8",
-          "ratio": 7.24,
-          "ratios": {
-            "base": 7.24,
-            "panel": 8.85,
-            "panelAlt": 7.36
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#39E5E0",
-          "ratio": 7.28,
-          "ratios": {
-            "base": 7.28,
-            "panel": 8.9,
-            "panelAlt": 7.4
-          },
           "minimum": 3,
           "pass": true
         }
@@ -5089,7 +3355,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#ffffff",
@@ -5108,41 +3373,6 @@
           "ratio": 2.15,
           "minimum": 3,
           "pass": false
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#ffffff",
-          "ratio": 4.65,
-          "ratios": {
-            "base": 11.99,
-            "panel": 5.44,
-            "panelAlt": 4.65
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(255, 255, 255)",
-          "ratio": 4.65,
-          "ratios": {
-            "base": 11.99,
-            "panel": 5.44,
-            "panelAlt": 4.65
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(159, 221, 252)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 8.12,
-            "panel": 3.69,
-            "panelAlt": 3.15
-          },
-          "minimum": 3,
-          "pass": true
         }
       },
       "issues": [
@@ -5193,7 +3423,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#1e1a1a",
@@ -5210,41 +3439,6 @@
         "accent": {
           "value": "#e35655",
           "ratio": 3.63,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#1e1a1a",
-          "ratio": 11.6,
-          "ratios": {
-            "base": 11.6,
-            "panel": 16.61,
-            "panelAlt": 13.83
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(92, 89, 89)",
-          "ratio": 4.66,
-          "ratios": {
-            "base": 4.66,
-            "panel": 6.68,
-            "panelAlt": 5.56
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(197, 75, 74)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 3.15,
-            "panel": 4.52,
-            "panelAlt": 3.76
-          },
           "minimum": 3,
           "pass": true
         }
@@ -5294,7 +3488,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#1a1b1e",
@@ -5311,41 +3504,6 @@
         "accent": {
           "value": "#4a78c8",
           "ratio": 4.33,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#1a1b1e",
-          "ratio": 11.55,
-          "ratios": {
-            "base": 11.55,
-            "panel": 16.58,
-            "panelAlt": 13.84
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(89, 89, 91)",
-          "ratio": 4.69,
-          "ratios": {
-            "base": 4.69,
-            "panel": 6.73,
-            "panelAlt": 5.62
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(71, 115, 191)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 3.15,
-            "panel": 4.52,
-            "panelAlt": 3.77
-          },
           "minimum": 3,
           "pass": true
         }
@@ -5395,7 +3553,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#edf4f7",
@@ -5412,41 +3569,6 @@
         "accent": {
           "value": "#4f91b8",
           "ratio": 4.99,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#edf4f7",
-          "ratio": 12.11,
-          "ratios": {
-            "base": 12.11,
-            "panel": 15.27,
-            "panelAlt": 13.29
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#91a6b8",
-          "ratio": 5.35,
-          "ratios": {
-            "base": 5.35,
-            "panel": 6.75,
-            "panelAlt": 5.88
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#4f91b8",
-          "ratio": 3.89,
-          "ratios": {
-            "base": 3.89,
-            "panel": 4.91,
-            "panelAlt": 4.28
-          },
           "minimum": 3,
           "pass": true
         }
@@ -5496,7 +3618,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f0f0ef",
@@ -5513,41 +3634,6 @@
         "accent": {
           "value": "#b36667",
           "ratio": 4.01,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f0f0ef",
-          "ratio": 10.91,
-          "ratios": {
-            "base": 10.91,
-            "panel": 14.45,
-            "panelAlt": 12.35
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(159, 159, 159)",
-          "ratio": 4.7,
-          "ratios": {
-            "base": 4.7,
-            "panel": 6.22,
-            "panelAlt": 5.32
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(182, 108, 108)",
-          "ratio": 3.17,
-          "ratios": {
-            "base": 3.17,
-            "panel": 4.2,
-            "panelAlt": 3.59
-          },
           "minimum": 3,
           "pass": true
         }
@@ -5597,9 +3683,7 @@
       "importPass": false,
       "safeCssPass": false,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": false,
       "sourceReadability": null,
-      "normalizedReadability": null,
       "issues": [
         "import: Invalid theme in ZIP: DreamSkin ZIP must include a background image and non-empty theme.css"
       ]
@@ -5647,7 +3731,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#edf7ff",
@@ -5664,41 +3747,6 @@
         "accent": {
           "value": "#28c7f7",
           "ratio": 8.84,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#edf7ff",
-          "ratio": 11.66,
-          "ratios": {
-            "base": 11.66,
-            "panel": 15.81,
-            "panelAlt": 13.96
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#91a8c1",
-          "ratio": 5.17,
-          "ratios": {
-            "base": 5.17,
-            "panel": 7.01,
-            "panelAlt": 6.19
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#28c7f7",
-          "ratio": 6.39,
-          "ratios": {
-            "base": 6.39,
-            "panel": 8.66,
-            "panelAlt": 7.65
-          },
           "minimum": 3,
           "pass": true
         }
@@ -5748,7 +3796,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#1e1b1a",
@@ -5767,41 +3814,6 @@
           "ratio": 2.18,
           "minimum": 3,
           "pass": false
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#1e1b1a",
-          "ratio": 10.35,
-          "ratios": {
-            "base": 11.89,
-            "panel": 10.35,
-            "panelAlt": 11.72
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(84, 82, 82)",
-          "ratio": 4.69,
-          "ratios": {
-            "base": 5.39,
-            "panel": 4.69,
-            "panelAlt": 5.31
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(182, 75, 25)",
-          "ratio": 3.17,
-          "ratios": {
-            "base": 3.64,
-            "panel": 3.17,
-            "panelAlt": 3.59
-          },
-          "minimum": 3,
-          "pass": true
         }
       },
       "issues": [
@@ -5852,7 +3864,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#eff0f0",
@@ -5869,41 +3880,6 @@
         "accent": {
           "value": "#5493d6",
           "ratio": 5.24,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#eff0f0",
-          "ratio": 10.92,
-          "ratios": {
-            "base": 10.92,
-            "panel": 14.48,
-            "panelAlt": 12.41
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(158, 158, 159)",
-          "ratio": 4.66,
-          "ratios": {
-            "base": 4.66,
-            "panel": 6.18,
-            "panelAlt": 5.29
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#5493d6",
-          "ratio": 3.87,
-          "ratios": {
-            "base": 3.87,
-            "panel": 5.14,
-            "panelAlt": 4.4
-          },
           "minimum": 3,
           "pass": true
         }
@@ -5953,7 +3929,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#eff0f0",
@@ -5970,41 +3945,6 @@
         "accent": {
           "value": "#3573c6",
           "ratio": 3.54,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#eff0f0",
-          "ratio": 10.9,
-          "ratios": {
-            "base": 10.9,
-            "panel": 14.45,
-            "panelAlt": 12.39
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(159, 159, 159)",
-          "ratio": 4.7,
-          "ratios": {
-            "base": 4.7,
-            "panel": 6.23,
-            "panelAlt": 5.34
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(74, 130, 204)",
-          "ratio": 3.17,
-          "ratios": {
-            "base": 3.17,
-            "panel": 4.21,
-            "panelAlt": 3.61
-          },
           "minimum": 3,
           "pass": true
         }
@@ -6054,7 +3994,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#FFF9F5",
@@ -6071,41 +4010,6 @@
         "accent": {
           "value": "#FFB06A",
           "ratio": 5.75,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#FFF9F5",
-          "ratio": 7.43,
-          "ratios": {
-            "base": 7.43,
-            "panel": 9.7,
-            "panelAlt": 7.63
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#E5D0D7",
-          "ratio": 5.3,
-          "ratios": {
-            "base": 5.3,
-            "panel": 6.91,
-            "panelAlt": 5.43
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#FFB06A",
-          "ratio": 4.31,
-          "ratios": {
-            "base": 4.31,
-            "panel": 5.63,
-            "panelAlt": 4.42
-          },
           "minimum": 3,
           "pass": true
         }
@@ -6155,7 +4059,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#EDF3EF",
@@ -6172,41 +4075,6 @@
         "accent": {
           "value": "#B8D8C0",
           "ratio": 11.38,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#EDF3EF",
-          "ratio": 11.44,
-          "ratios": {
-            "base": 11.44,
-            "panel": 15.29,
-            "panelAlt": 13.83
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#A7B4AE",
-          "ratio": 6,
-          "ratios": {
-            "base": 6,
-            "panel": 8.01,
-            "panelAlt": 7.25
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#B8D8C0",
-          "ratio": 8.35,
-          "ratios": {
-            "base": 8.35,
-            "panel": 11.15,
-            "panelAlt": 10.09
-          },
           "minimum": 3,
           "pass": true
         }
@@ -6256,7 +4124,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f0efef",
@@ -6273,41 +4140,6 @@
         "accent": {
           "value": "#ee2421",
           "ratio": 3.93,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f0efef",
-          "ratio": 10.91,
-          "ratios": {
-            "base": 10.91,
-            "panel": 14.36,
-            "panelAlt": 12.4
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(159, 158, 158)",
-          "ratio": 4.69,
-          "ratios": {
-            "base": 4.69,
-            "panel": 6.17,
-            "panelAlt": 5.32
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(240, 55, 53)",
-          "ratio": 3.16,
-          "ratios": {
-            "base": 3.16,
-            "panel": 4.16,
-            "panelAlt": 3.59
-          },
           "minimum": 3,
           "pass": true
         }
@@ -6357,7 +4189,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#FFFFFF",
@@ -6374,41 +4205,6 @@
         "accent": {
           "value": "#9ADFFF",
           "ratio": 11.13,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#FFFFFF",
-          "ratio": 10.52,
-          "ratios": {
-            "base": 10.52,
-            "panel": 15.8,
-            "panelAlt": 12.49
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#E2ECF7",
-          "ratio": 8.81,
-          "ratios": {
-            "base": 8.81,
-            "panel": 13.22,
-            "panelAlt": 10.45
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#9ADFFF",
-          "ratio": 7.2,
-          "ratios": {
-            "base": 7.2,
-            "panel": 10.81,
-            "panelAlt": 8.55
-          },
           "minimum": 3,
           "pass": true
         }
@@ -6458,7 +4254,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f0f0ef",
@@ -6475,41 +4270,6 @@
         "accent": {
           "value": "#b58b6a",
           "ratio": 4.4,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f0f0ef",
-          "ratio": 9.55,
-          "ratios": {
-            "base": 9.55,
-            "panel": 11.62,
-            "panelAlt": 11.18
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(170, 170, 170)",
-          "ratio": 4.69,
-          "ratios": {
-            "base": 4.69,
-            "panel": 5.7,
-            "panelAlt": 5.49
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#b58b6a",
-          "ratio": 3.56,
-          "ratios": {
-            "base": 3.56,
-            "panel": 4.33,
-            "panelAlt": 4.17
-          },
           "minimum": 3,
           "pass": true
         }
@@ -6561,7 +4321,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f4f3f6",
@@ -6578,41 +4337,6 @@
         "accent": {
           "value": "#e4a15a",
           "ratio": 7.71,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f4f3f6",
-          "ratio": 11.46,
-          "ratios": {
-            "base": 11.46,
-            "panel": 15.04,
-            "panelAlt": 12.75
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#a9afbd",
-          "ratio": 5.76,
-          "ratios": {
-            "base": 5.76,
-            "panel": 7.57,
-            "panelAlt": 6.41
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#e4a15a",
-          "ratio": 5.76,
-          "ratios": {
-            "base": 5.76,
-            "panel": 7.56,
-            "panelAlt": 6.41
-          },
           "minimum": 3,
           "pass": true
         }
@@ -6662,7 +4386,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#eff0f0",
@@ -6679,41 +4402,6 @@
         "accent": {
           "value": "#f0903d",
           "ratio": 7.03,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#eff0f0",
-          "ratio": 10.89,
-          "ratios": {
-            "base": 10.89,
-            "panel": 14.45,
-            "panelAlt": 12.39
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(159, 159, 159)",
-          "ratio": 4.7,
-          "ratios": {
-            "base": 4.7,
-            "panel": 6.23,
-            "panelAlt": 5.34
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#f0903d",
-          "ratio": 5.19,
-          "ratios": {
-            "base": 5.19,
-            "panel": 6.88,
-            "panelAlt": 5.9
-          },
           "minimum": 3,
           "pass": true
         }
@@ -6763,7 +4451,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#ba9545",
@@ -6780,41 +4467,6 @@
         "accent": {
           "value": "#d99f20",
           "ratio": 7.1,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "rgb(189, 154, 77)",
-          "ratio": 4.68,
-          "ratios": {
-            "base": 4.68,
-            "panel": 6.15,
-            "panelAlt": 5.3
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(175, 155, 137)",
-          "ratio": 4.66,
-          "ratios": {
-            "base": 4.66,
-            "panel": 6.13,
-            "panelAlt": 5.28
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#d99f20",
-          "ratio": 5.29,
-          "ratios": {
-            "base": 5.29,
-            "panel": 6.95,
-            "panelAlt": 5.99
-          },
           "minimum": 3,
           "pass": true
         }
@@ -6866,7 +4518,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#ffffff",
@@ -6883,41 +4534,6 @@
         "accent": {
           "value": "#91a0ba",
           "ratio": 4.23,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#ffffff",
-          "ratio": 9.32,
-          "ratios": {
-            "base": 9.32,
-            "panel": 11.03,
-            "panelAlt": 19.98
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(166, 186, 205)",
-          "ratio": 4.67,
-          "ratios": {
-            "base": 4.67,
-            "panel": 5.53,
-            "panelAlt": 10.02
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#91a0ba",
-          "ratio": 3.52,
-          "ratios": {
-            "base": 3.52,
-            "panel": 4.17,
-            "panelAlt": 7.56
-          },
           "minimum": 3,
           "pass": true
         }
@@ -6967,7 +4583,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#F4F8F1",
@@ -6984,41 +4599,6 @@
         "accent": {
           "value": "#A8E06F",
           "ratio": 8.1,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#F4F8F1",
-          "ratio": 8.51,
-          "ratios": {
-            "base": 8.51,
-            "panel": 11.4,
-            "panelAlt": 9.08
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#B5C5B8",
-          "ratio": 5.07,
-          "ratios": {
-            "base": 5.07,
-            "panel": 6.79,
-            "panelAlt": 5.41
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#A8E06F",
-          "ratio": 5.91,
-          "ratios": {
-            "base": 5.91,
-            "panel": 7.91,
-            "panelAlt": 6.3
-          },
           "minimum": 3,
           "pass": true
         }
@@ -7068,7 +4648,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#F8FBFD",
@@ -7085,41 +4664,6 @@
         "accent": {
           "value": "#F5B66E",
           "ratio": 4.33,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#F8FBFD",
-          "ratio": 5.74,
-          "ratios": {
-            "base": 6.16,
-            "panel": 7.31,
-            "panelAlt": 5.74
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#DEE8ED",
-          "ratio": 4.79,
-          "ratios": {
-            "base": 5.14,
-            "panel": 6.1,
-            "panelAlt": 4.79
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#F5B66E",
-          "ratio": 3.35,
-          "ratios": {
-            "base": 3.6,
-            "panel": 4.27,
-            "panelAlt": 3.35
-          },
           "minimum": 3,
           "pass": true
         }
@@ -7169,7 +4713,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#fbf6e8",
@@ -7186,41 +4729,6 @@
         "accent": {
           "value": "#d8aa54",
           "ratio": 7.4,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#fbf6e8",
-          "ratio": 11.24,
-          "ratios": {
-            "base": 11.24,
-            "panel": 14.41,
-            "panelAlt": 11.75
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#bbb19c",
-          "ratio": 5.71,
-          "ratios": {
-            "base": 5.71,
-            "panel": 7.32,
-            "panelAlt": 5.97
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#d8aa54",
-          "ratio": 5.66,
-          "ratios": {
-            "base": 5.66,
-            "panel": 7.26,
-            "panelAlt": 5.92
-          },
           "minimum": 3,
           "pass": true
         }
@@ -7270,7 +4778,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#ffffff",
@@ -7287,41 +4794,6 @@
         "accent": {
           "value": "#1a8ee6",
           "ratio": 6.06,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#ffffff",
-          "ratio": 12.49,
-          "ratios": {
-            "base": 12.49,
-            "panel": 20.48,
-            "panelAlt": 20.24
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#ffffff",
-          "ratio": 12.49,
-          "ratios": {
-            "base": 12.49,
-            "panel": 20.48,
-            "panelAlt": 20.24
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#1a8ee6",
-          "ratio": 3.6,
-          "ratios": {
-            "base": 3.6,
-            "panel": 5.91,
-            "panelAlt": 5.84
-          },
           "minimum": 3,
           "pass": true
         }
@@ -7371,7 +4843,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#353361",
@@ -7388,41 +4859,6 @@
         "accent": {
           "value": "#3b44c4",
           "ratio": 5.43,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "rgb(41, 39, 75)",
-          "ratio": 4.65,
-          "ratios": {
-            "base": 4.65,
-            "panel": 9.7,
-            "panelAlt": 9.54
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(43, 43, 43)",
-          "ratio": 4.66,
-          "ratios": {
-            "base": 4.66,
-            "panel": 9.72,
-            "panelAlt": 9.56
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(48, 55, 160)",
-          "ratio": 3.17,
-          "ratios": {
-            "base": 3.17,
-            "panel": 6.61,
-            "panelAlt": 6.5
-          },
           "minimum": 3,
           "pass": true
         }
@@ -7474,7 +4910,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#F5F0E8",
@@ -7491,41 +4926,6 @@
         "accent": {
           "value": "#FF9A5C",
           "ratio": 8.43,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#F5F0E8",
-          "ratio": 11.38,
-          "ratios": {
-            "base": 11.38,
-            "panel": 15.26,
-            "panelAlt": 13.5
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#A8B1C6",
-          "ratio": 6.01,
-          "ratios": {
-            "base": 6.01,
-            "panel": 8.05,
-            "panelAlt": 7.12
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#FF9A5C",
-          "ratio": 6.17,
-          "ratios": {
-            "base": 6.17,
-            "panel": 8.27,
-            "panelAlt": 7.31
-          },
           "minimum": 3,
           "pass": true
         }
@@ -7575,7 +4975,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f0f0f0",
@@ -7592,41 +4991,6 @@
         "accent": {
           "value": "#737373",
           "ratio": 4.43,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f0f0f0",
-          "ratio": 6.54,
-          "ratios": {
-            "base": 6.54,
-            "panel": 17.7,
-            "panelAlt": 11.72
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(205, 205, 205)",
-          "ratio": 4.69,
-          "ratios": {
-            "base": 4.69,
-            "panel": 12.69,
-            "panelAlt": 8.4
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(169, 169, 169)",
-          "ratio": 3.17,
-          "ratios": {
-            "base": 3.17,
-            "panel": 8.58,
-            "panelAlt": 5.68
-          },
           "minimum": 3,
           "pass": true
         }
@@ -7676,7 +5040,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#eaf0f5",
@@ -7693,41 +5056,6 @@
         "accent": {
           "value": "#4a90c4",
           "ratio": 5.07,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#eaf0f5",
-          "ratio": 11.76,
-          "ratios": {
-            "base": 11.76,
-            "panel": 15,
-            "panelAlt": 12.9
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#8fa3b5",
-          "ratio": 5.19,
-          "ratios": {
-            "base": 5.19,
-            "panel": 6.63,
-            "panelAlt": 5.7
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#4a90c4",
-          "ratio": 3.91,
-          "ratios": {
-            "base": 3.91,
-            "panel": 4.99,
-            "panelAlt": 4.29
-          },
           "minimum": 3,
           "pass": true
         }
@@ -7777,7 +5105,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#1e1d1a",
@@ -7794,41 +5121,6 @@
         "accent": {
           "value": "#b47b0f",
           "ratio": 3.6,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#1e1d1a",
-          "ratio": 11.34,
-          "ratios": {
-            "base": 11.34,
-            "panel": 16.23,
-            "panelAlt": 13.68
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(89, 89, 88)",
-          "ratio": 4.72,
-          "ratios": {
-            "base": 4.72,
-            "panel": 6.75,
-            "panelAlt": 5.69
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(156, 106, 13)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 3.15,
-            "panel": 4.51,
-            "panelAlt": 3.8
-          },
           "minimum": 3,
           "pass": true
         }
@@ -7878,7 +5170,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#29342b",
@@ -7897,41 +5188,6 @@
           "ratio": 2.05,
           "minimum": 3,
           "pass": false
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#29342b",
-          "ratio": 8.7,
-          "ratios": {
-            "base": 8.7,
-            "panel": 10.82,
-            "panelAlt": 10.73
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(80, 93, 81)",
-          "ratio": 4.66,
-          "ratios": {
-            "base": 4.66,
-            "panel": 5.8,
-            "panelAlt": 5.74
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(71, 127, 83)",
-          "ratio": 3.18,
-          "ratios": {
-            "base": 3.18,
-            "panel": 3.96,
-            "panelAlt": 3.92
-          },
-          "minimum": 3,
-          "pass": true
         }
       },
       "issues": [
@@ -7982,7 +5238,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#1c1c1c",
@@ -7999,41 +5254,6 @@
         "accent": {
           "value": "#af7a5d",
           "ratio": 3.61,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#1c1c1c",
-          "ratio": 11.45,
-          "ratios": {
-            "base": 11.45,
-            "panel": 16.41,
-            "panelAlt": 13.73
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(89, 89, 89)",
-          "ratio": 4.71,
-          "ratios": {
-            "base": 4.71,
-            "panel": 6.75,
-            "panelAlt": 5.64
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(151, 105, 80)",
-          "ratio": 3.17,
-          "ratios": {
-            "base": 3.17,
-            "panel": 4.54,
-            "panelAlt": 3.8
-          },
           "minimum": 3,
           "pass": true
         }
@@ -8083,7 +5303,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f5f1f6",
@@ -8100,41 +5319,6 @@
         "accent": {
           "value": "#b06fa8",
           "ratio": 4.17,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f5f1f6",
-          "ratio": 10.33,
-          "ratios": {
-            "base": 10.33,
-            "panel": 13.5,
-            "panelAlt": 11.08
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#a7a6b8",
-          "ratio": 4.83,
-          "ratios": {
-            "base": 4.83,
-            "panel": 6.31,
-            "panelAlt": 5.18
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(176, 112, 169)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 3.15,
-            "panel": 4.12,
-            "panelAlt": 3.38
-          },
           "minimum": 3,
           "pass": true
         }
@@ -8184,7 +5368,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#FAFAFF",
@@ -8201,41 +5384,6 @@
         "accent": {
           "value": "#76C0FF",
           "ratio": 7.98,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#FAFAFF",
-          "ratio": 11.42,
-          "ratios": {
-            "base": 11.42,
-            "panel": 14.69,
-            "panelAlt": 11.54
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#fcfcfc",
-          "ratio": 11.58,
-          "ratios": {
-            "base": 11.58,
-            "panel": 14.9,
-            "panelAlt": 11.71
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#76C0FF",
-          "ratio": 6.08,
-          "ratios": {
-            "base": 6.08,
-            "panel": 7.83,
-            "panelAlt": 6.15
-          },
           "minimum": 3,
           "pass": true
         }
@@ -8285,7 +5433,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f5f7ff",
@@ -8302,41 +5449,6 @@
         "accent": {
           "value": "#78aef8",
           "ratio": 7.97,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f5f7ff",
-          "ratio": 12.5,
-          "ratios": {
-            "base": 12.5,
-            "panel": 16.66,
-            "panelAlt": 15.13
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#aab1c3",
-          "ratio": 6.23,
-          "ratios": {
-            "base": 6.23,
-            "panel": 8.31,
-            "panelAlt": 7.54
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#78aef8",
-          "ratio": 5.86,
-          "ratios": {
-            "base": 5.86,
-            "panel": 7.82,
-            "panelAlt": 7.1
-          },
           "minimum": 3,
           "pass": true
         }
@@ -8386,7 +5498,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#F4F6FA",
@@ -8403,41 +5514,6 @@
         "accent": {
           "value": "#C61F35",
           "ratio": 3.21,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#F4F6FA",
-          "ratio": 13.31,
-          "ratios": {
-            "base": 13.31,
-            "panel": 16.84,
-            "panelAlt": 16.3
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#AEB8C6",
-          "ratio": 7.18,
-          "ratios": {
-            "base": 7.18,
-            "panel": 9.09,
-            "panelAlt": 8.79
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(207, 68, 86)",
-          "ratio": 3.16,
-          "ratios": {
-            "base": 3.16,
-            "panel": 4,
-            "panelAlt": 3.88
-          },
           "minimum": 3,
           "pass": true
         }
@@ -8487,7 +5563,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#0c0c0d",
@@ -8504,41 +5579,6 @@
         "accent": {
           "value": "#082f68",
           "ratio": 6.2,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#0c0c0d",
-          "ratio": 4.65,
-          "ratios": {
-            "base": 4.65,
-            "panel": 8.87,
-            "panelAlt": 5.58
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(12, 12, 13)",
-          "ratio": 4.65,
-          "ratios": {
-            "base": 4.65,
-            "panel": 8.87,
-            "panelAlt": 5.58
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(8, 45, 101)",
-          "ratio": 3.18,
-          "ratios": {
-            "base": 3.18,
-            "panel": 6.05,
-            "panelAlt": 3.81
-          },
           "minimum": 3,
           "pass": true
         }
@@ -8590,7 +5630,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#39170f",
@@ -8607,41 +5646,6 @@
         "accent": {
           "value": "#d43d2f",
           "ratio": 3.93,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#39170f",
-          "ratio": 10.98,
-          "ratios": {
-            "base": 10.98,
-            "panel": 13.36,
-            "panelAlt": 13.25
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(115, 84, 62)",
-          "ratio": 4.67,
-          "ratios": {
-            "base": 4.67,
-            "panel": 5.68,
-            "panelAlt": 5.63
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#d43d2f",
-          "ratio": 3.17,
-          "ratios": {
-            "base": 3.17,
-            "panel": 3.86,
-            "panelAlt": 3.83
-          },
           "minimum": 3,
           "pass": true
         }
@@ -8691,7 +5695,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f1f6ec",
@@ -8708,41 +5711,6 @@
         "accent": {
           "value": "#4e9b7a",
           "ratio": 3.96,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f1f6ec",
-          "ratio": 8.97,
-          "ratios": {
-            "base": 9.57,
-            "panel": 11.83,
-            "panelAlt": 8.97
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#a6b9aa",
-          "ratio": 4.75,
-          "ratios": {
-            "base": 5.07,
-            "panel": 6.27,
-            "panelAlt": 4.75
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(86, 160, 128)",
-          "ratio": 3.16,
-          "ratios": {
-            "base": 3.37,
-            "panel": 4.16,
-            "panelAlt": 3.16
-          },
           "minimum": 3,
           "pass": true
         }
@@ -8792,9 +5760,7 @@
       "importPass": false,
       "safeCssPass": false,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": false,
       "sourceReadability": null,
-      "normalizedReadability": null,
       "issues": [
         "import: Invalid theme in ZIP: DreamSkin ZIP must include a background image and non-empty theme.css"
       ]
@@ -8842,7 +5808,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#FFF3E4",
@@ -8859,41 +5824,6 @@
         "accent": {
           "value": "#FFB35C",
           "ratio": 6.99,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#FFF3E4",
-          "ratio": 8.37,
-          "ratios": {
-            "base": 8.37,
-            "panel": 11.06,
-            "panelAlt": 9.9
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#D3B7A5",
-          "ratio": 4.84,
-          "ratios": {
-            "base": 4.84,
-            "panel": 6.39,
-            "panelAlt": 5.72
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#FFB35C",
-          "ratio": 5.17,
-          "ratios": {
-            "base": 5.17,
-            "panel": 6.83,
-            "panelAlt": 6.12
-          },
           "minimum": 3,
           "pass": true
         }
@@ -8943,9 +5873,7 @@
       "importPass": false,
       "safeCssPass": false,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": false,
       "sourceReadability": null,
-      "normalizedReadability": null,
       "issues": [
         "import: Invalid theme in ZIP: DreamSkin ZIP must include a background image and non-empty theme.css"
       ]
@@ -8993,7 +5921,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#eef0f1",
@@ -9010,41 +5937,6 @@
         "accent": {
           "value": "#2579b1",
           "ratio": 3.53,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#eef0f1",
-          "ratio": 11.56,
-          "ratios": {
-            "base": 11.56,
-            "panel": 14.33,
-            "panelAlt": 13.54
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(152, 154, 155)",
-          "ratio": 4.67,
-          "ratios": {
-            "base": 4.67,
-            "panel": 5.8,
-            "panelAlt": 5.48
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(51, 130, 182)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 3.15,
-            "panel": 3.91,
-            "panelAlt": 3.69
-          },
           "minimum": 3,
           "pass": true
         }
@@ -9094,7 +5986,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#282a2b",
@@ -9111,41 +6002,6 @@
         "accent": {
           "value": "#d1483f",
           "ratio": 3.57,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#282a2b",
-          "ratio": 9.27,
-          "ratios": {
-            "base": 9.27,
-            "panel": 11.34,
-            "panelAlt": 11.24
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(85, 87, 87)",
-          "ratio": 4.68,
-          "ratios": {
-            "base": 4.68,
-            "panel": 5.72,
-            "panelAlt": 5.67
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(197, 68, 60)",
-          "ratio": 3.16,
-          "ratios": {
-            "base": 3.16,
-            "panel": 3.87,
-            "panelAlt": 3.84
-          },
           "minimum": 3,
           "pass": true
         }
@@ -9197,7 +6053,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#E6EEF7",
@@ -9214,41 +6069,6 @@
         "accent": {
           "value": "#7FA6D9",
           "ratio": 6.26,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#E6EEF7",
-          "ratio": 9.7,
-          "ratios": {
-            "base": 9.7,
-            "panel": 13.13,
-            "panelAlt": 11.21
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(149, 168, 190)",
-          "ratio": 4.66,
-          "ratios": {
-            "base": 4.66,
-            "panel": 6.31,
-            "panelAlt": 5.39
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#7FA6D9",
-          "ratio": 4.52,
-          "ratios": {
-            "base": 4.52,
-            "panel": 6.12,
-            "panelAlt": 5.22
-          },
           "minimum": 3,
           "pass": true
         }
@@ -9298,7 +6118,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#F2F2F5",
@@ -9315,41 +6134,6 @@
         "accent": {
           "value": "#E8E8EE",
           "ratio": 14.09,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#F2F2F5",
-          "ratio": 12.27,
-          "ratios": {
-            "base": 12.27,
-            "panel": 15.15,
-            "panelAlt": 13.36
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "#9A9CA8",
-          "ratio": 5.02,
-          "ratios": {
-            "base": 5.02,
-            "panel": 6.2,
-            "panelAlt": 5.47
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "#E8E8EE",
-          "ratio": 11.23,
-          "ratios": {
-            "base": 11.23,
-            "panel": 13.87,
-            "panelAlt": 12.23
-          },
           "minimum": 3,
           "pass": true
         }
@@ -9399,7 +6183,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#19334D",
@@ -9416,41 +6199,6 @@
         "accent": {
           "value": "#2388F2",
           "ratio": 3.12,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "rgb(24, 48, 73)",
-          "ratio": 4.65,
-          "ratios": {
-            "base": 4.65,
-            "panel": 11.03,
-            "panelAlt": 9.83
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(37, 48, 56)",
-          "ratio": 4.65,
-          "ratios": {
-            "base": 4.65,
-            "panel": 11.02,
-            "panelAlt": 9.82
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(19, 73, 129)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 3.15,
-            "panel": 7.48,
-            "panelAlt": 6.66
-          },
           "minimum": 3,
           "pass": true
         }
@@ -9502,7 +6250,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#545454",
@@ -9519,41 +6266,6 @@
         "accent": {
           "value": "#2b8bd5",
           "ratio": 3.62,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#545454",
-          "ratio": 5.08,
-          "ratios": {
-            "base": 5.08,
-            "panel": 7.29,
-            "panelAlt": 7.24
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(88, 90, 91)",
-          "ratio": 4.65,
-          "ratios": {
-            "base": 4.65,
-            "panel": 6.68,
-            "panelAlt": 6.63
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(37, 120, 185)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 3.15,
-            "panel": 4.53,
-            "panelAlt": 4.5
-          },
           "minimum": 3,
           "pass": true
         }
@@ -9603,7 +6315,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#F8F6FF",
@@ -9620,41 +6331,6 @@
         "accent": {
           "value": "#36F11E",
           "ratio": 3.31,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "rgb(255, 255, 255)",
-          "ratio": 4.65,
-          "ratios": {
-            "base": 4.65,
-            "panel": 6.45,
-            "panelAlt": 6.19
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(255, 255, 255)",
-          "ratio": 4.65,
-          "ratios": {
-            "base": 4.65,
-            "panel": 6.45,
-            "panelAlt": 6.19
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(79, 243, 59)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 3.15,
-            "panel": 4.37,
-            "panelAlt": 4.19
-          },
           "minimum": 3,
           "pass": true
         }
@@ -9706,7 +6382,6 @@
       "importPass": true,
       "safeCssPass": true,
       "sourceReadabilityPass": true,
-      "normalizedReadabilityPass": true,
       "sourceReadability": {
         "primary": {
           "value": "#f0eff0",
@@ -9723,41 +6398,6 @@
         "accent": {
           "value": "#5671ac",
           "ratio": 3.48,
-          "minimum": 3,
-          "pass": true
-        }
-      },
-      "normalizedReadability": {
-        "primary": {
-          "value": "#f0eff0",
-          "ratio": 10.85,
-          "ratios": {
-            "base": 10.85,
-            "panel": 14.35,
-            "panelAlt": 12.41
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "muted": {
-          "value": "rgb(159, 159, 159)",
-          "ratio": 4.7,
-          "ratios": {
-            "base": 4.7,
-            "panel": 6.22,
-            "panelAlt": 5.38
-          },
-          "minimum": 4.5,
-          "pass": true
-        },
-        "accent": {
-          "value": "rgb(103, 128, 180)",
-          "ratio": 3.15,
-          "ratios": {
-            "base": 3.15,
-            "panel": 4.17,
-            "panelAlt": 3.61
-          },
           "minimum": 3,
           "pass": true
         }
@@ -9807,9 +6447,7 @@
       "importPass": false,
       "safeCssPass": false,
       "sourceReadabilityPass": false,
-      "normalizedReadabilityPass": false,
       "sourceReadability": null,
-      "normalizedReadability": null,
       "issues": [
         "import: Invalid theme in ZIP: DreamSkin ZIP must include a background image and non-empty theme.css"
       ]

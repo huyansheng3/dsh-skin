@@ -2,10 +2,11 @@
  * Browser-context audit payload for an isolated DSH instance populated by the
  * Gallery package audit. It activates every requested or non-builtin theme, waits for the
  * Host stylesheet revision, and checks rendered DSH tokens, background safety,
- * contrast over worst-case black/white artwork, overflow, and visible controls.
+ * overflow, and visible controls. Contrast is reported as a source-quality
+ * warning because the runtime preserves author colors.
  *
  * Run through a browser automation evaluator after opening DSH. The payload
- * returns only a summary and failures, restores official appearance, and does
+ * returns only a summary, restores the previous active theme, and does
  * not import packages, start a server, inspect private data, or mutate source.
  */
 
@@ -102,10 +103,12 @@
     ? requestedIds.has(theme.id)
     : theme.builtin === false);
   const failures = [];
+  const warnings = [];
   let minimumObservedContrast = Infinity;
   try {
     for (const theme of themes) {
       const issues = [];
+      const themeWarnings = [];
       try {
         await activate(theme.id);
         const styles = getComputedStyle(document.body);
@@ -116,14 +119,11 @@
         const muted = parseColor(styles.getPropertyValue("--dsw-alias-label-secondary"));
         if (!base || !panel || !panelAlt || !primary || !muted) issues.push("missing-computed-token");
         else {
-          if (base.a < 0.855) issues.push(`base-alpha:${base.a.toFixed(2)}`);
-          if (panel.a < 0.915) issues.push(`panel-alpha:${panel.a.toFixed(2)}`);
-          if (panelAlt.a < 0.875) issues.push(`panel-alt-alpha:${panelAlt.a.toFixed(2)}`);
           for (const [label, text] of [["primary", primary], ["muted", muted]]) {
             for (const [surfaceName, surface] of [["base", base], ["panel", panel], ["panel-alt", panelAlt]]) {
               const ratio = backdropContrast(text, surface, base);
               minimumObservedContrast = Math.min(minimumObservedContrast, ratio);
-              if (ratio < 4.5) issues.push(`${label}-${surfaceName}-contrast:${ratio.toFixed(2)}`);
+              if (ratio < 4.5) themeWarnings.push(`${label}-${surfaceName}-contrast:${ratio.toFixed(2)}`);
             }
           }
         }
@@ -152,7 +152,7 @@
           minimumObservedContrast = Math.min(minimumObservedContrast, ratio);
           if (ratio < 4.5) {
             const label = control.getAttribute("aria-label") || control.textContent.trim().slice(0, 24) || control.tagName;
-            issues.push(`control-contrast:${label}:${ratio.toFixed(2)}`);
+            themeWarnings.push(`control-contrast:${label}:${ratio.toFixed(2)}`);
             break;
           }
         }
@@ -160,6 +160,7 @@
         issues.push(error instanceof Error ? error.message : String(error));
       }
       if (issues.length > 0) failures.push({ id: theme.id, name: theme.name, issues });
+      if (themeWarnings.length > 0) warnings.push({ id: theme.id, name: theme.name, warnings: themeWarnings });
     }
   } finally {
     await activate(inventory.activeThemeId);
@@ -168,7 +169,10 @@
     total: themes.length,
     passed: themes.length - failures.length,
     failed: failures.length,
-    minimumObservedContrast: Number(minimumObservedContrast.toFixed(2)),
+    minimumObservedContrast: Number.isFinite(minimumObservedContrast)
+      ? Number(minimumObservedContrast.toFixed(2))
+      : null,
     failures,
+    warnings,
   };
 })()

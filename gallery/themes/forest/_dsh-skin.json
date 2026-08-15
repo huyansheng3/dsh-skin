@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "source": "dreamskin-gallery",
+  "rank": 18,
+  "versionId": "ver_cd231f43ee95dc6e72f2",
+  "author": "YILI LIU",
+  "license": "MIT",
+  "officialPackage": {
+    "file": "018-ver_cd231f43ee95dc6e72f2.zip",
+    "bytes": 4819765,
+    "sha256": "b360f3c133102f3fa0c3cf34b3f62a14a71c0c7e9a5e4ae891bee78bd563d99a"
+  },
+  "compatibility": "native"
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "astral-tidev2",
+  "name": "星潮（v2优化版）",
+  "image": "background.jpg",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.5,
+    "focusY": 0.44,
+    "safeArea": "none",
+    "taskMode": "full"
+  },
+  "colors": {
+    "background": "#29495C",
+    "panel": "#35576A",
+    "panelAlt": "#43697D",
+    "accent": "#F5B66E",
+    "accentAlt": "#FFD9A6",
+    "secondary": "#80C9E8",
+    "highlight": "#FFF5E8",
+    "text": "#F8FBFD",
+    "muted": "#DEE8ED",
+    "line": "#7393A5"
+  }
+}

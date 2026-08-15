@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "source": "dreamskin-gallery",
+  "rank": 74,
+  "versionId": "ver_8cec80ce3831d885ac01",
+  "author": "Ricardo Zhang",
+  "license": "MIT",
+  "officialPackage": {
+    "file": "074-ver_8cec80ce3831d885ac01.zip",
+    "bytes": 1984035,
+    "sha256": "ab373536a47a28459d7bd51af190cbb776725e93fc698efab7324ccc75481168"
+  },
+  "compatibility": "native"
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "anime-girl-sketch-black-bg",
+  "name": "动漫少女素描",
+  "image": "background.png",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.5,
+    "focusY": 0.5,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#0B0B0E",
+    "panel": "#1A1B20",
+    "panelAlt": "#24262E",
+    "accent": "#E8E8EE",
+    "accentAlt": "#F0F0F5",
+    "secondary": "#B9BBC6",
+    "highlight": "#FFFFFF",
+    "text": "#F2F2F5",
+    "muted": "#9A9CA8",
+    "line": "#3A3B45"
+  }
+}

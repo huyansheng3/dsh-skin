@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "milky-way",
+  "name": "银河 Milky Way",
+  "image": "background.jpg",
+  "appearance": "auto",
+  "art": {
+    "focusX": 0.67,
+    "focusY": 0.71,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#131314",
+    "panel": "#1d1d1e",
+    "panelAlt": "#29292b",
+    "accent": "#7a65b3",
+    "accentAlt": "#8d7bbe",
+    "secondary": "#55768f",
+    "highlight": "#9b8cc6",
+    "text": "#efeff0",
+    "muted": "#939394",
+    "line": "#3f3f40"
+  }
+}

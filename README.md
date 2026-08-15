@@ -15,9 +15,12 @@
 前置条件：已安装 DeepSeek Harness，终端中可以运行 `dsh`，Node.js 版本不低于 18。
 
 ```bash
-dsh plugin --profile web add github:huyansheng3/dsh-skin#v0.2.0
+dsh plugin --profile web add github:huyansheng3/dsh-skin
 dsh web
 ```
+
+当前 `main` 安装包内置 20 套精选 Gallery 主题和 2 套项目主题；它们会自动出现在
+皮肤下拉框中，但首次安装仍保持“官方外观”，不会自动激活社区主题。
 
 打开 DSH Web 页面后，进入 **设置 > 通用设置 > 皮肤**：
 
@@ -49,31 +52,39 @@ dsh plugin --profile web remove dsh-skin
 git clone https://github.com/huyansheng3/dsh-skin.git
 cd dsh-skin
 npm run build
-npm run vendor:gallery
 dsh plugin --profile web add "$PWD"
+dsh web
+```
+
+源码仓库已经包含随包的 20 套精选主题。需要把本地开发库扩展到审计保留的 76 套时，
+再执行 `npm run vendor:gallery`：
+
+```bash
+npm run vendor:gallery
 DSH_SKIN_GALLERY_DIR="$PWD/gallery/themes" dsh web
 ```
 
-`vendor:gallery` 按 [冻结目录](./gallery/catalog.json) 下载并校验 DreamSkin Gallery
-热门前 100 个具体版本，在项目的 `gallery/themes/` 中生成本地内置主题库。运行时不会
-联网，也不会自动切换当前主题。已有 ZIP 缓存可用于完全离线物化：
+`vendor:gallery` 从 DreamSkin Gallery 热门前 100 的冻结审计中排除 24 个源可读性
+不合格主题，再按 [精选目录](./gallery/catalog.json) 下载并校验剩余 76 个具体版本，
+在项目的 `gallery/themes/` 中生成本地内置主题库。运行时不会联网，也不会自动切换
+当前主题。已有 ZIP 缓存可用于完全离线物化：
 
 ```bash
 npm run vendor:gallery -- --cache-dir /path/to/cache --offline
 ```
 
-Gallery 包由社区作者发布，并不统一使用 MIT 许可；本地主题库因此不进入 Git、GitHub
-或 npm 发布包。目录记录每个版本的作者、原始许可、体积和 SHA-256，使用和再分发应
-遵守对应作者许可。
+Gallery 包由社区作者发布，并不统一使用 MIT 许可。发布包只收录其中 20 个经审计、
+许可允许再分发的主题，其余主题只在本地物化。目录记录每个版本的作者、原始许可、
+体积和 SHA-256；随包主题的归属与许可见 [第三方声明](./THIRD_PARTY_NOTICES.md)。
 
 ## 功能
 
 - 原生设置集成：不创建额外路由、浮动按钮或 iframe；
 - 即时切换：设置成功后刷新主题 stylesheet，不替换 Harness DOM；
-- 内置主题：发布包自带 5 套纯色和 2 套带图主题；源码项目可物化 Gallery 前 100；
+- 内置主题：发布包自带 2 套原创带图主题和 20 套精选 Gallery 主题；源码可物化 76 套；
 - ZIP 导入：兼容 DreamSkin 与 legacy DSH 主题格式；
 - Safe CSS：拒绝脚本、`@import`、危险 URL 和未经授权的布局覆盖；
-- 可读性保护：带图主题会校正内容表面与文字对比度；
+- 作者保真：保留主题原始配色、玻璃透明度和自定义 CSS，不在运行时强制修色；
 - Headless 安全：没有 `webServer` 时插件保持 no-op。
 
 ## 常见问题
@@ -213,9 +224,10 @@ CLI 修改选择后需要刷新页面；页面设置内的切换会立即刷新 
 | Windows | `%LOCALAPPDATA%\\DSHSkin\\themes\\` |
 
 测试可设置 `DSH_SKIN_DATA_DIR` 使用隔离的数据目录。
-本地 Gallery 内置库默认生成在项目的 `gallery/themes/`；安装后的 DSH 进程通过
-`DSH_SKIN_GALLERY_DIR=/absolute/path/to/gallery/themes` 发现它。用户主题始终优先于
-同 ID 的 Gallery 主题，物化和扫描过程都不会改写 `state.json`。
+随安装包提供的 20 套 Gallery 主题位于 `gallery/themes/`，DSH 进程会自动发现。
+`DSH_SKIN_GALLERY_DIR=/absolute/path/to/gallery/themes` 仅用于覆盖安装包内的默认目录，
+例如加载开发机物化的 76 套主题。用户主题始终优先于同 ID 的 Gallery 主题，物化和
+扫描过程都不会改写 `state.json`。
 
 ## 开发
 
@@ -225,13 +237,13 @@ node --check src/index.js src/client/index.js src/lib/theme-manager.mjs
 npm pack --dry-run
 ```
 
-Gallery 兼容性结果见 [审计报告](./docs/GALLERY-AUDIT.md)。当前热门前 100 个主题中，
-93 个原包通过严格 ZIP 导入；其余 7 个是 Gallery 已标记不兼容且缺少 `theme.css` 的
-包。项目内置物化时会为这 7 个生成一条受限兼容 CSS 并单独记录来源，最终 100/100
-都通过真实 DSH 页面检查。24 个源主题存在原始文字或强调色对比度问题，完整名单在
-审计报告中；插件会在运行时归一化。
+Gallery 兼容性结果见 [审计报告](./docs/GALLERY-AUDIT.md)。热门前 100 中有 93 个原包
+通过严格 ZIP 导入，另 7 个缺少 `theme.css`，本地物化时使用有界兼容 CSS。24 个可
+导入主题因原始文字或强调色对比度不足，已由 [排除清单](./gallery/exclusions.json)
+从默认目录和本地主题库删除。剩余 76 个已在真实长会话中逐个完成背景安全、原生控件
+和溢出 E2E 检查，76/76 结构通过。
 
 ## License
 
 [MIT](./LICENSE)。发布包自带第三方主题的作者与许可证记录在各自 `manifest.json`
-中。Gallery 目录只发布元数据，不重新许可或分发社区 artwork。
+和 [第三方声明](./THIRD_PARTY_NOTICES.md) 中；项目许可证不会替代主题各自的许可证。

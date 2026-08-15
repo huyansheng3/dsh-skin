@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "source": "dreamskin-gallery",
+  "rank": 88,
+  "versionId": "ver_a5a7c185610e6ccee928",
+  "author": "axdlee",
+  "license": "CC BY 4.0",
+  "officialPackage": {
+    "file": "088-ver_a5a7c185610e6ccee928.zip",
+    "bytes": 3417443,
+    "sha256": "607c5c6bc6989aa5113446a5beac3fdecff4dcc8123b430c242b9827ab2c0cd5"
+  },
+  "compatibility": "native"
+}

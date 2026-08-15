@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "source": "dreamskin-gallery",
+  "rank": 90,
+  "versionId": "ver_0575711d2058c81df18e",
+  "author": "Joker Pan",
+  "license": "MIT",
+  "officialPackage": {
+    "file": "090-ver_0575711d2058c81df18e.zip",
+    "bytes": 2367477,
+    "sha256": "f991d44fd77cdc3c35c87e30be3795556c8d775b390e92433b270f8fcc4ea639"
+  },
+  "compatibility": "native"
+}

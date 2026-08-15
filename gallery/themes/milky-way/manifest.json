@@ -1,0 +1,46 @@
+{
+  "packageVersion": 1,
+  "themeId": "milky-way",
+  "version": "0.1.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "1.0.0",
+  "platforms": [
+    "macos",
+    "windows"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "p-wh-xb-dk",
+    "displayName": "F4"
+  },
+  "license": "MIT",
+  "provenance": {
+    "aiGenerated": false,
+    "summary": "使用索尼相机拍摄于马来西亚"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 512,
+      "sha256": "4e71a9c3453022ae32bbf78e07f404f28311001f1b2d72e1d1ca0ee7b648b459"
+    },
+    {
+      "path": "background.jpg",
+      "mediaType": "image/jpeg",
+      "bytes": 2260171,
+      "sha256": "f2084edb518161876f7573c7a6eb6c86c65351e751f3d2e38c67f393c7cbdcd3"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 1349,
+      "sha256": "77cdc2e29875c6eca34decac807f61458525abc295ef513735efc8dc8a641e6f"
+    }
+  ],
+  "createdAt": "2026-08-13T03:39:00.559Z"
+}

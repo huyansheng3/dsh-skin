@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "anime-girl-sketch-black-bg",
+  "version": "0.1.1",
+  "skinApiVersion": 1,
+  "minClientVersion": "1.5.11",
+  "platforms": [
+    "windows"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "www45",
+    "displayName": "www45"
+  },
+  "license": "CC BY 4.0",
+  "provenance": {
+    "aiGenerated": true,
+    "summary": "gpt-image2生成，无后期"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 529,
+      "sha256": "4802d444c596d7fdc8c83407ff4ed68eebd9ced2a489e665ff4fcee096832dce"
+    },
+    {
+      "path": "background.png",
+      "mediaType": "image/png",
+      "bytes": 1748303,
+      "sha256": "89770835b751c19376d6cbb79e3567c0db7ed0c1c08dcc54f1a3d7fedefa975d"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 80,
+      "sha256": "a198e207e0a027ac574aebc01c2a38f03edd8d1673488b459abc9c5462e60623"
+    }
+  ],
+  "createdAt": "2026-08-05T15:23:14.419Z"
+}

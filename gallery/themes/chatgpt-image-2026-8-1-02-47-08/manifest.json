@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "chatgpt-image-2026-8-1-02-47-08",
+  "version": "0.1.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "0.1.0",
+  "platforms": [
+    "windows"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "970720655",
+    "displayName": "Nam W"
+  },
+  "license": "MIT",
+  "provenance": {
+    "aiGenerated": true,
+    "summary": "AI生成"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 555,
+      "sha256": "4205de89962e17eed0a0a8165a14de5b3bf873b638703c093babff2241221cbb"
+    },
+    {
+      "path": "background.png",
+      "mediaType": "image/png",
+      "bytes": 1812506,
+      "sha256": "69fad44528b386775cc2286bc3770ec766a2dabaf658f841b2df0ef64e1a7cc3"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 708,
+      "sha256": "fcca5ca57b9467e245240001e41e2e3334b7dcd2e33d0d421943370cdad79bba"
+    }
+  ],
+  "createdAt": "2026-07-31T19:29:54.061Z"
+}

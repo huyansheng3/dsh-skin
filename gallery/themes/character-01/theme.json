@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "character-01",
+  "name": "Character 01",
+  "image": "background.png",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.5,
+    "focusY": 0.5,
+    "safeArea": "none",
+    "taskMode": "full"
+  },
+  "colors": {
+    "background": "#101B2A",
+    "panel": "#16233A",
+    "panelAlt": "#1E3048",
+    "accent": "#7FA6D9",
+    "accentAlt": "#A8C6EA",
+    "secondary": "#8FA3BC",
+    "highlight": "#E8F0FA",
+    "text": "#E6EEF7",
+    "muted": "#8CA0B8",
+    "line": "#2C405E"
+  }
+}

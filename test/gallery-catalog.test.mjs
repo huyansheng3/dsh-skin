@@ -8,14 +8,24 @@ import { fileURLToPath } from "node:url";
 const testDir = dirname(fileURLToPath(import.meta.url));
 const repoRoot = dirname(testDir);
 const catalogPath = join(repoRoot, "gallery", "catalog.json");
+const exclusionsPath = join(repoRoot, "gallery", "exclusions.json");
 
-test("frozen Gallery catalog contains exactly 100 verified official packages", () => {
+test("curated Gallery catalog excludes the 24 source-quality failures", () => {
   const catalog = JSON.parse(readFileSync(catalogPath, "utf8"));
-  assert.equal(catalog.schemaVersion, 1);
-  assert.equal(catalog.themes.length, 100);
-  assert.deepEqual(catalog.themes.map(theme => theme.rank), Array.from({ length: 100 }, (_, index) => index + 1));
-  assert.equal(new Set(catalog.themes.map(theme => theme.versionId)).size, 100);
-  assert.equal(new Set(catalog.themes.map(theme => theme.themeId)).size, 100);
+  const exclusions = JSON.parse(readFileSync(exclusionsPath, "utf8"));
+  assert.equal(catalog.schemaVersion, 2);
+  assert.equal(catalog.auditedThemeCount, 100);
+  assert.equal(exclusions.schemaVersion, 1);
+  assert.equal(exclusions.themeIds.length, 24);
+  assert.equal(new Set(exclusions.themeIds).size, 24);
+  assert.deepEqual(catalog.excludedThemeIds, exclusions.themeIds);
+  assert.equal(catalog.themes.length, 76);
+  assert.equal(new Set(catalog.themes.map(theme => theme.versionId)).size, 76);
+  assert.equal(new Set(catalog.themes.map(theme => theme.themeId)).size, 76);
+  assert.ok(catalog.themes.every(theme => !exclusions.themeIds.includes(theme.themeId)));
+  assert.ok(catalog.themes.every(theme => (
+    theme.compatibility === "generated-theme-css" || theme.sourceReadability === "pass"
+  )));
 
   for (const theme of catalog.themes) {
     assert.match(theme.versionId, /^ver_[a-z0-9]+$/);

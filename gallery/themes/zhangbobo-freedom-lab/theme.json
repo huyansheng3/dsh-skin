@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "zhangbobo-freedom-lab",
+  "name": "ZhangBoBo Freedom Lab",
+  "brandSubtitle": "AI · Research · Exploration",
+  "tagline": "Stay curious, stay awake.",
+  "projectPrefix": "Project · ",
+  "projectLabel": "◉ Select project",
+  "statusText": "FREEDOM LAB ONLINE",
+  "quote": "Build. Explore. Become.",
+  "image": "background.png",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.68,
+    "focusY": 0.42,
+    "safeArea": "left",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#071522",
+    "panel": "#0D2238",
+    "panelAlt": "#0B1A2C",
+    "accent": "#6EA8FF",
+    "accentAlt": "#7EE0C2",
+    "secondary": "#8A9CFF",
+    "highlight": "#DCEBFF",
+    "text": "#F2F7FF",
+    "muted": "#91A8C4",
+    "line": "#294866"
+  }
+}

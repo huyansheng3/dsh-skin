@@ -1,0 +1,80 @@
+[data-ds-part="root"] {
+  background-color: transparent;
+  color: #f5f7ff;
+}
+
+[data-ds-part="main"] {
+  background-color: transparent;
+  border-style: none;
+  border-width: 0;
+}
+
+[data-ds-part="header"] {
+  background-color: transparent;
+  border-style: none;
+  border-width: 0;
+}
+
+[data-ds-part="home"] {
+  background-color: transparent;
+  border-style: none;
+  border-width: 0;
+}
+
+[data-ds-part="home-hero"] {
+  background-color: transparent;
+  border-style: none;
+  border-width: 0;
+}
+
+[data-ds-part="sidebar"] {
+  background-color: rgba(5, 5, 5, 0.72);
+  border-style: none;
+  border-width: 0;
+  border-radius: 12px;
+}
+
+[data-ds-part="project-list"] {
+  background-color: transparent;
+  border-style: none;
+  border-width: 0;
+}
+
+[data-ds-part="thread"] {
+  background-color: transparent;
+  border-style: none;
+  border-width: 0;
+}
+
+[data-ds-part="message"] {
+  background-color: transparent;
+  border-style: none;
+  border-width: 0;
+}
+
+[data-ds-part="composer"] {
+  background-color: rgba(5, 5, 5, 0.88);
+  border-style: none;
+  border-width: 0;
+  border-radius: 12px;
+}
+
+[data-ds-part="composer"]:focus-visible {
+  background-color: rgba(5, 5, 5, 0.88);
+  border-style: none;
+  border-width: 0;
+}
+
+[data-ds-part="composer-toolbar"] {
+  background-color: transparent;
+  border-style: none;
+  border-width: 0;
+}
+
+[data-ds-part="dialog"] {
+  background-color: rgba(5, 5, 5, 0.78);
+  backdrop-filter: blur(12px);
+  border-style: none;
+  border-width: 0;
+  border-radius: 12px;
+}

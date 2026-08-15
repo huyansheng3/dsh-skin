@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "chatgpt-image-2026-8-1-02-47-08",
+  "name": "ChatGPT Image 2026年8月1日 02 47 08",
+  "image": "background.png",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.5,
+    "focusY": 0.88,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#131314",
+    "panel": "#1d1d1e",
+    "panelAlt": "#292a2b",
+    "accent": "#f0903d",
+    "accentAlt": "#f2a058",
+    "secondary": "#2376bc",
+    "highlight": "#f4ac6e",
+    "text": "#eff0f0",
+    "muted": "#939394",
+    "line": "#3f3f40"
+  }
+}

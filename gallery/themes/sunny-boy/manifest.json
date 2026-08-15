@@ -1,0 +1,46 @@
+{
+  "packageVersion": 1,
+  "themeId": "sunny-boy",
+  "version": "0.1.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "1.5.4",
+  "platforms": [
+    "windows",
+    "macos"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "konghang",
+    "displayName": "孔航"
+  },
+  "license": "MIT",
+  "provenance": {
+    "aiGenerated": true,
+    "summary": "GPT-image2生成"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 507,
+      "sha256": "42f5fca2d066f8ed849d4ed88fb2cf1f9fc0197b3ee733199467d3d041dad426"
+    },
+    {
+      "path": "background.png",
+      "mediaType": "image/png",
+      "bytes": 2849462,
+      "sha256": "394aa53b56ec5b4a8242cdb01eccb12447f09b2f14ad3da92d40dda0573c0bc7"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 273,
+      "sha256": "3f5401920639e102d2e3871057f2bb68d290a5ca5f5a14c9e01cb2ff7be088e3"
+    }
+  ],
+  "createdAt": "2026-07-25T09:55:19.152Z"
+}

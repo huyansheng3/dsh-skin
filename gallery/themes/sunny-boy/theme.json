@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "sunny-boy",
+  "name": "阳光少年",
+  "image": "background.png",
+  "appearance": "light",
+  "art": {
+    "focusX": 0.5,
+    "focusY": 0.5,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#f7f6f5",
+    "panel": "#fefefe",
+    "panelAlt": "#ebeae8",
+    "accent": "#b47b0f",
+    "accentAlt": "#9b6a0d",
+    "secondary": "#d96158",
+    "highlight": "#875c0b",
+    "text": "#1e1d1a",
+    "muted": "#6a6a68",
+    "line": "#d4d3d2"
+  }
+}

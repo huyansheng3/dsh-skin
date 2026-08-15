@@ -1,0 +1,9 @@
+[data-ds-part="sidebar"] {
+  background-color: var(--ds-theme-color-panel);
+  border-radius: var(--ds-theme-surface-radius);
+  backdrop-filter: blur(var(--ds-theme-surface-blur));
+}
+
+[data-ds-part="composer"]:focus-visible {
+  border-color: var(--ds-theme-color-accent);
+}

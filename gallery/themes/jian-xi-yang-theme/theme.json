@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "jian-xi-yang-theme",
+  "name": "见夕阳",
+  "brandSubtitle": "CODEX DREAM SKIN",
+  "tagline": "乘着晚风，把今天写进金色云海。",
+  "projectPrefix": "选择项目 · ",
+  "projectLabel": "◉  选择项目",
+  "statusText": "SUNSET VOYAGE ONLINE",
+  "quote": "追寻最后的光",
+  "image": "background.png",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.66,
+    "focusY": 0.48,
+    "safeArea": "none",
+    "taskMode": "full"
+  },
+  "colors": {
+    "background": "#252A38",
+    "panel": "#303442",
+    "panelAlt": "#413945",
+    "accent": "#FFB35C",
+    "accentAlt": "#FFD08A",
+    "secondary": "#D66F60",
+    "highlight": "#F08A4B",
+    "text": "#FFF3E4",
+    "muted": "#D3B7A5",
+    "line": "rgba(255, 179, 92, .30)"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "custom-1784270668889",
+  "name": "珊瑚穹顶之城",
+  "image": "background.jpg",
+  "appearance": "auto",
+  "art": {
+    "focusX": 0.72,
+    "focusY": 0.46,
+    "safeArea": "left",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#f7f6f5",
+    "panel": "#fefefe",
+    "panelAlt": "#ebe8e8",
+    "accent": "#e35655",
+    "accentAlt": "#c34a49",
+    "secondary": "#d26463",
+    "highlight": "#aa4140",
+    "text": "#1e1a1a",
+    "muted": "#6b6868",
+    "line": "#d4d3d2"
+  }
+}

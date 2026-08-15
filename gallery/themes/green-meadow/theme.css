@@ -1,0 +1,83 @@
+[data-ds-part="root"] {
+  background-color: var(--ds-theme-color-background);
+}
+
+[data-ds-part="main"] {
+  background-color: rgba(22,48,33,0.04);
+}
+
+[data-ds-part="sidebar"] {
+  background-color: rgba(24,52,37,0.72);
+  border-color: rgba(199,242,154,0.18);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+}
+
+[data-ds-part="header"] {
+  background-color: rgba(24,52,37,0.35);
+  border-color: rgba(199,242,154,0.14);
+  border-width: 1px;
+  border-style: solid;
+}
+
+[data-ds-part="home"] {
+  background-color: rgba(22,48,33,0.02);
+}
+
+[data-ds-part="home-hero"] {
+  background-color: rgba(255,255,255,0.05);
+  border-color: rgba(233,249,222,0.18);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 16px;
+}
+
+[data-ds-part="project-list"] {
+  background-color: rgba(30,57,42,0.68);
+  border-color: rgba(199,242,154,0.18);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.16);
+}
+
+[data-ds-part="thread"] {
+  background-color: rgba(30,57,42,0.48);
+  border-color: rgba(199,242,154,0.14);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 16px;
+}
+
+[data-ds-part="message"] {
+  background-color: rgba(255,255,255,0.06);
+  border-color: rgba(233,249,222,0.14);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 12px;
+}
+
+[data-ds-part="composer"] {
+  background-color: rgba(30,57,42,0.76);
+  border-color: rgba(199,242,154,0.24);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+[data-ds-part="composer-toolbar"] {
+  background-color: rgba(199,242,154,0.07);
+  border-radius: 10px;
+}
+
+[data-ds-part="dialog"] {
+  background-color: rgba(24,52,37,0.9);
+  border-color: rgba(199,242,154,0.24);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 14px;
+  box-shadow: 0 10px 32px rgba(0,0,0,0.28);
+}

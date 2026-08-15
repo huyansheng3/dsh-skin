@@ -1,0 +1,3 @@
+# Gallery packages are pinned by byte size and SHA-256. Preserve upstream text
+# exactly, including harmless whitespace that would otherwise fail diff checks.
+gallery/themes/** -text whitespace=-trailing-space,-space-before-tab

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "exec-89fd6732-b964-42fc-a1d8-3ca1a153bdc8",
+  "name": "exec 89fd6732 b964 42fc a1d8 3ca1a153bdc8",
+  "image": "background.png",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.5,
+    "focusY": 0.5,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#111315",
+    "panel": "#000000",
+    "panelAlt": "#000000",
+    "accent": "#1a8ee6",
+    "accentAlt": "#3a9eea",
+    "secondary": "#4aa9f2",
+    "highlight": "#53aaec",
+    "text": "#ffffff",
+    "muted": "#ffffff",
+    "line": "#000000"
+  }
+}

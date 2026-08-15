@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "stellar-watcher",
+  "name": "星际守望者",
+  "image": "background.png",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.78,
+    "focusY": 0.62,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#071025",
+    "panel": "#10182C",
+    "panelAlt": "#19233A",
+    "accent": "#FF9A5C",
+    "accentAlt": "#FFD39B",
+    "secondary": "#7FA8FF",
+    "highlight": "#FFF1D8",
+    "text": "#F5F0E8",
+    "muted": "#A8B1C6",
+    "line": "#33425F"
+  }
+}

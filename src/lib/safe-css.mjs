@@ -1,10 +1,10 @@
 /**
  * Safe CSS validator, DreamSkin compatibility adapter, and CSS generator.
  *
- * Raw theme tokens flow through Safe CSS validation and WCAG-oriented color
- * normalization before being mapped onto DSH's runtime variables. Illustrated
- * themes also receive bounded translucent surfaces so arbitrary artwork cannot
- * erase text contrast; final guardrails are emitted after author CSS.
+ * Raw theme tokens pass through Safe CSS validation and are mapped onto DSH's
+ * runtime variables without color correction. Illustrated themes keep the
+ * author background token while the DSH canvas becomes transparent beneath the
+ * original glass surfaces; author CSS is appended last.
  *
  * Main callers are theme-manager during import and the Host stylesheet route.
  * This file does not discover themes, read assets, mutate the DOM, or own ZIP
@@ -29,13 +29,10 @@ const SURFACE_DEFAULTS = {
   "--ds-theme-surface-blur":   "16px",
 };
 
-const BACKGROUND_SURFACE_ALPHA = 0.86;
-const PANEL_SURFACE_ALPHA = 0.92;
-const PANEL_ALT_SURFACE_ALPHA = 0.88;
+const PANEL_SURFACE_ALPHA = 0.72;
+const PANEL_ALT_SURFACE_ALPHA = 0.65;
 const TEXT_CONTRAST_RATIO = 4.5;
 const ACCENT_CONTRAST_RATIO = 3;
-const TEXT_NORMALIZATION_RATIO = 4.65;
-const ACCENT_NORMALIZATION_RATIO = 3.15;
 
 // ── Allowed plain CSS properties ─────────────────────────────────────────────
 const ALLOWED_PROPERTIES = new Set([
@@ -197,20 +194,13 @@ const DREAMSKIN_COLOR_MAP = {
   panel: [
     "--ds-theme-color-panel",
     "--dsw-alias-bg-layer-1",
-    "--dsw-alias-bg-overlay",
     "--dsw-specific-sidebar-fill",
   ],
   panelAlt: [
     "--ds-theme-color-panel-alt",
     "--dsw-alias-bg-layer-2",
-    "--dsw-alias-bg-module-platform",
-    "--dsw-alias-bg-multi-select",
     "--dsw-specific-bubble",
     "--dsw-specific-input-major",
-    "--dsw-specific-login-input",
-    "--dsw-specific-sidebar-nav-item-active",
-    "--dsw-specific-sidebar-nav-item-active-accent",
-    "--dsw-specific-sidebar-nav-item-hover",
   ],
   accent: [
     "--ds-theme-color-accent",
@@ -299,19 +289,6 @@ function opaque(color) {
   return color ? { r: color.r, g: color.g, b: color.b, a: 1 } : null;
 }
 
-function withAlpha(color, alpha) {
-  return color ? { r: color.r, g: color.g, b: color.b, a: alpha } : null;
-}
-
-function compositeColor(foreground, background) {
-  return {
-    r: foreground.r * foreground.a + background.r * (1 - foreground.a),
-    g: foreground.g * foreground.a + background.g * (1 - foreground.a),
-    b: foreground.b * foreground.a + background.b * (1 - foreground.a),
-    a: 1,
-  };
-}
-
 function linearChannel(channel) {
   const value = channel / 255;
   return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
@@ -329,130 +306,8 @@ function contrastRatio(foreground, background) {
   return (Math.max(first, second) + 0.05) / (Math.min(first, second) + 0.05);
 }
 
-function mixColor(from, to, amount) {
-  return {
-    r: Math.round(from.r + (to.r - from.r) * amount),
-    g: Math.round(from.g + (to.g - from.g) * amount),
-    b: Math.round(from.b + (to.b - from.b) * amount),
-    a: 1,
-  };
-}
-
-function colorToCss(color) {
-  return `rgb(${color.r}, ${color.g}, ${color.b})`;
-}
-
-function minimumContrast(foreground, surfaces) {
-  return Math.min(...surfaces.map(surface => contrastRatio(foreground, surface)));
-}
-
-function ensureContrast(value, surfaces, minimum) {
-  const foreground = opaque(parseCssColor(value));
-  if (!foreground || surfaces.length === 0 || minimumContrast(foreground, surfaces) >= minimum) return value;
-
-  const black = { r: 0, g: 0, b: 0, a: 1 };
-  const white = { r: 255, g: 255, b: 255, a: 1 };
-  const target = minimumContrast(black, surfaces) >= minimumContrast(white, surfaces) ? black : white;
-  if (minimumContrast(target, surfaces) < minimum) return colorToCss(target);
-  let low = 0;
-  let high = 1;
-  for (let index = 0; index < 24; index += 1) {
-    const middle = (low + high) / 2;
-    if (minimumContrast(mixColor(foreground, target, middle), surfaces) >= minimum) high = middle;
-    else low = middle;
-  }
-  return colorToCss(mixColor(foreground, target, high));
-}
-
 function sourceReadabilitySurface(colors) {
   return opaque(parseCssColor(colors.panel)) || opaque(parseCssColor(colors.background));
-}
-
-function readabilitySurfaces(colors, hasBackground) {
-  const background = opaque(parseCssColor(colors.background)) || sourceReadabilitySurface(colors);
-  const panel = opaque(parseCssColor(colors.panel)) || background;
-  const panelAlt = opaque(parseCssColor(colors.panelAlt)) || panel;
-  if (!background) return { base: [], panel: [], panelAlt: [] };
-  if (!hasBackground) return { base: [background], panel: [panel], panelAlt: [panelAlt] };
-
-  const backdropPixels = [
-    { r: 0, g: 0, b: 0, a: 1 },
-    { r: 255, g: 255, b: 255, a: 1 },
-  ];
-  const basePixels = backdropPixels.map(backdrop => compositeColor(
-    withAlpha(background, BACKGROUND_SURFACE_ALPHA),
-    backdrop,
-  ));
-  const panelPixels = basePixels.map(base => compositeColor(
-    withAlpha(panel, PANEL_SURFACE_ALPHA),
-    base,
-  ));
-  return {
-    base: basePixels,
-    panel: panelPixels,
-    panelAlt: [
-      ...basePixels.map(base => compositeColor(withAlpha(panelAlt, PANEL_ALT_SURFACE_ALPHA), base)),
-      ...panelPixels.map(panelPixel => compositeColor(withAlpha(panelAlt, PANEL_ALT_SURFACE_ALPHA), panelPixel)),
-    ],
-  };
-}
-
-function flattenSurfaces(surfaces) {
-  return Object.values(surfaces).flat();
-}
-
-function shiftSurfaceColors(colors, target, amount) {
-  const shifted = { ...colors };
-  for (const key of ["background", "panel", "panelAlt"]) {
-    const parsed = opaque(parseCssColor(colors[key]));
-    if (parsed) shifted[key] = colorToCss(mixColor(parsed, target, amount));
-  }
-  return shifted;
-}
-
-function normalizeSurfaceColors(colors, hasBackground) {
-  const surfaces = flattenSurfaces(readabilitySurfaces(colors, hasBackground));
-  if (surfaces.length === 0) return colors;
-  const black = { r: 0, g: 0, b: 0, a: 1 };
-  const white = { r: 255, g: 255, b: 255, a: 1 };
-  const foreground = minimumContrast(white, surfaces) >= minimumContrast(black, surfaces) ? white : black;
-  if (minimumContrast(foreground, surfaces) >= TEXT_NORMALIZATION_RATIO) return colors;
-
-  const surfaceTarget = foreground === white ? black : white;
-  let low = 0;
-  let high = 1;
-  for (let index = 0; index < 24; index += 1) {
-    const middle = (low + high) / 2;
-    const shifted = shiftSurfaceColors(colors, surfaceTarget, middle);
-    const shiftedSurfaces = flattenSurfaces(readabilitySurfaces(shifted, hasBackground));
-    if (minimumContrast(foreground, shiftedSurfaces) >= TEXT_NORMALIZATION_RATIO) high = middle;
-    else low = middle;
-  }
-  return shiftSurfaceColors(colors, surfaceTarget, high);
-}
-
-function normalizeDreamSkinColors(colors = {}, hasBackground = false) {
-  const readableSurfaces = normalizeSurfaceColors(colors, hasBackground);
-  const surfaces = flattenSurfaces(readabilitySurfaces(readableSurfaces, hasBackground));
-  return {
-    ...readableSurfaces,
-    text: ensureContrast(colors.text, surfaces, TEXT_NORMALIZATION_RATIO),
-    muted: ensureContrast(colors.muted, surfaces, TEXT_NORMALIZATION_RATIO),
-    accent: ensureContrast(colors.accent, surfaces, ACCENT_NORMALIZATION_RATIO),
-    accentAlt: ensureContrast(colors.accentAlt, surfaces, ACCENT_NORMALIZATION_RATIO),
-  };
-}
-
-function inferColorScheme(appearance, colors) {
-  if (appearance === "light" || appearance === "dark") return appearance;
-  const surface = opaque(parseCssColor(colors.background))
-    || opaque(parseCssColor(colors.panel));
-  const text = opaque(parseCssColor(colors.text));
-  if (surface && text) {
-    return relativeLuminance(text) > relativeLuminance(surface) ? "dark" : "light";
-  }
-  if (surface) return relativeLuminance(surface) < 0.4 ? "dark" : "light";
-  return "light";
 }
 
 function auditPair(value, surface, minimum) {
@@ -466,42 +321,16 @@ function auditPair(value, surface, minimum) {
   };
 }
 
-function auditSurfaceSet(value, surfaces, minimum) {
-  const foreground = opaque(parseCssColor(value));
-  const ratios = Object.fromEntries(Object.entries(surfaces).map(([name, samples]) => {
-    const ratio = foreground && samples.length > 0 ? minimumContrast(foreground, samples) : null;
-    return [name, ratio === null ? null : Number(ratio.toFixed(2))];
-  }));
-  const available = Object.values(ratios).filter(ratio => ratio !== null);
-  const ratio = available.length > 0 ? Math.min(...available) : null;
-  return {
-    value: value ?? null,
-    ratio,
-    ratios,
-    minimum,
-    pass: ratio !== null && ratio >= minimum,
-  };
-}
-
-/** Return source and post-normalization contrast results for audit tooling. */
-export function auditDreamSkinReadability(themeJson, options = {}) {
+/** Return source contrast results for audit tooling without changing theme colors. */
+export function auditDreamSkinReadability(themeJson) {
   const sourceColors = themeJson?.colors || {};
-  const hasBackground = options.hasBackground ?? Boolean(themeJson?.image);
-  const normalizedColors = normalizeDreamSkinColors(sourceColors, hasBackground);
   const sourceSurface = sourceReadabilitySurface(sourceColors);
-  const normalizedSurfaces = readabilitySurfaces(normalizedColors, hasBackground);
   return {
     source: {
       primary: auditPair(sourceColors.text, sourceSurface, TEXT_CONTRAST_RATIO),
       muted: auditPair(sourceColors.muted, sourceSurface, TEXT_CONTRAST_RATIO),
       accent: auditPair(sourceColors.accent, sourceSurface, ACCENT_CONTRAST_RATIO),
     },
-    normalized: {
-      primary: auditSurfaceSet(normalizedColors.text, normalizedSurfaces, TEXT_CONTRAST_RATIO),
-      muted: auditSurfaceSet(normalizedColors.muted, normalizedSurfaces, TEXT_CONTRAST_RATIO),
-      accent: auditSurfaceSet(normalizedColors.accent, normalizedSurfaces, ACCENT_CONTRAST_RATIO),
-    },
-    normalizedColors,
   };
 }
 
@@ -519,8 +348,7 @@ export function buildDreamSkinCss(themeJson, bgDataUrl = null, customCss = null)
   ];
 
   const hasBackground = !!bgDataUrl;
-  const colors = normalizeDreamSkinColors(themeJson.colors || {}, hasBackground);
-  const colorScheme = inferColorScheme(themeJson.appearance, colors);
+  const colors = themeJson.colors || {};
 
   // ── 1. CSS variable tokens (:root) ─────────────────────────────────────────
   // DSH's official appearance is body-scoped and its Client plugin loads after
@@ -528,7 +356,9 @@ export function buildDreamSkinCss(themeJson, bgDataUrl = null, customCss = null)
   // the selected skin remains the authoritative user choice.
   lines.push(":root,\nbody {");
 
-  lines.push(`  color-scheme: ${colorScheme};`);
+  if (themeJson.appearance === "light" || themeJson.appearance === "dark") {
+    lines.push(`  color-scheme: ${themeJson.appearance};`);
+  }
 
   // Surface vars: provide defaults so [data-ds-part] selectors work even if
   // DSH doesn't define --ds-theme-surface-* natively.
@@ -549,7 +379,7 @@ export function buildDreamSkinCss(themeJson, bgDataUrl = null, customCss = null)
 
     for (const v of vars) {
       const tokenValue = hasBackground && colorKey === "background" && v === "--dsw-alias-bg-base"
-        ? toRgba(value, BACKGROUND_SURFACE_ALPHA)
+        ? toRgba(value, 0)
         : value;
       lines.push(`  ${v}: ${tokenValue} !important;`);
     }
@@ -629,58 +459,6 @@ body[data-page="chat"]::before {
     lines.push("\n/* === Custom theme.css === */");
     lines.push(customCss);
   }
-
-  // Author CSS is allowed to style DreamSkin parts, but DSH's core surface and
-  // text tokens remain protected because its DOM does not expose those parts.
-  const guardrailValues = {
-    "--dsw-alias-bg-base": hasBackground && colors.background
-      ? toRgba(colors.background, BACKGROUND_SURFACE_ALPHA)
-      : colors.background,
-    "--dsw-alias-bg-layer-1": hasBackground && colors.panel
-      ? toRgba(colors.panel, PANEL_SURFACE_ALPHA)
-      : colors.panel,
-    "--dsw-alias-bg-overlay": hasBackground && colors.panel
-      ? toRgba(colors.panel, PANEL_SURFACE_ALPHA)
-      : colors.panel,
-    "--dsw-specific-sidebar-fill": hasBackground && colors.panel
-      ? toRgba(colors.panel, PANEL_SURFACE_ALPHA)
-      : colors.panel,
-    "--dsw-alias-bg-layer-2": hasBackground && colors.panelAlt
-      ? toRgba(colors.panelAlt, PANEL_ALT_SURFACE_ALPHA)
-      : colors.panelAlt,
-    "--dsw-alias-bg-module-platform": hasBackground && colors.panelAlt
-      ? toRgba(colors.panelAlt, PANEL_ALT_SURFACE_ALPHA)
-      : colors.panelAlt,
-    "--dsw-alias-bg-multi-select": hasBackground && colors.panelAlt
-      ? toRgba(colors.panelAlt, PANEL_ALT_SURFACE_ALPHA)
-      : colors.panelAlt,
-    "--dsw-specific-bubble": hasBackground && colors.panelAlt
-      ? toRgba(colors.panelAlt, PANEL_ALT_SURFACE_ALPHA)
-      : colors.panelAlt,
-    "--dsw-specific-input-major": hasBackground && colors.panelAlt
-      ? toRgba(colors.panelAlt, PANEL_ALT_SURFACE_ALPHA)
-      : colors.panelAlt,
-    "--dsw-specific-login-input": hasBackground && colors.panelAlt
-      ? toRgba(colors.panelAlt, PANEL_ALT_SURFACE_ALPHA)
-      : colors.panelAlt,
-    "--dsw-specific-sidebar-nav-item-active": hasBackground && colors.panelAlt
-      ? toRgba(colors.panelAlt, PANEL_ALT_SURFACE_ALPHA)
-      : colors.panelAlt,
-    "--dsw-specific-sidebar-nav-item-active-accent": hasBackground && colors.panelAlt
-      ? toRgba(colors.panelAlt, PANEL_ALT_SURFACE_ALPHA)
-      : colors.panelAlt,
-    "--dsw-specific-sidebar-nav-item-hover": hasBackground && colors.panelAlt
-      ? toRgba(colors.panelAlt, PANEL_ALT_SURFACE_ALPHA)
-      : colors.panelAlt,
-    "--dsw-alias-label-primary": colors.text,
-    "--dsw-alias-label-secondary": colors.muted,
-    "--dsw-alias-label-tertiary": colors.muted,
-  };
-  lines.push("\n/* === DSH Skin — Readability guardrails === */", ":root,\nbody {");
-  for (const [property, value] of Object.entries(guardrailValues)) {
-    if (value) lines.push(`  ${property}: ${value} !important;`);
-  }
-  lines.push("}");
 
   return lines.join("\n");
 }

@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "img-5509",
+  "version": "0.1.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "0.0.0",
+  "platforms": [
+    "macos"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "BW",
+    "displayName": "Hawaii"
+  },
+  "license": "MIT",
+  "provenance": {
+    "aiGenerated": false,
+    "summary": "Personal shooting"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 501,
+      "sha256": "bcf2a8c87fe139ab2e7cf1dae7b2229eb8fce4fd5c472d64f179dced46b26171"
+    },
+    {
+      "path": "background.jpg",
+      "mediaType": "image/jpeg",
+      "bytes": 8174965,
+      "sha256": "c13fbdfc610d0ce7c423fb42d3920171512338dbfd0aa76a91831dc1a1cf6a75"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 775,
+      "sha256": "b39571810bdcfe54f538fbf3ba21cb984074332ae50c0c01d3c885613f67278d"
+    }
+  ],
+  "createdAt": "2026-07-29T13:19:03.911Z"
+}

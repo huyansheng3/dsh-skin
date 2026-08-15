@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "zhangbobo-freedom-lab",
+  "version": "0.1.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "1.5.6",
+  "platforms": [
+    "windows"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "zhanggugu-max",
+    "displayName": "Bowen"
+  },
+  "license": "CC BY 4.0",
+  "provenance": {
+    "aiGenerated": true,
+    "summary": "AI-generated artwork created with OpenAI image generation, customized for ZhangBoBo Freedom Lab theme."
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 773,
+      "sha256": "70c162627fa89d8ed7022c894296880c4061d51e00b4b4222de002840ef261c0"
+    },
+    {
+      "path": "background.png",
+      "mediaType": "image/png",
+      "bytes": 2444682,
+      "sha256": "307f21d1d2a07e2d470ce5ea91388fbf274e38874da451548b3789a3e2d673f5"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 1455,
+      "sha256": "fff069adeb473240fa28ead1c3ab91e7a72ba7aadfc4ecee9d180d1a1a6c27b1"
+    }
+  ],
+  "createdAt": "2026-07-30T05:57:21.876Z"
+}

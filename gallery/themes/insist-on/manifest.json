@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "insist-on",
+  "version": "0.1.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "1.5.12",
+  "platforms": [
+    "macos"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "xi-xia",
+    "displayName": "Xia Xi"
+  },
+  "license": "MIT",
+  "provenance": {
+    "aiGenerated": true,
+    "summary": "以中国水墨武侠参考图为基础进行二次设计与高清重制。\n原图主要用于参考人物、书法文字、水墨山体、整体构图及黑白视觉风格，并非直接使用网络成品壁纸。\n制作方式：\n通过 AI 图像编辑与高清重构完成，在保留原始水墨风格的基础上重新适配 Dream Skin 桌面背景。"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 634,
+      "sha256": "c5809acba4592c9eff608f87b20acad7c7cb4a6b8aaade26f7aee91f9d3f6782"
+    },
+    {
+      "path": "background.png",
+      "mediaType": "image/png",
+      "bytes": 2304008,
+      "sha256": "3f005a8261440c8c2e3bb0baee0aa316ca297f4a74555ee7bb57609734acd6f0"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 2124,
+      "sha256": "38f58726b8645e8e2bcf09cd909598b7d216ba84324c13e0673c6d7cc8a16b65"
+    }
+  ],
+  "createdAt": "2026-08-14T10:07:29.121Z"
+}

@@ -1,6 +1,0 @@
-/* Sakura Pink — soft pink glow on interactive elements */
-body {
-  --dsw-alias-interactive-bg-hover: rgba(244, 114, 182, 0.06);
-  --dsw-alias-interactive-bg-hover-accent: rgba(244, 114, 182, 0.12);
-  --dsw-alias-interactive-bg-active: rgba(244, 114, 182, 0.16);
-}

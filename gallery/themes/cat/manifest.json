@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "cat",
+  "version": "0.1.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "1.5.11",
+  "platforms": [
+    "macos"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "yang",
+    "displayName": "yang"
+  },
+  "license": "MIT",
+  "provenance": {
+    "aiGenerated": true,
+    "summary": "自用壁纸ai裁剪"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 491,
+      "sha256": "ad818b2a8ba35ed193eddd17c9c50f7ff1b8c3f93235f0a08700e9eaad91e4a7"
+    },
+    {
+      "path": "background.jpg",
+      "mediaType": "image/jpeg",
+      "bytes": 767954,
+      "sha256": "1b28e56c5c3e88cd91c7b8b7d283e1e3f4e7f59885ea5babb5899b5520f894c6"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 254,
+      "sha256": "0f32f4f0d354ae7ffef801bd8ce43a33ef0f1a5f2abc9882ffbf2468300136b8"
+    }
+  ],
+  "createdAt": "2026-08-08T10:53:24.736Z"
+}

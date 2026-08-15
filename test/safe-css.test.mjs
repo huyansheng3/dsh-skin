@@ -134,8 +134,8 @@ test("buildDreamSkinCss maps flat colors to CSS variables", () => {
   assert.ok(css.includes("--ds-theme-color-background"), "Should map background");
   assert.ok(css.includes("--dsw-alias-bg-base"),        "Should map dsw alias");
   assert.ok(css.includes("--ds-theme-color-accent"),    "Should map accent");
-  assert.ok(css.includes("--dsw-specific-sidebar-nav-item-active"), "Should map selected navigation surface");
-  assert.ok(css.includes("--dsw-alias-bg-module-platform"), "Should map native selector controls");
+  assert.ok(!css.includes("--dsw-specific-sidebar-nav-item-active"), "Should not flatten selected navigation styling");
+  assert.ok(!css.includes("--dsw-alias-bg-module-platform"), "Should leave native selector styling to the theme");
   assert.ok(!css.includes("body::before"),               "No bg layer without image");
   assert.ok(!css.includes("settings dialog width"),      "Should leave host dialog geometry to DSH");
 });
@@ -151,7 +151,7 @@ test("buildDreamSkinCss injects background layer with glass panels when image is
   assert.doesNotMatch(css, /#root\s*\{[^}]*z-index/,        "Native portal stacking must remain owned by DSH");
   assert.ok(css.includes("backdrop-filter"),               "Should have glass panels");
   assert.ok(css.includes("background: transparent"),       "Should make root transparent");
-  assert.match(css, /--dsw-alias-bg-base: rgba\([^;]+\) !important/, "DSH base surface should reveal the background");
+  assert.match(css, /--dsw-alias-bg-base: rgba\(246, 246, 247, 0\) !important/, "DSH canvas should reveal the wallpaper");
   assert.match(css, /--ds-theme-color-background: #f6f6f7 !important/, "Semantic fallback color should remain solid");
   assert.doesNotMatch(css, /nav\[class\], aside\[class\]\s*\{[^}]*backdrop-filter/, "Navigation ancestors must not become fixed containing blocks");
   // focus point translated to %
@@ -162,11 +162,11 @@ test("buildDreamSkinCss injects background layer with glass panels when image is
 test("buildDreamSkinCss makes panel semi-transparent when background is present", () => {
   const themeJson = { colors: { panel: "#ebf2ff", panelAlt: "#e5f2ff" } };
   const css = buildDreamSkinCss(themeJson, "data:image/jpeg;base64,X", null);
-  assert.ok(css.includes("rgba(235, 242, 255, 0.92)"), "Primary panels should remain readable over artwork");
-  assert.ok(css.includes("rgba(229, 242, 255, 0.88)"), "Secondary panels should remain readable over artwork");
+  assert.ok(css.includes("rgba(235, 242, 255, 0.72)"), "Primary panels should retain the original glass effect");
+  assert.ok(css.includes("rgba(229, 242, 255, 0.65)"), "Secondary panels should retain the original glass effect");
 });
 
-test("buildDreamSkinCss keeps the application base readable over background artwork", () => {
+test("buildDreamSkinCss preserves the semantic base while revealing background artwork", () => {
   const themeJson = {
     appearance: "light",
     colors: {
@@ -178,11 +178,13 @@ test("buildDreamSkinCss keeps the application base readable over background artw
     },
   };
   const css = buildDreamSkinCss(themeJson, "data:image/jpeg;base64,X", null);
-  assert.ok(css.includes("--dsw-alias-bg-base: rgba(246, 241, 231, 0.86) !important"));
+  assert.ok(css.includes("--ds-theme-color-background: #f6f1e7 !important"));
+  assert.ok(css.includes("--dsw-alias-bg-base: rgba(246, 241, 231, 0) !important"));
+  assert.ok(!css.includes("rgba(246, 241, 231, 0.86)"));
   assert.ok(css.includes("color-scheme: light"));
 });
 
-test("buildDreamSkinCss infers native control color scheme for auto appearance", () => {
+test("buildDreamSkinCss leaves native color scheme unchanged for auto appearance", () => {
   const darkCss = buildDreamSkinCss({
     appearance: "auto",
     colors: {
@@ -193,7 +195,7 @@ test("buildDreamSkinCss infers native control color scheme for auto appearance",
       muted: "#939393",
     },
   }, "data:image/jpeg;base64,X", null);
-  assert.ok(darkCss.includes("color-scheme: dark"));
+  assert.ok(!darkCss.includes("color-scheme:"));
 
   const lightCss = buildDreamSkinCss({
     appearance: "auto",
@@ -205,120 +207,30 @@ test("buildDreamSkinCss infers native control color scheme for auto appearance",
       muted: "#69757e",
     },
   }, "data:image/jpeg;base64,X", null);
-  assert.ok(lightCss.includes("color-scheme: light"));
+  assert.ok(!lightCss.includes("color-scheme:"));
 });
 
-test("buildDreamSkinCss repairs low-contrast primary and muted text", () => {
+test("buildDreamSkinCss preserves low-contrast author colors for theme fidelity", () => {
   const themeJson = {
     colors: {
       background: "#ffffff",
       panel: "#ffffff",
       panelAlt: "#f8f8f8",
+      accent: "#f0f0f0",
       text: "#eeeeee",
       muted: "#eeeeee",
     },
   };
   const css = buildDreamSkinCss(themeJson, null, null);
-  assert.doesNotMatch(css, /--dsw-alias-label-primary: #eeeeee/);
-  assert.doesNotMatch(css, /--dsw-alias-label-secondary: #eeeeee/);
+  assert.match(css, /--dsw-alias-label-primary: #eeeeee/);
+  assert.match(css, /--dsw-alias-label-secondary: #eeeeee/);
+  assert.match(css, /--dsw-alias-brand-primary: #f0f0f0/);
 
   const audit = auditDreamSkinReadability(themeJson);
   assert.equal(audit.source.primary.pass, false);
-  assert.equal(audit.normalized.primary.pass, true);
-  assert.equal(audit.normalized.muted.pass, true);
 });
 
-test("readability normalization covers base and both panels over arbitrary artwork", () => {
-  const themeJson = {
-    image: "background.jpg",
-    colors: {
-      background: "#6AB8F0",
-      panel: "#DDF3FF",
-      panelAlt: "#CBEAFF",
-      text: "#19334D",
-      muted: "#66829A",
-      accent: "#2388F2",
-    },
-  };
-  const audit = auditDreamSkinReadability(themeJson);
-  assert.equal(audit.normalized.primary.pass, true);
-  assert.equal(audit.normalized.muted.pass, true);
-  assert.ok(audit.normalized.primary.ratios.base >= 4.5);
-  assert.ok(audit.normalized.primary.ratios.panel >= 4.5);
-  assert.ok(audit.normalized.primary.ratios.panelAlt >= 4.5);
-  assert.ok(audit.normalized.muted.ratios.base >= 4.5);
-  assert.ok(audit.normalized.muted.ratios.panel >= 4.5);
-  assert.ok(audit.normalized.muted.ratios.panelAlt >= 4.5);
-});
-
-test("readability normalization covers panelAlt nested over panel", () => {
-  const themeJson = {
-    appearance: "light",
-    colors: {
-      background: "#161718",
-      panel: "#1c77b0",
-      panelAlt: "#3f84c6",
-      text: "#ffffff",
-      muted: "#66f5ff",
-      accent: "#34b7f9",
-    },
-  };
-  const audit = auditDreamSkinReadability(themeJson, { hasBackground: true });
-  const parse = (value, alpha = 1) => {
-    if (value.startsWith("#")) {
-      const hex = value.slice(1);
-      return { r: parseInt(hex.slice(0, 2), 16), g: parseInt(hex.slice(2, 4), 16), b: parseInt(hex.slice(4, 6), 16), a: alpha };
-    }
-    const parts = value.match(/[\d.]+/g).map(Number);
-    return { r: parts[0], g: parts[1], b: parts[2], a: alpha };
-  };
-  const composite = (front, back) => ({
-    r: front.r * front.a + back.r * (1 - front.a),
-    g: front.g * front.a + back.g * (1 - front.a),
-    b: front.b * front.a + back.b * (1 - front.a),
-    a: 1,
-  });
-  const channel = value => {
-    const normalized = value / 255;
-    return normalized <= 0.04045 ? normalized / 12.92 : ((normalized + 0.055) / 1.055) ** 2.4;
-  };
-  const luminance = color => 0.2126 * channel(color.r) + 0.7152 * channel(color.g) + 0.0722 * channel(color.b);
-  const contrast = (first, second) => {
-    const one = luminance(first);
-    const two = luminance(second);
-    return (Math.max(one, two) + 0.05) / (Math.min(one, two) + 0.05);
-  };
-  const colors = audit.normalizedColors;
-  const text = parse(colors.text);
-  const ratios = [0, 255].map(pixel => {
-    const backdrop = { r: pixel, g: pixel, b: pixel, a: 1 };
-    const base = composite(parse(colors.background, 0.86), backdrop);
-    const panel = composite(parse(colors.panel, 0.92), base);
-    return contrast(text, composite(parse(colors.panelAlt, 0.88), panel));
-  });
-  assert.ok(Math.min(...ratios) >= 4.5, `Nested panel contrast was ${Math.min(...ratios).toFixed(2)}`);
-});
-
-test("readability normalization moves inaccessible midtone surfaces only when needed", () => {
-  const themeJson = {
-    image: "background.png",
-    appearance: "dark",
-    colors: {
-      background: "#616BBB",
-      panel: "#756892",
-      panelAlt: "#6F6BA5",
-      text: "#F8F6FF",
-      muted: "#F0389A",
-      accent: "#36F11E",
-    },
-  };
-  const audit = auditDreamSkinReadability(themeJson);
-  assert.equal(audit.normalized.primary.pass, true);
-  assert.equal(audit.normalized.muted.pass, true);
-  assert.notEqual(audit.normalizedColors.panel, themeJson.colors.panel);
-});
-
-test("readability guardrails are emitted after custom CSS", () => {
+test("custom CSS remains last and is not followed by readability guardrails", () => {
   const themeJson = {
     colors: {
       background: "#fff",
@@ -330,9 +242,8 @@ test("readability guardrails are emitted after custom CSS", () => {
   };
   const customCss = ":root { --dsw-alias-bg-base: rgba(255, 255, 255, 0.05); }";
   const css = buildDreamSkinCss(themeJson, "data:image/jpeg;base64,X", customCss);
-  assert.ok(css.indexOf("Custom theme.css") < css.lastIndexOf("Readability guardrails"));
-  assert.ok(css.lastIndexOf("--dsw-alias-bg-base: rgba(255, 255, 255, 0.86) !important")
-    > css.indexOf("Custom theme.css"));
+  assert.ok(css.trimEnd().endsWith(customCss));
+  assert.ok(!css.includes("Readability guardrails"));
 });
 
 test("buildDreamSkinCss appends custom CSS", () => {

@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 /**
- * Materialize the frozen DreamSkin Gallery catalog as a local built-in library.
- * Data flow: catalog -> cached/official ZIP -> size + SHA-256 verification ->
- * strict theme import -> per-theme provenance metadata -> atomic directory swap.
+ * Materialize the curated DreamSkin Gallery catalog as a local built-in library.
+ * Data flow: audited Top 100 minus explicit source-quality exclusions -> catalog
+ * -> cached/official ZIP -> size + SHA-256 verification -> strict theme import
+ * -> per-theme provenance metadata -> atomic directory swap.
  * Seven catalog-pinned upstream packages missing theme.css receive one bounded,
  * Safe-CSS-validated compatibility rule and are labeled accordingly.
  *
@@ -62,8 +63,16 @@ function sha256(data) {
 }
 
 function validateCatalog(catalog) {
-  if (catalog?.schemaVersion !== 1 || !Array.isArray(catalog.themes) || catalog.themes.length !== 100) {
-    throw new Error("Gallery catalog must use schemaVersion 1 and contain exactly 100 themes");
+  if (catalog?.schemaVersion !== 2
+      || catalog.auditedThemeCount !== 100
+      || !Array.isArray(catalog.excludedThemeIds)
+      || !Array.isArray(catalog.themes)) {
+    throw new Error("Gallery catalog must use schemaVersion 2 with audited and excluded theme metadata");
+  }
+  const excludedIds = new Set(catalog.excludedThemeIds);
+  if (excludedIds.size !== catalog.excludedThemeIds.length
+      || catalog.themes.length !== catalog.auditedThemeCount - excludedIds.size) {
+    throw new Error("Gallery catalog counts or excluded theme IDs are inconsistent");
   }
   const ranks = new Set();
   const versionIds = new Set();
@@ -74,13 +83,19 @@ function validateCatalog(catalog) {
     if (!/^[a-z0-9][a-z0-9._-]{2,62}$/i.test(theme.themeId)) throw new Error(`Invalid theme ID: ${theme.themeId}`);
     if (!/^[a-f0-9]{64}$/.test(theme.package?.sha256 || "")) throw new Error(`Invalid package hash: ${theme.themeId}`);
     if (!Number.isSafeInteger(theme.package?.bytes) || theme.package.bytes < 1) throw new Error(`Invalid package size: ${theme.themeId}`);
+    if (excludedIds.has(theme.themeId)) throw new Error(`Excluded theme remains in catalog: ${theme.themeId}`);
+    if (theme.compatibility === "native" && theme.sourceReadability !== "pass") {
+      throw new Error(`Catalog theme failed source readability: ${theme.themeId}`);
+    }
     const expectedFile = `${String(theme.rank).padStart(3, "0")}-${theme.versionId}.zip`;
     if (theme.package.file !== expectedFile) throw new Error(`Invalid package filename: ${theme.package.file}`);
     ranks.add(theme.rank);
     versionIds.add(theme.versionId);
     themeIds.add(theme.themeId);
   }
-  if (ranks.size !== 100 || versionIds.size !== 100 || themeIds.size !== 100) {
+  if (ranks.size !== catalog.themes.length
+      || versionIds.size !== catalog.themes.length
+      || themeIds.size !== catalog.themes.length) {
     throw new Error("Catalog ranks, version IDs, and theme IDs must be unique");
   }
 }
@@ -179,7 +194,9 @@ async function materialize(catalog, options) {
 
     const stagedThemes = join(dataRoot, "themes");
     const installed = catalog.themes.map(entry => loadTheme(join(stagedThemes, entry.themeId)));
-    if (installed.length !== 100) throw new Error(`Expected 100 materialized themes, got ${installed.length}`);
+    if (installed.length !== catalog.themes.length) {
+      throw new Error(`Expected ${catalog.themes.length} materialized themes, got ${installed.length}`);
+    }
     replaceDirectory(stagedThemes, options.outputDir);
   } finally {
     if (previousDataDir === undefined) delete process.env.DSH_SKIN_DATA_DIR;

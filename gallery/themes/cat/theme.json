@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "cat",
+  "name": "cat",
+  "image": "background.jpg",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.6,
+    "focusY": 0.5,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#151311",
+    "panel": "#201d1b",
+    "panelAlt": "#2e2a26",
+    "accent": "#ea8e12",
+    "accentAlt": "#ed9e33",
+    "secondary": "#a36161",
+    "highlight": "#efaa4d",
+    "text": "#f1f0ee",
+    "muted": "#959391",
+    "line": "#413f3d"
+  }
+}

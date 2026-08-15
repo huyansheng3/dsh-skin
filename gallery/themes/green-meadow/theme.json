@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "green-meadow",
+  "name": "Green Meadow",
+  "image": "background.png",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.5,
+    "focusY": 0.42,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#163021",
+    "panel": "#1E392A",
+    "panelAlt": "#2B4A36",
+    "accent": "#A8E06F",
+    "accentAlt": "#C7F29A",
+    "secondary": "#7DB99A",
+    "highlight": "#E9F9DE",
+    "text": "#F4F8F1",
+    "muted": "#B5C5B8",
+    "line": "#486151"
+  }
+}

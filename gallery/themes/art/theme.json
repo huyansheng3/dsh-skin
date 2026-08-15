@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "art",
+  "name": "art",
+  "image": "background.jpg",
+  "appearance": "auto",
+  "art": {
+    "focusX": 0,
+    "focusY": 0.38,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#121314",
+    "panel": "#1c1d1f",
+    "panelAlt": "#282a2d",
+    "accent": "#1c75c3",
+    "accentAlt": "#3c88cb",
+    "secondary": "#ccb7a5",
+    "highlight": "#5598d2",
+    "text": "#eff0f1",
+    "muted": "#929394",
+    "line": "#3e3f40"
+  }
+}

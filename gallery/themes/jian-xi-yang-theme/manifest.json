@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "jian-xi-yang-theme",
+  "version": "1.0.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "1.5.5",
+  "platforms": [
+    "macos"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "jokerp",
+    "displayName": "Joker Pan"
+  },
+  "license": "MIT",
+  "provenance": {
+    "aiGenerated": true,
+    "summary": "build by GPT"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 779,
+      "sha256": "6e15fc517cecf3340239c6d9a36b73d5d30baa259e994a03c158d14b7926c44f"
+    },
+    {
+      "path": "background.png",
+      "mediaType": "image/png",
+      "bytes": 2363884,
+      "sha256": "3d875703c70fcdd8809da5657968eda4278c4f7db79868a960477dda5175db8f"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 1380,
+      "sha256": "0be79b2400de23cb062aaaa1d40557229de9ee7c0a32e6ea175e69bfcc796445"
+    }
+  ],
+  "createdAt": "2026-07-27T15:38:26.500Z"
+}

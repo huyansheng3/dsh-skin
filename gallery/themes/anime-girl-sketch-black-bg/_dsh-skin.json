@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "source": "dreamskin-gallery",
+  "rank": 95,
+  "versionId": "ver_154b9a9a4a66fa73dc6f",
+  "author": "yyy",
+  "license": "CC BY 4.0",
+  "officialPackage": {
+    "file": "095-ver_154b9a9a4a66fa73dc6f.zip",
+    "bytes": 1750372,
+    "sha256": "fe03ae278c1aeda1f9eb921e1252851a46f6470b403926f26e17d620a02f5d65"
+  },
+  "compatibility": "native"
+}

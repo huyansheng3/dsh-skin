@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "source": "dreamskin-gallery",
+  "rank": 29,
+  "versionId": "ver_29f5249c71885ab73342",
+  "author": "SuperEliauk",
+  "license": "MIT",
+  "officialPackage": {
+    "file": "029-ver_29f5249c71885ab73342.zip",
+    "bytes": 3491295,
+    "sha256": "774cbd4781b10a9660c7f914bb0fc8ef0c8e017cc26f640339f62a0051858e0a"
+  },
+  "compatibility": "native"
+}

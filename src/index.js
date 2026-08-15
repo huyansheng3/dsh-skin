@@ -40,6 +40,8 @@ const PACKAGE_ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const CORE_BUILTIN_DIR = join(PACKAGE_ROOT, "themes");
 const DEFAULT_GALLERY_BUILTIN_DIR = join(PACKAGE_ROOT, "gallery", "themes");
 const MAX_UPLOAD_BYTES = 32 * 1024 * 1024;
+// Bump when CSS generation semantics change; responses are cached as immutable.
+const CSS_RENDERER_VERSION = 2;
 
 class HttpError extends Error {
   constructor(status, message) {
@@ -98,8 +100,8 @@ function resolveTheme(config) {
 function themeCacheKey(config, theme = resolveTheme(config)) {
   const revision = Number.isSafeInteger(loadState().revision) ? loadState().revision : 0;
   return theme
-    ? `${theme.manifest.id}@${theme.manifest.version}:${revision}`
-    : `official:${revision}`;
+    ? `${theme.manifest.id}@${theme.manifest.version}:${revision}:r${CSS_RENDERER_VERSION}`
+    : `official:${revision}:r${CSS_RENDERER_VERSION}`;
 }
 
 function stylesheetHref(config) {

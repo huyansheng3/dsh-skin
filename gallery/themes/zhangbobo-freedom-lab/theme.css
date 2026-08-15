@@ -1,0 +1,72 @@
+[data-ds-part="root"] {
+  background-color: var(--ds-theme-color-background);
+}
+
+
+[data-ds-part="sidebar"] {
+  background-color: rgba(13,34,56,0.72);
+  border-color: var(--ds-theme-color-line);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 16px;
+  backdrop-filter: blur(22px) saturate(1.15);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.22);
+}
+
+
+[data-ds-part="main"] {
+  background-color: transparent;
+}
+
+
+[data-ds-part="header"] {
+  background-color: rgba(13,34,56,0.55);
+  border-color: var(--ds-theme-color-line);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 12px;
+  backdrop-filter: blur(16px);
+}
+
+
+[data-ds-part="project-list"] {
+  background-color: rgba(13,34,56,0.45);
+  border-radius: 14px;
+}
+
+
+[data-ds-part="thread"] {
+  background-color: transparent;
+}
+
+
+[data-ds-part="message"] {
+  background-color: rgba(13,34,56,0.42);
+  border-color: var(--ds-theme-color-line);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 14px;
+}
+
+
+[data-ds-part="composer"] {
+  background-color: rgba(13,33,56,0.45);
+  border-color: var(--ds-theme-color-line);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 22px;
+  backdrop-filter: blur(20px) saturate(1.15);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+}
+
+
+[data-ds-part="composer-toolbar"] {
+  background-color: rgba(13,34,56,0.35);
+  border-radius: 12px;
+}
+
+
+[data-ds-part="dialog"] {
+  background-color: var(--ds-theme-color-panel-alt);
+  border-radius: 16px;
+}

@@ -1,0 +1,46 @@
+{
+  "packageVersion": 1,
+  "themeId": "stellar-watcher",
+  "version": "0.1.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "1.5.5",
+  "platforms": [
+    "macos",
+    "windows"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "gentlemanl",
+    "displayName": "螺丝起子"
+  },
+  "license": "CC BY 4.0",
+  "provenance": {
+    "aiGenerated": true,
+    "summary": "使用 AI 生成梦幻星河与机械旅者背景图，参考用户提供的纸船星河图片构图和色彩氛围；后期仅进行了裁剪、尺寸调整和压缩。"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 517,
+      "sha256": "97ea1bf93f630505b56deb86930fd83e4a2beb90244ccf5affb5932f9f4a856a"
+    },
+    {
+      "path": "background.png",
+      "mediaType": "image/png",
+      "bytes": 1801427,
+      "sha256": "f21ddeaf4401cbf3d086db092ec12ed5471e55e5a2d0e7d84993959ae9f0f106"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 2055,
+      "sha256": "e3d482246329a989e6fa6facfcf36da0264231553129226e237fce86b1130c23"
+    }
+  ],
+  "createdAt": "2026-08-10T06:08:34.783Z"
+}

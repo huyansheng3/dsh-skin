@@ -108,6 +108,13 @@ test("bundled illustrated DreamSkin themes load with background assets", () => {
   }
 });
 
+test("deprecated solid-color themes are not shipped", () => {
+  const repoRoot = dirname(TEST_DIR);
+  for (const id of ["gothic-void", "matrix-green", "ocean-breeze", "sakura-pink", "warm-sunset"]) {
+    assert.equal(existsSync(join(repoRoot, "themes", id)), false, `${id} should be removed`);
+  }
+});
+
 test("duplicate ZIP import cleans its extracted temporary directory", async () => {
   const repoRoot = dirname(TEST_DIR);
   const sourceDir = join(TEST_DATA_DIR, "zip-source");

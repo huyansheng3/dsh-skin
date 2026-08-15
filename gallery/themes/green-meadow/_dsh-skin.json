@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "source": "dreamskin-gallery",
+  "rank": 71,
+  "versionId": "ver_30f0586e1ed19d914a8a",
+  "author": "kevin carney",
+  "license": "MIT",
+  "officialPackage": {
+    "file": "071-ver_30f0586e1ed19d914a8a.zip",
+    "bytes": 4336362,
+    "sha256": "544d513b860c946efc18bc4d47c3ea4ebb1e412d3cd1633f0447ced779884394"
+  },
+  "compatibility": "native"
+}

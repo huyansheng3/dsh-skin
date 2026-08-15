@@ -1,0 +1,48 @@
+[data-ds-part="sidebar"] {
+  background-color: rgba(37, 42, 56, 0.88);
+  border-right-color: rgba(255, 179, 92, 0.26);
+  border-right-width: 1px;
+  border-right-style: solid;
+  backdrop-filter: blur(18px);
+  box-shadow: 4px 0 18px rgba(20, 22, 31, 0.24);
+  transition-property: background-color, border-right-color, box-shadow;
+  transition-duration: 180ms;
+}
+
+[data-ds-part="header"] {
+  background-color: rgba(37, 42, 56, 0.78);
+  border-bottom-color: rgba(255, 179, 92, 0.20);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  backdrop-filter: blur(16px);
+}
+
+[data-ds-part="composer"] {
+  background-color: rgba(48, 52, 66, 0.90);
+  border-color: rgba(255, 179, 92, 0.30);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(20, 22, 31, 0.28);
+  backdrop-filter: blur(18px);
+  transition-property: background-color, border-color, box-shadow;
+  transition-duration: 180ms;
+}
+
+[data-ds-part="composer"]:focus-visible {
+  border-color: var(--ds-theme-color-accent);
+}
+
+[data-ds-part="dialog"] {
+  background-color: rgba(48, 52, 66, 0.94);
+  border-color: rgba(255, 208, 138, 0.32);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(20, 22, 31, 0.30);
+  backdrop-filter: blur(18px);
+}
+
+[data-ds-part="dialog"]:focus-visible {
+  border-color: var(--ds-theme-color-accent-alt);
+}

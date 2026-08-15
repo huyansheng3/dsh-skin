@@ -17,8 +17,49 @@ themes/*/background.webp
 /Codex-Dream-Skin/
 /themes/arina-hashimoto/
 
-# Gallery artwork is materialized locally from the pinned, licensed catalog.
-gallery/themes/
+# Gallery artwork is materialized locally from the pinned catalog. Only the
+# explicitly audited redistributable selection below is committed and shipped.
+gallery/themes/*
+!gallery/themes/anime-girl-sketch-black-bg/
+!gallery/themes/anime-girl-sketch-black-bg/**
+!gallery/themes/art/
+!gallery/themes/art/**
+!gallery/themes/astral-tidev2/
+!gallery/themes/astral-tidev2/**
+!gallery/themes/cat/
+!gallery/themes/cat/**
+!gallery/themes/character-01/
+!gallery/themes/character-01/**
+!gallery/themes/chatgpt-image-2026-8-1-02-47-08/
+!gallery/themes/chatgpt-image-2026-8-1-02-47-08/**
+!gallery/themes/custom-1784270668889/
+!gallery/themes/custom-1784270668889/**
+!gallery/themes/exec-89fd6732-b964-42fc-a1d8-3ca1a153bdc8/
+!gallery/themes/exec-89fd6732-b964-42fc-a1d8-3ca1a153bdc8/**
+!gallery/themes/forest/
+!gallery/themes/forest/**
+!gallery/themes/green-meadow/
+!gallery/themes/green-meadow/**
+!gallery/themes/img-5509/
+!gallery/themes/img-5509/**
+!gallery/themes/insist-on/
+!gallery/themes/insist-on/**
+!gallery/themes/jian-xi-yang-theme/
+!gallery/themes/jian-xi-yang-theme/**
+!gallery/themes/jinling-sunlit/
+!gallery/themes/jinling-sunlit/**
+!gallery/themes/milky-way/
+!gallery/themes/milky-way/**
+!gallery/themes/stellar-watcher/
+!gallery/themes/stellar-watcher/**
+!gallery/themes/sunny-boy/
+!gallery/themes/sunny-boy/**
+!gallery/themes/usr-49e16299682ecef4aa46.mountain-sea/
+!gallery/themes/usr-49e16299682ecef4aa46.mountain-sea/**
+!gallery/themes/usr-49e16299682ecef4aa46.prosperity-mode/
+!gallery/themes/usr-49e16299682ecef4aa46.prosperity-mode/**
+!gallery/themes/zhangbobo-freedom-lab/
+!gallery/themes/zhangbobo-freedom-lab/**
 gallery/.gallery-vendor-*/
 .cache/dreamskin-gallery/
 

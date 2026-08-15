@@ -1,0 +1,46 @@
+{
+  "packageVersion": 1,
+  "themeId": "exec-89fd6732-b964-42fc-a1d8-3ca1a153bdc8",
+  "version": "0.1.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "0.1.0",
+  "platforms": [
+    "macos",
+    "windows"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "9527",
+    "displayName": "Ricardo Zhang"
+  },
+  "license": "MIT",
+  "provenance": {
+    "aiGenerated": false,
+    "summary": "AI生成"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 567,
+      "sha256": "3becff61e5ea705dcc6421502506292b3bf4ccc11dab5df9e0dc96a0fc5ff2ac"
+    },
+    {
+      "path": "background.png",
+      "mediaType": "image/png",
+      "bytes": 1980518,
+      "sha256": "f1a67893f4c4f42a88304f0ed31e690857962689bb97f1632bb94a99620171eb"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 1479,
+      "sha256": "bd88c021c348baff69bf8e1477861c77fd2f137ded6a572790911e9fc2e87a46"
+    }
+  ],
+  "createdAt": "2026-08-07T07:08:05.256Z"
+}

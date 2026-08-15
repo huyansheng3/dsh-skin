@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "source": "dreamskin-gallery",
+  "rank": 40,
+  "versionId": "ver_9f842942e499d4fffbcc",
+  "author": "zhanggugu-max",
+  "license": "CC BY 4.0",
+  "officialPackage": {
+    "file": "040-ver_9f842942e499d4fffbcc.zip",
+    "bytes": 2448448,
+    "sha256": "6b1e278517d04ee8f985847ba3d80176bffbac640bd9ab425886f713aa87cf5c"
+  },
+  "compatibility": "native"
+}

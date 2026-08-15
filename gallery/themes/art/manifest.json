@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "art",
+  "version": "0.1.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "0.0.0",
+  "platforms": [
+    "windows"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "supereliauk",
+    "displayName": "湖岸栈桥"
+  },
+  "license": "MIT",
+  "provenance": {
+    "aiGenerated": false,
+    "summary": "https://wallhaven.cc/"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 490,
+      "sha256": "c674575c7daf1a1957588a9e63349aab053a44528ed585f269214dad58a0605b"
+    },
+    {
+      "path": "background.jpg",
+      "mediaType": "image/jpeg",
+      "bytes": 3489093,
+      "sha256": "0ca447a7be47951338b5cf85bd6b7a0b7adf0fbd2e2564e3afd945e5f4d963ab"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 273,
+      "sha256": "3f5401920639e102d2e3871057f2bb68d290a5ca5f5a14c9e01cb2ff7be088e3"
+    }
+  ],
+  "createdAt": "2026-07-27T02:54:31.554Z"
+}

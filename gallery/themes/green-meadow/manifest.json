@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "green-meadow",
+  "version": "0.1.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "0.1.0",
+  "platforms": [
+    "windows"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "Kevin-Carney",
+    "displayName": "Kevin Carney"
+  },
+  "license": "MIT",
+  "provenance": {
+    "aiGenerated": false,
+    "summary": "wallpaper"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 510,
+      "sha256": "84baad22cbea08e68d929187bc08bece4fca0aee618d77b1addd68da9fed3f83"
+    },
+    {
+      "path": "background.png",
+      "mediaType": "image/png",
+      "bytes": 4332511,
+      "sha256": "237b257267d8950490231b947a8a5b7f739682bc658e1951ee726b871e28388b"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 1904,
+      "sha256": "1e826b2d9c71ba2f4ba348bed6a568eb3410e12130fe6279ec74b495f2f1f36f"
+    }
+  ],
+  "createdAt": "2026-08-12T02:48:06.110Z"
+}

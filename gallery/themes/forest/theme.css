@@ -1,0 +1,52 @@
+[data-ds-part="root"] {
+  background-color: #07130f;
+  color: #edf5ed;
+}
+
+[data-ds-part="sidebar"] {
+  background-color: rgba(16, 37, 28, 0.86);
+  border-color: rgba(183, 227, 106, 0.25);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(18px) saturate(1.2);
+}
+
+[data-ds-part="main"] {
+  background-color: #07130f;
+  color: #edf5ed;
+}
+
+[data-ds-part="header"] {
+  background-color: rgba(23, 51, 38, 0.9);
+  border-color: rgba(217, 164, 65, 0.3);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 14px;
+}
+
+[data-ds-part="message"] {
+  background-color: rgba(16, 37, 28, 0.82);
+  border-color: rgba(183, 227, 106, 0.18);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 12px;
+}
+
+[data-ds-part="composer"] {
+  background-color: rgba(16, 37, 28, 0.9);
+  border-color: rgba(183, 227, 106, 0.22);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 14px;
+}
+
+[data-ds-part="dialog"] {
+  background-color: rgba(23, 51, 38, 0.95);
+  color: #edf5ed;
+  border-color: #284635;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 14px;
+}

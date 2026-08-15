@@ -1,28 +1,36 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "snapshotAt": "2026-08-15T10:32:17.047Z",
   "source": "https://api.dreamskin.cc/v1/themes?sort=popular",
-  "notice": "Theme packages remain under their authors' listed licenses and are not redistributed by dsh-skin.",
+  "auditedThemeCount": 100,
+  "excludedThemeIds": [
+    "guiming.ink.morning-mist",
+    "poster",
+    "firefly",
+    "111",
+    "usr-49e16299682ecef4aa46.idea-engine",
+    "violet-evergarden",
+    "claude-eva-warm",
+    "usr-49e16299682ecef4aa46.quiet-paper",
+    "usr-49e16299682ecef4aa46.cloud-ascent",
+    "guiming.ink.rainwashed-celadon",
+    "ribbon-nocturne",
+    "sunrise-coast-lab",
+    "work-xixia",
+    "aozora-no-tabi",
+    "xianjian",
+    "preview",
+    "miss-dirty-investigation",
+    "wukong1",
+    "leimu",
+    "usr-49e16299682ecef4aa46.spirit-trail",
+    "fisher-girl",
+    "usr-49e16299682ecef4aa46.ink-horizon",
+    "blue-archive-arona",
+    "erii-celestial-dream"
+  ],
+  "notice": "Low-contrast source themes are excluded. Retained packages remain under their authors' listed licenses; only the separately reviewed bundled-themes.json selection is redistributed.",
   "themes": [
-    {
-      "rank": 1,
-      "versionId": "ver_018ad695fbb33b12e141",
-      "themeId": "guiming.ink.morning-mist",
-      "name": "晨雾山水",
-      "version": "1.0.0",
-      "author": "GuiMing555",
-      "authorUserId": "usr_b2f3353256cea5a534e5",
-      "license": "GuiMing Personal Use License 1.0",
-      "package": {
-        "file": "001-ver_018ad695fbb33b12e141.zip",
-        "bytes": 673058,
-        "sha256": "31136ad406d28acd5380ab6020dbf11a9c7ce947bf3bbb4318c51c4676b3f9bb"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
-    },
     {
       "rank": 2,
       "versionId": "ver_34a73ec14a33630c2578",
@@ -39,8 +47,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 3,
@@ -58,8 +65,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 4,
@@ -77,8 +83,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 5,
@@ -96,8 +101,7 @@
       },
       "compatibility": "generated-theme-css",
       "galleryApplyCompatible": false,
-      "sourceReadability": "warning",
-      "normalizedReadability": "unverified"
+      "sourceReadability": "warning"
     },
     {
       "rank": 6,
@@ -115,8 +119,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 7,
@@ -134,8 +137,7 @@
       },
       "compatibility": "generated-theme-css",
       "galleryApplyCompatible": false,
-      "sourceReadability": "warning",
-      "normalizedReadability": "unverified"
+      "sourceReadability": "warning"
     },
     {
       "rank": 8,
@@ -153,46 +155,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 9,
-      "versionId": "ver_b488990ad32673c92de6",
-      "themeId": "poster",
-      "name": "三上悠亚",
-      "version": "0.1.0",
-      "author": "zhiqiang huang",
-      "authorUserId": "usr_0e50a4047530e3671032",
-      "license": "MIT",
-      "package": {
-        "file": "009-ver_b488990ad32673c92de6.zip",
-        "bytes": 1858473,
-        "sha256": "d7b68a109606dace2c642cf96beb6f50a1366a97dc6d97e00b552333fc37d419"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 10,
-      "versionId": "ver_db0516661b1ac5bc1590",
-      "themeId": "firefly",
-      "name": "firefly",
-      "version": "0.2.0",
-      "author": "1xifengdeyouxi",
-      "authorUserId": "usr_a6d146108acd56d8fff3",
-      "license": "MIT",
-      "package": {
-        "file": "010-ver_db0516661b1ac5bc1590.zip",
-        "bytes": 1210573,
-        "sha256": "ff29404d4b277075c3a01dbecc63ddc3856ac5a601f97443fa7bee3c4f55c381"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 11,
@@ -210,8 +173,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 12,
@@ -229,8 +191,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 13,
@@ -248,27 +209,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 14,
-      "versionId": "ver_987007f920c6ef06b842",
-      "themeId": "111",
-      "name": "大肥鱼（8.1）",
-      "version": "0.1.0",
-      "author": "fanpaisk",
-      "authorUserId": "usr_a52a806f5c2a28085341",
-      "license": "MIT",
-      "package": {
-        "file": "014-ver_987007f920c6ef06b842.zip",
-        "bytes": 1804216,
-        "sha256": "4b3bbf3e287bcf189dcd6e53ff70d8f678676b0d170c51f7199edc3811108bc2"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 15,
@@ -286,8 +227,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 16,
@@ -305,27 +245,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 17,
-      "versionId": "ver_f2b255d03e6ac7f91ada",
-      "themeId": "usr-49e16299682ecef4aa46.idea-engine",
-      "name": "灵感小宇宙",
-      "version": "0.1.0",
-      "author": "axdlee",
-      "authorUserId": "usr_49e16299682ecef4aa46",
-      "license": "CC BY 4.0",
-      "package": {
-        "file": "017-ver_f2b255d03e6ac7f91ada.zip",
-        "bytes": 2067979,
-        "sha256": "fcbdc5efebbf43db7cdbbe9ae213b71da6daa33ef59e36e1b8567a6a20cabdc0"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 18,
@@ -343,46 +263,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 19,
-      "versionId": "ver_62e2656cf8ca7b275b2f",
-      "themeId": "violet-evergarden",
-      "name": "Cyber · 紫罗兰永恒花园 · Violet Evergarden",
-      "version": "0.1.1",
-      "author": "Cribug",
-      "authorUserId": "usr_9c91ca725450a2939cb1",
-      "license": "MIT",
-      "package": {
-        "file": "019-ver_62e2656cf8ca7b275b2f.zip",
-        "bytes": 2734257,
-        "sha256": "9afff81b78f7e97c14c6561f94f127e5c449f461dd38d483cb4bda5eec6210e0"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 20,
-      "versionId": "ver_f836b53d9df32ab8ecf7",
-      "themeId": "claude-eva-warm",
-      "name": "Claude EVA 暖奶油",
-      "version": "0.1.1",
-      "author": "TunaTung",
-      "authorUserId": "usr_32c22494605db50fd4ba",
-      "license": "MIT",
-      "package": {
-        "file": "020-ver_f836b53d9df32ab8ecf7.zip",
-        "bytes": 4141582,
-        "sha256": "8fc427b28e2dd696b3cf35640fa05fc0c1ab7008bfb343f6c6aa6ebab1cd1696"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 21,
@@ -400,46 +281,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 22,
-      "versionId": "ver_6fac938806981a73cb51",
-      "themeId": "usr-49e16299682ecef4aa46.quiet-paper",
-      "name": "清透定制",
-      "version": "0.1.1",
-      "author": "axdlee",
-      "authorUserId": "usr_49e16299682ecef4aa46",
-      "license": "CC BY 4.0",
-      "package": {
-        "file": "022-ver_6fac938806981a73cb51.zip",
-        "bytes": 2330580,
-        "sha256": "00f6adab28a022bad16c5ff8139dd3b11a59415ad7912034dff372b68baa56ef"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 23,
-      "versionId": "ver_6daeb3394d0c5a537710",
-      "themeId": "usr-49e16299682ecef4aa46.cloud-ascent",
-      "name": "云上仙途",
-      "version": "0.1.1",
-      "author": "axdlee",
-      "authorUserId": "usr_49e16299682ecef4aa46",
-      "license": "CC BY 4.0",
-      "package": {
-        "file": "023-ver_6daeb3394d0c5a537710.zip",
-        "bytes": 3178759,
-        "sha256": "27d59382b9afb5c18f60fc6cafd68d2b7ae9b9a4f4e219aa078f346f3c18c0a8"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 24,
@@ -457,8 +299,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 25,
@@ -476,27 +317,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 26,
-      "versionId": "ver_636b0ac227d23f7bf741",
-      "themeId": "guiming.ink.rainwashed-celadon",
-      "name": "雨过青瓷",
-      "version": "1.0.0",
-      "author": "GuiMing555",
-      "authorUserId": "usr_b2f3353256cea5a534e5",
-      "license": "GuiMing Personal Use License 1.0",
-      "package": {
-        "file": "026-ver_636b0ac227d23f7bf741.zip",
-        "bytes": 631581,
-        "sha256": "14dadf429cfefdc50d48ac0b3e2f8febb5cb379a359e9300d1f20ee3cc864c40"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 27,
@@ -514,8 +335,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 28,
@@ -533,8 +353,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 29,
@@ -552,8 +371,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 30,
@@ -571,8 +389,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 31,
@@ -590,8 +407,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 32,
@@ -609,8 +425,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 33,
@@ -628,27 +443,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 34,
-      "versionId": "ver_7c332e8415e0aa6100a7",
-      "themeId": "ribbon-nocturne",
-      "name": "缎带夜曲 · Ribbon Nocturne",
-      "version": "0.1.0",
-      "author": "Cribug",
-      "authorUserId": "usr_9c91ca725450a2939cb1",
-      "license": "MIT",
-      "package": {
-        "file": "034-ver_7c332e8415e0aa6100a7.zip",
-        "bytes": 966453,
-        "sha256": "4b9d0582d435f53381cb5f192fa9fa1068a70c220d49b4bfe460cb432c167126"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 35,
@@ -666,8 +461,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 36,
@@ -685,8 +479,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 37,
@@ -704,8 +497,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 38,
@@ -723,8 +515,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 39,
@@ -742,8 +533,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 40,
@@ -761,8 +551,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 41,
@@ -780,8 +569,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 42,
@@ -799,46 +587,7 @@
       },
       "compatibility": "generated-theme-css",
       "galleryApplyCompatible": false,
-      "sourceReadability": "warning",
-      "normalizedReadability": "unverified"
-    },
-    {
-      "rank": 43,
-      "versionId": "ver_4f2cc12fc1ef684e7e8e",
-      "themeId": "sunrise-coast-lab",
-      "name": "Sunrise Coast Lab",
-      "version": "0.1.0",
-      "author": "zhanggugu",
-      "authorUserId": "usr_b60770ba53e06caaa946",
-      "license": "CC BY 4.0",
-      "package": {
-        "file": "043-ver_4f2cc12fc1ef684e7e8e.zip",
-        "bytes": 1714853,
-        "sha256": "9a39406321dff37de0a125a519feef658c2e8bef99cc7a37f049729b8c581254"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 44,
-      "versionId": "ver_e6c43232c86430bc1508",
-      "themeId": "work-xixia",
-      "name": "不干活就没饭吃",
-      "version": "0.1.0",
-      "author": "汐夏",
-      "authorUserId": "usr_47af79da3191d712c54e",
-      "license": "MIT",
-      "package": {
-        "file": "044-ver_e6c43232c86430bc1508.zip",
-        "bytes": 1497983,
-        "sha256": "7d67365d9057556ccb6c5ddf0fa2462a4507374aa6e7cae04deb85a3e650123f"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
+      "sourceReadability": "warning"
     },
     {
       "rank": 45,
@@ -856,8 +605,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 46,
@@ -875,8 +623,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 47,
@@ -894,8 +641,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 48,
@@ -913,27 +659,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 49,
-      "versionId": "ver_da32942a3fd1fe6350d2",
-      "themeId": "aozora-no-tabi",
-      "name": "青空の旅",
-      "version": "0.1.0",
-      "author": "流架乃木",
-      "authorUserId": "usr_70ec242ab9e68f8fac98",
-      "license": "CC BY 4.0",
-      "package": {
-        "file": "049-ver_da32942a3fd1fe6350d2.zip",
-        "bytes": 662360,
-        "sha256": "c3f4f4cdbf92e7c5139999bf37aac00f593bcd204283036d91a0d74e35b38222"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 50,
@@ -951,8 +677,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 51,
@@ -970,27 +695,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 52,
-      "versionId": "ver_40daf7a6ec40637105b1",
-      "themeId": "xianjian",
-      "name": "仙剑问情",
-      "version": "0.1.0",
-      "author": "slimaxe",
-      "authorUserId": "usr_bb334727f85df71e4422",
-      "license": "MIT",
-      "package": {
-        "file": "052-ver_40daf7a6ec40637105b1.zip",
-        "bytes": 3512911,
-        "sha256": "6038d7e1d5c9afc2f0d14a38dadeeaae554819216b69b4e3e2d98bb95ee01fbd"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 53,
@@ -1008,8 +713,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 54,
@@ -1027,8 +731,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 55,
@@ -1046,8 +749,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 56,
@@ -1065,8 +767,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 57,
@@ -1084,8 +785,7 @@
       },
       "compatibility": "generated-theme-css",
       "galleryApplyCompatible": false,
-      "sourceReadability": "warning",
-      "normalizedReadability": "unverified"
+      "sourceReadability": "warning"
     },
     {
       "rank": 58,
@@ -1103,27 +803,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 59,
-      "versionId": "ver_65c5d0ed4f612866e34a",
-      "themeId": "preview",
-      "name": "明日香",
-      "version": "0.1.0",
-      "author": "rui",
-      "authorUserId": "usr_d642a8c41687f596d9e3",
-      "license": "mit",
-      "package": {
-        "file": "059-ver_65c5d0ed4f612866e34a.zip",
-        "bytes": 451951,
-        "sha256": "3f8f5ef0f83c6be9e4726ebbf1f8690f51c77d213f3cc4df483d49d043e9e313"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 60,
@@ -1141,8 +821,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 61,
@@ -1160,8 +839,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 62,
@@ -1179,8 +857,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 63,
@@ -1198,8 +875,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 64,
@@ -1217,8 +893,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 65,
@@ -1236,27 +911,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 66,
-      "versionId": "ver_8d91496a8cd5455e5cb3",
-      "themeId": "miss-dirty-investigation",
-      "name": "推理 · 报社小姐",
-      "version": "0.1.0",
-      "author": "Cribug",
-      "authorUserId": "usr_9c91ca725450a2939cb1",
-      "license": "MIT",
-      "package": {
-        "file": "066-ver_8d91496a8cd5455e5cb3.zip",
-        "bytes": 3002386,
-        "sha256": "dcb32c6cc84cdc3b302c3fc21e9a27e16d241affb895b7ac3c8e6e7f88cb9904"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 67,
@@ -1274,8 +929,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 68,
@@ -1293,27 +947,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 69,
-      "versionId": "ver_424fffd8ed230147b4e8",
-      "themeId": "wukong1",
-      "name": "黑神话",
-      "version": "0.1.0",
-      "author": "Gilbert",
-      "authorUserId": "usr_1e0887c48f3bd121bdfa",
-      "license": "MIT",
-      "package": {
-        "file": "069-ver_424fffd8ed230147b4e8.zip",
-        "bytes": 1362792,
-        "sha256": "855344a69c270f4532d9c62a64b3e0a0a8b4846f678925e47ad440533dc75542"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 70,
@@ -1331,8 +965,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 71,
@@ -1350,8 +983,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 72,
@@ -1369,8 +1001,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 73,
@@ -1388,8 +1019,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 74,
@@ -1407,27 +1037,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 75,
-      "versionId": "ver_4367ae5c3ef91daf8efa",
-      "themeId": "leimu",
-      "name": "雷姆酱",
-      "version": "0.1.0",
-      "author": "Christopher",
-      "authorUserId": "usr_cf080f34b5fa01e0e84c",
-      "license": "MIT",
-      "package": {
-        "file": "075-ver_4367ae5c3ef91daf8efa.zip",
-        "bytes": 1516629,
-        "sha256": "5b7e72fa46f9da7a42be45a9689342c1506158e19f40a8c8fe9f747b707195cc"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 76,
@@ -1445,8 +1055,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 77,
@@ -1464,8 +1073,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 78,
@@ -1483,8 +1091,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 79,
@@ -1502,27 +1109,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 80,
-      "versionId": "ver_2b3bc79cfe2e5141c7a2",
-      "themeId": "usr-49e16299682ecef4aa46.spirit-trail",
-      "name": "灵宠奇旅",
-      "version": "0.1.1",
-      "author": "axdlee",
-      "authorUserId": "usr_49e16299682ecef4aa46",
-      "license": "CC BY 4.0",
-      "package": {
-        "file": "080-ver_2b3bc79cfe2e5141c7a2.zip",
-        "bytes": 3177527,
-        "sha256": "a1c7e626121cf32693f2ec46dceaa8e1592bdb054c25a9ae50daf87710223996"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 81,
@@ -1540,8 +1127,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 82,
@@ -1559,8 +1145,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 83,
@@ -1578,8 +1163,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 84,
@@ -1597,8 +1181,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 85,
@@ -1616,27 +1199,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 86,
-      "versionId": "ver_5c32fdc7b685ede6fd07",
-      "themeId": "fisher-girl",
-      "name": "渔女",
-      "version": "0.1.0",
-      "author": "Christopher",
-      "authorUserId": "usr_cf080f34b5fa01e0e84c",
-      "license": "MIT",
-      "package": {
-        "file": "086-ver_5c32fdc7b685ede6fd07.zip",
-        "bytes": 3871320,
-        "sha256": "2c820302ab365aa364b8aed2c6e5395ba3e1f6baec9d06ee04c68c6e699e8b67"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 87,
@@ -1654,8 +1217,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 88,
@@ -1673,8 +1235,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 89,
@@ -1692,8 +1253,7 @@
       },
       "compatibility": "generated-theme-css",
       "galleryApplyCompatible": false,
-      "sourceReadability": "warning",
-      "normalizedReadability": "unverified"
+      "sourceReadability": "warning"
     },
     {
       "rank": 90,
@@ -1711,8 +1271,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 91,
@@ -1730,8 +1289,7 @@
       },
       "compatibility": "generated-theme-css",
       "galleryApplyCompatible": false,
-      "sourceReadability": "warning",
-      "normalizedReadability": "unverified"
+      "sourceReadability": "warning"
     },
     {
       "rank": 92,
@@ -1749,27 +1307,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 93,
-      "versionId": "ver_4e2592c3824921fa586a",
-      "themeId": "usr-49e16299682ecef4aa46.ink-horizon",
-      "name": "墨影江湖",
-      "version": "0.1.1",
-      "author": "axdlee",
-      "authorUserId": "usr_49e16299682ecef4aa46",
-      "license": "CC BY 4.0",
-      "package": {
-        "file": "093-ver_4e2592c3824921fa586a.zip",
-        "bytes": 3750547,
-        "sha256": "bcd418d2ec4f60c04cb261abbc7945f70254752bf730e3164ee25acbfc241a58"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 94,
@@ -1787,8 +1325,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 95,
@@ -1806,27 +1343,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 96,
-      "versionId": "ver_d3375fc8d3071b5d8420",
-      "themeId": "blue-archive-arona",
-      "name": "蔚蓝档案-阿洛娜",
-      "version": "1.0.0",
-      "author": "wuyiqing",
-      "authorUserId": "usr_75e8ef774ec2a79f7d8e",
-      "license": "Theme Code Only",
-      "package": {
-        "file": "096-ver_d3375fc8d3071b5d8420.zip",
-        "bytes": 615056,
-        "sha256": "f2ac9463bdefe0b2bef8b69d4b518e4e915bb49475aa31820e898d10327eaa24"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 97,
@@ -1844,27 +1361,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
-    },
-    {
-      "rank": 98,
-      "versionId": "ver_ae6d7db6816c647d8765",
-      "themeId": "erii-celestial-dream",
-      "name": "绘梨衣·星海绯梦",
-      "version": "1.0.2",
-      "author": "Jiacheng Ni",
-      "authorUserId": "usr_c75c3e697725a5775557",
-      "license": "CC BY-NC-SA 4.0",
-      "package": {
-        "file": "098-ver_ae6d7db6816c647d8765.zip",
-        "bytes": 2631018,
-        "sha256": "967d0d212bd758275215a2ab239dcafdd0a45fd3f212df62bfb92d1dc8358063"
-      },
-      "compatibility": "native",
-      "galleryApplyCompatible": true,
-      "sourceReadability": "warning",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 99,
@@ -1882,8 +1379,7 @@
       },
       "compatibility": "native",
       "galleryApplyCompatible": true,
-      "sourceReadability": "pass",
-      "normalizedReadability": "pass"
+      "sourceReadability": "pass"
     },
     {
       "rank": 100,
@@ -1901,8 +1397,7 @@
       },
       "compatibility": "generated-theme-css",
       "galleryApplyCompatible": false,
-      "sourceReadability": "warning",
-      "normalizedReadability": "unverified"
+      "sourceReadability": "warning"
     }
   ]
 }

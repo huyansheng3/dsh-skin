@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "jinling-sunlit",
+  "name": "金陵晴川 · Jinling Sunlit",
+  "brandSubtitle": "JINLING SUNLIT",
+  "tagline": "晴空映水，古塔望城。",
+  "projectLabel": "◉  选择项目",
+  "statusText": "DAYLIGHT FOCUS",
+  "quote": "LET THE LIGHT CLEAR THE MIND.",
+  "promoTitle": "Sunlit Nanjing",
+  "promoSub": "A sunlit Nanjing skyline framed by water and greenery",
+  "promoUrl": "https://github.com/Fei-Away/Codex-Dream-Skin",
+  "image": "background.png",
+  "appearance": "light",
+  "art": {
+    "focusX": 0,
+    "focusY": 0.5,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#f5f6f7",
+    "panel": "#fefefe",
+    "panelAlt": "#ffffff",
+    "accent": "#2b8bd5",
+    "accentAlt": "#2578b7",
+    "secondary": "#838d1b",
+    "highlight": "#2068a0",
+    "text": "#545454",
+    "muted": "#686a6b",
+    "line": "#ffffff"
+  }
+}

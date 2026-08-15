@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "custom-1784270668889",
+  "version": "1.0.3",
+  "skinApiVersion": 1,
+  "minClientVersion": "1.5.9",
+  "platforms": [
+    "macos"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "sz-w",
+    "displayName": "sz w"
+  },
+  "license": "CC BY 4.0",
+  "provenance": {
+    "aiGenerated": true,
+    "summary": "由 OpenAI 图像生成模型依据原创提示词从零生成；未使用人物或身份参考；仅进行格式转换、压缩与 DreamSkin 主题适配。"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 525,
+      "sha256": "18b02e9ae423001747fae21ef31d145e5776c6679824188f8caab7c29aea2134"
+    },
+    {
+      "path": "background.jpg",
+      "mediaType": "image/jpeg",
+      "bytes": 763159,
+      "sha256": "9ab51fcc9d80b1ffa7a328dc9d63e5ab75802eccd9f26a1bea23280a9bd1063b"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 104,
+      "sha256": "b597f8c361342f646506879e9ea88c500ccc17115875716d3575861a0b649ecd"
+    }
+  ],
+  "createdAt": "2026-08-06T08:16:44.000Z"
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "forest",
+  "name": "安静氛围 森林",
+  "image": "background.jpg",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.5,
+    "focusY": 0.5,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#131412",
+    "panel": "#1d1e1c",
+    "panelAlt": "#292c29",
+    "accent": "#ca9055",
+    "accentAlt": "#d1a06d",
+    "secondary": "#308351",
+    "highlight": "#d7ac80",
+    "text": "#eff0ef",
+    "muted": "#939492",
+    "line": "#3f403e"
+  }
+}

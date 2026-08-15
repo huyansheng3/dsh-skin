@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "source": "dreamskin-gallery",
+  "rank": 79,
+  "versionId": "ver_1f00673afb67fd30f91e",
+  "author": "孔航",
+  "license": "MIT",
+  "officialPackage": {
+    "file": "079-ver_1f00673afb67fd30f91e.zip",
+    "bytes": 2851684,
+    "sha256": "058ab04d118bd66da7be082ebd8dba81dd0a285e6b68b356287ff870caff9ff9"
+  },
+  "compatibility": "native"
+}

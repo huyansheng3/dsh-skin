@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "forest",
+  "version": "0.1.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "0.0.0",
+  "platforms": [
+    "windows"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "liu",
+    "displayName": "浮香墨染"
+  },
+  "license": "MIT",
+  "provenance": {
+    "aiGenerated": false,
+    "summary": "https://www.bing.com/ck/a?!&&p=24a2ef2910af7c13dbad86b05e089366cdfc6c95f7733bb607198919624a6046JmltdHM9MTc4NTQ1NjAwMA&ptn=3&ver=2&hsh=4&fclid=1ff26944-2bce-6c63-1057-7d812a266d9e&psq=%e7%94%b5%e8%84%914k%e5%a3%81%e7%ba%b8&u=a1aHR0cHM6Ly9oYW93YWxscGFwZXIuY29tLw"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 510,
+      "sha256": "028e19dfe85e2949aa250121b016727a32769ea2b5468659856bba39fecaa771"
+    },
+    {
+      "path": "background.jpg",
+      "mediaType": "image/jpeg",
+      "bytes": 4816429,
+      "sha256": "4b007ec1929c1ecd084806a813316764b855418b7a985f5646b090c2d9227e9d"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 1152,
+      "sha256": "bc22c1bcbb1e3a7ae8c90302c491afed8b038c9f1c319b751d6e294c302be048"
+    }
+  ],
+  "createdAt": "2026-07-31T08:56:56.049Z"
+}

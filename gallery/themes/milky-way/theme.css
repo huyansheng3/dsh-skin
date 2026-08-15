@@ -1,0 +1,46 @@
+[data-ds-part="root"] {
+  background-color: var(--ds-theme-color-background);
+  color: var(--ds-theme-color-text);
+}
+
+[data-ds-part="sidebar"] {
+  background-color: var(--ds-theme-color-panel);
+  border-color: var(--ds-theme-color-line);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--ds-theme-surface-radius);
+  backdrop-filter: blur(var(--ds-theme-surface-blur)) saturate(1.1);
+}
+
+[data-ds-part="main"] {
+  background-color: var(--ds-theme-color-background);
+}
+
+[data-ds-part="dialog"] {
+  background-color: var(--ds-theme-color-panel);
+  border-color: var(--ds-theme-color-line);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--ds-theme-surface-radius);
+  backdrop-filter: blur(var(--ds-theme-surface-blur)) brightness(1.04);
+}
+
+[data-ds-part="message"] {
+  background-color: var(--ds-theme-color-panel-alt);
+  border-color: var(--ds-theme-color-line);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--ds-theme-surface-radius);
+}
+
+[data-ds-part="composer-toolbar"] {
+  background-color: var(--ds-theme-color-panel-alt);
+  border-radius: var(--ds-theme-surface-radius);
+}
+
+[data-ds-part="thread"]:hover {
+  background-color: var(--ds-theme-color-panel-alt);
+  border-color: var(--ds-theme-color-accent);
+  transition-property: background-color, border-color;
+  transition-duration: 180ms;
+}

@@ -3,8 +3,8 @@
 ## Objective
 
 把 `Codex-Dream-Skin` 的主题能力收敛为 DeepSeek Harness 原生 Cordis 插件，
-主题选择和 ZIP 导入只出现在 Harness 原“设置 > 通用设置”中，并让 DreamSkin
-Gallery 热门前 100 个冻结版本作为本地默认可选主题在 Web 页面真实生效。
+主题选择和 ZIP 导入只出现在 Harness 原“设置 > 通用设置”中；DreamSkin Gallery
+热门前 100 经质量裁剪后可在本地物化 76 套，并筛选其中约 20 套随安装包默认可选。
 
 ## Current State
 
@@ -16,15 +16,20 @@ Gallery 热门前 100 个冻结版本作为本地默认可选主题在 Web 页�
 - 公开包内置 Cyndi 与 Gothic Void Crusade 两套带图 DreamSkin 主题；权利未确认的
   Arina Hashimoto 素材只保留在本地参考目录，不进入 GitHub 或发布包。
 - 发布 bundle 默认保持官方外观；只有显式选择或部署配置才会启用主题。
-- Gallery 热门前 100 已冻结为带版本、体积、SHA-256、作者和许可的轻量目录；显式
-  vendoring 可在项目内原子物化 100 个本地内置主题，运行时不联网且不自动激活。
+- Gallery 热门前 100 原始审计已冻结；`gallery/exclusions.json` 排除 24 个可导入但
+  源对比度不合格的主题，vendoring 原子物化剩余 76 个且不自动激活。
+- npm 发布包直接集成其中 20 个经审计且许可允许再分发的 Gallery 主题；其余保留主题
+  通过显式 vendoring 在本地物化。
+- 下一发布版本为 `0.3.0`；已发布的 `v0.2.0` 不包含这 20 个 Gallery 主题。
+- `gallery/bundled-themes.json` 固定随包主题及许可证，`package.json` 逐目录列入；
+  `.gitignore` 继续拦截其余本地 Gallery artwork，避免宽泛打包。
 - 93 个完整包继续走严格 ZIP 导入；7 个 Gallery 已标记不兼容、缺少 `theme.css` 的
   包只在 vendoring 时生成受限兼容 CSS，并在 `_dsh-skin.json` 中单独记录。
 - Host 同时扫描发布包内置目录与本地 Gallery 目录；用户安装主题在同 ID 时优先，
   当前持久化选择不被目录生成或库存查询改写。
-- 带图主题不再把 Harness 主背景降到近乎透明；运行时会保护三层阅读表面并对主/次
-  文字执行最坏壁纸像素下的 WCAG 对比度校正，并为 `appearance:auto` 推导原生控件
-  色彩模式、覆盖 DSH 选中导航和平台选择器表面 token。
+- 带图主题保留作者原始颜色和自定义 CSS，使用 `panel=0.72`、`panelAlt=0.65` 的原始
+  玻璃适配；不再自动修正文字/强调色、移动表面亮度、推断 `appearance:auto` 或在
+  作者 CSS 后追加全局可读性覆盖。
 
 ## Plugin Design
 
@@ -42,7 +47,7 @@ Gallery 热门前 100 个冻结版本作为本地默认可选主题在 Web 页�
 ## Verification
 
 - `npm test`: 通过，45/45。
-- Node.js 18.20.8：42/42 通过；测试路径解析不依赖 Node 20 的
+- Node.js 18.20.8：45/45 通过；测试路径解析不依赖 Node 20 的
   `import.meta.dirname`。
 - GitHub 主分支已发布到 `huyansheng3/dsh-skin`；使用
   `pnpm add github:huyansheng3/dsh-skin` 的隔离安装通过，Host 导出、Client bundle、
@@ -54,18 +59,19 @@ Gallery 热门前 100 个冻结版本作为本地默认可选主题在 Web 页�
 - Gallery 热门前 100：100/100 官方包 SHA-256 正确；93/100 通过严格 ZIP 导入和
   Safe CSS；其余 7/100 缺少非空 `theme.css`，且 Gallery 元数据均为
   `applyCompatible=false`。完整结果在 `docs/GALLERY-AUDIT.md`。
-- 本地离线 vendoring：使用冻结目录和现有缓存物化 100/100；100 个背景、100 个
-  `theme.css`、100 个来源元数据均存在，全部重新通过 Safe CSS。
-- 源主题可读性：69/100 直接通过；24 个可导入主题存在原始文字/强调色对比不足，
-  插件归一化后 93/93 通过。
-- 隔离 DSH `http://127.0.0.1:3081` 逐主题浏览器验收：93/93 通过；检查背景资源、
-  不可交互背景层、三层合成对比度、横向溢出与原生按钮可见性，最低 4.65:1。
-- 隔离 DSH `http://127.0.0.1:3082` 对 7 个兼容主题补充真实控件对比度检查：7/7
-  通过，最低 5.27:1；冻结目录 100 个 ID 全部出现在设置下拉框中。
-- 最终适配器对当前 104 个带图主题重新执行真实表单控件、嵌套 panel、背景安全和溢出
-  审计：104/104 通过，覆盖 Gallery 目录全部 100 个 ID，最低对比度 4.52:1。
-- 视觉抽查：热门 #1 浅色低对比主题与 #98 中间亮度主题完成 1440×900；后者另完成
-  390×844 窄屏截图检查，无内容重叠。
+- 本地离线库已从 100 裁剪为 76；目录与 `gallery/catalog.json` 完全一致，24 个源
+  对比度不合格主题已从默认目录和用户主题残留中移除。
+- 5 个纯色 legacy 主题 `gothic-void`、`matrix-green`、`ocean-breeze`、`sakura-pink`、
+  `warm-sunset` 已从源码、npm 发布清单和测试数据目录移除。
+- Gallery 浏览器审计继续要求背景资源、不可交互背景层、无横向溢出和原生控件可见；
+  渲染对比度改为报告告警，不再作为主题适配失败条件。
+- 有会话 E2E：在 `@deepseek-ai/dsh@0.1.0-rc.6` 的 3 个真实会话间切换，短会话与约
+  10k 字长会话均保持输入框、背景层和原生控件可用，无横向溢出。
+- 长会话逐主题复验：保留 Gallery 76/76 无背景安全、token、控件或溢出结构失败；
+  背景层始终 `pointer-events:none`，结束后恢复原 `deepseek` 主题。
+- 原生设置 E2E：81 个选项（官方外观 + 80 个当前可用主题），24 个排除 ID 和 5 个
+  纯色 ID 均不可见；设置 dialog 宽 800px 且完整落在视口内。
+- CSS cache key 增加 renderer `r2`，插件升级后不会继续命中旧的 immutable 归一化 CSS。
 - Host route smoke: 仅注册 `/_skin/active.css`、`/_skin/bg/*`、`/_skin/api/*`；
   index 中只注入 stylesheet link。
 - Client artifact smoke: rc.6 ModuleLoader 成功加载 `/plugins/dsh-skin/client.js`，
@@ -75,16 +81,20 @@ Gallery 热门前 100 个冻结版本作为本地默认可选主题在 Web 页�
   `/plugins/dsh-skin/client.js`，不再包含旧的 `@deepseek-ai/dsh-client-ui-skin`。
 - 浏览器：原生通用设置显示皮肤选择与 ZIP 导入；设置 dialog 宽度 `800px`，
   modal 覆盖层级正常。
-- 浏览器：Gothic 背景资源、主题变量和不可交互背景层实际渲染；切换回 legacy
-  `ocean-breeze` 后 stylesheet 与变量即时更新。
+- 浏览器：Gothic 背景资源、主题变量和不可交互背景层实际渲染；主题切换后 stylesheet
+  与变量即时更新。
 - 浏览器：合法 DreamSkin ZIP 通过原生控件导入成功且不自动激活；测试主题随后清理。
 - 真实社区包 `rei-blue-pencil-1.0.0.zip` 已通过 Web API 导入；原生设置切换后
   背景、accent token 与 Safe CSS 实际生效，再恢复原 `deepseek` 主题。
 - 安全：显式停用优先于 `defaultTheme`；跨源 mutation 被拒绝；背景不会创建
   `#root` stacking context 干扰 DSH portal；重复 ZIP 导入失败后不会遗留解压目录。
-- 用户原有激活主题已恢复为 `rei-blue-pencil`，revision 仅随显式浏览器切换测试递增。
+- 浏览器逐主题检查结束后，当前激活主题已恢复为检查前的 `deepseek`。
 - 发布检查：语法检查、`git diff --check`、`npm pack --dry-run`、tarball 干净安装、
   Host 命名导出与无 import Client artifact smoke 均通过。
+- `0.3.0` tarball 干净安装：安装目录恰好包含白名单 20 个 Gallery 主题，公开加载器
+  20/20 可读；无环境变量的 Host 库存为 22 个内置主题，首次状态仍为官方外观。
+- 发布白名单浏览器复验：20/20 无背景安全、token、原生控件或横向溢出结构失败；
+  对比度仅保留为作者源效果告警，审计结束后恢复原 `deepseek` 主题。
 - CodeGraph 未初始化；按仓库指令未擅自初始化。
 
 ## Remaining Risks
@@ -92,8 +102,8 @@ Gallery 热门前 100 个冻结版本作为本地默认可选主题在 Web 页�
 - ZIP 解压依赖系统 `unzip`，Windows 原生环境的可移植性尚未验证。
 - Cyndi 与 Gothic 图片按主题清单中的 MIT 声明分发；第三方主题的声明真实性仍由
   各主题发布者负责。
-- Gallery 100 中包含限制再分发、私用、专有、非商业及含义不明确的许可，因此只提交
-  目录和可复现 vendoring 工具，不把约 269 MB 社区 artwork 放入 MIT/Git/npm 包。
+- Gallery 中限制再分发、私用、专有、非商业及含义不明确的主题只保留目录元数据和
+  vendoring 能力；npm 仅随包提供许可明确的 20 个精选主题。
 
 ## Out Of Scope
 

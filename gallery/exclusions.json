@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "reason": "Excluded from the default built-in library because the frozen Top 100 audit found source text or accent contrast below the readability threshold.",
+  "themeIds": [
+    "guiming.ink.morning-mist",
+    "poster",
+    "firefly",
+    "111",
+    "usr-49e16299682ecef4aa46.idea-engine",
+    "violet-evergarden",
+    "claude-eva-warm",
+    "usr-49e16299682ecef4aa46.quiet-paper",
+    "usr-49e16299682ecef4aa46.cloud-ascent",
+    "guiming.ink.rainwashed-celadon",
+    "ribbon-nocturne",
+    "sunrise-coast-lab",
+    "work-xixia",
+    "aozora-no-tabi",
+    "xianjian",
+    "preview",
+    "miss-dirty-investigation",
+    "wukong1",
+    "leimu",
+    "usr-49e16299682ecef4aa46.spirit-trail",
+    "fisher-girl",
+    "usr-49e16299682ecef4aa46.ink-horizon",
+    "blue-archive-arona",
+    "erii-celestial-dream"
+  ]
+}

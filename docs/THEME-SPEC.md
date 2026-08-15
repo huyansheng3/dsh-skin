@@ -98,11 +98,11 @@ typography and spacing subset is also supported: `font-size` 12–20px,
 `gap`/`row-gap`/`column-gap` 0–24px, and directional radii 0–28px. Other layout
 and animation properties remain outside the contract.
 
-For illustrated themes, runtime normalization protects Harness surfaces after
-custom CSS: base, primary panel, and secondary panel use bounded translucency;
-primary and muted text must reach 4.5:1 against every surface over worst-case
-black and white artwork pixels. Midtone surfaces are shifted only when neither
-black nor white foreground can satisfy that floor.
+For illustrated themes, the compatibility adapter keeps the author's semantic
+background token, makes only DSH's base canvas transparent, and uses its original
+glass defaults (`panel` 0.72, `panelAlt` 0.65). Custom CSS is appended last.
+Source contrast is audited and reported, but the runtime does not rewrite text,
+accents, surface brightness, or `appearance: auto` to satisfy a global target.
 
 It must not contain:
 

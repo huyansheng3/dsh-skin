@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "source": "dreamskin-gallery",
+  "rank": 97,
+  "versionId": "ver_a354f15df2671d0978a8",
+  "author": "soybeanmilk9311",
+  "license": "MIT",
+  "officialPackage": {
+    "file": "097-ver_a354f15df2671d0978a8.zip",
+    "bytes": 5734245,
+    "sha256": "ee3aeac7fa5b047f07577830e498b23854f2fc0705c160ff5143f04a9adcd189"
+  },
+  "compatibility": "native"
+}
