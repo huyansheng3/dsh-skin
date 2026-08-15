@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { validateCatalog } from "../scripts/vendor-gallery-themes.mjs";
 import { fileURLToPath } from "node:url";
 
 const testDir = dirname(fileURLToPath(import.meta.url));
@@ -42,4 +43,10 @@ test("catalog explicitly records the seven upstream packages missing theme.css",
     "call-bsiisjqeqfnfkyb1lclwk1po",
     "wallpaper-1",
   ]);
+});
+
+test("vendoring rejects catalog package paths that can escape the cache", () => {
+  const catalog = JSON.parse(readFileSync(catalogPath, "utf8"));
+  catalog.themes[0].package.file = "../outside.zip";
+  assert.throws(() => validateCatalog(catalog), /package filename/i);
 });

@@ -49,15 +49,28 @@ dsh plugin --profile web remove dsh-skin
 git clone https://github.com/huyansheng3/dsh-skin.git
 cd dsh-skin
 npm run build
+npm run vendor:gallery
 dsh plugin --profile web add "$PWD"
-dsh web
+DSH_SKIN_GALLERY_DIR="$PWD/gallery/themes" dsh web
 ```
+
+`vendor:gallery` 按 [冻结目录](./gallery/catalog.json) 下载并校验 DreamSkin Gallery
+热门前 100 个具体版本，在项目的 `gallery/themes/` 中生成本地内置主题库。运行时不会
+联网，也不会自动切换当前主题。已有 ZIP 缓存可用于完全离线物化：
+
+```bash
+npm run vendor:gallery -- --cache-dir /path/to/cache --offline
+```
+
+Gallery 包由社区作者发布，并不统一使用 MIT 许可；本地主题库因此不进入 Git、GitHub
+或 npm 发布包。目录记录每个版本的作者、原始许可、体积和 SHA-256，使用和再分发应
+遵守对应作者许可。
 
 ## 功能
 
 - 原生设置集成：不创建额外路由、浮动按钮或 iframe；
 - 即时切换：设置成功后刷新主题 stylesheet，不替换 Harness DOM；
-- 内置主题：5 套纯色主题和 2 套带背景图主题；
+- 内置主题：发布包自带 5 套纯色和 2 套带图主题；源码项目可物化 Gallery 前 100；
 - ZIP 导入：兼容 DreamSkin 与 legacy DSH 主题格式；
 - Safe CSS：拒绝脚本、`@import`、危险 URL 和未经授权的布局覆盖；
 - 可读性保护：带图主题会校正内容表面与文字对比度；
@@ -105,7 +118,8 @@ DSH Web Loader
 
 Host 始终注入一个带缓存版本的 stylesheet link。带图主题由 `body::before` 绘制
 `pointer-events: none` 的背景层，原生 UI、弹窗和 portal 仍由 DSH 管理。插件不会
-修改 API Key、Base URL 或官方安装包，也不会下载网络资源或启动外部常驻进程。
+修改 API Key、Base URL 或官方安装包，也不会在运行时下载网络资源或启动外部常驻
+进程。只有开发者显式执行 `vendor:gallery` 时才会访问 Gallery 官方 API。
 
 架构和生命周期详见 [架构说明](./docs/ARCHITECTURE.md)。
 
@@ -199,6 +213,9 @@ CLI 修改选择后需要刷新页面；页面设置内的切换会立即刷新 
 | Windows | `%LOCALAPPDATA%\\DSHSkin\\themes\\` |
 
 测试可设置 `DSH_SKIN_DATA_DIR` 使用隔离的数据目录。
+本地 Gallery 内置库默认生成在项目的 `gallery/themes/`；安装后的 DSH 进程通过
+`DSH_SKIN_GALLERY_DIR=/absolute/path/to/gallery/themes` 发现它。用户主题始终优先于
+同 ID 的 Gallery 主题，物化和扫描过程都不会改写 `state.json`。
 
 ## 开发
 
@@ -209,9 +226,12 @@ npm pack --dry-run
 ```
 
 Gallery 兼容性结果见 [审计报告](./docs/GALLERY-AUDIT.md)。当前热门前 100 个主题中，
-93 个通过严格 ZIP 导入、Safe CSS 和真实页面检查；其余 7 个是 Gallery 已标记不兼容
-的缺件包。
+93 个原包通过严格 ZIP 导入；其余 7 个是 Gallery 已标记不兼容且缺少 `theme.css` 的
+包。项目内置物化时会为这 7 个生成一条受限兼容 CSS 并单独记录来源，最终 100/100
+都通过真实 DSH 页面检查。24 个源主题存在原始文字或强调色对比度问题，完整名单在
+审计报告中；插件会在运行时归一化。
 
 ## License
 
-[MIT](./LICENSE)。内置第三方主题的作者与许可证记录在各主题的 `manifest.json` 中。
+[MIT](./LICENSE)。发布包自带第三方主题的作者与许可证记录在各自 `manifest.json`
+中。Gallery 目录只发布元数据，不重新许可或分发社区 artwork。

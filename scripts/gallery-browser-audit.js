@@ -1,6 +1,6 @@
 /**
  * Browser-context audit payload for an isolated DSH instance populated by the
- * Gallery package audit. It activates every non-builtin theme, waits for the
+ * Gallery package audit. It activates every requested or non-builtin theme, waits for the
  * Host stylesheet revision, and checks rendered DSH tokens, background safety,
  * contrast over worst-case black/white artwork, overflow, and visible controls.
  *
@@ -52,6 +52,14 @@
       return contrast(text, composite(surface, basePixel));
     }));
   };
+  const renderedBackground = (element) => {
+    const ancestors = [];
+    for (let current = element; current; current = current.parentElement) ancestors.unshift(current);
+    return ancestors.reduce((background, current) => {
+      const parsed = parseColor(getComputedStyle(current).backgroundColor);
+      return parsed ? composite(parsed, background) : background;
+    }, { r: 255, g: 255, b: 255, a: 1 });
+  };
   const delay = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
   const readJson = async (url, options) => {
     const response = await fetch(url, options);
@@ -87,7 +95,12 @@
   };
 
   const inventory = await readJson(`${API_PATH}/themes`);
-  const themes = inventory.themes.filter(theme => theme.builtin === false);
+  const requestedIds = Array.isArray(window.__DSH_SKIN_AUDIT_THEME_IDS)
+    ? new Set(window.__DSH_SKIN_AUDIT_THEME_IDS)
+    : null;
+  const themes = inventory.themes.filter(theme => requestedIds
+    ? requestedIds.has(theme.id)
+    : theme.builtin === false);
   const failures = [];
   let minimumObservedContrast = Infinity;
   try {
@@ -124,13 +137,32 @@
           return rect.width > 0 && rect.height > 0 && style.display !== "none" && style.visibility !== "hidden";
         }).length;
         if (visibleButtons < 8) issues.push(`visible-buttons:${visibleButtons}`);
+        const textControls = [...document.querySelectorAll("button, select")].filter(control => {
+          const rect = control.getBoundingClientRect();
+          const style = getComputedStyle(control);
+          return !control.disabled && rect.width > 0 && rect.height > 0
+            && style.display !== "none" && style.visibility !== "hidden"
+            && (control.tagName === "SELECT" || control.textContent.trim());
+        });
+        for (const control of textControls) {
+          const foreground = parseColor(getComputedStyle(control).color);
+          const background = renderedBackground(control);
+          if (!foreground) continue;
+          const ratio = contrast(foreground, background);
+          minimumObservedContrast = Math.min(minimumObservedContrast, ratio);
+          if (ratio < 4.5) {
+            const label = control.getAttribute("aria-label") || control.textContent.trim().slice(0, 24) || control.tagName;
+            issues.push(`control-contrast:${label}:${ratio.toFixed(2)}`);
+            break;
+          }
+        }
       } catch (error) {
         issues.push(error instanceof Error ? error.message : String(error));
       }
       if (issues.length > 0) failures.push({ id: theme.id, name: theme.name, issues });
     }
   } finally {
-    await activate(null);
+    await activate(inventory.activeThemeId);
   }
   return {
     total: themes.length,

@@ -22,7 +22,34 @@ no horizontal overflow, and visible native controls. The minimum observed
 worst-case contrast was 4.65:1. Desktop and 390px-wide screenshots were also
 checked for a light low-contrast theme and a corrected midtone theme.
 
-## Unresolved Failures
+## Local Built-in Integration
+
+The frozen `gallery/catalog.json` pins all 100 official API package versions,
+sizes, SHA-256 hashes, authors, and declared licenses. Running
+`npm run vendor:gallery` materializes those packages into the local,
+Git-ignored `gallery/themes/` built-in root without changing the active theme.
+
+The seven upstream packages below contain a background and theme metadata but
+omit `theme.css`. Normal ZIP imports continue to reject them. The explicit
+vendoring workflow supplies one bounded Safe CSS compatibility rule and writes
+the repair to `_dsh-skin.json`; it does not alter or misrepresent the official
+package hash. Those seven were then tested one by one in a real DSH settings
+page and passed 7/7, with a minimum rendered text/control contrast of 5.27:1.
+After adding nested panel composition to the readability model, the final
+adapter was rerun across all 104 currently available illustrated themes
+(including every catalog ID): 104/104 passed, with a minimum rendered
+text/control contrast of 4.52:1.
+
+Gallery publishers retain responsibility for asset rights. The catalog
+contains restrictive, private-use, proprietary, non-commercial, and ambiguous
+license declarations in addition to MIT and CC BY. Therefore dsh-skin does not
+redistribute the 100 artwork packages in its MIT Git/npm release; vendoring is
+an explicit local action against the official API or a user-provided cache.
+
+## Upstream Package Completeness Failures
+
+These remain strict import failures in the original packages even though the
+local built-in workflow records and applies the bounded compatibility repair.
 
 | Rank | Theme | Author | Issues |
 | ---: | --- | --- | --- |

@@ -134,6 +134,8 @@ test("buildDreamSkinCss maps flat colors to CSS variables", () => {
   assert.ok(css.includes("--ds-theme-color-background"), "Should map background");
   assert.ok(css.includes("--dsw-alias-bg-base"),        "Should map dsw alias");
   assert.ok(css.includes("--ds-theme-color-accent"),    "Should map accent");
+  assert.ok(css.includes("--dsw-specific-sidebar-nav-item-active"), "Should map selected navigation surface");
+  assert.ok(css.includes("--dsw-alias-bg-module-platform"), "Should map native selector controls");
   assert.ok(!css.includes("body::before"),               "No bg layer without image");
   assert.ok(!css.includes("settings dialog width"),      "Should leave host dialog geometry to DSH");
 });
@@ -180,6 +182,32 @@ test("buildDreamSkinCss keeps the application base readable over background artw
   assert.ok(css.includes("color-scheme: light"));
 });
 
+test("buildDreamSkinCss infers native control color scheme for auto appearance", () => {
+  const darkCss = buildDreamSkinCss({
+    appearance: "auto",
+    colors: {
+      background: "#131313",
+      panel: "#1e1e1d",
+      panelAlt: "#2b2b2a",
+      text: "#f0f0ef",
+      muted: "#939393",
+    },
+  }, "data:image/jpeg;base64,X", null);
+  assert.ok(darkCss.includes("color-scheme: dark"));
+
+  const lightCss = buildDreamSkinCss({
+    appearance: "auto",
+    colors: {
+      background: "#f6f1e7",
+      panel: "#fbf8f1",
+      panelAlt: "#e8eff4",
+      text: "#2e3b46",
+      muted: "#69757e",
+    },
+  }, "data:image/jpeg;base64,X", null);
+  assert.ok(lightCss.includes("color-scheme: light"));
+});
+
 test("buildDreamSkinCss repairs low-contrast primary and muted text", () => {
   const themeJson = {
     colors: {
@@ -221,6 +249,54 @@ test("readability normalization covers base and both panels over arbitrary artwo
   assert.ok(audit.normalized.muted.ratios.base >= 4.5);
   assert.ok(audit.normalized.muted.ratios.panel >= 4.5);
   assert.ok(audit.normalized.muted.ratios.panelAlt >= 4.5);
+});
+
+test("readability normalization covers panelAlt nested over panel", () => {
+  const themeJson = {
+    appearance: "light",
+    colors: {
+      background: "#161718",
+      panel: "#1c77b0",
+      panelAlt: "#3f84c6",
+      text: "#ffffff",
+      muted: "#66f5ff",
+      accent: "#34b7f9",
+    },
+  };
+  const audit = auditDreamSkinReadability(themeJson, { hasBackground: true });
+  const parse = (value, alpha = 1) => {
+    if (value.startsWith("#")) {
+      const hex = value.slice(1);
+      return { r: parseInt(hex.slice(0, 2), 16), g: parseInt(hex.slice(2, 4), 16), b: parseInt(hex.slice(4, 6), 16), a: alpha };
+    }
+    const parts = value.match(/[\d.]+/g).map(Number);
+    return { r: parts[0], g: parts[1], b: parts[2], a: alpha };
+  };
+  const composite = (front, back) => ({
+    r: front.r * front.a + back.r * (1 - front.a),
+    g: front.g * front.a + back.g * (1 - front.a),
+    b: front.b * front.a + back.b * (1 - front.a),
+    a: 1,
+  });
+  const channel = value => {
+    const normalized = value / 255;
+    return normalized <= 0.04045 ? normalized / 12.92 : ((normalized + 0.055) / 1.055) ** 2.4;
+  };
+  const luminance = color => 0.2126 * channel(color.r) + 0.7152 * channel(color.g) + 0.0722 * channel(color.b);
+  const contrast = (first, second) => {
+    const one = luminance(first);
+    const two = luminance(second);
+    return (Math.max(one, two) + 0.05) / (Math.min(one, two) + 0.05);
+  };
+  const colors = audit.normalizedColors;
+  const text = parse(colors.text);
+  const ratios = [0, 255].map(pixel => {
+    const backdrop = { r: pixel, g: pixel, b: pixel, a: 1 };
+    const base = composite(parse(colors.background, 0.86), backdrop);
+    const panel = composite(parse(colors.panel, 0.92), base);
+    return contrast(text, composite(parse(colors.panelAlt, 0.88), panel));
+  });
+  assert.ok(Math.min(...ratios) >= 4.5, `Nested panel contrast was ${Math.min(...ratios).toFixed(2)}`);
 });
 
 test("readability normalization moves inaccessible midtone surfaces only when needed", () => {

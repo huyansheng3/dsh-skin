@@ -197,13 +197,20 @@ const DREAMSKIN_COLOR_MAP = {
   panel: [
     "--ds-theme-color-panel",
     "--dsw-alias-bg-layer-1",
+    "--dsw-alias-bg-overlay",
     "--dsw-specific-sidebar-fill",
   ],
   panelAlt: [
     "--ds-theme-color-panel-alt",
     "--dsw-alias-bg-layer-2",
+    "--dsw-alias-bg-module-platform",
+    "--dsw-alias-bg-multi-select",
     "--dsw-specific-bubble",
     "--dsw-specific-input-major",
+    "--dsw-specific-login-input",
+    "--dsw-specific-sidebar-nav-item-active",
+    "--dsw-specific-sidebar-nav-item-active-accent",
+    "--dsw-specific-sidebar-nav-item-hover",
   ],
   accent: [
     "--ds-theme-color-accent",
@@ -376,10 +383,17 @@ function readabilitySurfaces(colors, hasBackground) {
     withAlpha(background, BACKGROUND_SURFACE_ALPHA),
     backdrop,
   ));
+  const panelPixels = basePixels.map(base => compositeColor(
+    withAlpha(panel, PANEL_SURFACE_ALPHA),
+    base,
+  ));
   return {
     base: basePixels,
-    panel: basePixels.map(base => compositeColor(withAlpha(panel, PANEL_SURFACE_ALPHA), base)),
-    panelAlt: basePixels.map(base => compositeColor(withAlpha(panelAlt, PANEL_ALT_SURFACE_ALPHA), base)),
+    panel: panelPixels,
+    panelAlt: [
+      ...basePixels.map(base => compositeColor(withAlpha(panelAlt, PANEL_ALT_SURFACE_ALPHA), base)),
+      ...panelPixels.map(panelPixel => compositeColor(withAlpha(panelAlt, PANEL_ALT_SURFACE_ALPHA), panelPixel)),
+    ],
   };
 }
 
@@ -427,6 +441,18 @@ function normalizeDreamSkinColors(colors = {}, hasBackground = false) {
     accent: ensureContrast(colors.accent, surfaces, ACCENT_NORMALIZATION_RATIO),
     accentAlt: ensureContrast(colors.accentAlt, surfaces, ACCENT_NORMALIZATION_RATIO),
   };
+}
+
+function inferColorScheme(appearance, colors) {
+  if (appearance === "light" || appearance === "dark") return appearance;
+  const surface = opaque(parseCssColor(colors.background))
+    || opaque(parseCssColor(colors.panel));
+  const text = opaque(parseCssColor(colors.text));
+  if (surface && text) {
+    return relativeLuminance(text) > relativeLuminance(surface) ? "dark" : "light";
+  }
+  if (surface) return relativeLuminance(surface) < 0.4 ? "dark" : "light";
+  return "light";
 }
 
 function auditPair(value, surface, minimum) {
@@ -494,6 +520,7 @@ export function buildDreamSkinCss(themeJson, bgDataUrl = null, customCss = null)
 
   const hasBackground = !!bgDataUrl;
   const colors = normalizeDreamSkinColors(themeJson.colors || {}, hasBackground);
+  const colorScheme = inferColorScheme(themeJson.appearance, colors);
 
   // ── 1. CSS variable tokens (:root) ─────────────────────────────────────────
   // DSH's official appearance is body-scoped and its Client plugin loads after
@@ -501,9 +528,7 @@ export function buildDreamSkinCss(themeJson, bgDataUrl = null, customCss = null)
   // the selected skin remains the authoritative user choice.
   lines.push(":root,\nbody {");
 
-  if (themeJson.appearance === "light" || themeJson.appearance === "dark") {
-    lines.push(`  color-scheme: ${themeJson.appearance};`);
-  }
+  lines.push(`  color-scheme: ${colorScheme};`);
 
   // Surface vars: provide defaults so [data-ds-part] selectors work even if
   // DSH doesn't define --ds-theme-surface-* natively.
@@ -614,16 +639,37 @@ body[data-page="chat"]::before {
     "--dsw-alias-bg-layer-1": hasBackground && colors.panel
       ? toRgba(colors.panel, PANEL_SURFACE_ALPHA)
       : colors.panel,
+    "--dsw-alias-bg-overlay": hasBackground && colors.panel
+      ? toRgba(colors.panel, PANEL_SURFACE_ALPHA)
+      : colors.panel,
     "--dsw-specific-sidebar-fill": hasBackground && colors.panel
       ? toRgba(colors.panel, PANEL_SURFACE_ALPHA)
       : colors.panel,
     "--dsw-alias-bg-layer-2": hasBackground && colors.panelAlt
       ? toRgba(colors.panelAlt, PANEL_ALT_SURFACE_ALPHA)
       : colors.panelAlt,
+    "--dsw-alias-bg-module-platform": hasBackground && colors.panelAlt
+      ? toRgba(colors.panelAlt, PANEL_ALT_SURFACE_ALPHA)
+      : colors.panelAlt,
+    "--dsw-alias-bg-multi-select": hasBackground && colors.panelAlt
+      ? toRgba(colors.panelAlt, PANEL_ALT_SURFACE_ALPHA)
+      : colors.panelAlt,
     "--dsw-specific-bubble": hasBackground && colors.panelAlt
       ? toRgba(colors.panelAlt, PANEL_ALT_SURFACE_ALPHA)
       : colors.panelAlt,
     "--dsw-specific-input-major": hasBackground && colors.panelAlt
+      ? toRgba(colors.panelAlt, PANEL_ALT_SURFACE_ALPHA)
+      : colors.panelAlt,
+    "--dsw-specific-login-input": hasBackground && colors.panelAlt
+      ? toRgba(colors.panelAlt, PANEL_ALT_SURFACE_ALPHA)
+      : colors.panelAlt,
+    "--dsw-specific-sidebar-nav-item-active": hasBackground && colors.panelAlt
+      ? toRgba(colors.panelAlt, PANEL_ALT_SURFACE_ALPHA)
+      : colors.panelAlt,
+    "--dsw-specific-sidebar-nav-item-active-accent": hasBackground && colors.panelAlt
+      ? toRgba(colors.panelAlt, PANEL_ALT_SURFACE_ALPHA)
+      : colors.panelAlt,
+    "--dsw-specific-sidebar-nav-item-hover": hasBackground && colors.panelAlt
       ? toRgba(colors.panelAlt, PANEL_ALT_SURFACE_ALPHA)
       : colors.panelAlt,
     "--dsw-alias-label-primary": colors.text,

@@ -20,11 +20,10 @@ import {
   readFileSync,
   renameSync,
   rmSync,
-  statSync,
   writeFileSync,
 } from "node:fs";
 import { dirname, join, resolve } from "node:path";
-import { tmpdir } from "node:os";
+import { homedir } from "node:os";
 import { fileURLToPath } from "node:url";
 import { importThemeZip, loadTheme } from "../src/lib/theme-manager.mjs";
 
@@ -72,14 +71,25 @@ function validateCatalog(catalog) {
   for (const theme of catalog.themes) {
     if (!Number.isSafeInteger(theme.rank) || theme.rank < 1 || theme.rank > 100) throw new Error("Invalid catalog rank");
     if (!/^ver_[a-z0-9]+$/.test(theme.versionId)) throw new Error(`Invalid version ID: ${theme.versionId}`);
+    if (!/^[a-z0-9][a-z0-9._-]{2,62}$/i.test(theme.themeId)) throw new Error(`Invalid theme ID: ${theme.themeId}`);
     if (!/^[a-f0-9]{64}$/.test(theme.package?.sha256 || "")) throw new Error(`Invalid package hash: ${theme.themeId}`);
     if (!Number.isSafeInteger(theme.package?.bytes) || theme.package.bytes < 1) throw new Error(`Invalid package size: ${theme.themeId}`);
+    const expectedFile = `${String(theme.rank).padStart(3, "0")}-${theme.versionId}.zip`;
+    if (theme.package.file !== expectedFile) throw new Error(`Invalid package filename: ${theme.package.file}`);
     ranks.add(theme.rank);
     versionIds.add(theme.versionId);
     themeIds.add(theme.themeId);
   }
   if (ranks.size !== 100 || versionIds.size !== 100 || themeIds.size !== 100) {
     throw new Error("Catalog ranks, version IDs, and theme IDs must be unique");
+  }
+}
+
+function assertSafeOutputDir(outputDir) {
+  const target = resolve(outputDir);
+  const unsafeTargets = new Set([resolve("/"), resolve(homedir()), resolve(repoRoot)]);
+  if (unsafeTargets.has(target) || dirname(target) === target) {
+    throw new Error(`Refusing unsafe Gallery output directory: ${target}`);
   }
 }
 
@@ -133,6 +143,7 @@ function replaceDirectory(stagedDir, outputDir) {
 
 async function materialize(catalog, options) {
   validateCatalog(catalog);
+  assertSafeOutputDir(options.outputDir);
   mkdirSync(dirname(options.outputDir), { recursive: true });
   const stagingRoot = mkdtempSync(join(dirname(options.outputDir), ".gallery-vendor-"));
   const dataRoot = join(stagingRoot, "data");
@@ -196,4 +207,4 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   });
 }
 
-export { COMPATIBILITY_CSS, materialize, parseArgs, validateCatalog };
+export { COMPATIBILITY_CSS, assertSafeOutputDir, materialize, parseArgs, validateCatalog };
