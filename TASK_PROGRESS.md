@@ -42,6 +42,10 @@
 - GitHub 主分支已发布到 `huyansheng3/dsh-skin`；使用
   `pnpm add github:huyansheng3/dsh-skin` 的隔离安装通过，Host 导出、Client bundle、
   Cordis patch 和公开背景资源均完整。
+- GitHub Actions CI 在 Node.js 18/20/22 上全部通过测试与 pack 检查。
+- 稳定版 `v0.2.0` 已发布；固定版本
+  `pnpm add github:huyansheng3/dsh-skin#v0.2.0` 的隔离安装通过，且公开产物不包含
+  Arina Hashimoto 本地参考素材。
 - Gallery 热门前 100：100/100 官方包 SHA-256 正确；93/100 通过严格 ZIP 导入和
   Safe CSS；其余 7/100 缺背景或非空 `theme.css`，且 Gallery 元数据均为
   `applyCompatible=false`。完整结果在 `docs/GALLERY-AUDIT.md`。
