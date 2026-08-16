@@ -20,7 +20,7 @@
   源对比度不合格的主题，vendoring 原子物化剩余 76 个且不自动激活。
 - npm 发布包直接集成维护者指定的 15 个 Gallery 主题和 4 个项目主题；其余保留主题
   通过显式 vendoring 在本地物化，并保留原始许可证与来源声明。
-- 下一发布版本为 `0.3.0`；已发布的 `v0.2.0` 不包含这 15 个 Gallery 主题。
+- 下一发布版本为 `0.4.1`；npm 最新已发布版本为 `0.4.0`，本次发布包含这 15 个 Gallery 主题与皮肤库预览能力。
 - `gallery/bundled-themes.json` 固定随包主题及许可证，`package.json` 逐目录列入；
   `.gitignore` 继续拦截其余本地 Gallery artwork，避免宽泛打包。
 - 93 个完整包继续走严格 ZIP 导入；7 个 Gallery 已标记不兼容、缺少 `theme.css` 的

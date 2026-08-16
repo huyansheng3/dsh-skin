@@ -1,6 +1,6 @@
 {
   "name": "dsh-skin",
-  "version": "0.3.0",
+  "version": "0.4.1",
   "description": "Theme / skin plugin for DeepSeek Harness (DSH) web client. Override CSS variables, add background images, and switch themes — loaded as a native Cordis plugin, no browser extension or CDP required.",
   "license": "MIT",
   "author": {
