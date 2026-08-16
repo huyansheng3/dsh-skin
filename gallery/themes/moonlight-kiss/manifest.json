@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "moonlight-kiss",
+  "version": "0.1.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "0.0.0",
+  "platforms": [
+    "windows"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "vyon",
+    "displayName": "vyon"
+  },
+  "license": "CC BY 4.0",
+  "provenance": {
+    "aiGenerated": true,
+    "summary": "图片来自wallpaper"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 512,
+      "sha256": "6db0912ad6df4b24cc27e49b00717b1573d1c703dc21b6ec986e2cc3fbd07eaf"
+    },
+    {
+      "path": "background.webp",
+      "mediaType": "image/webp",
+      "bytes": 50814,
+      "sha256": "e61addfc53b052dc59fcb5fd5dc091d69620c957db0da32c789482dd08f88693"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 2975,
+      "sha256": "40fc3751673bdbcd3e7c36a05657a804e63f8563e47b4704c84d3743463be069"
+    }
+  ],
+  "createdAt": "2026-08-07T08:37:55.899Z"
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "deepseek",
+  "name": "DeepSeek-鲸鱼娘",
+  "image": "background.webp",
+  "appearance": "light",
+  "art": {
+    "focusX": 0.5,
+    "focusY": 0.5,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#bd9999",
+    "panel": "#abb4cf",
+    "panelAlt": "#c3cee4",
+    "accent": "#7a4e29",
+    "accentAlt": "#ceb683",
+    "secondary": "#85c1cc",
+    "highlight": "#455b78",
+    "text": "#352970",
+    "muted": "#030303",
+    "line": "#d3d3d4"
+  }
+}

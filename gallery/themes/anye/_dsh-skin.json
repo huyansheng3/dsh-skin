@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "source": "dreamskin-gallery",
+  "rank": 50,
+  "versionId": "ver_fabe26a7d4a3596adc9b",
+  "author": "Joker Pan",
+  "license": "MIT",
+  "officialPackage": {
+    "file": "050-ver_fabe26a7d4a3596adc9b.zip",
+    "bytes": 4308515,
+    "sha256": "5d2af305a3e4e6733e578124432eef80870c9b68646989f25dfdbf38f6bacfba"
+  },
+  "compatibility": "native",
+  "distribution": {
+    "background": {
+      "source": {
+        "path": "background.png",
+        "mediaType": "image/png",
+        "bytes": 4306020,
+        "sha256": "b4bbd334202feb03155876727053cfef78223a6cd0c88274c97eaef307ee8c6b"
+      },
+      "output": {
+        "path": "background.webp",
+        "mediaType": "image/webp",
+        "bytes": 161174,
+        "sha256": "8312ba1e49f4514e8ea649e2f526713707c0512f3b0b64e47ad19c3e6a209959"
+      },
+      "transform": {
+        "format": "webp",
+        "quality": 84,
+        "maxWidth": 2560,
+        "resizeMode": "down-only",
+        "cropped": false,
+        "colorAdjusted": false
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "source": "dreamskin-gallery",
+  "rank": 3,
+  "versionId": "ver_97f463fa73adca079b69",
+  "author": "rain yu",
+  "license": "1",
+  "officialPackage": {
+    "file": "003-ver_97f463fa73adca079b69.zip",
+    "bytes": 1600243,
+    "sha256": "59e5cbc7e2a5dc2c14e1c1381a252de8b45a11cf0a51ae3327af595b4bdf94cb"
+  },
+  "compatibility": "native",
+  "distribution": {
+    "background": {
+      "source": {
+        "path": "background.png",
+        "mediaType": "image/png",
+        "bytes": 1598080,
+        "sha256": "c41577f3a57c983bf2f75a7d68f1b9f1708ef59feaacec9544c3a5095590793b"
+      },
+      "output": {
+        "path": "background.webp",
+        "mediaType": "image/webp",
+        "bytes": 105792,
+        "sha256": "abb61012702840c03bc01a5c5fd1d3a1a89d553bd97bf79e6c84ac7f61f58696"
+      },
+      "transform": {
+        "format": "webp",
+        "quality": 84,
+        "maxWidth": 2560,
+        "resizeMode": "down-only",
+        "cropped": false,
+        "colorAdjusted": false
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "packageVersion": 1,
+  "themeId": "120458",
+  "version": "0.1.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "0.1.0",
+  "platforms": [
+    "macos",
+    "windows"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "s-y",
+    "displayName": "sy"
+  },
+  "license": "SYBY1.0",
+  "provenance": {
+    "aiGenerated": true,
+    "summary": "openAI"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 498,
+      "sha256": "46ffb07993d1a63b0783ac9d1db77baa89ec5eb52849ef29b96531e1f5d48796"
+    },
+    {
+      "path": "background.webp",
+      "mediaType": "image/webp",
+      "bytes": 314158,
+      "sha256": "25a04ed69130814840e62dba3c7aa258b9892a30be574fbc8538ca8b67842dc0"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 272,
+      "sha256": "0a712f5f0815de0cb225cbaec3d7e8fa05f54b63cbd1e9402fe4d2e3c96b4c90"
+    }
+  ],
+  "createdAt": "2026-07-28T02:39:21.251Z"
+}

@@ -4,19 +4,19 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
 [![Node.js >= 18](https://img.shields.io/badge/node-%3E%3D18-339933.svg)](https://nodejs.org/)
 
-`dsh-skin` 是 DeepSeek Harness Web 的原生 Cordis 皮肤插件。主题选择和 ZIP
-导入直接集成在 Harness 自带的“设置 > 通用设置”中，不修改 DSH 安装包，也不需要
+`dsh-skin` 是 DeepSeek Harness Web 的原生 Cordis 皮肤插件。主题选择、图片预览和 ZIP
+导入直接集成在 Harness 自带的“设置 > 皮肤库”中，不修改 DSH 安装包，也不需要
 浏览器扩展或 CDP 注入器。
 
 已在 `@deepseek-ai/dsh@0.1.0-rc.6` 的 Web profile 中验证。
 
 ## 效果预览
 
-以下截图来自真实的 DSH Web 会话，皮肤选择与 ZIP 导入均集成在原生通用设置中。
+以下截图来自真实的 DSH Web 会话，皮肤库使用每套主题自己的背景图作为可直接应用的预览。
 
 | 原生皮肤设置 | 金陵晴川 |
 | --- | --- |
-| ![通用设置中的皮肤选择和 ZIP 导入](./docs/images/dsh-skin-settings.webp) | ![金陵晴川明亮主题](./docs/images/dsh-skin-jinling.webp) |
+| ![原生皮肤库中的图片预览和 ZIP 导入](./docs/images/dsh-skin-gallery.webp) | ![金陵晴川明亮主题](./docs/images/dsh-skin-jinling.webp) |
 | 安静氛围森林 | Gothic Void Crusade |
 | ![安静氛围森林主题](./docs/images/dsh-skin-forest.webp) | ![Gothic Void Crusade 暗色主题](./docs/images/dsh-skin-gothic.webp) |
 
@@ -29,14 +29,14 @@ dsh plugin --profile web add github:huyansheng3/dsh-skin
 dsh web
 ```
 
-当前 `main` 安装包内置 20 套精选 Gallery 主题和 2 套项目主题；它们会自动出现在
+当前 `main` 安装包内置 15 套指定 Gallery 主题和 4 套项目主题；它们会自动出现在
 皮肤下拉框中，但首次安装仍保持“官方外观”，不会自动激活社区主题。
 
-打开 DSH Web 页面后，进入 **设置 > 通用设置 > 皮肤**：
+打开 DSH Web 页面后，进入 **设置 > 皮肤库**：
 
-1. 在下拉框中选择内置主题；
-2. 或点击“导入 ZIP”安装自己的 DreamSkin 主题；
-3. 选择“官方外观”即可停用皮肤。
+1. 点击任一预览图即可立即应用对应主题；
+2. 点击“导入 ZIP”安装自己的 DreamSkin 主题；
+3. 点击“官方外观”即可停用皮肤。
 
 导入主题不会自动激活。若 `dsh web` 已经在运行，安装或升级插件后请重启服务。
 
@@ -66,7 +66,7 @@ dsh plugin --profile web add "$PWD"
 dsh web
 ```
 
-源码仓库已经包含随包的 20 套精选主题。需要把本地开发库扩展到审计保留的 76 套时，
+源码仓库已经包含随包的 19 套指定主题。需要把本地开发库扩展到审计保留的 76 套时，
 再执行 `npm run vendor:gallery`：
 
 ```bash
@@ -83,16 +83,17 @@ DSH_SKIN_GALLERY_DIR="$PWD/gallery/themes" dsh web
 npm run vendor:gallery -- --cache-dir /path/to/cache --offline
 ```
 
-Gallery 包由社区作者发布，并不统一使用 MIT 许可。发布包只收录其中 20 个经审计、
-许可允许再分发的主题，其余主题只在本地物化。目录记录每个版本的作者、原始许可、
+Gallery 包由社区作者发布，并不统一使用 MIT 许可。发布包只收录项目维护者指定的
+15 个 Gallery 主题，目录记录每个版本的作者、发行者声明的许可、
 体积和 SHA-256；随包背景以不裁切、不调色的高质量 WebP 分发，将 GitHub 安装包控制
 在约 6.5 MB。主题归属、许可和重编码说明见 [第三方声明](./THIRD_PARTY_NOTICES.md)。
 
 ## 功能
 
-- 原生设置集成：不创建额外路由、浮动按钮或 iframe；
+- 原生设置集成：独立“皮肤库”Tab，不创建额外路由、浮动按钮或 iframe；
+- 图片预览：所有带背景的主题均以同源受限图片路由呈现缩略图，点击即可应用；
 - 即时切换：设置成功后刷新主题 stylesheet，不替换 Harness DOM；
-- 内置主题：发布包自带 2 套原创带图主题和 20 套精选 Gallery 主题；源码可物化 76 套；
+- 内置主题：发布包自带 4 套项目主题和 15 套指定 Gallery 主题；源码可物化 76 套；
 - ZIP 导入：兼容 DreamSkin 与 legacy DSH 主题格式；
 - Safe CSS：拒绝脚本、`@import`、危险 URL 和未经授权的布局覆盖；
 - 作者保真：保留主题原始配色、玻璃透明度和自定义 CSS，不在运行时强制修色；
@@ -137,7 +138,7 @@ DSH Web Loader
   |   +-- /_skin/bg/* 提供当前背景图
   |   +-- /_skin/api/* 提供主题查询、切换和 ZIP 导入
   +-- dsh-skin Client
-      +-- settings.general.item 提供原生设置行
+      +-- settings.section 提供原生“皮肤库”Tab
 ```
 
 Host 始终注入一个带缓存版本的 stylesheet link。带图主题由 `body::before` 绘制
@@ -237,7 +238,7 @@ CLI 修改选择后需要刷新页面；页面设置内的切换会立即刷新 
 | Windows | `%LOCALAPPDATA%\\DSHSkin\\themes\\` |
 
 测试可设置 `DSH_SKIN_DATA_DIR` 使用隔离的数据目录。
-随安装包提供的 20 套 Gallery 主题位于 `gallery/themes/`，DSH 进程会自动发现。
+随安装包提供的 15 套 Gallery 主题位于 `gallery/themes/`，DSH 进程会自动发现。
 `DSH_SKIN_GALLERY_DIR=/absolute/path/to/gallery/themes` 仅用于覆盖安装包内的默认目录，
 例如加载开发机物化的 76 套主题。用户主题始终优先于同 ID 的 Gallery 主题，物化和
 扫描过程都不会改写 `state.json`。

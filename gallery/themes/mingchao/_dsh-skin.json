@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "source": "dreamskin-gallery",
+  "rank": 35,
+  "versionId": "ver_30efc696aa0e6e64649d",
+  "author": "李查德",
+  "license": "RicardoHU",
+  "officialPackage": {
+    "file": "035-ver_30efc696aa0e6e64649d.zip",
+    "bytes": 794236,
+    "sha256": "2fd3309647721520d508b3a315cfdbdddb4546a2487d00a69f4764e481cdec9c"
+  },
+  "compatibility": "native",
+  "distribution": {
+    "background": {
+      "source": {
+        "path": "background.jpg",
+        "mediaType": "image/jpeg",
+        "bytes": 791977,
+        "sha256": "94f2f3d097235b50c6a170da5f09411bda16836bfb3ac934c16bd6e54c5d4ea7"
+      },
+      "output": {
+        "path": "background.webp",
+        "mediaType": "image/webp",
+        "bytes": 156456,
+        "sha256": "aa162ba6bf92ceefc60b6210db558af791caa49adf2230eb4ef00b1ede0bd6d9"
+      },
+      "transform": {
+        "format": "webp",
+        "quality": 84,
+        "maxWidth": 2560,
+        "resizeMode": "down-only",
+        "cropped": false,
+        "colorAdjusted": false
+      }
+    }
+  }
+}

@@ -84,11 +84,12 @@ test("uses an isolated data directory when DSH_SKIN_DATA_DIR is set", () => {
   assert.equal(getStatePath(), join(dataDir, "state.json"));
 });
 
-test("injects only the active stylesheet and exposes no standalone settings entry", () => {
+test("injects the active stylesheet and exposes only scoped skin asset routes", () => {
   const { routes, taps } = mount();
   assert.deepEqual(routes.map(route => [route.kind, route.path]), [
     ["exact", "/_skin/active.css"],
     ["prefix", "/_skin/bg"],
+    ["prefix", "/_skin/preview"],
     ["prefix", "/_skin/api"],
   ]);
   assert.equal(taps.length, 1);
@@ -97,6 +98,26 @@ test("injects only the active stylesheet and exposes no standalone settings entr
   assert.match(html, /<link[^>]+data-dsh-skin="1"[^>]+\/_skin\/active\.css/);
   assert.match(html, /%3Ar4/, "CSS renderer changes must invalidate immutable browser caches");
   assert.doesNotMatch(html, /__dsh_skin_btn|__dsh_skin_panel|\/_skin\/settings/);
+});
+
+test("theme inventory exposes a restricted preview URL for each background", async () => {
+  const { routes } = mount();
+  const api = routes.find(route => route.path === "/_skin/api");
+  const preview = routes.find(route => route.path === "/_skin/preview");
+  const inventoryResponse = response();
+
+  await api.handler(request("GET", "/_skin/api/themes"), inventoryResponse);
+  const theme = inventoryResponse.json().themes.find(item => item.id === "cyndi-sugarhigh-2.0");
+  assert.match(theme.previewHref, /^\/_skin\/preview\/cyndi-sugarhigh-2\.0\.jpg\?v=/);
+
+  const previewResponse = response();
+  await preview.handler(request("GET", new URL(theme.previewHref, "http://dsh.local").pathname), previewResponse);
+  assert.equal(previewResponse.status, 200);
+  assert.equal(previewResponse.headers["content-type"], "image/jpeg");
+
+  const denied = response();
+  await preview.handler(request("GET", "/_skin/preview/not-a-theme.jpg"), denied);
+  assert.equal(denied.status, 404);
 });
 
 test("an explicit deactivate overrides the first-run default theme", async () => {

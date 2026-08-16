@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "source": "dreamskin-gallery",
+  "rank": 33,
+  "versionId": "ver_37beea2a72021bafd469",
+  "author": "nat malphite",
+  "license": "SYBY1.0",
+  "officialPackage": {
+    "file": "033-ver_37beea2a72021bafd469.zip",
+    "bytes": 2745346,
+    "sha256": "52a7be63c89babf5b5b90aea3951ec7b75b869da9c59b5259bb678581c460eee"
+  },
+  "compatibility": "native",
+  "distribution": {
+    "background": {
+      "source": {
+        "path": "background.png",
+        "mediaType": "image/png",
+        "bytes": 2743153,
+        "sha256": "2785e5d0a0f271d8ee26381fef9da86bc7d048d4c57396c064fbb8b9310046f8"
+      },
+      "output": {
+        "path": "background.webp",
+        "mediaType": "image/webp",
+        "bytes": 314158,
+        "sha256": "25a04ed69130814840e62dba3c7aa258b9892a30be574fbc8538ca8b67842dc0"
+      },
+      "transform": {
+        "format": "webp",
+        "quality": 84,
+        "maxWidth": 2560,
+        "resizeMode": "down-only",
+        "cropped": false,
+        "colorAdjusted": false
+      }
+    }
+  }
+}

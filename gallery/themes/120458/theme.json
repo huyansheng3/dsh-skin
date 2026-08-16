@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "120458",
+  "name": "海岸",
+  "image": "background.webp",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.5,
+    "focusY": 0.5,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#0B1520",
+    "panel": "#13202C",
+    "panelAlt": "#282b2c",
+    "accent": "#D39A3D",
+    "accentAlt": "#3188d4",
+    "secondary": "#8f9144",
+    "highlight": "#74C7F5",
+    "text": "#eff0f1",
+    "muted": "#929394",
+    "line": "#3e3f40"
+  }
+}

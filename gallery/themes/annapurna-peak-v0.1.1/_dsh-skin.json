@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "source": "dreamskin-gallery",
+  "rank": 41,
+  "versionId": "ver_79e70f8d618525254280",
+  "author": "zZze",
+  "license": "zeBy",
+  "officialPackage": {
+    "file": "041-ver_79e70f8d618525254280.zip",
+    "bytes": 1038757,
+    "sha256": "67ec554fc2e09d5e42099771345da7e92c1817d476600d2229b299e3a25662f4"
+  },
+  "compatibility": "native",
+  "distribution": {
+    "background": {
+      "source": {
+        "path": "background.jpg",
+        "mediaType": "image/jpeg",
+        "bytes": 1032442,
+        "sha256": "acbd8dfcd13f12e9bd94b66f9137f648dae2060da4bcf5c50a263c2f611e54c6"
+      },
+      "output": {
+        "path": "background.webp",
+        "mediaType": "image/webp",
+        "bytes": 55580,
+        "sha256": "07cadb5b26e5d5806e66d4040fa5a121bb023b8a340dfeb35bb17d8947d64e16"
+      },
+      "transform": {
+        "format": "webp",
+        "quality": 84,
+        "maxWidth": 2560,
+        "resizeMode": "down-only",
+        "cropped": false,
+        "colorAdjusted": false
+      }
+    }
+  }
+}

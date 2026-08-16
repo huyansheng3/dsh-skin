@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "source": "dreamskin-gallery",
+  "rank": 15,
+  "versionId": "ver_420992420627173aecf2",
+  "author": "pam003-crypto",
+  "license": "cc by 4.0",
+  "officialPackage": {
+    "file": "015-ver_420992420627173aecf2.zip",
+    "bytes": 120968,
+    "sha256": "a275692336e3c731326b27e32e59f9d0feddab08d6ad70c0f00494aa96e15ab6"
+  },
+  "compatibility": "native",
+  "distribution": {
+    "background": {
+      "source": {
+        "path": "background.jpg",
+        "mediaType": "image/jpeg",
+        "bytes": 114928,
+        "sha256": "f7ebf8aacff0731457651d00d5703a9e4bf428a5a7e217c2faca4c17de892034"
+      },
+      "output": {
+        "path": "background.webp",
+        "mediaType": "image/webp",
+        "bytes": 111908,
+        "sha256": "352bb5947dac4d71a9f5e1828a463c1418986f74d771f170a5f51fc24cec6350"
+      },
+      "transform": {
+        "format": "webp",
+        "quality": 84,
+        "maxWidth": 2560,
+        "resizeMode": "down-only",
+        "cropped": false,
+        "colorAdjusted": false
+      }
+    }
+  }
+}

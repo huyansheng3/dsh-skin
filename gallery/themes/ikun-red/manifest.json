@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "ikun-red",
+  "version": "1.0.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "1.5.9",
+  "platforms": [
+    "macos"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "jokerp",
+    "displayName": "Joker Pan"
+  },
+  "license": "MIT",
+  "provenance": {
+    "aiGenerated": true,
+    "summary": "GPT生成"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 681,
+      "sha256": "16d957a25313a8c37b4721eb4b0a34e95834908069e74c233bafb173a3fd5a45"
+    },
+    {
+      "path": "background.webp",
+      "mediaType": "image/webp",
+      "bytes": 87090,
+      "sha256": "54b703a9c24200f2f0b842c63f96491080c913d16428c2b6aa5467de768e5dd3"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 451,
+      "sha256": "8e2b92f62e258bb209a1134cc1d7ea972faf2a49de7dd59434095be2412ab0c4"
+    }
+  ],
+  "createdAt": "2026-08-06T07:54:33.445Z"
+}

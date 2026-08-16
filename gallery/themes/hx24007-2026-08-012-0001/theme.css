@@ -1,0 +1,100 @@
+[data-ds-part="root"] {
+  background-color: var(--ds-theme-color-background);
+  color: var(--ds-theme-color-text);
+  font-family: -apple-system, blinkmacsystemfont, system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+[data-ds-part="sidebar"] {
+  background-color: var(--ds-theme-color-panel);
+  border-right-color: var(--ds-theme-color-line);
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-radius: 0 14px 14px 0;
+  box-shadow: 6px 0 24px rgba(6, 10, 11, .18);
+  backdrop-filter: blur(18px) saturate(1.06);
+}
+
+[data-ds-part="main"] {
+  background-color: transparent;
+}
+
+[data-ds-part="header"] {
+  background-color: var(--ds-theme-color-panel);
+  border-bottom-color: var(--ds-theme-color-line);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  box-shadow: 0 6px 20px rgba(6, 10, 11, .12);
+  backdrop-filter: blur(18px) saturate(1.04);
+}
+
+[data-ds-part="home"] {
+  background-color: transparent;
+}
+
+[data-ds-part="home-hero"] {
+  background-color: var(--ds-theme-color-panel);
+  border-radius: 18px;
+  border-color: var(--ds-theme-color-line);
+  border-width: 1px;
+  border-style: solid;
+  box-shadow: 0 14px 36px rgba(6, 10, 11, .24);
+  backdrop-filter: blur(16px) saturate(1.04);
+}
+
+[data-ds-part="project-list"] {
+  background-color: transparent;
+  gap: 10px;
+}
+
+[data-ds-part="thread"] {
+  background-color: transparent;
+  row-gap: 12px;
+}
+
+[data-ds-part="message"] {
+  background-color: var(--ds-theme-color-panel);
+  border-radius: 14px;
+  border-color: var(--ds-theme-color-line);
+  border-width: 1px;
+  border-style: solid;
+  box-shadow: 0 6px 18px rgba(6, 10, 11, .14);
+  backdrop-filter: blur(12px) saturate(1.02);
+}
+
+[data-ds-part="composer"] {
+  background-color: var(--ds-theme-color-panel);
+  border-radius: 18px;
+  border-color: var(--ds-theme-color-line);
+  border-width: 1px;
+  border-style: solid;
+  box-shadow: 0 12px 30px rgba(6, 10, 11, .24), inset 0 1px 0 rgba(255, 255, 255, .04);
+  backdrop-filter: blur(20px) saturate(1.06);
+  transition-property: border-color, box-shadow;
+  transition-duration: 180ms;
+}
+
+[data-ds-part="composer"]:focus-visible {
+  border-color: var(--ds-theme-color-accent-alt);
+  border-width: 2px;
+  box-shadow: 0 12px 30px rgba(6, 10, 11, .26), 0 0 14px rgba(209, 161, 126, .16);
+}
+
+[data-ds-part="composer-toolbar"] {
+  background-color: var(--ds-theme-color-panel-alt);
+  color: var(--ds-theme-color-muted);
+  border-bottom-color: var(--ds-theme-color-line);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+[data-ds-part="dialog"] {
+  background-color: var(--ds-theme-color-panel-alt);
+  border-radius: 16px;
+  border-color: var(--ds-theme-color-line);
+  border-width: 1px;
+  border-style: solid;
+  box-shadow: 0 16px 38px rgba(6, 10, 11, .32);
+  backdrop-filter: blur(22px) saturate(1.05);
+}

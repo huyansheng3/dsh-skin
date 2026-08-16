@@ -187,6 +187,11 @@ test("buildDreamSkinCss maps opaque native reading surfaces without recoloring t
     /\[class\*="_logoRow"\] > button\[class\*="_iconButton"\]\[class\*="_toggle"\]\s*\{\s*color: var\(--dsw-alias-label-primary\) !important;/,
     "The sidebar toggle should use the author's primary text token",
   );
+  assert.match(
+    css,
+    /background-color: var\(--ds-theme-color-panel-alt, var\(--dsw-alias-bg-layer-2\)\) !important;/,
+    "The sidebar toggle should have a distinct surface over wallpaper artwork",
+  );
   assert.doesNotMatch(
     css,
     /--dsw-alias-label-secondary:\s*#eff0ef/,

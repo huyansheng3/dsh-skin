@@ -1,70 +1,41 @@
 # Third-Party Theme Notices
 
-`dsh-skin` includes the following DreamSkin Gallery theme packages under the
-licenses declared by their publishers. The selection is pinned in
-`gallery/bundled-themes.json`; original package hashes and Gallery version IDs
-are recorded in `gallery/catalog.json` and each theme's `_dsh-skin.json`.
+`dsh-skin` packages only the 19 themes listed below. The selection is pinned
+in `gallery/bundled-themes.json`; each Gallery theme records its original
+package hash and version ID in `gallery/catalog.json` and `_dsh-skin.json`.
 
-The packaging process adds `_dsh-skin.json` provenance metadata and re-encodes
-bundled backgrounds as high-quality WebP with a maximum width of 2560 pixels so
-GitHub installations remain practical. Images are not cropped or color-adjusted;
-the original package hash and transform details remain in each provenance file.
-The plugin also adapts theme tokens at runtime for DeepSeek Harness. These are
-modifications under the declared licenses. The project-level MIT license does
-not replace the theme-specific licenses.
+Bundled Gallery backgrounds are re-encoded as high-quality WebP without
+cropping or color adjustment. The original source record and transform details
+remain in each theme's provenance file. The project-level MIT license does not
+replace the licenses declared by the individual theme publishers.
 
 Gallery source: <https://dreamskin.cc/gallery>
 
-## CC BY 4.0 Themes
+## Project Themes
 
-These themes are licensed under the Creative Commons Attribution 4.0
-International license: <https://creativecommons.org/licenses/by/4.0/>.
-
-| Theme | Creator | Gallery version |
+| Theme | Publisher | Declared license |
 | --- | --- | --- |
-| ZhangBoBo Freedom Lab | zhanggugu-max | `ver_9f842942e499d4fffbcc` |
-| 珊瑚穹顶之城 | sz w | `ver_bcf8a97476e61258211a` |
-| 星际守望者 | 螺丝起子 | `ver_b5c4428ff3d57f7229e1` |
-| 财神打工版 | axdlee | `ver_e40d7dc11e32aa3c3903` |
-| 山海异闻 | axdlee | `ver_a5a7c185610e6ccee928` |
-| Character 01 | yyy | `ver_e014e04557f8f21e5415` |
-| 动漫少女素描 | yyy | `ver_154b9a9a4a66fa73dc6f` |
+| Rose Light | Codex Dream Skin | MIT |
+| Cyndi SugarHigh 2.0 | Jonas Leong | MIT |
+| Gothic Void Crusade | Codex Dream Skin | MIT |
+| Rei 蓝铅素描 | shu | Personal Use |
 
-## MIT Themes
+## Gallery Themes
 
-The following themes declare the MIT license. Copyright is retained by the
-listed Gallery publisher.
-
-| Theme | Copyright holder | Gallery version |
-| --- | --- | --- |
-| 安静氛围 森林 | YILI LIU | `ver_cd231f43ee95dc6e72f2` |
-| art | SuperEliauk | `ver_29f5249c71885ab73342` |
-| cat | yang | `ver_0b7e70a8abc8828b1379` |
-| 银河 Milky Way | F4 | `ver_5f02aacdf1fc16b53c90` |
-| IMG 5509 | FZZFWBZwbz | `ver_a12afd126b0f69eab3b5` |
-| ChatGPT Image 2026年8月1日 02 47 08 | Nam W | `ver_020a539436a661c44554` |
-| Green Meadow | kevin carney | `ver_30f0586e1ed19d914a8a` |
-| 星潮（v2优化版） | kevin carney | `ver_15dc2713b31c98707c47` |
-| exec 89fd6732 b964 42fc a1d8 3ca1a153bdc8 | Ricardo Zhang | `ver_8cec80ce3831d885ac01` |
-| 阳光少年 | 孔航 | `ver_1f00673afb67fd30f91e` |
-| 坚持 | 汐夏 | `ver_28480ff810130dd469e9` |
-| 见夕阳 | Joker Pan | `ver_0575711d2058c81df18e` |
-| 金陵晴川 · Jinling Sunlit | soybeanmilk9311 | `ver_a354f15df2671d0978a8` |
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+| Theme | Creator | Gallery version | Declared license |
+| --- | --- | --- | --- |
+| DeepSeek-鲸鱼娘 | powerdog996 | `ver_cb557ececaa5de3f3dbe` | MIT |
+| 海岸 | nat malphite | `ver_37beea2a72021bafd469` | SYBY1.0 |
+| 芙宁娜 小白袜 | pam003-crypto | `ver_420992420627173aecf2` | cc by 4.0 |
+| 月色安纳普尔纳 | zZze | `ver_79e70f8d618525254280` | zeBy |
+| 月下松岚 | Joker Pan | `ver_fabe26a7d4a3596adc9b` | MIT |
+| 星潮（v2优化版） | kevin carney | `ver_15dc2713b31c98707c47` | MIT |
+| Character 01 | yyy | `ver_e014e04557f8f21e5415` | CC BY 4.0 |
+| 朱影 | zhenghua wu | `ver_061f69f6d718b0f5ec3a` | Proprietary |
+| 栗棕日光-专注版 | 沈不清 | `ver_ddd5aee0d79b85634fa8` | CC BY 4.0 |
+| Forever Kun Red | Joker Pan | `ver_105ecaf86d2c8825aaa4` | MIT |
+| 露西 | rain yu | `ver_97f463fa73adca079b69` | 1 |
+| 银河 Milky Way | F4 | `ver_5f02aacdf1fc16b53c90` | MIT |
+| mingchao_yongzhuang | 李查德 | `ver_30efc696aa0e6e64649d` | RicardoHU |
+| 月影轻吻 | lkp vyon | `ver_9777f8212ecfb6a5b013` | CC BY 4.0 |
+| 财神打工版 | axdlee | `ver_e40d7dc11e32aa3c3903` | CC BY 4.0 |

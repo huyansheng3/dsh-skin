@@ -1,0 +1,48 @@
+[data-ds-part="sidebar"] {
+  border-right-color: var(--ds-theme-color-line);
+  backdrop-filter: blur(14px);
+}
+
+[data-ds-part="header"] {
+  border-bottom-color: var(--ds-theme-color-line);
+  backdrop-filter: blur(14px);
+}
+
+[data-ds-part="home-hero"] {
+  color: var(--ds-theme-color-text);
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+[data-ds-part="project-list"] {
+  border-color: var(--ds-theme-color-line);
+  border-radius: 8px;
+}
+
+[data-ds-part="composer"] {
+  border-color: var(--ds-theme-color-line);
+  border-radius: 12px;
+  backdrop-filter: blur(14px);
+  transition-property: border-color, background-color, box-shadow;
+  transition-duration: 160ms;
+}
+
+[data-ds-part="composer"]:hover {
+  border-color: var(--ds-theme-color-accent);
+}
+
+[data-ds-part="composer-toolbar"] {
+  color: var(--ds-theme-color-muted);
+}
+
+[data-ds-part="message"] {
+  border-radius: 8px;
+  line-height: 1.55;
+}
+
+[data-ds-part="dialog"] {
+  border-color: var(--ds-theme-color-line);
+  border-radius: 8px;
+}

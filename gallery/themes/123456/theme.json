@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "123456",
+  "name": "芙宁娜 小白袜",
+  "image": "background.webp",
+  "appearance": "light",
+  "art": {
+    "focusX": 0,
+    "focusY": 0.5,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#f6f6f6",
+    "panel": "#fefefe",
+    "panelAlt": "#e9e9e9",
+    "accent": "#308cca",
+    "accentAlt": "#2978ae",
+    "secondary": "#a67d66",
+    "highlight": "#0099ff",
+    "text": "#000000",
+    "muted": "#696969",
+    "line": "#80c8ff"
+  }
+}

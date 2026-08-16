@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "source": "dreamskin-gallery",
+  "rank": 8,
+  "versionId": "ver_cb557ececaa5de3f3dbe",
+  "author": "powerdog996",
+  "license": "MIT",
+  "officialPackage": {
+    "file": "008-ver_cb557ececaa5de3f3dbe.zip",
+    "bytes": 324153,
+    "sha256": "9f953c16da7b61a43959e2539f771eb4d6416cd90d502bb243c24ac885449ba3"
+  },
+  "compatibility": "native",
+  "distribution": {
+    "background": {
+      "source": {
+        "path": "background.jpg",
+        "mediaType": "image/jpeg",
+        "bytes": 321940,
+        "sha256": "b670cddace3c84a6b7f6b9327304c17b661a85f3656ae84f5a7eb7d8b26b4a4d"
+      },
+      "output": {
+        "path": "background.webp",
+        "mediaType": "image/webp",
+        "bytes": 201016,
+        "sha256": "66dae1aafa5c08ac0a9e192909f2a28f3b8efe7b57ae175e5a4401dd4a79ddd1"
+      },
+      "transform": {
+        "format": "webp",
+        "quality": 84,
+        "maxWidth": 2560,
+        "resizeMode": "down-only",
+        "cropped": false,
+        "colorAdjusted": false
+      }
+    }
+  }
+}

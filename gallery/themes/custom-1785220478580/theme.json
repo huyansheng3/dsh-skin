@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "custom-1785220478580",
+  "name": "朱影",
+  "brandSubtitle": "VERMILION STUDY",
+  "tagline": "静下来，把事情做完。",
+  "projectPrefix": "项目：",
+  "projectLabel": "项目",
+  "statusText": "FOCUS MODE",
+  "quote": "心静，刀快。",
+  "image": "background.webp",
+  "appearance": "light",
+  "art": {
+    "focusX": 0.19,
+    "focusY": 0.46,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#070808",
+    "panel": "#0d0f10",
+    "panelAlt": "#17191b",
+    "accent": "#d54b46",
+    "accentAlt": "#ef766a",
+    "secondary": "#a2aaa8",
+    "highlight": "#7d2729",
+    "text": "#f0ece7",
+    "muted": "#aaa5a1",
+    "line": "rgba(213, 75, 70, 0.22)"
+  }
+}

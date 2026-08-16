@@ -8,20 +8,43 @@ import { loadTheme } from "../src/lib/theme-manager.mjs";
 const testDir = dirname(fileURLToPath(import.meta.url));
 const repoRoot = dirname(testDir);
 const readJson = path => JSON.parse(readFileSync(path, "utf8"));
+const RELEASE_GALLERY_IDS = [
+  "deepseek",
+  "120458",
+  "123456",
+  "annapurna-peak-v0.1.1",
+  "anye",
+  "astral-tidev2",
+  "character-01",
+  "custom-1785220478580",
+  "hx24007-2026-08-012-0001",
+  "ikun-red",
+  "lucy-moon",
+  "milky-way",
+  "mingchao",
+  "moonlight-kiss",
+  "usr-49e16299682ecef4aa46.prosperity-mode",
+];
+const RELEASE_CORE_IDS = [
+  "arina-hashimoto",
+  "cyndi-sugarhigh-2.0",
+  "gothic-void-crusade",
+  "rei-blue-pencil",
+];
 
-test("curated Gallery built-ins are redistributable, complete, and pinned", () => {
+test("release Gallery built-ins match the requested selection and are pinned", () => {
   const selection = readJson(join(repoRoot, "gallery", "bundled-themes.json"));
   const catalog = readJson(join(repoRoot, "gallery", "catalog.json"));
   const catalogById = new Map(catalog.themes.map(theme => [theme.themeId, theme]));
   const notices = readFileSync(join(repoRoot, "THIRD_PARTY_NOTICES.md"), "utf8");
 
   assert.equal(selection.schemaVersion, 1);
-  assert.equal(selection.themes.length, 20);
-  assert.equal(new Set(selection.themes.map(theme => theme.themeId)).size, 20);
+  assert.deepEqual(selection.themes.map(theme => theme.themeId), RELEASE_GALLERY_IDS);
+  assert.equal(new Set(selection.themes.map(theme => theme.themeId)).size, RELEASE_GALLERY_IDS.length);
   let bundledBackgroundBytes = 0;
 
   for (const selected of selection.themes) {
-    assert.ok(["MIT", "CC BY 4.0"].includes(selected.license), selected.themeId);
+    assert.ok(selected.license, `${selected.themeId}: missing declared license`);
     const catalogTheme = catalogById.get(selected.themeId);
     assert.ok(catalogTheme, `${selected.themeId}: missing from frozen catalog`);
     assert.equal(catalogTheme.compatibility, "native", selected.themeId);
@@ -56,13 +79,20 @@ test("curated Gallery built-ins are redistributable, complete, and pinned", () =
   assert.ok(bundledBackgroundBytes < 8 * 1024 * 1024, "bundled backgrounds exceed install budget");
 });
 
-test("package manifest ships exactly the curated Gallery directories", () => {
+test("package manifest ships exactly the requested release themes", () => {
   const selection = readJson(join(repoRoot, "gallery", "bundled-themes.json"));
   const packageJson = readJson(join(repoRoot, "package.json"));
   const expected = selection.themes.map(theme => `gallery/themes/${theme.themeId}`).sort();
   const actual = packageJson.files.filter(path => path.startsWith("gallery/themes/")).sort();
 
   assert.deepEqual(actual, expected);
+  const coreDirectories = packageJson.files.filter(path => path.startsWith("themes/")).sort();
+  assert.deepEqual(coreDirectories, RELEASE_CORE_IDS.map(id => `themes/${id}`).sort());
+  for (const id of RELEASE_CORE_IDS) {
+    const theme = loadTheme(join(repoRoot, "themes", id));
+    assert.equal(theme.manifest.id, id);
+    assert.equal(theme.hasBackground, true);
+  }
   assert.ok(packageJson.files.includes("gallery/bundled-themes.json"));
   assert.ok(packageJson.files.includes("THIRD_PARTY_NOTICES.md"));
 });

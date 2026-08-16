@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "anye",
+  "name": "月下松岚",
+  "tagline": "在安静的月色里，保持专注。",
+  "quote": "MAKE SOMETHING WONDERFUL",
+  "image": "background.webp",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.76,
+    "focusY": 0.44,
+    "safeArea": "left",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#0B1118",
+    "panel": "#111A24",
+    "panelAlt": "#172330",
+    "accent": "#B8D8C0",
+    "accentAlt": "#D8E8D1",
+    "secondary": "#5D7B75",
+    "highlight": "#D0B27A",
+    "text": "#EDF3EF",
+    "muted": "#A7B4AE",
+    "line": "rgba(184, 216, 192, 0.24)"
+  }
+}

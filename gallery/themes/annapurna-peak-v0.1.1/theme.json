@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "annapurna-peak-v0.1.1",
+  "name": "月色安纳普尔纳",
+  "image": "background.webp",
+  "appearance": "auto",
+  "art": {
+    "focusX": 0.5,
+    "focusY": 0.5,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#121415",
+    "panel": "#262c2c",
+    "panelAlt": "#272c2d",
+    "accent": "#417c87",
+    "accentAlt": "#5c8e98",
+    "secondary": "#4b7b84",
+    "highlight": "#719da5",
+    "text": "#eef1f1",
+    "muted": "#929495",
+    "line": "#3e4041"
+  }
+}

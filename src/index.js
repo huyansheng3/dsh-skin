@@ -35,6 +35,7 @@ export const name = "dsh-skin";
 
 const CSS_PATH = "/_skin/active.css";
 const BACKGROUND_PATH = "/_skin/bg";
+const PREVIEW_PATH = "/_skin/preview";
 const API_PATH = "/_skin/api";
 const PACKAGE_ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const CORE_BUILTIN_DIR = join(PACKAGE_ROOT, "themes");
@@ -111,6 +112,31 @@ function stylesheetHref(config) {
 function backgroundPathname(theme) {
   const extension = extname(theme.backgroundPath).toLowerCase();
   return `${BACKGROUND_PATH}/${encodeURIComponent(theme.manifest.id)}${extension}`;
+}
+
+/** A theme-scoped image route for gallery thumbnails, never an arbitrary file route. */
+function previewPathname(theme) {
+  const extension = extname(theme.backgroundPath).toLowerCase();
+  return `${PREVIEW_PATH}/${encodeURIComponent(theme.manifest.id)}${extension}`;
+}
+
+function previewHref(theme) {
+  return `${previewPathname(theme)}?v=${encodeURIComponent(`${theme.manifest.id}@${theme.manifest.version}`)}`;
+}
+
+function findPreviewTheme(pathname) {
+  if (!pathname.startsWith(`${PREVIEW_PATH}/`)) return null;
+  const requested = pathname.slice(PREVIEW_PATH.length + 1);
+  const extension = extname(requested).toLowerCase();
+  if (!extension) return null;
+  let id;
+  try {
+    id = decodeURIComponent(requested.slice(0, -extension.length));
+  } catch {
+    return null;
+  }
+  const theme = findAvailableTheme(id);
+  return theme?.hasBackground && pathname === previewPathname(theme) ? theme : null;
 }
 
 function buildCss(theme, cacheKey) {
@@ -240,6 +266,7 @@ function describeTheme(theme, builtin, activeThemeId) {
     version: theme.manifest.version,
     format: theme.format,
     hasBackground: theme.hasBackground,
+    previewHref: theme.hasBackground ? previewHref(theme) : null,
     hasCustomCss: theme.hasCustomCss,
     author: themeAuthor(theme),
     builtin,
@@ -438,6 +465,32 @@ export function apply(ctx, config = {}) {
           res.end(data);
         } catch (error) {
           logger.warn(`[dsh-skin] background serve error: ${error instanceof Error ? error.message : String(error)}`);
+          res.writeHead(500);
+          res.end();
+        }
+      },
+    }));
+
+    webCtx.effect(() => webCtx.webServer.register({
+      kind: "prefix",
+      path: PREVIEW_PATH,
+      handler: (req, res) => {
+        const pathname = new URL(req.url ?? "/", "http://dsh.local").pathname;
+        const theme = findPreviewTheme(pathname);
+        if (!theme) {
+          res.writeHead(404);
+          res.end();
+          return;
+        }
+        try {
+          const data = readFileSync(theme.backgroundPath);
+          res.writeHead(200, {
+            "Content-Type": extToMime(extname(theme.backgroundPath).slice(1).toLowerCase()),
+            "Cache-Control": "public, max-age=31536000, immutable",
+          });
+          res.end(data);
+        } catch (error) {
+          logger.warn(`[dsh-skin] preview serve error: ${error instanceof Error ? error.message : String(error)}`);
           res.writeHead(500);
           res.end();
         }

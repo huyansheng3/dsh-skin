@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "rei-blue-pencil",
+  "name": "Rei 蓝铅素描",
+  "brandSubtitle": "CODEX DREAM SKIN",
+  "tagline": "让冰蓝色的安静，落在今天的工作台。",
+  "projectPrefix": "选择项目 · ",
+  "projectLabel": "◉  选择项目",
+  "statusText": "DREAM SKIN ONLINE",
+  "quote": "A QUIET BLUE MOMENT",
+  "image": "background.webp",
+  "appearance": "light",
+  "art": {
+    "focusX": 0.75,
+    "focusY": 0.39,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#F6F1E7",
+    "panel": "#FBF8F1",
+    "panelAlt": "#E8EFF4",
+    "accent": "#69A7D3",
+    "accentAlt": "#8CC3E4",
+    "secondary": "#A27C76",
+    "highlight": "#E3F1F8",
+    "text": "#2E3B46",
+    "muted": "#748491",
+    "line": "#CDDCE6"
+  }
+}

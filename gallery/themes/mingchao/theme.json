@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "mingchao",
+  "name": "mingchao_yongzhuang",
+  "image": "background.webp",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.5,
+    "focusY": 0.5,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#c9e1f3",
+    "panel": "#dbebff",
+    "panelAlt": "#dbe8fd",
+    "accent": "#666bf9",
+    "accentAlt": "#c28270",
+    "secondary": "#b6dbf1",
+    "highlight": "#f4a4b8",
+    "text": "#1c1b1d",
+    "muted": "#474347",
+    "line": "#9eafd6"
+  }
+}

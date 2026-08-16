@@ -18,7 +18,7 @@ function fakeReact() {
   };
 }
 
-test("built client registers a native General settings contribution", () => {
+test("built client registers a native Skin Gallery settings section", () => {
   let definition;
   let appendedStyle;
   const window = {
@@ -49,8 +49,8 @@ test("built client registers a native General settings contribution", () => {
   });
   assert.deepEqual([...plugin.inject], ["slots", "locale"]);
 
-  let registered;
-  let injectedSlot;
+  const registered = [];
+  const injectedSlots = [];
   const disposers = [];
   const ctx = {
     effect(factory) {
@@ -58,14 +58,17 @@ test("built client registers a native General settings contribution", () => {
       if (typeof dispose === "function") disposers.push(dispose);
       return dispose;
     },
-    locale: { register() { return () => {}; } },
+    locale: {
+      register() { return () => {}; },
+      bind() { return key => key; },
+    },
     slots: {
       inject(name, factory) {
-        injectedSlot = name;
+        injectedSlots.push(name);
         return factory();
       },
       register(options, component) {
-        registered = { options, component };
+        registered.push({ options, component });
         return () => {};
       },
     },
@@ -74,15 +77,21 @@ test("built client registers a native General settings contribution", () => {
 
   assert.equal(appendedStyle.dataset.pluginCss, "dsh-skin/settings.css");
   assert.match(appendedStyle.textContent, /\.dsh-skin-settings/);
-  assert.equal(injectedSlot, "settings.general.item");
-  assert.equal(registered.options.name, "settings.general.item");
-  assert.equal(registered.options.id, "dsh-skin");
-  assert.ok(Number.isFinite(registered.options.order));
+  assert.match(appendedStyle.textContent, /button\[aria-current="true"\]/);
+  assert.match(appendedStyle.textContent, /--ds-theme-color-panel-alt/);
+  assert.deepEqual(injectedSlots, ["settings.section"]);
+  assert.equal(registered.length, 1);
+  assert.equal(registered[0].options.name, "settings.section");
+  assert.equal(registered[0].options.id, "dsh-skin-gallery");
+  assert.ok(Number.isFinite(registered[0].options.order));
+  assert.equal(typeof registered[0].options.label, "function");
+  assert.equal(registered[0].options.label(), "galleryLabel");
 
-  const tree = registered.component({ t: key => key });
+  const tree = registered[0].component({ t: key => key });
   const serialized = JSON.stringify(tree);
-  assert.match(serialized, /themeLabel/);
-  assert.match(serialized, /"type":"select"/);
+  assert.match(serialized, /galleryTitle/);
+  assert.match(serialized, /galleryDescription/);
+  assert.match(serialized, /"role":"grid"/);
   assert.match(serialized, /"type":"file"/);
   assert.match(serialized, /"accept":"\.zip"/);
 

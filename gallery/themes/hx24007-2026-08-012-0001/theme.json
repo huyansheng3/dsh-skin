@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "hx24007-2026-08-012-0001",
+  "name": "栗棕日光-专注版",
+  "brandSubtitle": "CODEX DREAM SKIN",
+  "tagline": "留住日光，也留住专注。",
+  "projectPrefix": "选择项目 · ",
+  "projectLabel": "选择项目",
+  "statusText": "专注模式",
+  "quote": "安静地，把想法做出来。",
+  "image": "background.webp",
+  "appearance": "auto",
+  "art": {
+    "focusX": 0,
+    "focusY": 0.11,
+    "safeArea": "right",
+    "taskMode": "off"
+  },
+  "colors": {
+    "background": "#111413",
+    "panel": "rgba(24, 25, 23, .96)",
+    "panelAlt": "rgba(31, 30, 27, .98)",
+    "accent": "#b9825d",
+    "accentAlt": "#d1a17e",
+    "secondary": "#819a99",
+    "highlight": "#dfb99b",
+    "text": "#f2efeb",
+    "muted": "#aaa29b",
+    "line": "rgba(209, 161, 126, .18)"
+  }
+}

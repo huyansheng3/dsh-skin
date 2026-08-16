@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "source": "dreamskin-gallery",
+  "rank": 36,
+  "versionId": "ver_061f69f6d718b0f5ec3a",
+  "author": "zhenghua wu",
+  "license": "Proprietary",
+  "officialPackage": {
+    "file": "036-ver_061f69f6d718b0f5ec3a.zip",
+    "bytes": 168006,
+    "sha256": "bd92d8636c70a629215b075fe36da47993edb23af7004655d8235cc7aea7d978"
+  },
+  "compatibility": "native",
+  "distribution": {
+    "background": {
+      "source": {
+        "path": "background.jpg",
+        "mediaType": "image/jpeg",
+        "bytes": 164693,
+        "sha256": "f3869193bbfe42ed32fa8409a21d3452d682a37b33f8fa674a78ca96d48e67da"
+      },
+      "output": {
+        "path": "background.webp",
+        "mediaType": "image/webp",
+        "bytes": 44028,
+        "sha256": "afaf0fbbcac108c27e452f661f5f65d23e3057c0385ba5ab6089ab798bd12fd2"
+      },
+      "transform": {
+        "format": "webp",
+        "quality": 84,
+        "maxWidth": 2560,
+        "resizeMode": "down-only",
+        "cropped": false,
+        "colorAdjusted": false
+      }
+    }
+  }
+}

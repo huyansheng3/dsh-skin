@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "anye",
+  "version": "1.0.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "1.5.5",
+  "platforms": [
+    "macos"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "jokerp",
+    "displayName": "Joker Pan"
+  },
+  "license": "MIT",
+  "provenance": {
+    "aiGenerated": true,
+    "summary": "背景图由GPT生成"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 617,
+      "sha256": "aaf5694eca93a271c6645bbe6c8fde2ceaf0eba1fab48364fe4ae2c9470c4ab3"
+    },
+    {
+      "path": "background.webp",
+      "mediaType": "image/webp",
+      "bytes": 161174,
+      "sha256": "8312ba1e49f4514e8ea649e2f526713707c0512f3b0b64e47ad19c3e6a209959"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 451,
+      "sha256": "8e2b92f62e258bb209a1134cc1d7ea972faf2a49de7dd59434095be2412ab0c4"
+    }
+  ],
+  "createdAt": "2026-07-27T15:16:46.445Z"
+}

@@ -6,8 +6,9 @@
  * author background token while the DSH canvas becomes transparent beneath the
  * original glass surfaces. Opaque native reading/control surfaces use the
  * author's solid panel colors so dark skins cannot inherit DSH's light fills,
- * and the compact sidebar toggle uses the author's primary text token so its
- * thin icon remains recognizable. Author CSS is appended last.
+ * and the compact sidebar toggle uses a bordered panel surface plus the
+ * author's primary text token so its thin icon remains recognizable. Author
+ * CSS is appended last.
  *
  * Main callers are theme-manager during import and the Host stylesheet route.
  * This file does not discover themes, read assets, mutate the DOM, or own ZIP
@@ -434,6 +435,9 @@ export function buildDreamSkinCss(themeJson, bgDataUrl = null, customCss = null)
 /* === DSH Skin — Native navigation affordance === */
 [class*="_logoRow"] > button[class*="_iconButton"][class*="_toggle"] {
   color: var(--dsw-alias-label-primary) !important;
+  background-color: var(--ds-theme-color-panel-alt, var(--dsw-alias-bg-layer-2)) !important;
+  border: 1px solid var(--dsw-alias-border-l1) !important;
+  border-radius: 6px !important;
 }
 `);
 

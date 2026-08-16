@@ -11,7 +11,7 @@ extension and CDP injector are intentionally removed.
 
 - Plugin type: dual-face Cordis plugin (Host function plugin + Web client function plugin)
 - Owning package: `dsh-skin`
-- Extension point: Host `webServer.register()` / `webServer.tapIndex()` and Client `settings.general.item`
+- Extension point: Host `webServer.register()` / `webServer.tapIndex()` and Client `settings.section`
 - Required services: Host `webServer`; Client `slots` and `locale`
 - Optional services: none
 - Model-visible behavior: none
@@ -30,12 +30,12 @@ DeepSeek Harness webServer
   dsh-skin.apply()
         |
         +--> tapIndex(): add the always-present /_skin/active.css link
-        +--> register(): serve CSS and /_skin/bg.<ext>
+        +--> register(): serve CSS, active background, and scoped gallery previews
         +--> register(): expose same-origin /_skin/api/*
         |
-        +--> dsh.client bundle: contribute one row to settings.general.item
+        +--> dsh.client bundle: slots + locale → one Skin Gallery settings.section
         v
-  browser loads native Harness UI + theme layer + native settings row
+  browser loads native Harness UI + theme layer + native Skin Gallery tab
 ```
 
 The plugin is deliberately lazy: if `webServer` is unavailable, its callback
@@ -52,11 +52,11 @@ and library modules respectively.
 
 ### `src/client/index.js`
 
-The browser-side Client plugin contributes the theme selector and ZIP import
-control to DSH's existing General settings section. It talks only to the
-same-origin Host API and refreshes the owned stylesheet link after a committed
-selection. It does not add navigation, a route, a floating launcher, or replace
-native settings chrome.
+The browser-side Client plugin registers one `settings.section` contribution
+(the Skin Gallery tab) via `slots` and `locale`. It talks only to the
+same-origin Host `/_skin/api` routes and refreshes the Host-owned stylesheet
+link after a committed selection. It does not add a route, a floating
+launcher, or replace native settings chrome.
 
 ### `src/lib/theme-manager.mjs`
 

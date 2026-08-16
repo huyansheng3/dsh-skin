@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "deepseek",
+  "version": "0.1.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "0.0.0",
+  "platforms": [
+    "windows"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "powerdog996",
+    "displayName": "powerdo996"
+  },
+  "license": "MIT",
+  "provenance": {
+    "aiGenerated": true,
+    "summary": "互联网"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 513,
+      "sha256": "fd2e217877b5eaacf3a5508879f4de3ff53769154a2859b10452ddd6f05f0b07"
+    },
+    {
+      "path": "background.webp",
+      "mediaType": "image/webp",
+      "bytes": 201016,
+      "sha256": "66dae1aafa5c08ac0a9e192909f2a28f3b8efe7b57ae175e5a4401dd4a79ddd1"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 273,
+      "sha256": "3f5401920639e102d2e3871057f2bb68d290a5ca5f5a14c9e01cb2ff7be088e3"
+    }
+  ],
+  "createdAt": "2026-07-30T11:40:13.856Z"
+}

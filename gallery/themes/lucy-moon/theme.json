@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "lucy-moon",
+  "name": "露西",
+  "image": "background.webp",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.5,
+    "focusY": 0.5,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#131214",
+    "panel": "#1d1d1e",
+    "panelAlt": "#29292b",
+    "accent": "#23eaee",
+    "accentAlt": "#42edf0",
+    "secondary": "#dacf3b",
+    "highlight": "#5aeff2",
+    "text": "#efeff0",
+    "muted": "#939294",
+    "line": "#3f3e40"
+  }
+}

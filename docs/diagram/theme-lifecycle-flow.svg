@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 980">
+  <style>
+    text { font-family: 'JetBrains Mono', 'Noto Sans SC', 'PingFang SC', sans-serif; }
+    .title { fill: #f8fafc; font-size: 24px; font-weight: 700; }
+    .subtitle { fill: #94a3b8; font-size: 12px; }
+    .lane { font-size: 13px; font-weight: 700; text-anchor: middle; }
+    .name { fill: #f8fafc; font-size: 13px; font-weight: 700; text-anchor: middle; }
+    .desc { fill: #94a3b8; font-size: 10px; text-anchor: middle; }
+    .edge { fill: #cbd5e1; font-size: 9px; text-anchor: middle; }
+    .note { fill: #94a3b8; font-size: 10px; }
+  </style>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+    <marker id="arrow-cyan" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#22d3ee"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#34d399"/>
+    </marker>
+    <marker id="arrow-rose" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#fb7185"/>
+    </marker>
+  </defs>
+
+  <rect width="1360" height="980" fill="#0f172a"/>
+  <rect width="1360" height="980" fill="url(#grid)"/>
+  <text x="40" y="43" class="title">主题导入与激活流程</text>
+  <text x="40" y="66" class="subtitle">导入只扩充主题库；激活才会更新持久化选择和浏览器样式</text>
+
+  <rect x="495" y="98" width="370" height="72" rx="30" fill="#0f172a"/>
+  <rect x="495" y="98" width="370" height="72" rx="30" fill="rgba(59,130,246,0.3)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="680" y="127" class="name">Harness 原生皮肤库</text>
+  <text x="680" y="148" class="desc">用户选择主题、官方外观，或上传 ZIP</text>
+
+  <line x1="680" y1="170" x2="680" y2="203" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <g transform="translate(680,245)">
+    <polygon points="0,-42 72,0 0,42 -72,0" fill="#0f172a"/>
+    <polygon points="0,-42 72,0 0,42 -72,0" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1.5"/>
+    <text y="5" class="name">用户动作</text>
+  </g>
+
+  <rect x="50" y="310" width="560" height="610" rx="14" fill="none" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="9,5"/>
+  <text x="330" y="340" class="lane" fill="#22d3ee">导入主题</text>
+  <rect x="750" y="310" width="560" height="610" rx="14" fill="none" stroke="#34d399" stroke-width="1.5" stroke-dasharray="9,5"/>
+  <text x="1030" y="340" class="lane" fill="#34d399">激活或停用主题</text>
+
+  <path d="M608 245 L330 245 L330 375" fill="none" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrow-cyan)"/>
+  <text x="465" y="236" class="edge">上传 ZIP</text>
+  <path d="M752 245 L1030 245 L1030 375" fill="none" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <text x="892" y="236" class="edge">选择主题 / 官方外观</text>
+
+  <rect x="160" y="385" width="340" height="82" rx="7" fill="#0f172a"/>
+  <rect x="160" y="385" width="340" height="82" rx="7" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="330" y="416" class="name">Host 接收有界上传</text>
+  <text x="330" y="438" class="desc">请求体不超过 32 MiB，只处理 ZIP 文件</text>
+
+  <line x1="330" y1="467" x2="330" y2="506" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrow-cyan)"/>
+  <rect x="160" y="516" width="340" height="96" rx="7" fill="#0f172a"/>
+  <rect x="160" y="516" width="340" height="96" rx="7" fill="rgba(136,19,55,0.4)" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="330" y="546" class="name">ZIP 与 Safe CSS 校验</text>
+  <text x="330" y="568" class="desc">路径、条目数、解压体积、文件哈希</text>
+  <text x="330" y="588" class="desc">危险 URL、脚本和越权布局能力</text>
+
+  <line x1="330" y1="612" x2="330" y2="645" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <g transform="translate(330,687)">
+    <polygon points="0,-42 72,0 0,42 -72,0" fill="#0f172a"/>
+    <polygon points="0,-42 72,0 0,42 -72,0" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1.5"/>
+    <text y="5" class="name">校验通过？</text>
+  </g>
+
+  <line x1="330" y1="729" x2="330" y2="763" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <text x="345" y="749" class="edge" fill="#34d399">是</text>
+  <rect x="250" y="773" width="300" height="82" rx="7" fill="#0f172a"/>
+  <rect x="250" y="773" width="300" height="82" rx="7" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="400" y="804" class="name">写入用户主题库</text>
+  <text x="400" y="826" class="desc">刷新列表，但不改变当前主题</text>
+
+  <path d="M258 687 L112 687 L112 790" fill="none" stroke="#fb7185" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#arrow-rose)"/>
+  <text x="178" y="677" class="edge" fill="#fb7185">否</text>
+  <rect x="72" y="800" width="150" height="72" rx="7" fill="#0f172a"/>
+  <rect x="72" y="800" width="150" height="72" rx="7" fill="rgba(136,19,55,0.4)" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="147" y="828" class="name">拒绝并清理</text>
+  <text x="147" y="849" class="desc">不留半安装目录</text>
+
+  <rect x="860" y="385" width="340" height="82" rx="7" fill="#0f172a"/>
+  <rect x="860" y="385" width="340" height="82" rx="7" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="1030" y="416" class="name">Host 检查部署配置</text>
+  <text x="1030" y="438" class="desc">activeTheme 固定时，页面选择被锁定</text>
+
+  <line x1="1030" y1="467" x2="1030" y2="506" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <g transform="translate(1030,548)">
+    <polygon points="0,-42 72,0 0,42 -72,0" fill="#0f172a"/>
+    <polygon points="0,-42 72,0 0,42 -72,0" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1.5"/>
+    <text y="5" class="name">允许切换？</text>
+  </g>
+
+  <line x1="1102" y1="548" x2="1138" y2="548" stroke="#fb7185" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#arrow-rose)"/>
+  <text x="1120" y="538" class="edge" fill="#fb7185">否</text>
+  <rect x="1148" y="513" width="142" height="70" rx="7" fill="#0f172a"/>
+  <rect x="1148" y="513" width="142" height="70" rx="7" fill="rgba(136,19,55,0.4)" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="1219" y="542" class="name">保持锁定</text>
+  <text x="1219" y="563" class="desc">返回当前配置</text>
+
+  <line x1="1030" y1="590" x2="1030" y2="623" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <text x="1045" y="610" class="edge" fill="#34d399">是</text>
+  <rect x="860" y="633" width="340" height="82" rx="7" fill="#0f172a"/>
+  <rect x="860" y="633" width="340" height="82" rx="7" fill="rgba(76,29,149,0.4)" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="1030" y="664" class="name">保存选择并递增 revision</text>
+  <text x="1030" y="686" class="desc">官方外观用明确的空选择持久化</text>
+
+  <line x1="1030" y1="715" x2="1030" y2="744" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <rect x="860" y="754" width="340" height="82" rx="7" fill="#0f172a"/>
+  <rect x="860" y="754" width="340" height="82" rx="7" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="1030" y="785" class="name">解析主题并生成缓存身份</text>
+  <text x="1030" y="807" class="desc">主题版本 + revision + renderer 版本</text>
+
+  <line x1="1030" y1="836" x2="1030" y2="865" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <rect x="860" y="875" width="340" height="72" rx="25" fill="#0f172a"/>
+  <rect x="860" y="875" width="340" height="72" rx="25" fill="rgba(59,130,246,0.3)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="1030" y="904" class="name">Client 刷新主题 stylesheet</text>
+  <text x="1030" y="925" class="desc">浏览器重绘；Harness DOM 与状态不重建</text>
+
+  <text x="50" y="958" class="note">导入路径和激活路径刻意分离：安装社区主题不会突然改变用户正在阅读的页面。</text>
+</svg>

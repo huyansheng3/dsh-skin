@@ -1,0 +1,100 @@
+[data-ds-part="root"] {
+  background-color: var(--ds-theme-color-background);
+  color: var(--ds-theme-color-text);
+}
+
+[data-ds-part="sidebar"] {
+  background-color: var(--ds-theme-color-panel);
+  border-color: rgba(173, 106, 126, 0.28);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--ds-theme-surface-radius);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(var(--ds-theme-surface-blur)) saturate(1.15) brightness(0.9);
+  transition-property: background-color, border-color, box-shadow;
+  transition-duration: 180ms;
+}
+
+[data-ds-part="main"] {
+  background-color: rgba(9, 8, 12, 0.58);
+  backdrop-filter: blur(var(--ds-theme-surface-blur)) brightness(0.92);
+}
+
+[data-ds-part="header"] {
+  background-color: rgba(18, 13, 18, 0.7);
+  border-color: rgba(173, 106, 126, 0.22);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--ds-theme-surface-radius);
+  backdrop-filter: blur(var(--ds-theme-surface-blur)) saturate(1.1);
+}
+
+[data-ds-part="home"] {
+  background-color: rgba(9, 8, 12, 0.35);
+}
+
+[data-ds-part="home-hero"] {
+  background-color: rgba(22, 14, 20, 0.48);
+  border-color: rgba(205, 141, 160, 0.26);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--ds-theme-surface-radius);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(var(--ds-theme-surface-blur)) saturate(1.15);
+}
+
+[data-ds-part="project-list"] {
+  background-color: rgba(18, 13, 18, 0.56);
+  border-color: rgba(173, 106, 126, 0.2);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--ds-theme-surface-radius);
+}
+
+[data-ds-part="thread"] {
+  background-color: rgba(10, 8, 12, 0.4);
+}
+
+[data-ds-part="message"] {
+  background-color: rgba(28, 17, 24, 0.58);
+  border-color: rgba(205, 141, 160, 0.16);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--ds-theme-surface-radius);
+  backdrop-filter: blur(12px) saturate(1.08);
+}
+
+[data-ds-part="composer"] {
+  background-color: rgba(24, 14, 21, 0.78);
+  border-color: rgba(222, 157, 176, 0.34);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--ds-theme-surface-radius);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(18px) saturate(1.16);
+  transition-property: background-color, border-color, box-shadow;
+  transition-duration: 180ms;
+}
+
+[data-ds-part="composer-toolbar"] {
+  background-color: rgba(38, 22, 31, 0.64);
+  border-color: rgba(222, 157, 176, 0.2);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--ds-theme-surface-radius);
+}
+
+[data-ds-part="dialog"] {
+  background-color: rgba(19, 12, 19, 0.9);
+  border-color: rgba(222, 157, 176, 0.3);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--ds-theme-surface-radius);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(20px) saturate(1.12);
+}
+
+[data-ds-part="composer"]:focus-visible {
+  border-color: var(--ds-theme-color-accent);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.32);
+}

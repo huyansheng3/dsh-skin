@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "lucy-moon",
+  "version": "0.1.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "26.805.11740",
+  "platforms": [
+    "windows"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "rain-yu",
+    "displayName": "rain yu"
+  },
+  "license": "1",
+  "provenance": {
+    "aiGenerated": false,
+    "summary": "自己画的"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 501,
+      "sha256": "bc67e45c0619af20dbafa34de2f528376b040f59958c06bd3e1f21df33d71b0f"
+    },
+    {
+      "path": "background.webp",
+      "mediaType": "image/webp",
+      "bytes": 105792,
+      "sha256": "abb61012702840c03bc01a5c5fd1d3a1a89d553bd97bf79e6c84ac7f61f58696"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 232,
+      "sha256": "f40b7ee8109e485289db9f31792a9563e233d9c45706277696b2748e7b960dec"
+    }
+  ],
+  "createdAt": "2026-08-10T04:56:07.528Z"
+}

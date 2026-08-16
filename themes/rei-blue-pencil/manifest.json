@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "rei-blue-pencil",
+  "version": "1.0.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "0.5.11",
+  "platforms": [
+    "windows"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "local-shu",
+    "displayName": "shu"
+  },
+  "license": "Personal Use",
+  "provenance": {
+    "aiGenerated": true,
+    "summary": "Original Rei blue-pencil wallpaper generated for personal Codex Dream Skin use."
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 776,
+      "sha256": "e082b3a92c3c0575919cc5b1716b824610c6643a892a919326f5d568b508a495"
+    },
+    {
+      "path": "background.webp",
+      "mediaType": "image/webp",
+      "bytes": 225838,
+      "sha256": "2ed4c833f22836c592505a69c6137a94c50e7deb3aa131e2887f69da595cb7e7"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 2959,
+      "sha256": "4f9cca0f42cd318f61dcde28e5af764a8f86f4a2ffc71f158cb12ae9c37f0c61"
+    }
+  ],
+  "createdAt": "2026-08-14T07:07:18.552Z"
+}

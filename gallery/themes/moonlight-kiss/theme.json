@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "moonlight-kiss",
+  "name": "月影轻吻",
+  "image": "background.webp",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.8,
+    "focusY": 0.5,
+    "safeArea": "none",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#131313",
+    "panel": "#1e1d1d",
+    "panelAlt": "#2b2a2a",
+    "accent": "#b36667",
+    "accentAlt": "#be7b7c",
+    "secondary": "#ece5df",
+    "highlight": "#c68c8d",
+    "text": "#f0f0ef",
+    "muted": "#939393",
+    "line": "#3f3f3f"
+  }
+}

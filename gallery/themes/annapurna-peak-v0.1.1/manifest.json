@@ -1,0 +1,46 @@
+{
+  "packageVersion": 1,
+  "themeId": "annapurna-peak-v0.1.1",
+  "version": "0.1.1",
+  "skinApiVersion": 1,
+  "minClientVersion": "1.5.2",
+  "platforms": [
+    "macos",
+    "windows"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "zZze",
+    "displayName": "zZ"
+  },
+  "license": "zeBy",
+  "provenance": {
+    "aiGenerated": false,
+    "summary": "图片来自Unsplash"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 528,
+      "sha256": "976599fb5f72b2af1b0fbb5a93de2332d4c1887ceaacae4a7503e7d914a19bcc"
+    },
+    {
+      "path": "background.webp",
+      "mediaType": "image/webp",
+      "bytes": 55580,
+      "sha256": "07cadb5b26e5d5806e66d4040fa5a121bb023b8a340dfeb35bb17d8947d64e16"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 4334,
+      "sha256": "bae208bff0f4e2c5a54843a13e9974d3217a1a4765c258bb2fd53bd03e4970a3"
+    }
+  ],
+  "createdAt": "2026-08-05T06:53:46.735Z"
+}

@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "hx24007-2026-08-012-0001",
+  "version": "0.2.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "0.0.1",
+  "platforms": [
+    "macos"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "hx24007",
+    "displayName": "沈不清"
+  },
+  "license": "CC BY 4.0",
+  "provenance": {
+    "aiGenerated": false,
+    "summary": "基于原网络图片优化编码、首页构图、专注模式主题色与安全样式"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 815,
+      "sha256": "e10774644b205c5a0dbcbb8e4ab9be2a7b6b73186640f2b78371f599ee689fb2"
+    },
+    {
+      "path": "background.webp",
+      "mediaType": "image/webp",
+      "bytes": 205402,
+      "sha256": "12c9bcb12537535facb6eac1fb342c5d83086465679e162f9b56cfb27c565afd"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 2797,
+      "sha256": "a88481064cd74bf46a267e8cff2fff1d34601de1e3b09512cee0d4ae6b74b510"
+    }
+  ],
+  "createdAt": "2026-08-12T08:38:16.600Z"
+}

@@ -3,14 +3,14 @@
 ## Objective
 
 把 `Codex-Dream-Skin` 的主题能力收敛为 DeepSeek Harness 原生 Cordis 插件，
-主题选择和 ZIP 导入只出现在 Harness 原“设置 > 通用设置”中；DreamSkin Gallery
-热门前 100 经质量裁剪后可在本地物化 76 套，并筛选其中约 20 套随安装包默认可选。
+主题选择、图片预览和 ZIP 导入只出现在 Harness 原“设置 > 皮肤库”中；DreamSkin Gallery
+热门前 100 经质量裁剪后可在本地物化 76 套，并按维护者指定的 15 套 Gallery 主题随安装包默认可选。
 
 ## Current State
 
 - 已完成从 Chrome extension/CDP 方案到双端 Cordis 插件的迁移。
 - Host 入口 `src/index.js` 只在 `webServer` 存在时注册 CSS、背景资源和同源 API。
-- Client bundle 通过 `settings.general.item` 在原生通用设置中贡献皮肤选择与 ZIP 导入。
+- Client bundle 通过 `settings.section` 在原生设置中贡献“皮肤库”Tab，展示背景图预览、主题选择与 ZIP 导入。
 - 不存在插件自建设置路由、导航入口、浮动按钮或 iframe。
 - `theme-manager.mjs` 支持 legacy DSH 与 DreamSkin，并执行有界 ZIP 导入和失败清理。
 - 公开包内置 Cyndi 与 Gothic Void Crusade 两套带图 DreamSkin 主题；权利未确认的
@@ -18,9 +18,9 @@
 - 发布 bundle 默认保持官方外观；只有显式选择或部署配置才会启用主题。
 - Gallery 热门前 100 原始审计已冻结；`gallery/exclusions.json` 排除 24 个可导入但
   源对比度不合格的主题，vendoring 原子物化剩余 76 个且不自动激活。
-- npm 发布包直接集成其中 20 个经审计且许可允许再分发的 Gallery 主题；其余保留主题
-  通过显式 vendoring 在本地物化。
-- 下一发布版本为 `0.3.0`；已发布的 `v0.2.0` 不包含这 20 个 Gallery 主题。
+- npm 发布包直接集成维护者指定的 15 个 Gallery 主题和 4 个项目主题；其余保留主题
+  通过显式 vendoring 在本地物化，并保留原始许可证与来源声明。
+- 下一发布版本为 `0.3.0`；已发布的 `v0.2.0` 不包含这 15 个 Gallery 主题。
 - `gallery/bundled-themes.json` 固定随包主题及许可证，`package.json` 逐目录列入；
   `.gitignore` 继续拦截其余本地 Gallery artwork，避免宽泛打包。
 - 93 个完整包继续走严格 ZIP 导入；7 个 Gallery 已标记不兼容、缺少 `theme.css` 的
@@ -39,7 +39,7 @@
 
 - Plugin type: dual-face Cordis plugin (Host function + Web Client function)
 - Owning package: `dsh-skin`
-- Extension point: Host `webServer.register/tapIndex`; Client `settings.general.item`
+- Extension point: Host `webServer.register/tapIndex`; Client `settings.section`
 - Required services: Host `webServer`; Client `slots`, `locale`
 - Optional services: none
 - Model-visible behavior: none
@@ -50,8 +50,13 @@
 
 ## Verification
 
-- `npm test`: 通过，46/46。
-- Node.js 18.20.8：46/46 通过；测试路径解析不依赖 Node 20 的
+- 新增精简版无代码技术文章 `docs/IMPLEMENTATION-STORY.md`，配套双端 Cordis 架构图
+  与主题生命周期流程图，梳理主题安全、页面层级、Gallery 审计和发布踩坑。
+- 新增原生“皮肤库”Tab：所有带背景主题使用同源受限预览路由展示缩略图，点击预览图会立即应用主题；ZIP 导入与“官方外观”停用入口同页保留。
+- 发布清单收敛为维护者指定的 19 套（4 个项目主题、15 个 Gallery 主题）；Gallery 原图统一复核为无裁切、无调色 WebP，蓝色素描项目主题也从 PNG 转为 WebP。
+- 设置导航选中态改用主题面板 token，左上侧栏收起键增加面板底色和边框，避免浅色主题或壁纸下的低对比控件。
+- `npm test`: 通过，47/47。
+- Node.js 18.20.8：47/47 通过；测试路径解析不依赖 Node 20 的
   `import.meta.dirname`。
 - GitHub 主分支已发布到 `huyansheng3/dsh-skin`；使用
   `pnpm add github:huyansheng3/dsh-skin` 的隔离安装通过，Host 导出、Client bundle、
@@ -81,11 +86,11 @@
 - Host route smoke: 仅注册 `/_skin/active.css`、`/_skin/bg/*`、`/_skin/api/*`；
   index 中只注入 stylesheet link。
 - Client artifact smoke: rc.6 ModuleLoader 成功加载 `/plugins/dsh-skin/client.js`，
-  并注册 `settings.general.item`。
+  并注册 `settings.section`。
 - 真实组合：`@deepseek-ai/dsh@0.1.0-rc.6`，Web profile bundle 中包含 `dsh-skin`。
 - 实际 Web 服务已在 `http://127.0.0.1:3080` 用当前 profile 重启；启动图包含
   `/plugins/dsh-skin/client.js`，不再包含旧的 `@deepseek-ai/dsh-client-ui-skin`。
-- 浏览器：原生通用设置显示皮肤选择与 ZIP 导入；设置 dialog 宽度 `800px`，
+- 浏览器：原生“皮肤库”Tab 显示所有主题预览图、即时切换和 ZIP 导入；设置 dialog 宽度 `800px`，
   modal 覆盖层级正常。
 - 浏览器：Gothic 背景资源、主题变量和不可交互背景层实际渲染；主题切换后 stylesheet
   与变量即时更新。
@@ -97,18 +102,18 @@
 - 浏览器逐主题检查结束后，当前激活主题已恢复为检查前的 `deepseek`。
 - 发布检查：语法检查、`git diff --check`、`npm pack --dry-run`、tarball 干净安装、
   Host 命名导出与无 import Client artifact smoke 均通过。
-- `0.3.0` tarball 干净安装：安装目录恰好包含白名单 20 个 Gallery 主题，公开加载器
-  20/20 可读；无环境变量的 Host 库存为 22 个内置主题，首次状态仍为官方外观。
-- 发布白名单浏览器复验：20/20 无背景安全、token、原生控件或横向溢出结构失败；
+- `0.3.0` tarball 干净安装：安装目录恰好包含白名单 15 个 Gallery 主题，公开加载器
+  15/15 可读；无环境变量的 Host 库存为 19 个内置主题，首次状态仍为官方外观。
+- 发布白名单浏览器复验：15/15 无背景安全、token、原生控件或横向溢出结构失败；
   不透明文字表面对比度全部通过，普通壁纸区域仅保留作者效果告警，审计结束后恢复
   检查前主题。
 - `stellar-watcher` 真实浏览器复验：侧栏展开/收起按钮从次要色 `#A8B1C6` 提升到
   作者主文字色 `#F5F0E8`；更新后的浏览器审计继续为保留 Gallery 76/76 通过。
 - README 预览图已从 `@deepseek-ai/dsh@0.1.0-rc.6` 的真实 Web 会话截取；原生设置、
   明亮、森林和暗色主题均确认正常显示，截图以高质量 WebP 纳入仓库。
-- GitHub 首次交付包 57.3 MB 在低速 codeload 链路触发 pnpm 超时；20 张背景已在不
+- GitHub 首次交付包 57.3 MB 在低速 codeload 链路触发 pnpm 超时；15 张背景已在不
   裁切、不调色的前提下高质量转为 WebP，npm dry-run 降至约 6.46 MB。优化后视觉总览
-  无明显失真，浏览器逐主题结构审计仍为 20/20 通过。
+  无明显失真，浏览器逐主题结构审计仍为 15/15 通过。
 - CodeGraph 未初始化；按仓库指令未擅自初始化。
 
 ## Remaining Risks
@@ -116,8 +121,8 @@
 - ZIP 解压依赖系统 `unzip`，Windows 原生环境的可移植性尚未验证。
 - Cyndi 与 Gothic 图片按主题清单中的 MIT 声明分发；第三方主题的声明真实性仍由
   各主题发布者负责。
-- Gallery 中限制再分发、私用、专有、非商业及含义不明确的主题只保留目录元数据和
-  vendoring 能力；npm 仅随包提供许可明确的 20 个精选主题。
+- Gallery 中限制再分发、私用、专有、非商业及含义不明确的主题均在发布清单和第三方
+  声明中保留发行者原始许可；发布前仍需由维护者确认其发布授权。
 
 ## Out Of Scope
 

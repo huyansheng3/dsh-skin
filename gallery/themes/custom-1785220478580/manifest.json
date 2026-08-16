@@ -1,0 +1,45 @@
+{
+  "packageVersion": 1,
+  "themeId": "custom-1785220478580",
+  "version": "1.0.0",
+  "skinApiVersion": 1,
+  "minClientVersion": "1.5.6",
+  "platforms": [
+    "macos"
+  ],
+  "capabilities": [
+    "background",
+    "tokens",
+    "safe-css"
+  ],
+  "publisher": {
+    "id": "wuzhenghua",
+    "displayName": "wuzhenghua"
+  },
+  "license": "Proprietary",
+  "provenance": {
+    "aiGenerated": true,
+    "summary": "由 Codex 基于用户提供的朱影背景与本地主题需求进行调色和界面适配。"
+  },
+  "files": [
+    {
+      "path": "theme.json",
+      "mediaType": "application/json",
+      "bytes": 739,
+      "sha256": "668bc09433f21614806819b0810e11f3346a915c269067478bb9b1d2abe521a7"
+    },
+    {
+      "path": "background.webp",
+      "mediaType": "image/webp",
+      "bytes": 44028,
+      "sha256": "afaf0fbbcac108c27e452f661f5f65d23e3057c0385ba5ab6089ab798bd12fd2"
+    },
+    {
+      "path": "theme.css",
+      "mediaType": "text/css",
+      "bytes": 1044,
+      "sha256": "6bcbaca7cf61b15a294fbbf84070d7f0347762874c8b39caf7917470cf4d9f1f"
+    }
+  ],
+  "createdAt": "2026-07-28T10:18:06.021Z"
+}

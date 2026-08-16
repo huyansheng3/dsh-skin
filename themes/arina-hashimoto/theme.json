@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "arina-hashimoto",
+  "name": "Rose Light",
+  "image": "background.jpg",
+  "appearance": "light",
+  "art": { "focusX": 0.72, "focusY": 0.45, "safeArea": "left", "taskMode": "ambient" },
+  "colors": {
+    "background": "#f8f1f3",
+    "panel": "#fff8fa",
+    "panelAlt": "#f6e8ec",
+    "accent": "#c66f8d",
+    "accentAlt": "#a94f70",
+    "secondary": "#d9a2b3",
+    "highlight": "#ebc6d2",
+    "text": "#302127",
+    "muted": "#806b73",
+    "line": "rgba(154, 91, 112, .24)"
+  },
+  "backgroundOpacity": 0.78,
+  "backgroundBlur": 0
+}
